@@ -1,0 +1,6 @@
+#! /bin/bash
+echo 'Starting nginx'
+echo 'Serving playground frontend at port 80'
+/usr/sbin/nginx -c /conf/nginx.conf
+echo 'Nginx exited'
+

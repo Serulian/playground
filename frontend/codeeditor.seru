@@ -1,0 +1,70 @@
+from webidl`github.com/Serulian/virtualdom` import Element, Node
+from "github.com/Serulian/virtualdom" import Div, Context
+from webidl`ace` import ace, aceEditor
+
+/**
+ * codeEditorProps defines the properties for the code editor.
+ */
+class codeEditorProps {
+	/**
+	 * IsReadOnly sets whether the code editor is currently in a read-only state.
+	 */
+	var<bool> IsReadOnly
+
+	/**
+	 * OnChanged is the callback to invoke when the contents of the editor have changed.
+	 */
+	var<function<void>(string)?> OnChanged
+}
+
+/**
+ * CodeEditor wraps an ACE code editor into a Serulian component.
+ */
+class CodeEditor {
+	var<codeEditorProps> props
+	var<Element?> element
+	var<aceEditor?> editor
+	var<string?> initialValue
+
+	constructor Declare(props codeEditorProps, initialValue string?) {
+		return CodeEditor{
+			props: props,
+			initialValue: initialValue,
+		}
+	}
+
+	function<void> Attached(node Node) {
+		this.element = node.(Element)
+
+		var editor = ace.edit(this.element!)
+	    editor.setTheme("ace/theme/monokai")
+
+		initialValue := this.initialValue?.Trim() ?? ''
+		editor.getSession().setValue(&initialValue)
+
+		// Listen for any changes to the code in the editor, and raise the onChanged
+		// callback.
+	    editor.getSession().on('change', function<void>(e any) {
+	    	onChanged := this.props.OnChanged
+	    	if onChanged is not null {
+	    		onChanged(string(editor.getSession().getValue()))
+	    	}
+		})
+
+		this.editor = editor
+		this.editor?.setReadOnly(this.props.IsReadOnly)
+	}
+
+	property<any> Props {
+		get { return this.props }
+	}
+
+	function<void> PropsUpdated(props any) {
+		this.props = props.(codeEditorProps)
+		this.editor?.setReadOnly(this.props.IsReadOnly)
+	}
+
+	function<any> Render(context Context) {
+		return <Div className="editor" />
+	}
+}

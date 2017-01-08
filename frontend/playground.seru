@@ -1,0 +1,203 @@
+from webidl`github.com/Serulian/virtualdom` import document, Node, Element, HTMLDocument, HTMLIFrameElement
+from "github.com/Serulian/virtualdom" import Context, Div, Button, If, Span, TextArea, IFrame
+from "github.com/Serulian/virtualdom" import Nav, Ul, Li, A, DynamicAttributes, Pre
+from "github.com/Serulian/component" import RenderComponent, UpdateComponentState
+from "github.com/Serulian/request" import Post
+
+from codeeditor import CodeEditor
+
+/**
+ * BuildResult holds the result of calling the toolkit to perform a build.
+ */
+struct BuildResult {
+	/**
+	 * Status is the status code from calling the toolkit executable.
+	 */
+	Status int
+
+	/**
+	 * Output is the console output from the tookkit.
+	 */
+	Output string
+
+	/**
+	 * GeneratedSourceFile is the generated source for the program, if Status == 0.
+	 */
+	GeneratedSourceFile string
+
+	/**
+	 * GeneratedSourceMap is the generated sourcemap for the program, if Status == 0.
+	 */
+	GeneratedSourceMap string
+}
+
+/**
+ * appState holds the state of the playground app.
+ */
+struct appState {
+	working bool
+	currentCode string
+	serverError bool
+	buildResult BuildResult?
+}
+
+/**
+ * App is the root component for the playground application.
+ */
+class App {
+	var<appState> state
+
+	constructor Declare() {
+		return App{
+			state: appState{
+				working: false,
+				currentCode: '',
+				serverError: false,
+			},
+		}
+	}
+
+	function<void> StateUpdated(state any) {
+		this.state = state.(appState)
+	}
+
+	function<void> runProject() {
+		// Set the project as running.
+		UpdateComponentState(this, this.state{
+			working: true,
+			serverError: false,
+			buildResult: null,
+		})
+
+		// Make an XHR request with the code over to the playground service.
+		response, _ := Post('/play/build', this.state.currentCode)
+		if response is null {
+			UpdateComponentState(this, this.state{
+				working: false,
+				serverError: true,
+				buildResult: null,
+			})			
+		} else if response.StatusCode == 200 {
+			result := BuildResult.Parse<json>(response.Text)
+			UpdateComponentState(this, this.state{
+				working: false,
+				serverError: false,
+				buildResult: result,
+			})
+		} else {
+			UpdateComponentState(this, this.state{
+				working: false,
+				serverError: true,
+				buildResult: null,
+			})
+		}
+	}
+
+	function<void> codeChanged(value string) {
+		UpdateComponentState(this, this.state{
+			currentCode: value,
+		})
+	}
+
+	function<void> emitCode(iframeNode Node) {
+		sourceCode := this.state.buildResult?.GeneratedSourceFile ?? ''
+
+		iframeElement := iframeNode.(HTMLIFrameElement)
+		iframeDoc := iframeElement.contentWindow.document
+
+		// Add the <script> tag for the compiled code.
+		scriptTag := iframeDoc.createElement('script')
+		scriptTag.setAttribute('type', 'text/javascript')
+		scriptTag.appendChild(iframeDoc.createTextNode(sourceCode))
+		iframeDoc.body.appendChild(scriptTag)
+
+		// Add the <script> tag for starting the program.
+		startCode := `
+			window.Serulian.then(function(global) {
+				global.playground.Run().then(function(result) {
+					console.log('Program finished');
+				}).catch(function(e) {
+					console.error(e);
+				});
+			});
+		`
+
+		loadScriptTag := iframeDoc.createElement('script')
+		loadScriptTag.setAttribute('type', 'text/javascript')
+		loadScriptTag.appendChild(iframeDoc.createTextNode(startCode))
+		iframeDoc.body.appendChild(loadScriptTag)
+	}
+
+	function<any> Render(context Context) {
+		// Note: lack of indentation is important here so the initial code is properly
+		// indented in the code editor.
+		initialCode := `from "github.com/Serulian/debuglib:master" import Log
+
+function<any> Run() {
+	// Note: open the browser console to see Log outputs.
+	Log('hello world!')
+	return true
+}`
+
+		return <Div id="rootElement">
+			<Nav className="navbar navbar-default" style="margin-bottom: 0px">
+				<A className="navbar-brand" href="#">Serulian Playground</A>
+
+				<Div className="navbar-form navbar-left" @If={!this.state.working}>
+					<Button className="btn btn-primary" onclick={this.runProject} 
+							@DynamicAttributes={{'disabled': this.state.currentCode.IsEmpty}}>
+						Run
+					</Button>
+				</Div>
+
+				<Div className="navbar-form navbar-left" @If={this.state.working}>
+					<Div className="spinner" />
+				</Div>
+
+				<Div className="navbar-form navbar-left" @If={this.state.serverError}>
+					A server error occurred. Please try again shortly.
+				</Div>
+			</Nav>
+
+			<Div className="container-fluid editor-and-viewer">
+				<Div className="row">
+					<Div className="col-md-6 col-sm-12">
+						<CodeEditor IsReadOnly={this.state.working} OnChanged={this.codeChanged}>{initialCode}</CodeEditor>
+					</Div>
+
+					<Div className="col-md-6 col-sm-12">
+						<Div @If={this.state.buildResult?.GeneratedSourceFile is null} 
+							 @If={!this.state.working}
+							 style="text-align: center; margin-top: 20px;">
+							<Span className="glyphicon glyphicon-arrow-left"></Span> Enter some code and hit "Run"
+						</Div>
+
+						<Div @If={this.state.working} style="text-align: center; margin-top: 20px;">
+							Building...
+						</Div>
+
+						<IFrame @If={!(this.state.buildResult?.GeneratedSourceFile?.IsEmpty ?? true)} 
+								ondomnodeinserted={this.emitCode}
+								sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals"
+								frameborder="0" />
+					</Div>
+				</Div>
+
+				<Div className="row"
+					 @If={this.state.buildResult is not null}
+					 @If={!this.state.working}>
+					<Div className="col-md-12">
+						<Pre className="build-result">{this.state.buildResult?.Output}</Pre>
+					</Div>
+				</Div>
+			</Div>
+		</Div>
+	}
+}
+
+/**
+ * Start starts the playground user interface, attaching it to the given DOM element.
+ */
+function<void> Start(element Element) {
+	RenderComponent(<App />, element)
+}
