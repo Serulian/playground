@@ -32,6 +32,27 @@ type buildResult struct {
 	GeneratedSourceMap  string
 }
 
+func serveCSS(w http.ResponseWriter, r *http.Request) {
+	data, err := ioutil.ReadFile("static/playground.css")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/css")
+	w.Write(data)
+}
+
+func serveGuide(w http.ResponseWriter, r *http.Request) {
+	data, err := ioutil.ReadFile("static/guide.html")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Write(data)
+}
+
 func serve(w http.ResponseWriter, r *http.Request) {
 	data, err := ioutil.ReadFile("static/index.html")
 	if err != nil {
@@ -125,13 +146,15 @@ func build(w http.ResponseWriter, r *http.Request) {
 // Run runs the playgrounud webserver on localhost at the given addr.
 func Run(addr string) {
 	if SHARED_ROOT_DIRECTORY == "" {
-		fmt.Printf("Missing SHARED_ROOT_DIRECTORY env var")
+		fmt.Printf("Missing SHARED_ROOT_PATH env var\n")
 		return
 	}
 
 	rtr := mux.NewRouter()
 	rtr.HandleFunc("/play/build", build).Methods("POST")
 	rtr.HandleFunc("/", serve).Methods("GET")
+	rtr.HandleFunc("/guide", serveGuide).Methods("GET")
+	rtr.HandleFunc("/playground.css", serveCSS).Methods("GET")
 
 	http.Handle("/", rtr)
 

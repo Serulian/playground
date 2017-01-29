@@ -12,4 +12,5 @@ interface aceSession {
 	void on(String eventName, any handler);
 	String getValue();
 	void setValue(String value);
+	void setMode(String mode);
 };

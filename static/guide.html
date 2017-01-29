@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="/playground.css">
+
+	<script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	if (document.location.toString().indexOf('develop=true') > 0) {
+		document.write('<script src="http://localhost:8080/playground.seru.js"></sc' + 'ript>');
+	} else {
+		document.write('<script src="/playground.seru.js"></sc' + 'ript>');
+	}
+	</script>
+	<script>
+	  function runEditors() {
+		  window.Serulian.then(function(global) {
+		  	global.playground.DecorateEditors()
+		  });
+	  }
+	</script>
+	<style type="text/css">
+	.playgroundEditor {
+		width: 500px;
+		height: 250px;
+	    margin: 10px;
+	    border: 1px solid #aaa;
+	    position: relative;
+	}
+
+	.playgroundEditor .ace_editor {
+		width: 100%;
+		height: 100%;
+	}	
+
+	.playgroundEditor .btn {
+		position: absolute;
+	    right: 0px;
+	    bottom: 0px;
+	    z-index: 200;
+	    height: 30px;
+	    line-height: 15px;
+	    border-radius: 0px;
+	}
+
+	.playgroundEditor .spinner {
+		position: absolute;
+		right: 5px;
+		bottom: 0px;
+		width: 30px;
+		height: 30px;
+	}
+
+	.playgroundEditor .build-result {
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+		padding: 4px;
+		margin: 0px;
+		border: 0px;
+		overflow: auto;
+	}
+
+	.playgroundEditor .server-error {
+		position: absolute;
+	    bottom: 0px;
+	    left: 0px;
+	    right: 0px;
+	    padding: 4px;
+	    background-color: #eee;
+	    border-top: 1px solid #ccc;
+	    color: red;
+	    z-index: 100;
+	    height: 30px;
+	}
+
+	.playgroundEditor .pane {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 30px;
+	}
+
+	.playgroundEditor .toolbar {
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		height: 30px;
+		border-top: 1px solid #eee;
+		padding-right: 51px;
+	}
+
+	.playgroundEditor .tabs {
+		margin: 0px;
+		padding: 0px;
+		list-style: none;
+	}
+
+	.playgroundEditor .tabs li {
+		display: inline-block;
+		width: 33%;
+		padding: 4px;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	.playgroundEditor .tabs li.active {
+		font-weight: bold;
+		border-top: 2px solid #91B8DA;
+	}
+
+	.playgroundEditor iframe {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+	    width: 100%;
+	    height: 100%;
+	}
+	</style>
+</head>
+<body onload="runEditors()">
+
+<PlaygroundEditor>
+from "github.com/Serulian/debuglib:master" import Log
+
+function&lt;bool&gt; Run() {
+	Log('this is cool!')
+	return true
+}
+</PlaygroundEditor>
+
+</body>
+</html>

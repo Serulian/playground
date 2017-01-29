@@ -1,9 +1,9 @@
-from webidl`github.com/Serulian/virtualdom` import document, Node, Element, HTMLDocument, HTMLIFrameElement
-from "github.com/Serulian/virtualdom" import Context, Div, Button, If, Span, TextArea, IFrame
-from "github.com/Serulian/virtualdom" import Nav, Ul, Li, A, DynamicAttributes, Pre
+from webidl`github.com/Serulian/virtualdom` import document, Node, Element, Text, HTMLDocument, HTMLIFrameElement
+
 from "github.com/Serulian/component" import RenderComponent, UpdateComponentState
 from "github.com/Serulian/request" import Post
-
+from "github.com/Serulian/virtualdom" import Context, Div, Button, If, Span, TextArea, IFrame, HideIf
+from "github.com/Serulian/virtualdom" import Nav, Ul, Li, A, DynamicAttributes, Pre
 from codeeditor import CodeEditor
 
 /**
@@ -32,33 +32,24 @@ struct BuildResult {
 }
 
 /**
- * appState holds the state of the playground app.
+ * playgroundState holds the state of the playground app or embeded editoor.
  */
-struct appState {
+struct playgroundState {
 	working bool
 	currentCode string
 	serverError bool
 	buildResult BuildResult?
+	currentView string
 }
 
 /**
- * App is the root component for the playground application.
+ * playgroundBase is a base for the App and PlaygroundEditor components.
  */
-class App {
-	var<appState> state
-
-	constructor Declare() {
-		return App{
-			state: appState{
-				working: false,
-				currentCode: '',
-				serverError: false,
-			},
-		}
-	}
+class playgroundBase {
+	var<playgroundState> state
 
 	function<void> StateUpdated(state any) {
-		this.state = state.(appState)
+		this.state = state.(playgroundState)
 	}
 
 	function<void> runProject() {
@@ -67,6 +58,7 @@ class App {
 			working: true,
 			serverError: false,
 			buildResult: null,
+			currentView: 'edit',
 		})
 
 		// Make an XHR request with the code over to the playground service.
@@ -76,27 +68,28 @@ class App {
 				working: false,
 				serverError: true,
 				buildResult: null,
-			})			
+				currentView: 'edit',
+			})
 		} else if response.StatusCode == 200 {
 			result := BuildResult.Parse<json>(response.Text)
 			UpdateComponentState(this, this.state{
 				working: false,
 				serverError: false,
 				buildResult: result,
+				currentView: 'frame' if result.Status == 0 else 'output',
 			})
 		} else {
 			UpdateComponentState(this, this.state{
 				working: false,
 				serverError: true,
 				buildResult: null,
+				currentView: 'edit',
 			})
 		}
 	}
 
 	function<void> codeChanged(value string) {
-		UpdateComponentState(this, this.state{
-			currentCode: value,
-		})
+		UpdateComponentState(this, this.state{currentCode: value})
 	}
 
 	function<void> emitCode(iframeNode Node) {
@@ -114,11 +107,7 @@ class App {
 		// Add the <script> tag for starting the program.
 		startCode := `
 			window.Serulian.then(function(global) {
-				global.playground.Run().then(function(result) {
-					console.log('Program finished');
-				}).catch(function(e) {
-					console.error(e);
-				});
+				global.playground.Run();
 			});
 		`
 
@@ -126,6 +115,26 @@ class App {
 		loadScriptTag.setAttribute('type', 'text/javascript')
 		loadScriptTag.appendChild(iframeDoc.createTextNode(startCode))
 		iframeDoc.body.appendChild(loadScriptTag)
+	}
+
+	function<any> Render(context Context) {
+		return null
+	}
+}
+
+/**
+ * App is the root component for the playground application.
+ */
+class App : playgroundBase {
+	constructor Declare() {
+		return App{
+			state: playgroundState{
+				working: false,
+				currentCode: '',
+				serverError: false,
+				currentView: '',
+			},
+		}
 	}
 
 	function<any> Render(context Context) {
@@ -144,8 +153,8 @@ function<any> Run() {
 				<A className="navbar-brand" href="#">Serulian Playground</A>
 
 				<Div className="navbar-form navbar-left" @If={!this.state.working}>
-					<Button className="btn btn-primary" onclick={this.runProject} 
-							@DynamicAttributes={{'disabled': this.state.currentCode.IsEmpty}}>
+					<Button className="btn btn-primary" onclick={this.runProject}
+					        @DynamicAttributes={{'disabled': this.state.currentCode.IsEmpty}}>
 						Run
 					</Button>
 				</Div>
@@ -162,30 +171,31 @@ function<any> Run() {
 			<Div className="container-fluid editor-and-viewer">
 				<Div className="row">
 					<Div className="col-md-6 col-sm-12">
-						<CodeEditor IsReadOnly={this.state.working} OnChanged={this.codeChanged}>{initialCode}</CodeEditor>
+						<CodeEditor IsReadOnly={this.state.working} OnChanged={this.codeChanged}>
+							{initialCode}
+						</CodeEditor>
 					</Div>
 
 					<Div className="col-md-6 col-sm-12">
-						<Div @If={this.state.buildResult?.GeneratedSourceFile is null} 
-							 @If={!this.state.working}
-							 style="text-align: center; margin-top: 20px;">
-							<Span className="glyphicon glyphicon-arrow-left"></Span> Enter some code and hit "Run"
+						<Div style="text-align: center; margin-top: 20px;"
+						     @If={this.state.buildResult?.GeneratedSourceFile is null}
+						     @If={!this.state.working}>
+							<Span className="glyphicon glyphicon-arrow-left" /> Enter some code and hit "Run"
 						</Div>
 
-						<Div @If={this.state.working} style="text-align: center; margin-top: 20px;">
+						<Div style="text-align: center; margin-top: 20px;" @If={this.state.working}>
 							Building...
 						</Div>
 
-						<IFrame @If={!(this.state.buildResult?.GeneratedSourceFile?.IsEmpty ?? true)} 
-								ondomnodeinserted={this.emitCode}
-								sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals"
-								frameborder="0" />
+						<IFrame ondomnodeinserted={this.emitCode}
+						        sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals"
+						        frameborder="0"
+						        @If={!(this.state.buildResult?.GeneratedSourceFile?.IsEmpty ?? true)} />
 					</Div>
 				</Div>
 
-				<Div className="row"
-					 @If={this.state.buildResult is not null}
-					 @If={!this.state.working}>
+				<Div className="row" @If={this.state.buildResult is not null}
+				     @If={!this.state.working}>
 					<Div className="col-md-12">
 						<Pre className="build-result">{this.state.buildResult?.Output}</Pre>
 					</Div>
@@ -200,4 +210,103 @@ function<any> Run() {
  */
 function<void> Start(element Element) {
 	RenderComponent(<App />, element)
+}
+
+/**
+ * PlaygroundEditor is a component displaying an inline playground element.
+ */
+class PlaygroundEditor : playgroundBase {
+	constructor Declare(attributes []{string}, code string) {
+		return PlaygroundEditor{
+			state: playgroundState{
+				working: false,
+				currentCode: code,
+				serverError: false,
+				currentView: 'edit',
+			},
+		}
+	}
+
+	function<void> showEditTab() {
+		UpdateComponentState(this, this.state{currentView: 'edit'})
+	}
+
+	function<void> showOutputTab() {
+		UpdateComponentState(this, this.state{currentView: 'output'})
+	}
+
+	function<void> showFrameTab() {
+		UpdateComponentState(this, this.state{currentView: 'frame'})
+	}
+
+	function<any> Render(context Context) {
+		return <Div className="playgroundEditor">
+			<Div className="pane" @HideIf={this.state.currentView != 'edit'}>
+				<CodeEditor IsReadOnly={this.state.working} OnChanged={this.codeChanged}
+				            Theme="chrome" Mode="text">
+					{this.state.currentCode.Trim()}
+				</CodeEditor>
+			</Div>
+
+			<Div className="pane" @HideIf={this.state.currentView != 'output'}>
+				<Pre className="build-result" @If={this.state.buildResult is not null}>
+					{this.state.buildResult?.Output}
+				</Pre>
+			</Div>
+
+			<Div className="pane" @HideIf={this.state.currentView != 'frame'}>
+				<IFrame ondomnodeinserted={this.emitCode}
+				        sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals"
+				        frameborder="0"
+				        @If={!(this.state.buildResult?.GeneratedSourceFile?.IsEmpty ?? true)} />
+			</Div>
+
+			<Div className="toolbar">
+				<Ul className="tabs">
+					<Li className={'active' if this.state.currentView == 'edit' else ''}
+					    onclick={this.showEditTab}>
+						Code
+					</Li>
+					<Li className={'active' if this.state.currentView == 'output' else ''}
+					    onclick={this.showOutputTab} @If={this.state.buildResult is not null}>
+						Output
+					</Li>
+					<Li className={'active' if this.state.currentView == 'frame' else ''}
+					    onclick={this.showFrameTab}
+					    @If={!(this.state.buildResult?.GeneratedSourceFile?.IsEmpty ?? true)}>
+						Compiled
+					</Li>
+				</Ul>
+
+				<Button className="btn btn-primary" onclick={this.runProject}
+				        @If={!this.state.working}>
+					Run
+				</Button>
+
+				<Div className="spinner" @If={this.state.working} />
+
+				<Div className="server-error" @If={this.state.serverError}>
+					A server error occurred. Please try again shortly.
+				</Div>
+			</Div>
+		</Div>
+	}
+}
+
+/**
+ * DecorateEditors replaces all playgroundeditor tags in the DOM with an associated editor.
+ */
+function<void> DecorateEditors() {
+	elements := document.getElementsByTagName('playgroundeditor')
+	for i in 0 .. int(elements.length) - 1 {
+		editorElement := elements[&i].(Element)
+		firstChild := editorElement.firstChild
+
+		var initialCode = ''
+		if firstChild is not null {
+			initialCode = string(firstChild.(Text).wholeText)
+		}
+
+		RenderComponent(<PlaygroundEditor>{initialCode}</PlaygroundEditor>, editorElement)
+	}
 }

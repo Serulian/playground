@@ -4,6 +4,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="/playground.css">
 
 	<script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script>
@@ -19,7 +21,7 @@
 		  	global.playground.Start(document.getElementById('rootElement'))
 		  });
 	  }
-	</script>
+	</script>	
 	<style type="text/css">
 	.editor, iframe {
 		width: 100%;
@@ -28,36 +30,6 @@
 
 	.build-result {
 		margin-top: 15px;
-	}
-
-	/* Source: http://tobiasahlin.com/spinkit/ */
-	.spinner {
-	  width: 32px;
-	  height: 32px;
-	  background-color: #337ab7;
-
-	  border-radius: 100%;  
-	  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-	  animation: sk-scaleout 1.0s infinite ease-in-out;
-	}
-
-	@-webkit-keyframes sk-scaleout {
-	  0% { -webkit-transform: scale(0) }
-	  100% {
-	    -webkit-transform: scale(1.0);
-	    opacity: 0;
-	  }
-	}
-
-	@keyframes sk-scaleout {
-	  0% { 
-	    -webkit-transform: scale(0);
-	    transform: scale(0);
-	  } 100% {
-	    -webkit-transform: scale(1.0);
-	    transform: scale(1.0);
-	    opacity: 0;
-	  }
 	}
 	</style>
 </head>
