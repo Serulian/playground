@@ -1,4 +1,6 @@
 from webidl`github.com/Serulian/virtualdom` import document, Node, Element, Text, HTMLDocument, HTMLIFrameElement
+from webidl`github.com/Serulian/corelib:master` import Number
+from webidl`timeout` import setTimeout, clearTimeout
 
 from "github.com/Serulian/component" import RenderComponent, UpdateComponentState
 from "github.com/Serulian/request" import Post
@@ -37,9 +39,11 @@ struct BuildResult {
 struct playgroundState {
 	working bool
 	currentCode string
+	initialCode string
 	serverError bool
 	buildResult BuildResult?
 	currentView string
+	consoleOutput string
 }
 
 /**
@@ -47,6 +51,8 @@ struct playgroundState {
  */
 class playgroundBase {
 	var<playgroundState> state
+	var<Number?> timerHandle
+	var<string?> consoleOutputBuffer
 
 	function<void> StateUpdated(state any) {
 		this.state = state.(playgroundState)
@@ -59,6 +65,7 @@ class playgroundBase {
 			serverError: false,
 			buildResult: null,
 			currentView: 'edit',
+			consoleOutput: '',
 		})
 
 		// Make an XHR request with the code over to the playground service.
@@ -92,6 +99,28 @@ class playgroundBase {
 		UpdateComponentState(this, this.state{currentCode: value})
 	}
 
+	function<void> updateConsole() {
+		buffer := this.consoleOutputBuffer ?? ''
+		this.consoleOutputBuffer = null
+
+		UpdateComponentState(this, this.state{
+			consoleOutput: (this.state.consoleOutput + buffer + '\n').Trim(),
+		})
+
+		this.timerHandle = null
+		if this.consoleOutputBuffer is not null {
+			this.updateConsole()
+		}
+	}
+
+	function<void> registerConsoleUpdater() {
+		if this.timerHandle is not null {
+			return;
+		}
+
+		this.timerHandle = setTimeout(this.updateConsole, 100)
+	}
+
 	function<void> emitCode(iframeNode Node) {
 		sourceCode := this.state.buildResult?.GeneratedSourceFile ?? ''
 
@@ -104,8 +133,25 @@ class playgroundBase {
 		scriptTag.appendChild(iframeDoc.createTextNode(sourceCode))
 		iframeDoc.body.appendChild(scriptTag)
 
-		// Add the <script> tag for starting the program.
+		// Register a handler on the iframeElement that will be invoked from within the iframe for console.log.
+		iframeElement[&'handler'] = function<void>(message string) {
+			// Note: Since this method will be called without awaiting (since JS has no idea
+			// how to await a console.log), we buffer any console output given and have a timer update it
+			// batch, to prevent multiple instances of these calls running at the same time which causes
+			// DOM diffing issues.
+			this.consoleOutputBuffer = (this.consoleOutputBuffer ?? '') + message + '\n'
+			this.registerConsoleUpdater();
+		}
+
+		// Add the <script> tag for starting the program and override
+		// the console.log so it shows up in the playground.
 		startCode := `
+			var oldLog = window.console.log;
+			window.console.log = function(msg) {
+				oldLog.apply(this, arguments);
+				window.frameElement.handler(msg);
+			};
+
 			window.Serulian.then(function(global) {
 				global.playground.Run();
 			});
@@ -131,8 +177,10 @@ class App : playgroundBase {
 			state: playgroundState{
 				working: false,
 				currentCode: '',
+				initialCode: '',
 				serverError: false,
 				currentView: '',
+				consoleOutput: '',
 			},
 		}
 	}
@@ -221,8 +269,10 @@ class PlaygroundEditor : playgroundBase {
 			state: playgroundState{
 				working: false,
 				currentCode: code,
+				initialCode: code,
 				serverError: false,
 				currentView: 'edit',
+				consoleOutput: '',
 			},
 		}
 	}
@@ -240,7 +290,19 @@ class PlaygroundEditor : playgroundBase {
 	}
 
 	function<any> Render(context Context) {
-		return <Div className="playgroundEditor">
+		// Make the height = # lines in the content * 16 + 50px, with a max of ~1000px
+		var<string> height = 'auto';
+		if !this.state.initialCode.IsEmpty {
+			lineCount := this.state.initialCode.Split('\n').Length
+			var<int> heightPx = (lineCount * 16) + 50
+			if heightPx > 1000 {
+				heightPx = 1000
+			}
+
+			height = `${heightPx}px`
+		}
+
+		return <Div className="playgroundEditor" style={'height: ' + height}>
 			<Div className="pane" @HideIf={this.state.currentView != 'edit'}>
 				<CodeEditor IsReadOnly={this.state.working} OnChanged={this.codeChanged}
 				            Theme="chrome" Mode="text">
@@ -255,6 +317,8 @@ class PlaygroundEditor : playgroundBase {
 			</Div>
 
 			<Div className="pane" @HideIf={this.state.currentView != 'frame'}>
+				<Pre className="console-output" @HideIf={this.state.consoleOutput.IsEmpty}>{this.state.consoleOutput}</Pre>
+
 				<IFrame ondomnodeinserted={this.emitCode}
 				        sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals"
 				        frameborder="0"
@@ -307,6 +371,7 @@ function<void> DecorateEditors() {
 			initialCode = string(firstChild.(Text).wholeText)
 		}
 
+		editorElement.setAttribute('className', '')
 		RenderComponent(<PlaygroundEditor>{initialCode}</PlaygroundEditor>, editorElement)
 	}
 }
