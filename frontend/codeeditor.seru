@@ -2,7 +2,7 @@ from webidl`github.com/Serulian/virtualdom` import Element, Node
 
 from "github.com/Serulian/virtualdom" import Div, Context
 
-from webidl`ace` import ace, aceEditor
+from webidl`ace` import ace, aceEditor, aceMode
 
 /**
  * codeEditorProps defines the properties for the code editor.
@@ -21,7 +21,7 @@ class codeEditorProps {
 	/**
 	 * The edit mode for the ACE editor.
 	 */
-	var<string?> Mode
+	var<aceMode?> Mode
 
 	/**
 	 * Theme is the ACE theme to use. If none specified, the dark theme will be used.
@@ -52,7 +52,7 @@ class CodeEditor {
 		editor.getSession().setValue(&initialValue)
 
 		if this.props.Mode is not null {
-			editor.getSession().setMode(`ace/mode/${this.props.Mode ?? ''}`)
+			editor.getSession().setMode(this.props.Mode!)
 		}
 
 		// Listen for any changes to the code in the editor, and raise the onChanged
@@ -78,7 +78,7 @@ class CodeEditor {
 		this.editor?.setTheme(`ace/theme/${this.props.Theme ?? "monokai"}`)
 
 		if this.props.Mode is not null {
-			this.editor?.getSession()?.setMode(`ace/mode/${this.props.Mode ?? ''}`)
+			this.editor?.getSession()?.setMode(this.props.Mode!)
 		}
 	}
 

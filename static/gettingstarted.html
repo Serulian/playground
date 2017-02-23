@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Serulian Guide</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+	
+	<link rel="stylesheet" href="/playground.css">
+	<link rel="stylesheet" href="/content.css">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/ace_grammar.min.js"></script>
+
+	<script>
+		if (document.location.toString().indexOf('develop=true') > 0) {
+			document.write('<script src="http://localhost:8080/playground.seru.js"></sc' + 'ript>');
+		} else {
+			document.write('<script src="/playground.seru.js"></sc' + 'ript>');
+		}
+	</script>
+	<script>
+		function runEditors() {
+			window.Serulian.then(function(global) {
+				global.playground.DecorateEditors()
+			});
+		}
+	</script>
+</head>
+<body onload="runEditors()" data-spy="scroll" data-target="#toc">
+
+<!-- From: http://tholman.com/github-corners/ -->
+<a href="https://github.com/Serulian/playground/tree/master/static/guide.html" class="github-corner" aria-label="View source on Github"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#2061a4; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+<header>
+	<a href="/" class="language-title">Serulian</a>
+	<a class="active-section" href="/gettingstarted">Getting Started</a>
+	<a href="/guide">Guide</a>
+	<a href="/install">Install</a>
+	<a href="https://github.com/Serulian/compiler">File an issue</a>
+</header>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3"><nav id="toc" data-toggle="toc" class="affix"></nav></div>
+		<div class="col-md-9">
+
+			<h2 id="quickstart">Getting started with Serulian</h2>
+			<h3>Hello World!</h3>
+			<p>It is tradition to start all introductions to new programming languages with the "Hello World" example:
+
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+function&lt;void&gt; Run() {
+	Log('Hello World!')
+}</PlaygroundEditor>
+			</p>
+			<p>Running the above code via the playground will display <code>Hello World!</code> in the browser's console.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why is the function named <code>Run</code>?</h4>
+				Serulian does not have a default entrypoint function ala <code>main</code> or <code>start</code>
+				in other languages. Instead, this <a href="https://github.com/Serulian/playground/blob/master/frontend/playground.seru" target="_blank">playground</a> is coded to always execute a function named "Run" in the module.
+			</div>
+
+			<p>The above example makes use of a few key features of Serulian:
+				<ul>
+				<li><a href="/guide#imports-and-packages">Imports</a> of an external VCS package</li>
+				<li><a href="/guide#webidl">WebIDL</a> for calling a browser-specified API</li>
+				</ul>
+			</p>
+
+			<h3>Running Hello World locally</h3>
+			<p>Follow the <a href="/install">installation instructions</a> to install the toolkit</p>
+
+			<h4>Starting the project</h4>
+			<p>
+			To start the new project, create a new source file in an empty:
+			<pre class="sh">touch helloworld.seru</pre>
+			This file will define the <code>helloworld</code> module. Paste the above code into the file to get:
+
+<div class="unreplaced-code">
+from "github.com/Serulian/debuglib" import Log
+
+function&lt;void&gt; Run() {
+	Log('Hello World!')
+}</div>
+			</p>
+
+			<h4>Setting up project</h4>
+			<p>To run the Serulian project, we need to write an HTML file that will include the generated source code. Create a new empty HTML file in the same directory at the source file:
+			<pre class="sh">touch helloworld.html</pre>
+			</p>
+
+			<p>We then need to add a <code>&lt;script&gt;</code> tag to include the compiled Serulian code, as well as another to <strong>start</strong> the project.</p>
+			<p>For this project, we will make use of the Serulian <strong>develop</strong> mode, which allows for fast edit-refresh development by running the compiler behind a web server which recompiles on every refresh. To reference the source, simply add to the file:
+<div class="unreplaced-code">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src="http://localhost:8080/helloworld.seru.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+    	window.Serulian.then(function(serulian) {
+    		// Execute the `Run` function under the `helloworld` module.
+    		serulian.helloworld.Run();
+    	}, function(err) {
+    		// Re-raise any errors that occur.
+    		throw err;
+    	});
+    &lt;/script&gt;
+  &lt;/head&gt;
+&lt;/html&gt;
+</div>
+			</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>What's with the <code>.then</code> stuff?</h4>
+				Serulian, by default, generates code using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">promises</a> in order to support its <a href="/guide#async">asynchronous</a> style. In order for initialization to occur in the proper order, we use the <code>window.Serulian</code> global promise, which, when fulfilled, indicates that all initialization has occurred successfully. To prevent Serulian names from leaking into the global namespace (<code>window</code> in web browsers), the argument to the resolved promise is an object containing all modules defined in Serulian, relative to the root source file given to the <code>build</code> or <code>develop</code> command.
+			</div>
+			
+			<h4>Running the project</h4>
+			<p>The last step before viewing the file in our browser is to run the compiler and toolkit in <strong>develop</strong> mode. To do so we run:
+			<pre class="sh">serulian develop helloworld.seru</pre>
+			</p>
+			<p>
+			This prints:
+			<pre>Serving development server for project helloworld.seru on :8080 at /helloworld.seru.js</pre>
+			</p>
+			<p>Hitting the URL <code>http://localhost:8080/helloworld.seru.js</code> will cause the compilation to run and the resulting source to be written to the document.</p>
+
+			<h4>Viewing the project</h4>
+			<p>Now that the compiler is running in development mode, we can view our running project by opening the <code>helloworld.html</code> file in our web browser. The status of the compilation (including any errors) will be displayed in the console, followed by the program running once it has successfully compiled:
+			<img src="helloworld-develop.png" class="inline-image">
+			</p>
+
+			<h4>Editing the project</h4>
+			<p>To make changes to the project, simply edit the <code>helloworld.seru</code> file and refresh the page.</p>
+
+			<h3>Fixing the imports</h3>
+			<p>You may have noticed the following warning displayed in the console for the project:
+			<img src="helloworld-warning.png" class="inline-image">
+			</p>
+			<p>This warning is appearing because the import of the remote package <code>github.com/Serulian/debuglib</code> is <a href="/guide#import-unfreeze">unfrozen</a>.</p>
+			<p>To remove this warning we can <a href="/guide#import-freeze">freeze</a> the debuglib package at its current version:
+			<pre class="sh">serulian imports freeze helloworld.seru github.com/Serulian/debuglib</pre>
+			</p>
+			<p>After running the command we should see something like this in <code>helloworld.seru</code>:
+<div class="unreplaced-code">
+from "github.com/Serulian/debuglib:ce6e94b" import Log
+
+function&lt;void&gt; Run() {
+	Log('Hello World!')
+}</div>
+
+			This works to remove the warning (and freeze us to stable code), but it is kind of ugly and not the best solution.
+			</p>
+			<p>Since the debuglib package supports <a href="http://semver.org" target="_blank">semantic versioning</a> we can instead use the <a href="/guide#import-upgrade">upgrade</a> command to upgrade the import to a supported stable version:
+			<pre class="sh">serulian imports upgrade helloworld.seru github.com/Serulian/debuglib</pre>
+			</p>
+			<p>
+			After running the command we should see something like this in <code>helloworld.seru</code>:
+<div class="unreplaced-code">
+from "github.com/Serulian/debuglib@v0.0.1" import Log
+
+function&lt;void&gt; Run() {
+	Log('Hello World!')
+}</div>
+</p>
+			<h3>Adding another module</h3>
+			<p>Now that we've fixed our import, it is time to add another module to the project. To do so, simply add another empty Serulian source file in the same directory as our <code>helloworld.seru</code>:
+			<pre class="sh">touch anothermodule.seru</pre>
+			</p>
+			<p>Let's update our hello world example so it gets its value from our other module. First, let's define a new variable in <code>anothermodule.seru</code>:
+<div class="unreplaced-code">
+var&lt;string&gt; MyAwesomeMessage = 'hi universe!'
+</div>
+			</p>
+			<p>Next, we need to import the variable from our new module in the <code>helloworld.seru</code> module:
+<div class="unreplaced-code">
+from "github.com/Serulian/debuglib@v0.0.1" import Log
+<strong>from anothermodule import MyAwesomeMessage</strong>
+
+function&lt;void&gt; Run() {
+	Log('Hello World!')
+}</div>
+			</p>
+			<p>And finally, we replace the call to <code>Log</code> with our variable:
+<div class="unreplaced-code">
+from "github.com/Serulian/debuglib@v0.0.1" import Log
+from anothermodule import MyAwesomeMessage
+
+function&lt;void&gt; Run() {
+	Log(<strong>MyAwesomeMessage</strong>)
+}</div>
+			</p>
+			<p>Refresh the page and viola!</p>
+
+			<h3>Writing a basic component</h3>
+			<p>Now that we have a multi-module project working, the next step is starting a component so we can interact with the page's DOM.</p>
+			<p>While Serulian does not define a <strong>preferred</strong> means of interacting with the DOM, there is a small component and Virtual DOM library found in the Serulian GitHub namespace that makes basic interaction pretty straightforward.</p>
+			<p>To begin, let's remove our existing other module (so we can work in the playground if we choose) and import the component and virtual DOM libraries:</p>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+from "github.com/Serulian/component" import RenderComponent
+from "github.com/Serulian/virtualdom" import Context
+
+function&lt;void&gt; Run() {
+	Log('hello world!')
+}
+</PlaygroundEditor>
+
+			<p>Next, we want to define a <strong>Component</strong> to display our message in the DOM. A component is a <code>class</code> that has a <code>Declare</code> <a href="/guide#member-constructor">constructor</a> and a <code>Render</code> <a href="/guide#member-function">function</a>:</p>
+
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+from "github.com/Serulian/component" import RenderComponent
+from "github.com/Serulian/virtualdom" import Context
+
+class MyComponent {
+	constructor Declare() {
+		return MyComponent.new()
+	}
+
+	function&lt;any&gt; Render(context Context) {
+		return 'hello from my component!'
+	}
+}
+
+function&lt;void&gt; Run() {
+	Log('hello world!')
+}
+</PlaygroundEditor>
+
+			<p>If we run the above, we still see <code>hello world!</code> printed to the screen and no DOM. The next step for us is to tell Serulian to <strong>render</strong> the component to the DOM. To do so, we import references to the DOM, add an element and render our component into it:</p>
+
+
+<PlaygroundEditor class="not-replaced">
+from webidl`github.com/Serulian/virtualdom` import document
+from "github.com/Serulian/debuglib" import Log
+from "github.com/Serulian/component" import RenderComponent
+from "github.com/Serulian/virtualdom" import Context
+
+class MyComponent {
+	constructor Declare() {
+		return MyComponent.new()
+	}
+
+	function&lt;any&gt; Render(context Context) {
+		return 'hello from my component'
+	}
+}
+
+function&lt;void&gt; Run() {
+	RenderComponent(MyComponent.Declare(), document.body)
+}
+</PlaygroundEditor>
+
+			<p>Viola! Now we have our component rendering into the body of the document!</p>
+
+			<h3>Using SML to build our component</h3>
+			<p>Now that we have a component written (and rendering), the next step is to use <a href="/guide#sml">Serulian Markup Language (SML)</a> to have our component render using a more complicated structure. To start, we import the <code>Div</code> function and use it to declare a more decorated message:
+			</p>
+
+<PlaygroundEditor class="not-replaced">
+from webidl`github.com/Serulian/virtualdom` import document
+from "github.com/Serulian/debuglib" import Log
+from "github.com/Serulian/component" import RenderComponent
+from "github.com/Serulian/virtualdom" import Context, Div
+
+class MyComponent {
+	constructor Declare() {
+		return MyComponent.new()
+	}
+
+	function&lt;any&gt; Render(context Context) {
+		return &lt;Div style="background-color: lightblue; padding: 6px;"&gt;
+			hello from my component
+		&lt;/Div&gt;
+	}
+}
+
+function&lt;void&gt; Run() {
+	RenderComponent(MyComponent.Declare(), document.body)
+}
+</PlaygroundEditor>
+			<p>Note how SML allows us to declare the structure of our component in an HTML-like fashion.</p>
+
+			<h3>Adding props to a component</h3>
+			<p>Let's extend our component to make the message extensible! To do so, we add support for <strong>props</strong> to our component by declaring a new <a href="/guide#type-struct">struct</a> with the properties we accept, and add an SML expression to render it:</p>
+
+<PlaygroundEditor class="not-replaced">
+from webidl`github.com/Serulian/virtualdom` import document
+from "github.com/Serulian/debuglib" import Log
+from "github.com/Serulian/component" import RenderComponent
+from "github.com/Serulian/virtualdom" import Context, Div
+
+struct myComponentProps {
+	message string
+}
+
+class MyComponent {
+	var&lt;myComponentProps&gt; props
+
+	constructor Declare(props myComponentProps) {
+		return MyComponent{
+			props: props,
+		}
+	}
+
+	function&lt;any&gt; Render(context Context) {
+		return &lt;Div style="background-color: lightblue; padding: 6px;"&gt;
+			the message: {this.props.message}
+		&lt;/Div&gt;
+	}
+}
+
+function&lt;void&gt; Run() {
+	RenderComponent(&lt;MyComponent message="the message!" /&gt;, document.body)
+}
+</PlaygroundEditor>
+			<p>Note how we use an inline expression <code>{this.props.message}</code> to add the message to the DOM.</p>
+
+			<h3>Making our component stateful</h3>
+			<p>While our component can print a cool (and varied!) message, it would be cool if we could <strong>change</strong> the component in response to a user's action. To do so, we need to create a <strong>stateful component</strong>.</p>
+			<p>To create a stateful component, we need to import <code>UpdateComponentState</code> and add a <code>StateUpdated</code> function to our component:</p>
+
+<PlaygroundEditor class="not-replaced">
+from webidl`github.com/Serulian/virtualdom` import document
+from "github.com/Serulian/debuglib" import Log
+from "github.com/Serulian/component" import RenderComponent, UpdateComponentState
+from "github.com/Serulian/virtualdom" import Context, Div, Button
+
+struct myComponentProps {
+	message string
+}
+
+struct myState {
+	message string
+}
+
+class MyComponent {
+	var&lt;myState&gt; state
+
+	constructor Declare(props myComponentProps) {
+		return MyComponent{
+		    state: myState {
+  			    message: props.message,
+			},
+		}
+	}
+
+	function&lt;void&gt; StateUpdated(state any) {
+		this.state = state.(myState)
+	}
+
+	function&lt;void&gt; updateMesssage() {
+		UpdateComponentState(this, this.state{
+			message: 'This is the new message!',
+		})
+	}
+
+	function&lt;any&gt; Render(context Context) {
+		return &lt;Div style="background-color: lightblue; padding: 6px;"&gt;
+			the message: {this.state.message}
+			&lt;Button onclick={this.updateMesssage}&gt;Click Me!&lt;/Button&gt;
+		&lt;/Div&gt;
+	}
+}
+
+function&lt;void&gt; Run() {
+	RenderComponent(&lt;MyComponent message="the message!" /&gt;, document.body)
+}
+</PlaygroundEditor>
+			<p>In the above code, we've modified the component to save a <code>state</code> struct, which holds the state of the component. We then added a <code>Button</code>, which when clicked, invokes the <code>updateMessage</code> method. This method changes the state of the component via <code>UpdateComponentState</code>, causing the component to be re-rendered with the updated message!</p>
+
+			<h3>Done!</h3>
+			<p>And there you have it! A super basic but working single-page application, written in Serulian!</p>
+			<p>To continue, we recommend reading the <a href="/guide">guide</a>.</p>
+
+			<div style="height: 50px"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
