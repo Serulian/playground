@@ -23,7 +23,7 @@ const BUILD_TIMEOUT = time.Duration(60) * time.Second
 const TOOLKIT_CONTAINER_IMAGE = "quay.io/serulian/compiler"
 
 var SHARED_ROOT_DIRECTORY = os.Getenv("SHARED_ROOT_PATH")
-var BUILD_COMMAND = []string{"build", "/b/playground.seru", "--debug"}
+var BUILD_COMMAND = []string{"build", "/b/playground.seru", "--vcs-dev-dir=/b/.cache", "--debug"}
 
 type buildResult struct {
 	Status              int
@@ -93,6 +93,24 @@ func build(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Printf("Wrote temporary file to path %v", rootSourceFilePath)
+
+	// Copy the dependency cache into the folder.
+	cerr := CopyDir("/depcache", path.Join(dir, ".cache"))
+	if cerr != nil {
+		log.Printf("Error copying dep cache: %v\n", cerr)
+		http.Error(w, cerr.Error(), http.StatusInternalServerError)
+		return	
+	}
+
+	// Copy the corelib into a master .pkg folder, in order to ensure it is used locally as well.
+	// TODO: this should be changed into a release once the corelib has been properly versioned. That will also
+	// prevent it from being pulled on every run.
+	merr := CopyDir("/depcache/github.com/Serulian/corelib", path.Join(dir, ".pkg/github.com/Serulian/corelib/branch/master"))
+	if merr != nil {
+		log.Printf("Error copying corelib pkg cache: %v\n", merr)
+		http.Error(w, merr.Error(), http.StatusInternalServerError)
+		return	
+	}
 
 	// Spawn a Docker container of the toolkit with the temp directory as the project root and
 	// wait for it terminate.
