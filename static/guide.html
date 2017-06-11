@@ -1,0 +1,2989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Serulian Guide</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+	
+	<link rel="stylesheet" href="/playground.css">
+	<link rel="stylesheet" href="/content.css">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/ace_grammar.min.js"></script>
+
+	<script>
+		if (document.location.toString().indexOf('develop=true') > 0) {
+			document.write('<script src="http://localhost:8080/playground.seru.js"></sc' + 'ript>');
+		} else {
+			document.write('<script src="/playground.seru.js"></sc' + 'ript>');
+		}
+	</script>
+	<script>
+		function runEditors() {
+			window.Serulian.then(function(global) {
+				global.playground.DecorateEditors()
+			});
+		}
+	</script>
+</head>
+<body onload="runEditors()" data-spy="scroll" data-target="#toc">
+
+<!-- From: http://tholman.com/github-corners/ -->
+<a href="https://github.com/Serulian/playground/tree/master/static/guide.html" class="github-corner" aria-label="View source on Github"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#2061a4; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+<header>
+	<a href="/" class="language-title">Serulian</a>
+	<a href="/gettingstarted">Getting Started</a>
+	<a class="active-section" href="/guide">Guide</a>
+	<a href="/install">Install</a>
+	<a href="https://github.com/Serulian/compiler">File an issue</a>
+</header>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3"><nav id="toc" data-toggle="toc" class="affix"></nav></div>
+		<div class="col-md-9">
+			<!-- Guide -->
+			<h1 class="page-header">Serulian Guide</h1>
+			<p>
+				<strong>Serulian</strong> is a new language and development toolkit, designed with a focus on <strong>safety</strong>, <strong>scalability</strong> and <strong>ease of interop</strong> for writing large-scale web and mobile applications that run in environments that are traditionally served by ECMAScript.
+			</p>
+
+			<div class="bs-callout bs-callout-warning">
+				<h4>Running under NodeJS</h4>
+				Serulian (as of writing this guide) has not been fully tested under NodeJS and therefore compatibility is listed as <strong>experimental</strong> at this time.
+			</div>
+
+			<h2 id="background">Background</h2>
+			<p>Web and mobile application development has grown tremendously in recent years, reaching the kind of scale that only previously was seen in traditional Desktop applications. With this scale came a number of challenges focused around a unique constraint: the development environment used to create and maintain these applications. Unlike the Desktop, applications running on the web (and in some cases, on mobile devices) must ultimately be written in some form of ECMAScript, a language never designed for such scale.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>ECMAScript vs JavaScript</h4>
+				While technically "JavaScript" is a dialect of ECMAScript, the term <mark>JavaScript</mark> is the more commonly used name, so we'll be using it throughout the remainder of this guide, even if it is less correct.
+			</div>
+
+			<h3 id="problems">Large-scale development issues with JS</h3>
+			<p>Developing large scale applications in JavaScript is fraught with a number of complications (note that this list is far from exhaustive):
+			<ul>
+			<li>Lack of <a href="#type-system">typing</a> results in poorly defined interfaces</li>
+			<li>Working with <a href="#async">asychronous code</a> (even with the new <code>async</code> keyword) can be ugly</li>
+			<li><a href="#error-handling">Error handling</a> is virtually non-existant</li>
+			<li><a href="#imports-and-packages">Reusing code</a> is difficult to do safely and correctly</li>
+			<li>Existing <a href="#imports-and-packages">packaging solutions</a> can be heavy weight and require a good deal of hand-tuning</li>
+			<li>JavaScript can be overly expressive (easy to break) and <a href="#sml">highly under expressive</a> (hard to extend)</li>
+			<li>Performance concerns can appear in very large applications and static optimizations are nearly impossible (without significant restriction of language use, ala <a href="https://developers.google.com/closure/compiler/" target="_blank">Closure Compiler</a>)</li>
+			</ul>
+			</p>
+
+			<h3 id="whynot">Why not TypeScript, ClojureScript, etc?</h3>
+			<p><strong>Short answer:</strong> We don't like to compromise!</p>
+			<p><strong>Longer answer:</strong> TypeScript, ClojureScript and many other languages have tried to "thread the needle", so to speak, in one direction or another, to maintain compatibility with either their original source language (Clojure => ClojureScript) or their subset language (TypeScript => JavaScript).</p>
+			<p>The main upsides of this approach are to provide developers coming from these source languages with an existing set of code that functions, as well as somewhat of a familiarity with the language. The primary downside, however, is a requirement to <strong>compromise</strong> to ensure either compatibility or familiarity. These compromises ultimately make the languages harder to use and reduce their utility (sometimes in significant ways).</p>
+			<p>Serulian is an attempt (hopefully a good one!) to avoid these compromises, and utitlize this freedom to provide a forward-looking development experience that scales.
+			</p>
+
+
+			<div class="bs-callout bs-callout-info">
+				<h4>But what about {insert language here}?</h4>
+  				I mean, we can't write about <strong>every</strong> language out there! If you have a language you love, let us know! We'd be more than happy to take a look and learn (read: steal shamelessly if necessary) from it!	
+			</div>
+
+			<h3 id="solutions">Why Serulian?</h3>
+			<p>In short, we think a "clean slate" allows us to adopt (or, you know... steal...) the features and designs we like best from existing languages, innovate on top of them, and ultimately build a system that developers love to use when working in this environment.
+			</p>
+			<p>Serulian has the following overall goals:
+				<ul>
+				<li>Greatly <strong>reduce friction</strong> of development and maintainence of large-scale web applications</li>
+				<li>Promote <strong>global reuse</strong> of code wherever possible</li>
+				<li>Require <strong>strong safety</strong> of the code that is written</li>
+				</ul>
+			</p>
+			<p>It attempts to accomplish these goals by having, amongst other things:</p>
+			<ul>
+			<li>A very strong and powerful <a href="#type-system">type system</a>, including <a href="#nullability">nullability</a>, <a href="#generics">generics</a>, <a href="#streams">streams</a> and many other constructs.</li>
+			<li>A highly opinionated <a href="#imports-and-packages">import and package management system</a></li>
+			<li>Seamless handling of <a href="#async">asynchronous code</a></li>
+			<li>A whole heaping of <abbr title="all-natural syntax sugar that is much healthier!">syntax honey</abbr> for things like <a href="#sml">declarative definitions</a>, <a href="#statement-with">resource handling</a>, <a href="#native">native calls</a>, and much more!</li>
+			</ul>
+
+
+			<!-- Basics -->
+			<h2 id="basics">Basics</h2>
+			<p>This section introduces the basics of working in Serulian.</p>
+
+			<h3 id="syntax">Basic syntax</h3>
+			<p>Serulian syntactically is most closely related to Go and Python, with aspects and influence from JavaScript, C# and Java.</p>
+
+			<h4>Semicolons</h4>
+			<p>Like in Go and JavaScript, semicolons in Serulian are <strong>optional</strong> and highly discouraged from being used unless absolutely necessary from a parsing perspective.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Semicolon insertion</h4>
+				The Serulian parser uses a technique called "semicolon insertion", styled after the Go compiler. The lexer will <a href="https://github.com/Serulian/compiler/blob/master/parser/lex.go#L364" target="_blank">insert synthetic semicolons</a> right before newlines (and EOF), if the last non-whitespace character on the line matches a <a href="https://github.com/Serulian/compiler/blob/master/parser/lex.go#L194" target="_blank">predefined list</a>.
+			</div>
+
+			<h4>Strings</h4>
+			<p>A string is Serulian can be defined using single quotes, double quotes or backticks (for <a href="#template-strings">template strings</a>:</p>
+<div class="unreplaced-code">
+var&lt;string&gt; someString = 'hello world!'
+
+var&lt;string&gt; someOtherString = "hello world!"
+
+var&lt;string&gt; someTemplateString = `hello
+world!`
+</div>
+			<p>The preferred syntax is the single quoted form.</p>
+
+			<h4>Numbers</h4>
+			<p>A number is Serulian can be defined in a number of forms:</p>
+<div class="unreplaced-code">
+var&lt;int&gt; n1 = 42
+var&lt;float64&gt; n2 = 42f
+var&lt;float64&gt; n3 = 42.0
+var&lt;int&gt; n4 = 0x1F
+</div>
+			<p>Note the difference between <code>42</code>, an integer and <code>42f</code>, a float</p>
+
+			<h4>Booleans</h4>
+			<p>Serulian supports literal boolean values of <code>true</code> and <code>false</code>.</p>
+
+			<h4>Comments</h4>
+			<p>Comments in Serulian follow the standard C-style commenting rules:</p>
+
+<div class="unreplaced-code">
+// A single line comment
+
+/* A multiline
+   comment here */
+</div>
+			<p>Multiline comments starting with two stars are generally used for documentation comments.</p>
+
+			<h3 id="modules">Modules and Packages</h3>
+			<p>All Serulian source code is found in <code>.seru</code> files, each which forms a single <strong>module</strong>.</p>
+			<p> A group of modules/source files within the same directory define a <strong>package</strong>.</p>
+			<p>For example, given a set of files <code>somepackage/sample.seru</code> and <code>somepackage/another.seru</code>, we find the two modules <code>sample</code> and <code>another</code> under the package <code>somepackage</code>.
+			</p>
+
+			<h3>Module contents</h3>
+			Modules can contain four constructs at top-level: <a href="#var">variables</a>, <a href="#function">functions</a>, <a href="#import">imports</a> and <a href="#type-system">type definitions</a>.
+
+			<h4 id="var">Variables</h4>
+			<p>A <strong>variable</strong> is a single, <u>mutable</u> value found at the module, type or statement level:
+<div class="unreplaced-code">
+var&lt;string&gt; firstVariable = 'hello world!'
+</div>
+			</p>
+			<p>Variables defined in modules and types <strong>must</strong> have a defined type, while those at the statement level can infer their type from their value expression (if any).
+			</p>
+			<p>The value expression on a variable is <strong>optional</strong> iff the type of the variable allows null:
+			</p>
+<div class="unreplaced-code">
+var&lt;any&gt; anyValueVar
+var&lt;string?&gt; optionalVar
+</div>
+			<p>It is best practice to place variables at the top of modules before functions.</p>
+
+			<h4 id="function">Functions</h4>
+			<p>A <strong>function</strong> is a named block of code that can be executed, with optional parameters and an optional return type:
+<div class="unreplaced-code">
+function&lt;int&gt; otherFunction() {
+	return 42
+}
+
+function&lt;void&gt; doNothingFunction() {}
+
+function&lt;int&gt; Run() {
+	doNothingFunction()
+	return otherFunction()
+}
+</div>
+			</p>
+			<p>Functions defined in modules and types <strong>must</strong> have a defined return type (which can be <code>void</code>), while those at the statement level can infer their return type from their implementation.
+			</p>
+			<p>It is best practice to place functions after variables in a module.</p>
+
+			<!-- Packaging and imports -->
+			<h2 id="imports-and-packages">Packaging and imports</h2>
+			<p>
+			Serulian has a powerful (but opinionated) package system built in to the language and toolkit. The primary goal of this package system is to make reuse of <strong>versioned</strong> code as simple as possible.
+			</p>
+
+			<h3 id="local-modules">Modules</h3>
+			<p>
+			Each Serulian source file defines a single localized <strong>module</strong>, accessible from other modules and packages by its name. For example, a file named <code>somefile.seru</code> will define a module named <strong>somefile</strong>.
+			</p>
+
+			<h3 id="local-packages">Packages</h3>
+			<p>
+			A set of source files located in the same directory, each comprising a single module, in total comprise a localized <strong>package</strong>. Packages are accessible from other modules by their directory name. Names imported from the package will be searched within each of the package's modules, with the first matching name returned.
+			</p>
+			<p>It is a general recommendation to not import names from packages shared amongst multiple modules within the package, due to the ambiguity.</p>
+			
+			<h3 id="imports">Local imports</h3>
+			<p>Imports in Serulian are defined using the <code>import</code> and <code>from</code> keywords, similar to Python.</p>
+
+			<h4>Named Imports via <code>import</code></h4>
+			<p>To import a local module or package, the <code>import</code> keyword can be used:</p>
+			<div class="unreplaced-code">
+import localmodule  // All names accessible as localmodule.something
+import localpackage // All exported names accessible as localpackage.something
+</div>
+			<p>The names <code>localmodule</code> and <code>localpackage</code> will be added to the current module, and all <u>accessible</u> names can be accessed via the dot operator:</p>
+			<div class="unreplaced-code">
+import localmodule
+
+function&lt;void&gt; DoSomething() {
+	localmodule.someMember
+}
+</div>
+			<h4>Aliased Imports via <code>from</code></h4>
+			<p>To import a specific member or sets of members from a module or package, the <code>from</code> keyword can be used:
+			</p>
+			<div class="unreplaced-code">
+from localmodule import foo, bar, baz
+from localpackage import something, somethingElse as theAliasForSomethingElse
+</div>
+			<p>Each name following the <code>import</code> keyword will be located within the specified module or package and imported directly into the current module <strong>with its own name</strong>.</p>
+			<p>If an <code>as</code> clause is specified, the specified alias name will be used to refer to the imported member in the current module, instead of its defined name:
+			</p>
+			<div class="unreplaced-code">
+from localmodule import foo as bar // Available as `bar`
+</div>
+			<h3 id="accessibility">Access safety and naming</h3>
+			<p>Accessibility and safety in Serulian is accomplished by naming rules, similar to Go.</p>
+			<p>Any member within a module that starts with an <strong>Uppercase letter</strong> is <strong>exported</strong> and therefore can be accessed from any other module or package.</p>
+			<p>Any member with a name starting in a <strong>lowercase letter</strong>, on the other hand, can only be used from <strong>within the same <u>package</u></strong>. Any attempts to import such a name from outside of the package will result in an error:</p>
+			<div class="unreplaced-code">
+import localmodule
+import somepackage
+
+function&lt;void&gt; DoSomething() {
+	localmodule.someMember // Allowed
+	somepackage.someMember // Will fail
+	somepackage.SomeMember // Allowed
+}
+</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why naming instead of keywords?</h4>
+				<p>For readability at the <strong>use site</strong>. When reading code, it is clear whether an <strong>internal</strong> or <strong>External</strong> API is being used, simply by its name.</p>
+			</div>
+
+			<h3>Relative imports</h3>
+			<p>All imports performed against local modules and packages are <strong>relative</strong> to <strong>the current source file</strong>.
+			</p>
+			<div class="bs-callout bs-callout-info">
+				<h4>Why relative imports?</h4>
+				Short answer: They make things simple when working under a variety of environments. Python's absolute imports are notorious for causing issues when forgetting from <u>which</u> "root" to run the application. Absolute imports also harm code reusability, as they make it difficult to move code and rely on submodules outside of the central application.
+			</div>
+
+			<h3>Importing from a parent package</h3>
+			<p>There are times when a package might need to import from a parent package. While this is more fragile approach (it sets a possibility for a bidirectional dependency), it can be done via the <code>..</code> operator:
+			</p>
+			<div class="unreplaced-code">
+import "../someparentpackage"
+</div>
+			<p>Note the requirement of using quotes around the name. Any non-simple indentifier (not [A-Za-z0-9]+) import will require such quotes.</p>
+
+			<h3 id="remote-packages">Remote packages</h3>
+			<p>While local packages are an important part of working within a large code base, it is the ability to use <strong>remote</strong> packages that allows for significant code reuse.</p>
+
+			<h4>Using a remote package</h4>
+			<p>Remote packages in Serulian are imported using the same <code>from</code> syntax as local packages, but with the local path replaced with a path to a package found in <strong>source control</strong>.
+			</p>
+			<div class="bs-callout bs-callout-info">
+				<h4>Remote package support</h4>
+				Serulian currently supports importing packages from any URL implementing the <code>go get</code> discovery mechanism and using <strong>git</strong>. Support for additional VCS systems (likely Mercurial) can be added by implementing <a href="https://github.com/Serulian/compiler/blob/master/vcs/handlers.go#L73" target="_blank">a structure</a> and will likely happen in the near future.
+			</div>
+			<p>To use a remote package, simply specify the package's discovery URL in the <code>from</code> line:</p>
+<div class="unreplaced-code">
+from "github.com/Serulian/debuglib" import Log
+</div>
+			<p>In the above example, the package being imported is <code>github.com/Serulian/debuglib</code> and, since both the branch and version are unspecified, the Serulian compiler will assume that the <code>HEAD</code> commit of the <strong>default branch</strong> should be used.</p>
+			<div class="bs-callout bs-callout-warning">
+				<h4>Non-versioned package checkout</h4>
+				If a non-version remote package is specified in Serulian, then the (specified or default) branch will be checked out on <strong>every single build</strong>. This is done to ensure that the build is always using the latest copy of the branch, forcing the user to fix any issues they encounter. If this is not the desired behavior (it rarely is for production code), then the import should be <a href="#import-freeze">frozen</a> at a particular version or commit.
+			</div>
+			<h4>Using a particular branch of a remote package</h4>
+			<p>If a particular branch of a remote repository is required, it can be specified following the package name in the import using a colon:
+			</p>
+<div class="unreplaced-code">
+from "github.com/Serulian/debuglib:master" import Log
+</div>
+			<p>The above import will cause the package to be imported from the <code>master</code> branch. <strong>The package will be retrieved and updated on every build</strong>.</p>
+
+			<h4>Using a specific tag/version of a remote package</h4>
+			<p>To specify a particular tag/version of the remote package, place the tag or version to be used after an at-sign <code>@</code>:</p>
+<div class="unreplaced-code">
+from "github.com/Serulian/debuglib@v1.0.0" import Log
+</div>
+			<p>The above import will cause the package to be imported from the <code>v1.0.0</code> tag. The package will be cached and only pulled if not present in the cache.</p>
+
+			<h4>Using a specific commit of a remote package</h4>
+			<p>To specify a particular commit, place its short SHA in the import following the colon:</p>
+<div class="unreplaced-code">
+from "github.com/Serulian/debuglib:ce6e94" import Log
+</div>
+			<p>The above import will cause the package to be imported from the <code>ce6e94</code> commit. The package will be cached and only pulled if not present in the cache.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>What kind of remote package import should I use?</h4>
+				The kind of import to use (default branch, specific branch, tag or commit) depends on the stability of the package being imported. The following table provides the general rules around remote imports:
+
+				<table class="table">
+				<thead><th>Remote Package Status</th><th>Frequency of update</th><th>Import to Use</th></thead>
+				<tr><td>Public</td><td>Frequently or Infrequently</td><td>Tag/Version</td></tr>
+				<tr><td>Private</td><td>Infrequently</td><td>Tag/Version or Commit</td></tr>
+				<tr><td>Private</td><td>Frequently</td><td>Branch or default</td></tr>
+				</table>
+
+				<p><strong>The general rule is:</strong> If the downstream dependency is volatile, freeze at a particular version or commit, unless the volatility is necessary.</p>
+			</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why not NPM?</h4>
+				The decision to handle remote packages in Serulian in the above manner is an attempt to address significant downsides in the use of NPM and other package management tools in other languages. In particular, NPM has a number of problems associated with it:
+				<ul>
+				<li>A single, centralized repository for all packages. While this helps with discovery, it fails when NPM is otherwise unavailable.</li>
+				<li>Reliance on a custom protocol and tooling means that you need an NPM-compatible registry to handle private packages vs simply using our existing VCS tools (git)</li>
+				<li>A single, global namespace. When a package is removed or renamed, all existing links to the package can break. There have also been instances where others have "replaced" the package with potentially malicious code.</li>
+				</ul>
+
+				Serulian may support NPM or another centralized package management system in the future, if we find that the benefits of discovery outweigh the negatives listed above.
+			</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why the requirement for versioning?</h4>
+				It is always better to be explicit when working with a downstream dependency than not. In Go, for example, a number of tools have appeared to add versioning on top of the language's existing discovery mechanism, as discovery can otherwise be a fragile tool. Serulian enforces this versioning by treating non-specification as its name implies: The dependency is <strong>always up to date</strong>. While this can be annoying, it is done to ensure that if a piece of code needs a specific version of a dependency, it is explicit about it.
+			</div>
+
+			<h3 id="managing-remote-packages">Managing remote packages</h3>
+			<p>The Serulian remote package system is quite powerful, but can also be quite frustrating to update: Changes to packages can span multiple source files in a project, and changing all of these locations by hand can be a challenge.</p>
+			<p>To solve this problem, the Serulian toolkit provides a number of commands to manage imports on a global scale: <code>freeze</code>, <code>unfreeze</code>, <code>update</code> and <code>upgrade</code>.
+			</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Does your imported library use semantic versioning?</h4>
+				<a href="http://semver.org/" target="_blank">Semantic Versioning</a> is a specification for defining how versions of software move in response to changes. If you are importing a package that defines semantic versions, it is <strong>highly recommended</strong> to use the <a href="#import-update">update</a> and <a href="#import-upgrade">upgrade</a> commands, rather than <a href="#import-freeze">freeze</a> and <a href="#import-unfreeze">unfreeze</a>.
+			</div>
+
+			<h4>Import commands</h4>
+			<p>Import commands in the Serulian toolkit are all performed by executing the Serulian toolkit binary with the <code>imports</code> command prefix:
+			<pre class="sh">serulian imports {subcommand} {sourcefiledir} {import-filter-1} {import-filter-2} {import-filter-n}</pre>
+
+			<h5>Specifying source files to be changed</h5>
+			<p>The <code>sourcefiledir</code> argument specifies the lookup path for source files that should be modified:
+				<table class="table">
+					<thead><th>sourcefiledir</th><th>Meaning</th></thead>
+					<tr><td>.</td><td>All .seru files in the current directory</td></tr>
+					<tr><td>somesubdir</td><td>All .seru files in the <code>somesubdir</code> sub-directory</td></tr>
+					<tr><td>./...</td><td>All .seru files in the current directory and below, recursively.</td></tr>
+					<tr><td>somesubdir/...</td><td>All .seru files in the <code>somesubdir</code> sub-directory and below, recursively.</td></tr>
+				</table>
+			</p>
+
+			<p>To apply the imports command to <strong>all subdirectories recursively</strong>, the special syntax <code>...</code> can be used, such as <code>./...</code> or <code>somesubdir/...</code>.</p>
+
+			<h5>Specifying packages to be modified</h5>
+			<p>The <code>import-filter</code> arguments specifies the packages to be modified. Multiple arguments can be specified to apply to multiple packages.</p>
+			<p>If a wildcard is needed, it can be used to match <strong>all</strong> packages under a specific path: <code>github.com/somenamespace/*</code>.
+			</p>
+
+			<h4 id="import-freeze">Freezing imports</h4>
+			<p><strong>Freezing</strong> an import in Serulian causes the import to be rewritten to include the HEAD commit SHA of the branch specified in the import.</p>
+			<p>Freezing is most useful when working with a downstream <strong>internal</strong> package or library that is constantly changing and does not have defined releases.</p>
+			<p>For example, given:
+			<div class="unreplaced-code">
+from "github.com/somenamespace/somepackage:somebranch"
+</div>
+			executing the following command:
+<pre class="sh">serulian imports freeze . github.com/somenamespace/somepackage</pre>
+will result in (with <code>abcdef12</code> representing the real short-SHA):
+			<div class="unreplaced-code">
+from "github.com/somenamespace/somepackage:abcdef12"
+</div>
+			</p>
+
+			<h4 id="import-unfreeze">Unfreezing imports</h4>
+			<p><strong>Unfreezing</strong> an import in Serulian causes the import to be rewritten to remove the HEAD commit SHA of the branch specified in the import.</p>
+			<p>Unfreezing is typically used when working on multiple packages at once, allowing for the dependencies to be unversioned.</p>
+			<p>Unfreezing is also typically used with the <a href="#vcs-develop">VCS development</a> flag on the Serulian compiler.</p>
+			<p>For example, given:
+			<div class="unreplaced-code">
+from "github.com/somenamespace/somepackage:abcdef12"
+</div>
+			executing the following command:
+<pre class="sh">serulian imports unfreeze . github.com/somenamespace/somepackage</pre>
+will result in:
+			<div class="unreplaced-code">
+from "github.com/somenamespace/somepackage"
+</div>
+			</p>
+
+			<h4 id="import-update">Updating imports</h4>
+			<div class="bs-callout bs-callout-warning">
+				Note that this command only work for packages that define <a href="http://semver.org/" target="_blank">Semantic Versions</a>.
+			</div>
+
+			<p><strong>Updating</strong> an import replaces the specified version with the latest <strong>minor</strong> version of the specified major version, if one is available.</p>
+			<p>For example, given:
+			<div class="unreplaced-code">
+from "github.com/somenamespace/somepackage@v1.2.3"
+</div>
+	and a latest <strong>1.*.*</strong> version of <code>v1.3.0</code>, executing the following command:
+<pre class="sh">serulian imports update . github.com/somenamespace/somepackage</pre>
+will result in:
+			<div class="unreplaced-code">
+from "github.com/somenamespace/somepackage@v1.3.0"
+</div>
+			</p>
+			<p>Note that only the <strong>minor</strong> and <strong>patch</strong> components of the version are changed. No major version will be changed to conform with semantic versioning. To change the major version, see the <a href="#import-upgrade">upgrade</a> command.
+			</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>When should I update?</h4>
+				<p>Whenever possible! If the downstream package uses semantic versioning correctly, then calling <code>serulian imports update</code> should (in theory) cause no breakages in your code.</p>
+				<p>If a breakage does occur, your code is either relying on a private API, or the package maintainer has made a backwards-incompatible change, which is outside of the semantic versioning spec.</p>
+			</div>
+
+			<h4 id="import-upgrade">Upgrading imports</h4>
+
+			<div class="bs-callout bs-callout-warning">
+				Note that this command only work for packages that define <a href="http://semver.org/" target="_blank">Semantic Versions</a>.
+			</div>
+
+			<p><strong>Upgrading</strong> an import replaces the specified version with the latest major <strong>stable</strong> version of the pacakge, if one is available.</p>
+			<p>For example, given:
+			<div class="unreplaced-code">
+from "github.com/somenamespace/somepackage@v1.2.3"
+</div>
+	and a latest stable version of <code>v2.1.0</code>, executing the following command:
+<pre class="sh">serulian imports upgrade . github.com/somenamespace/somepackage</pre>
+will result in:
+			<div class="unreplaced-code">
+from "github.com/somenamespace/somepackage@v2.1.0"
+</div>
+			</p>
+			<p>Note that only the latest <strong>stable</strong> version of the package will be used. This means that if there is a prelease version (specified with a <code>+</code>), it will be ignored.
+			</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>When should I upgrade?</h4>
+				<p>When you feel the benefits of the new version outweigh the development time necessary to fix any interaction with that library.</p>
+				<p> If the package being upgraded has a major version change, then chances are your code will no longer work perfectly with it.</p>
+				<p><strong>A exhaustive test suite is typically recommended before performing upgrades.</strong></p>
+			</div>
+
+			<h4 id="vcs-develop">Developing remote packages locally</h4>
+			<p>Sometimes a project or application is broken into multiple packages, some which must be developed concurrently. While it is usually poor practice to develop multiple components together (this usually indicates a hard dependency which should be broken), it is still a common enough task that Serulian supports the use case.</p>
+			<p>Remote packages in Serulian can be made "local" by use of a special flag on the compiler called <code>--vcs-dev-dir</code>. When specified, any matching packages normally imported from VCS will instead use their local copies, allowing for easy concurrent development.</p>
+			<p>To use, simply add the <code>--vcs-dev-dir</code> flag to the <code>build</code> command:
+			   <pre class="sh">serulian build myentrypointfile.seru --vcs-dev-dir=path/to/directory</pre></p>
+			<p>
+			   Inside of that directory should be a folder structure matching the path of the package being developed. For example, for a package named <code>github.com/somenamespace/mypackage</code>, the folder structure should be:
+<pre>development-dir
+     -> github.com
+     	-> somenamespace
+     		-> mypackage
+</pre>
+The path to the <code>development-dir</code> directory can then be used as an argument to <code>--vcs-dev-dir</code> to cause the compiler to use the local copy of <code>github.com/somenamespace/mypackage</code> instead of the remote copy.
+			</p>
+
+			<div class="bs-callout bs-callout-warning">
+				<h4>VCS development rules</h4>
+				Please note that all packages being developed under the <code>vcs-dev-dir</code> flag must be <strong>unfrozen</strong>.
+			</div>
+
+
+			<h2 id="native">Working with JavaScript</h2>
+			<p>Working with external JavaScript and other native code is a key aspect of developing large-scale web (and mobile) applications today. After all, it cannot be expected that all code being used is developed in a single language, especially a newer language like Serulian.</p>
+			<p>To make this use case as frictionless as possible, Serulian has <strong>built-in support for working with native code</strong> via the use of WebIDL.</p>
+
+			<h3 id="webidl">WebIDL</h3>
+			<p><a href="https://heycam.github.io/webidl/" target="_blank">WebIDL</a> is a specification and format for defining the interface of APIs exposed within a web environment (usually the browser).</p>
+			<p>The W3C and most browsers use WebIDL to specify the APIs that the execution environment is exposing to the code running within (usually JavaScript). As an example, the WebSocket APIs exposed by Firefox can be found defind in the <a href="https://dxr.mozilla.org/mozilla-central/source/dom/webidl/WebSocket.webidl" target="_blank">WebSocket.webidl</a> file.</p>
+			<p>Seeing the need to work with external code and recognizing the benefits of working with existing standards, Serulian has chosen to adopt support for WebIDL formally as a way of enabling seamless interaction between Serulian code and external code.</p>
+
+			<div class="bs-callout bs-callout-warning">
+  				<h4>A note about WebIDL compatibility</h4>
+  				<p>As of the time this document was last updated, Serulian's support for WebIDL is <strong>incomplete</strong>. While Serulian supports a good deal of the spec (interfaces, constructors, annotations, etc), there will be some level of incompatibility. The usual workaround is simply to remove the "extra" information. Development of the WebIDL support layer is continuing.</p>
+   			</div>
+
+			<h4>Using WebIDL in Serulian</h4>
+			<p>Using WebIDL is as simple as importing it:</p>
+<div class="unreplaced-code">
+from <strong>webidl</strong>`WebSocket` import WebSocket
+</div>
+			<p>In the above example, the notation of <code>webidl</code> before the import tells Serulian to treat the imported source file (in this case <code>WebSocket.webidl</code>) as a WebIDL file, and load it into the type system accordingly.</p>
+			<p>Once an interface or function from WebIDL has been imported, it can be used like any other Serulian type (with few restrictions):</p>
+<div class="unreplaced-code">
+from webidl`WebSocket` import WebSocket
+
+function&lt;void&gt; CreateWebSocket() {
+	myWebSocket := <strong>WebSocket.new('ws://some/websocket/url')</strong>
+	myWebSocket.send('hello websocket!')
+	myWebSocket.close()
+}
+</div>
+			<p>In the above example, the full interface of the WebSocket is available and <strong>strongly type checked</strong>, ensuring the benefits of working within a strongly typed system while still being able to easily call an external API.</p>
+
+			<div class="bs-callout bs-callout-info">
+  				<h4>What about libraries that don't have a WebIDL?</h4>
+  				<p>Simple! Write your own! For example, this very playground makes use of the <a href="https://ace.c9.io/#nav=about" target="_blank">ACE Code Editor</a>. To make this integration as easy as possible, a very simple <a href="https://github.com/Serulian/playground/blob/master/frontend/ace.webidl" target="_blank">ace.webidl</a> specification was written.
+   			</div>
+
+			<div class="bs-callout bs-callout-info">
+  				<h4>What about TypeScript typings?</h4>
+  				<p><a href="https://github.com/typings/typings" target="_nlank">TypeScript typings</a> is a toolset for installing TypeScript definition files (basically: interfaces without implementations), which provides a similar "define the API" layer to WebIDL. Unlike WebIDL, however, this approach, while popular, is not standard, and so WebIDL was chosen instead. Support for typings in Serulian is certainly doable, however, and if we get enough interest we'll make it a priority!
+   			</div>
+
+			<!-- Types -->
+			<h2 id="type-system">Types</h2>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why are types so important?</h4>
+				Serulian has a very powerful type system to ensure <strong>correctness</strong> and <strong>scalability</strong> of large applications. When developing large applications, the interfaces between different modules and packages (both external and internal) can change frequently, especially when there are many contributors. A good type system ensures that mismatches between caller and callee are found quickly and accurately, while not overly inhibiting the ability of developers to code quickly.
+			</div>
+
+			<h3>Basic Syntax</h3>
+			<p>Types in Serulian are denoted using the <code>&lt;angledBracket&gt;</code> syntax. For example, a variable with a defined type will have syntax:
+			</p>
+<div class="unreplaced-code">
+var<strong>&lt;string&gt;</strong> someVariable = 'hello world!'
+</div>
+			<p>where <code>string</code> is the type of the variable, while a function returning a value might be defined as:</p>
+<div class="unreplaced-code">
+function<strong>&lt;string&gt;</strong> someFunction() {
+	return 'hello world!'
+}
+</div>
+<p>where <code>string</code> is the <strong>return type</strong> of the function.</p>
+
+			<h3>Any</h3>
+			<p>Serulian defines the special type/keyword <code>any</code> to refer to a value of, well, <strong>any</strong> type:
+<div class="unreplaced-code">
+var&lt;<strong>any</strong>&gt; someVariable = 'hello world!'
+var&lt;<strong>any</strong>&gt; someOtherVariable = 42
+var&lt;<strong>any</strong>&gt; someThirdVariable = null
+</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why do we need any?</h4>
+				Serulian defines the <strong>any</strong> type to represent the root of all types, as there are times when an unknown value must be accepted. It is similar to <code>interface{}</code> in Go, but with a shortened syntax.
+			</div>
+
+			</p>
+
+			<h3>Nullability</h3>
+			<p><strong>Nullability</strong> is the ability of the type system to distinguish between values that can be <code>null</code> and those that cannot. Unlike most languages, types in Serulian are <strong>non-null by default</strong>, which leads to safer code and stronger guarentees. Further, all access that <strong>may</strong> result in a null must be handled <strong>explicitly</strong> in Serulian, ensuring that null exceptions cannot occur in typed code.</p>
+
+			<h4>Defining null types</h4>
+			<p>Types in Serulian are non-null by default:
+<div class="unreplaced-code">
+var&lt;<strong>string</strong>&gt; cannotBeNull = 'hello world'
+</div>
+			</p>
+			<p>To specify that a null value is allowed, the question mark <code>?</code> is used:
+<div class="unreplaced-code">
+var&lt;string<strong>?</strong>&gt; canBeNull = 'hello world'
+var&lt;string<strong>?</strong>&gt; alsoCanBeNull = null
+</div>
+			</p>
+
+			<h4>Accessing under null types</h4>
+			<p>Serulian treats all accesses of nulls strongly, requiring that the case be explicitly handled. For example, given the code:
+<div class="unreplaced-code">
+var&lt;string?&gt; canBeNull = 'hello world'
+</div>
+			</p>
+			<p>Trying to access the <code>Length</code> property on the string directly will fail to compile, as the value may be null. Instead, the specialized nullable access operator <code>?.</code> must be used, which ensures that if <code>canBeNull</code> is indeed null, null is returned instead of the property being accessed:</p>
+<div class="unreplaced-code">
+var&lt;string?&gt; canBeNull = 'hello world'
+
+function&lt;int?&gt; Run() { // Note the return type is int?, because ?. can return null
+	return canBeNull<strong>?.</strong>Length
+}
+</div>
+
+			<h4>Default values for null types</h4>
+			<p>Sometimes the desired behavior for a nullable type is to simply replace the value if it is null. To make this easy, Serulian provides the nullable default operator <code>??</code>, which ensures that if the value is null, the right hand side default value is used in its place:
+<div class="unreplaced-code">
+var&lt;string?&gt; canBeNull = 'hello world'
+
+function&lt;int&gt; Run() { // Note the return value is now int, since the value cannot be null
+	return canBeNull?.Length <strong>??</strong> 0
+}
+
+function&lt;int&gt; AnotherRun() {
+	return (canBeNull <strong>??</strong> '').Length // Another approach
+}
+</div>
+			</p>
+
+			<h4>Asserting not null</h4>
+			<p>There are cases where the developer of an application knows that the value received is never supposed to be null, but due to the strictness of the type system, the type is nullable anyway. To work within this situation, Serulian provides the non-null assertion operator <code>!</code>, which ensures that if the value is null, the program will panic and fail:
+<div class="unreplaced-code">
+var&lt;string?&gt; canBeNull = 'hello world'
+
+function&lt;int&gt; Run() {
+	return (canBeNull<strong>!</strong>).Length // We know it will never be null, so just assert it
+}
+</div>
+
+			<div class="bs-callout bs-callout-warning">
+				<h4>Null assertion operator usage</h4>
+				<p>It is generally bad form to use the null assertion operator unless the downstream dependency or external value cannot be changed, as a null value will lead to <strong>application failure</strong>.</p>
+
+				<p>A valid use of the operator is when receiving objects from various JavaScript or DOM libraries: To be completely strict, the values returned by those libraries *may* be null, but in practice, we want our program to fail if they are. If you are using a null assertion operator against a <strong>Serulian</strong> library, consider changing that library to either return a non-null value or use the nullable default operator.</p>
+			</div>
+			</p>
+
+			<h3 data-toc-skip>Kinds of Types</h3>
+			<p>Serulian has five kinds of types that can be defined: <a href="#type-class">Classes</a>, <a href="#type-interface">Interfaces</a>, <a href="#type-agent">Agents</a>, <a href="#type-struct">Structs</a>, or <a href="#type-nominal">Nominal (Alias) Types</a>.
+			</p>
+
+			<h3 id="type-class">Classes</h3>
+			<p>
+				A <strong>class</strong> in Serulian defines an implemented type, of which instances can be created. For example, a class might be used to represent a concrete collection, a defined component or an application as a whole.
+			</p>
+			<p>
+				Classes are defined with the <code>class</code> keyword and can contain zero or more <a href="#member-var">variables</a>, <a href="#member-function">functions</a>, <a href="#member-constructor">constructors</a>,  <a href="#member-property">properties</a>, or  <a href="#member-operator">operators</a>.
+			</p>
+			<h4>Defining a basic class</h4>
+			<p>
+			A simple class is defined using the <code>class</code> keyword:
+<div class="unreplaced-code">
+class SomeClass {}
+</div>
+			</p>
+			<p>By default, all classes have an implicit <code>new</code> <a href="#member-constructor">constructor</a>, which can be used to create an instance of the class <strong>from within the same package</strong>:
+			</p>
+<div class="unreplaced-code">
+class SomeClass {}
+
+function&lt;void&gt; Run() {
+	<strong>SomeClass.new()</strong> // Create a new instance of the class.
+}
+</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why not <code>new SomeClass()</code>?</h4>
+				<p>Most languages have the specialized syntax <code>new SomeClass()</code> because constructors are singular and specialized parts of the class.</p>
+				<p>In constrast, in Serulian, all <a href="#member-constructor">constructors</a> are simply specialized functions that help create instances of the class. Using the syntax <code>SomeClass.new</code> makes this clear, and also allows constructors to be aliased like all other functions:
+
+<div class="unreplaced-code">
+var creator = SomeClass.new
+creator() // Returns a new instance of SomeClass
+</div>
+			</div>
+
+			<p>
+				The <strong>"structural new"</strong> syntax can also be used to create an instance of the class from within the same package:
+			</p>
+<div class="unreplaced-code">
+class SomeClass {}
+
+function&lt;void&gt; Run() {
+	<strong>SomeClass{}</strong> // Also creates a new instance of the class.
+}
+</div>
+			<p>If the class contains one (or more) non-nullable variables that do not have defined default values, the <code>new</code> constructor takes those values as arguments, <strong>defined in the order in which the variables appear</strong>:
+			</p>
+
+<div class="unreplaced-code">
+class SomeClass {
+	var&lt;string&gt; requiredValue
+	var&lt;int&gt; anotherRequired
+}
+
+function&lt;void&gt; Run() {
+	<strong>SomeClass.new('requiredValueHere', 42)</strong>
+}
+</div>
+			<p>The "structural new" syntax can also be used to create the instance, with all required and any optional fields specified by name:
+			</p>
+
+<div class="unreplaced-code">
+class SomeClass {
+	var&lt;string&gt; requiredValue
+	var&lt;int&gt; anotherRequired
+	var&lt;bool&gt; hasDefault = false
+}
+
+function&lt;void&gt; Run() {
+	<strong>SomeClass{
+		requiredValue: 'hello world',
+		anotherRequired: 42,
+		hasDefault: true,
+	}</strong>
+}
+</div>
+			<p>Putting this together, we can write a simple program that creates a new instance of as class:</p>
+
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+class SomeClass {
+	var&lt;string&gt; requiredValue
+	var&lt;int&gt; anotherRequired
+	var&lt;bool&gt; hasDefault = false		
+}
+
+function&lt;void&gt; Run() {
+	var&lt;SomeClass&gt; sc = SomeClass.new('hello world', 42)
+	Log(sc)
+
+	var&lt;SomeClass&gt; sc2 = SomeClass{
+		requiredValue: 'hello world',
+		anotherRequired: 42,
+	}
+	Log(sc2)
+}
+</PlaygroundEditor>
+
+			<p>Both values logged to the console should be equivalent.</p>
+
+			<h4>Constructing classes</h4>
+			<p>While the <code>new</code> constructor (and structural construction) allow for basic construction, they have two significant downsides: They can only be used from within the <strong>same package</strong> as the class and, they don't provide <strong>context</strong> about the new instance of the class being returned.</p>
+
+			<p>To provide a defined and context-sensitive way of creating classes (and other types), Serulian provides for named <a href="#member-constructor">constructors</a>, which have explicit meaning and explicit visibility.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why is context important?</h4>
+				Context about newly constructed classes instances can be very important for writing <strong>descriptive</strong> code. For example, in C#, creating a new list is generally done via the code <code>new List&lt;string&gt;()</code>. While this code reads "create me a new list", we don't know anything about the <strong>state</strong> of the <code>List</code> being created without reading the documentation for the <code>List</code> class. In contrast, the equivalent call in Serulian is <code>List&lt;string&gt;.Empty()</code>, clearly indicating that we are getting an empty list.
+			</div>
+
+			<p>To define a constructor, we use the keyword <code>constructor</code>, specifying a name (and optional parameters). All constructors <strong>must</strong> return an instance of the class being created:</p>
+
+<div class="unreplaced-code">
+class SomeClass {
+	<strong>constructor CreateMe() {
+		return SomeClass.new()
+	}</strong>
+}
+</div>
+
+			<p>Once defined, the constructor can be used in other code to create the instance of the class:</p>
+
+<div class="unreplaced-code">
+class SomeClass {
+	constructor CreateMe() {
+		return SomeClass.new()
+	}
+}
+
+function&lt;void&gt; DoSomething() {
+	<strong>SomeClass.CreateMe()</strong> // Returns a new instance of SomeClass.
+}
+</div>
+
+			<p>If a constructor's name starts with a capital letter, the constructor can be used from outside of the package as per the Serulian <a href="#accessibility">accessibility</a> rules.</p>
+			<p>It is generally recommended to be as <strong>descriptive as possible</strong> when naming constructors, to ensure readable code:
+<div class="unreplaced-code">
+class MyCollection {
+	constructor Empty() { ... } // Good! Clearly creates an empty version of the collection.
+
+	constructor CopyOf(other MyCollection) { ... } // Good!
+
+	constructor Create() { ... } // Bad... what is the state of the collection?
+}
+</div>
+			</p>
+
+			<h4>Accessing a class from within itself</h4>
+			<p>A class can be accessed from within any of its instance members via the <code>this</code> keyword:</p>
+<div class="unreplaced-code">
+class SomeClass {
+	var&lt;string&gt; someString = 'hello world'
+
+	function&lt;string&gt; GetString() {
+		return <strong>this.someString</strong>
+	}
+}
+</div>
+
+			<h4 id="composition">Composing classes</h4>
+			<p>Serulian does not support <a href="https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)" target="_blank">traditional OOP inheritance</a>, instead choosing to promote code reuse via the concept of <a href="#type-agent">agents</a> and <a href="#type-interface">implicitly defined interfaces</a>. This helps classes avoid the fragile base class problem, as well as providing for a more "mixin" style solution.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>What?! I need inheritance!</h4>
+				Inheritance, in many cases, provides a lot of value. However, the classic examples (e.g. Square -> Rect -> Shape) woefully underestimated the complexity of relationships between classes. In reality, most "inheritance" is in fact used as single-parent mixins for code sharing. <a href="#type-agent">Agents</a> help provide this same ability, without more complicated typing rules and with the added benefit of higher safety.
+			</div>
+
+			<h3 id="type-interface">Interfaces</h3>
+			<p>Interfaces in Serulian are <strong>implicit</strong> definitions of the set or subset of functionality that another type provides.</p>
+			<p>Interfaces are defined using the <code>interface</code> keyword on a type:</p>
+<div class="unreplaced-code">
+<strong>interface</strong> SomeInterface {}
+</div>
+			<p>
+				Interfaces can contain zero or more <a href="#member-function">functions</a>, <a href="#member-property">properties</a>, <a href="#member-constructor">constructors</a>, or <a href="#member-operator">operators</a>.
+			</p>
+			<p>
+				Unlike <a href="#type-class">classes</a>, an interface <strong>cannot</strong> contain <a href="#member-var">variables</a>, as it cannot hold state.
+			</p>
+			<h4>Matching an interface</h4>
+			<p>Interfaces are matched against other all types <strong>implicitly</strong>, which means no explicit notation is necessary to indicate that another type implements the interface. Instead, so long as the interface matches a portion of the members of the type <strong>exactly</strong>, that type is considered to implement the interface: </p>
+<div class="unreplaced-code">
+interface SomeInterface {
+	function&lt;int&gt; GetSomeInt()
+	property&lt;string&gt; SomeProp { get }
+}
+
+class SomeClass {
+	function&lt;int&gt; GetSomeInt() {
+		return 2
+	}
+
+	function&lt;void&gt; AnotherFunction() { }
+
+	property&lt;string&gt; SomeProp {
+		get { return 'hello world '}
+		set { }
+	}
+}
+
+class AnotherClass {
+	function&lt;int?&gt; GetSomeInt() {
+		return 2
+	}
+}
+</div>
+
+Therefore:
+<div class="unreplaced-code">
+// Valid! SomeClass implements both members.
+<strong>var&lt;SomeInterface&gt; si = SomeClass.new()</strong>
+
+// Fails to compile! AnotherClass's GetSomeInt has a different return type.
+<strong>var&lt;SomeInterface&gt; si = AnotherClass.new()</strong>	
+</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Benefits of implicit interfaces</h4>
+				The most important benefit of implicit interface implementation (say that five times fast!) is one of code reuse: If you are importing an external library and want to match against its types, you can do so from within your own package without changing the downstream dependency. This allows for greater code reuse, without the requirement of needlessly wrapping imported types.
+			</div>
+
+			<h4>Defining normal members</h4>
+			<p><a href="#member-function">Functions</a> and <a href="#member-property">properties</a> defined in an interface will be <strong>instance</strong> members, matching the implemententations found in other types, and therefore not having their own implementation:</p>
+<div class="unreplaced-code">
+interface SomeInterface {
+	function&lt;int&gt; GetSomeInt()        // No implementation
+	property&lt;string&gt; SomeProp { get } // No implementation
+}
+</div>
+			<p>The implementation used at runtime will be the implementation deriving from the concrete type that matches (typically a <a href="#type-class">class</a>)</p>
+
+			<h4>Defining constructors</h4>
+			<p><a href="#member-constructor">Constructors</a> are one of the two special cases when defined in an interface.</p>
+			<p>Constructors are, by definition, <strong>static</strong>, which means they exist on the type itself, rather than the instance. Therefore, in order to ensure the strictness of typing rules, a constructor defined in an interface must have a <strong>implementation</strong>, which will be called if the interface type is used directly in place of a concrete type:
+			</p>
+<div class="unreplaced-code">
+interface SomeCollection {
+	<strong>constructor Empty() { // Implementation required
+		return MyCollection.Empty()
+	}</strong>
+}
+</div>
+			<div class="bs-callout bs-callout-info">
+				<h4>Why is an implementation required?</h4>
+				Because of <a href="#generics">Generics</a>. Imagine a function which takes in a generic type that implements an interface with a constructor:
+
+<div class="unreplaced-code">
+interface SomeCollection {
+	constructor Empty() // Let's say the implementation isn't required...
+}
+
+function&lt;T&gt; CreateCollection&lt;T : SomeCollection&gt;() {
+	return T.Empty()
+}
+</div>
+
+				All looks okay... until we call it with the interface itself:
+
+<div class="unreplaced-code">
+CreateCollection&lt;<strong>SomeCollection</strong>&gt;()
+</div>
+
+				<p>Now <code>T</code> is <code>SomeCollection</code> and therefore we'll be calling <code>SomeCollection.Empty</code>... which has no implementation. Therefore, constructors in interfaces <strong>must</strong> have an implementation.
+				</p>
+				<p>In practice, this also provides a way of defining the <strong>default and preferred</strong> implementation of a constructor on a interface, leading to the interesting ability for the interface to provide forward-compatible <strong>private</strong> implementations, without exposing the underlying implementation to the upstream users.</p>
+			</div>
+
+			<h4>Defining operators</h4>
+			<p>
+			<a href="#member-operator">Operators</a> are similar to constructors in that they (with one exception) are <strong>static</strong>. Therefore, they must also have a default implementation:
+			</p>
+<div class="unreplaced-code">
+interface SomeCollection {
+	<strong>operator Plus(left SomeCollection, right SomeCollection) { // Default implementation
+		return MyCollection.Join(left, right)
+	}</strong>
+}
+</div>
+
+			<h4 class="working-example">Working with interfaces</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+interface MyInterface {
+	property&lt;int&gt; SomeInt { get }
+}
+
+class SomeClass {
+	property&lt;int&gt; SomeInt {
+		get { return 42 }
+	}
+}
+
+class AnotherClass {
+	property&lt;int&gt; SomeInt {
+		get { return 12 }
+	}
+}
+
+class 
+
+function&lt;void&gt; Run() {
+	var&lt;SomeClass&gt; sc = SomeClass.new()
+	var&lt;AnotherClass&gt; ac = AnotherClass.new()
+
+	var&lt;MyInterface&gt; inter = sc
+	Log(inter.SomeInt)
+
+	inter = ac
+	Log(inter.SomeInt)
+}
+</PlaygroundEditor>
+
+
+			<h3 id="type-agent">Agents</h3>
+			<p>An <strong>agent</strong> in Serulian is a class-like type that is <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance" target="_blank">composed</a> into a class or another agent, thereby providing a type-safe and extensible system for code reuse.</p>
+
+			<p>Agents are similar to struct composition in Go, but with one key difference: unlike in Go, they maintain a <strong>typed back-reference</strong> to the class or agent instance that is composing them (the <code>principal</code>).</p>
+
+			<p>Agents are defined using the <code>agent</code> keyword on a type:</p>
+<div class="unreplaced-code">
+<strong>agent&lt;principalType&gt;</strong> SomeAgent {}
+</div>			
+
+			<p>
+				Agents, like classes, can contain zero or more <a href="#member-var">variables</a>, <a href="#member-function">functions</a>, <a href="#member-constructor">constructors</a>,  <a href="#member-property">properties</a>, or <a href="#member-operator">operators</a>.
+			</p>
+
+			<h4>Definining the type of the principal</h4>
+			<p>The <code>principal</code> of an agent is the instance of the class or parent agent in which this agent is being composed. In order to ensure type safety, the allowed type of the <code>principal</code> is declared on the agent immediately following the <code>agent</code> keyword.</p>
+
+			<h4>Accessing the principal</h4>
+			<p>Within the members of the agent, the <code>principal</code> keyword can be used to access the instance of the parent class or agent that composed the agent:</p>
+<div class="unreplaced-code">
+agent&lt;SomeInterface&gt; MyAgent {
+	function&lt;void&gt; DoSomething() {
+		this // The agent itself
+		<strong>principal</strong> // The principal composing this agent, with type `SomeInterface`
+	}
+}
+</div>
+
+			<h4>Composing an agent</h4>
+			<p>An agent can be composed into a class (or another agent) via the <code>with</code> keyword:</p>
+<div class="unreplaced-code">
+agent&lt;SomeInterface&gt; MyAgent {
+	function&lt;void&gt; DoSomething() { ... }
+}
+
+class SomeClass <strong>with MyAgent</strong> {}
+</div>
+
+			<p>By specifying that a class or agent is created <code>with</code> an agent, the following changes occur on the composing type:</p>
+			<ul>
+				<li>A new read-only field named after the agent is added to the class and must be initialized in constructors.</li>
+				<li>All <a href="#accessibility">accessible</a> members of the agent will be <strong>aliased</strong> into the composing type, except those already defined by the type or by a previous agent.</li>
+			</ul>
+
+			<p>For example, if we were to have:</p>
+<div class="unreplaced-code">
+agent&lt;SomeInterface&gt; MyAgent {
+	function&lt;void&gt; DoSomething() { ... }
+	function&lt;void&gt; AnotherFunction() { ... }
+}
+
+class SomeClass <strong>with MyAgent</strong> {
+	function&lt;void&gt; DoSomething() { ... }
+}
+</div>
+
+			<p><code>SomeClass</code> will gain a <code>AnotherFunction</code> method which will automatically be called on the <strong>agent</strong>. <code>DoSomething</code>, on the other hand, will <strong>not</strong> be aliased, as <code>SomeClass</code> has explicitly chosen to define that name.</p>
+
+			<h4>Composing multiple agents</h4>
+			<p>Multiple agents can be composed using the <code>+</code> operator:</p>
+<div class="unreplaced-code">
+class SomeClass <strong>with MyAgent + AnotherAgent + ThirdAgent</strong> {}
+</div>
+			<p>Precedence is always read left to right, with the composing type taking absolute precedence, followed by the agent on the left, and so on.</p>
+
+			<h4>Renaming an agent</h4>
+			<p>When an agent is composed into another type, the composing type gains a read-only field to hold the instance of the agent. This field is, by default, named after the agent. To override the name of the agent's field, the <code>as</code> keyword can be used:
+			</p>
+<div class="unreplaced-code">
+class SomeClass <strong>with MyAgent as myCustomFieldName</strong> {}
+</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>So why this agent concept?</h4>
+				Agents address the need for code reuse in Serulian, without the problems associated with inheritance, mixins or simple composition. By being distinct objects (rather than parent types), agents do not fulfill the is-a predicate, instead fulfilling the has-a predicate. This avoids inheritance issues such as the deadly diamond of death problem, as well as mixin issues such as mixins clobbering each other's members. By maintaining a well-typed back-reference to the composing type, agents address the main frustration associated with Golang-style struct composition, allowing agents to act on behalf of their composing types in a safe manner.
+			</div>			
+
+			<h4 class="working-example">Working with agents</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+interface MyInterface {
+	property&lt;int&gt; SomeInt { get }
+}
+
+agent&lt;MyInterface&gt; Calculator {
+	function&lt;int&gt; Calculate() {
+		return principal.SomeInt + 20
+	}
+}
+
+class SomeClass with Calculator {
+	constructor Declare() {
+		return SomeClass{
+			Calculator: Calculator.new(),
+		}
+	}
+
+	property&lt;int&gt; SomeInt {
+		get { return 22 }
+	}
+}
+
+function&lt;void&gt; Run() {
+	var sc = SomeClass.Declare()
+	Log(sc.Calculate())
+}
+</PlaygroundEditor>
+
+			<h3 id="type-struct">Structs</h3>
+			<p>Structural types ("structs") in Serulian are <strong>structural, read-only</strong> containers for holding data.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why not just use classes?</h4>
+				<p>As we've seen from libraries such as <a href="https://facebook.github.io/immutable-js/" target="_blank">ImmutableJS</a>, immutable state is important when working on the web and mobile devices.</p>
+				<p>Single page applications are often driven by APIs that involve large amounts of data serialization and deserialization. While classes (and interfaces) allow for hand-writing this serialization, structs provide a <strong>standard, safe and efficient</strong> way for defining pure data.</p>
+				<p>In addition to serialization, there are a number of cases in-app where having pure, unalterable data is necessary, such as working with <a href="#async">asynchronous functions</a> across web workers, or storing state for components. In these cases, having a type that is <strong>defined to be read-only</strong> is a huge benefit to safety.</p>
+			</div>
+
+			<p>Structs are defined using the <code>struct</code> keyword on a type:</p>
+<div class="unreplaced-code">
+struct MyData {}
+</div>
+			<p>Unlike <a href="#type-class">classes</a>, <a href="#type-interface">interfaces</a> and <a href="#type-nominal">nominal types</a>, structs can only contain a single kind of member: <strong>read-only fields</strong>.</p>
+
+			<h4>Declaring structs</h4>
+			<p>Fields are declared inside a <code>struct</code> in a manner similar to parameters, with the name of the field followed by the type of the field:</p>
+<div class="unreplaced-code">
+struct MyData {
+	<strong>FirstField int</strong>
+}
+</div>
+			<p>Multiple fields are simply placed after one another:</p>
+<div class="unreplaced-code">
+struct MyData {
+	FirstField int
+	<strong>SecondField string</strong>
+	<strong>ThirdField int?</strong>
+}
+</div>
+
+			<p>Fields in a struct must themselves be <strong>structural</strong> (or a primitive). This is to ensure that structural data is always read-only and serializable:</p>
+<div class="unreplaced-code">
+class SomeClass { }
+
+struct MyData {
+	<strong>SomeField SomeClass // Fail! Won't compile because SomeClass is not a struct.</strong>
+}
+</div>
+			<p>Fields within a struct can be marked as non-required by making their type nullable:</p>
+<div class="unreplaced-code">
+struct MyData {
+	<strong>NotRequiredField int?</strong>
+}
+</div>
+			<p>Likewise, fields in a struct can also have a default value:</p>
+<div class="unreplaced-code">
+struct MyData {
+	<strong>NotRequiredFieldSinceHasDefault int = 42</strong>
+}
+</div>
+
+
+			<h4>Creating new instances of a struct</h4>
+			<p>Structs are created using a structural new expression likes classes:</p>
+<div class="unreplaced-code">
+struct MyData {
+	FirstField int
+	SecondField string
+	myPackagePrivateField int?
+}
+
+<strong>var&lt;MyData&gt; myData = MyData{
+	FirstField: 42,
+	SecondField: 'hello world!',
+}</strong>
+</div>
+			<p>All fields that are non-nullable and that do not have a default value are marked as <strong>required</strong> and must therefore be given a value.</p>
+
+			<h4>Modifying a struct</h4>
+			<p>Since structs are, by definition, immutable, they cannot be modified. Instead, Serulian provides a native clone-with-changes operation, with syntax similar to the structural new syntax:
+			</p>
+<div class="unreplaced-code">
+struct MyData {
+	FirstField int
+	SecondField string
+	myPackagePrivateField int?
+}
+
+var&lt;MyData&gt; myOriginalData = MyData{
+	FirstField: 42,
+	SecondField: 'hello world!',
+}
+
+<strong>var&lt;MyData&gt; myChangedData = myOriginalData{
+	FirstField: 43, // Only change FirstField
+}</strong>
+</div>
+
+			<h4>Serializing structs</h4>
+			<p>All structs in Serulian can be serialized and deserialized to/from textual and other formats. The default format supported in Serulian is <code>json</code>:
+			</p>
+<div class="unreplaced-code">
+struct MyData {
+	FirstField int
+	SecondField string
+	myPackagePrivateField int?
+}
+
+function&lt;void&gt; SerializeThing(myData MyData) {
+	<strong>var&lt;string&gt; jsonData = myData.Stringify&lt;json&gt;() // Serializes to JSON</strong>
+	<strong>var&lt;MyData&gt; myDataCopy = MyData.Parse&lt;json&gt;(jsonData) // Deserializes from JSON</strong>
+}
+</div>
+			<p>The deserialization method <code>Parse</code> will verify that all required fields are present and that all fields have their matching type. If there is a mismatch, the method will <a href="#error-handling">reject</a> with an error, preventing the bad struct from being created.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>What if I don't like JSON?</h4>
+				What?! I mean, sure... If you want to define your own implementation for serialization or deserialization of structures, you can implement the <a href="https://github.com/Serulian/corelib/blob/master/serialization.seru#L37" target="_blank">Stringifier</a> or <a href="https://github.com/Serulian/corelib/blob/master/serialization.seru#L52">Parser</a> interfaces (respectively). In fact, this is how JSON is implemented!
+			</div>
+
+			<h4>Custom names for serialization</h4>
+			<p>If a custom name is required for a struct field for serialization/deserialization, the syntax <code>`name:"somefield"`</code> can be used:
+			</p>
+<div class="unreplaced-code">
+struct MyData {
+	FirstField int <strong>`name:"firstfieldhere"`</strong>
+}
+</div>
+
+			<h4>Comparing structs</h4>
+			<p>Structural types in Serulian implement an implicit <code>Equals</code> operator, which allows for comparing structs in a <strong>structural, recursive</strong> fashion:</p>
+<div class="unreplaced-code">
+struct MyData {
+	TheField int
+}
+
+<strong>MyData{TheField: 42} == MyData{TheField: 42} // True!</strong>
+<strong>MyData{TheField: 42} == MyData{TheField: 53} // False!</strong>
+</div>
+			<h4 class="working-example">Working with structs</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+struct Nested {
+	NestedString string
+}
+
+struct MyStruct {
+	FirstField int
+	SecondField string `name:"second"`
+	OptionalField string?
+	NestedField Nested?
+}
+
+function&lt;void&gt; Run() {
+	// Deserialize from JSON.
+	jsonData := `{
+		"FirstField": 42,
+		"second": "hello world!",
+		"NestedField": {
+			"NestedString": "I'm nested!"
+		}
+	}`
+
+	myStruct := MyStruct.Parse&lt;json&gt;(jsonData)
+	Log(myStruct)
+
+	// Construct inline.
+	myConstructedStruct := MyStruct{
+		FirstField: 42,
+		SecondField: "hello world!",
+		NestedField: Nested{
+			NestedString: "I'm nested!",
+		},
+	}
+
+	// Compare.
+	Log(myStruct == myConstructedStruct)
+
+	// Serialize to JSON.
+	Log(myConstructedStruct.Stringify&lt;json&gt;())
+
+	// Attempt to deserialize invalid JSON.
+	invalidData := `{
+		"FirstField": "not an int"
+	}`
+
+	myStruct2, err := MyStruct.Parse&lt;json&gt;(invalidData)
+	if myStruct2 is not null {
+		Log('Struct is valid!')
+		Log(myStruct2)
+	} else {
+		Log('Got JSON parse error')
+	}
+}
+</PlaygroundEditor>
+
+			<h3 id="type-nominal">Nominals</h3>
+			<p>Nominal types in Serulian are specialized <strong>named views</strong> of other types, allowing extension of an underlying type without modifying its source. These types present their underlying types with a different interfaces and, usually, additional logic (but <strong>not data</strong>!).</p>
+
+			<h4>Defining a nominal type</h4>
+			<p>Nominal types are declared in Serulian via the <code>type</code> keyword, and <strong>always requires a <u>single</u> parent type</strong>:</p>
+<div class="unreplaced-code">
+<strong>type MyType : AnotherType</strong> {}
+</div>
+
+			<h4>Nominal type members</h4>
+			<p>
+				Nominal types can contain zero or more <a href="#member-function">functions</a>, <a href="#member-constructor">constructors</a>,  <a href="#member-property">properties</a>, or <a href="#member-operator">operators</a>, but, like <a href="#type-interface">interfaces</a>, cannot contain <a href="#member-variable">variables</a>, as they are <strong>merely a view over the underlying type's state</strong>.
+			</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why have nominal types?</h4>
+				Nominal types are used in Serulian as a way of changing the interface presented by a different type, typically types pulled in from JavaScript. For example, all of the "primitives" that Serulian defines (<code>string</code>, <code>int</code>, etc) are, in fact, nominal types defined <strong>over</strong> the primitive types exported by JavaScript (<code>DOMString</code>, <code>Number</code>, etc). This allows for the same types to be shared between JS and Serulian code, but with the added benefit of a better interface when working in Serulian.
+			</div>
+
+			<h4>Converting to and from nominal types</h4>
+			<p>A nominal type can be converted to and from its parent type by using the name of the nominal type as a <strong>function call</strong>:
+			</p>
+<div class="unreplaced-code">
+class AnotherType {}
+
+type MyType : AnotherType {}
+
+function&lt;void&gt; DoSomething(at AnotherType) {
+	var&lt;MyType&gt; myType = <strong>MyType(at)</strong>
+	var&lt;AnotherType&gt; anotherType = <strong>AnotherType(myType)</strong>
+}
+</div>
+			<p>If a type cannot be converted to/from the nominal type, it will result in a type error at compile time.</p>
+
+			<h4>Writing a nominal type</h4>
+			<p>Since a nominal type cannot contain its own state, all operations defined on the type must typically use either another operation on the same type, or an operation on the parent type.</p>
+			<p>For example, if we wanted to change the <code>GetSomeInt</code> function to a <code>SomeInt</code> property, we might implementing it this way:</p>
+<div class="unreplaced-code">
+class AnotherType {
+	function&lt;int&gt; GetSomeInt { return 42 }
+}
+
+type MyType : AnotherType {
+	property&lt;int&gt; SomeInt {
+		get {
+			return <strong>AnotherType(this).GetSomeInt()</strong> // Note the conversion of `this` to AnotherType
+		}
+	}
+}
+</div>
+			<p>Note that unlike <a href="#composition">composition</a>, the members of the parent type are <strong>not</strong> accessible on the nominal type; it presents a <strong>completely new interface</strong>.</p>
+
+			<h4>Nominal root</h4>
+			<p>There are times (especially when working with wrapped JS types) when it is necessary or useful to get the parent instance of a nominal type instance. As nominal types can wrap other nominal types, Serulian provides the ampersand operator <code>&amp;</code> to get the instance of the <strong>root type</strong> of a nominal type instance:
+			</p>
+<div class="unreplaced-code">
+class AnotherType { ... }
+
+type MiddleType : AnotherType { ... }
+
+type MyType : MiddleType { ... }
+
+function&lt;AnotherType&gt; DoSomething(myTypeInstance MyType) {
+	return <strong>&amp;myTypeInstance</strong> // Returns the instance of AnotherType that MyType is wrapping via MiddleType
+}
+</div>
+			<p>The nominal root operator can also be used on values of type <code>any</code>, in which case it will return at runtime the root instance.</p>
+
+			<h4>Nominal type auto-conversion</h4>
+			<p>If an instance of a nominal type is used as an argument to a call where one of its parent types is expected, the compiler will <strong>auto-unbox</strong> the nominal type into the necessary type:
+			</p>
+
+<div class="unreplaced-code">
+class AnotherType { ... }
+
+type MiddleType : AnotherType { ... }
+
+type MyType : MiddleType { ... }
+
+function&lt;void&gt; otherFunction(anotherType AnotherType) {}
+
+function&lt;void&gt; DoSomething(myTypeInstance MyType) {
+	<strong>otherFunction(myTypeInstance)</strong> // Works and is auto-converted into AnotherType.
+}
+</div>
+
+			<p>This is a convenience feature provided to make working with APIs nicer without having to use the nominal root or nominal conversion calls everywhere.</p>
+
+			<div class="bs-callout bs-callout-warning">
+				<h4>Use of the nominal root operator</h4>
+				The nominal root operator is very useful when working with JavaScript-wrapped types and calling into JavaScript code (via <a href="#webidl">WebIDL</a>). However, care should be taken when using the operator, as the code produced isn't obviously readable and can appear confusing to users who are unaware of the operator and its purpose. Whenever possible, use of the operator should be kept within private implementations and documented well.
+			</div>
+
+			<h4 class="working-example">Working with nominals</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+type MyInt : int {
+	property&lt;bool&gt; IsEven {
+		get {
+			return int(this) % 2 == 0
+		}
+	}
+}
+
+type MyBetterInt : MyInt {
+	property&lt;bool&gt; IsOdd {
+		get {
+			return !MyInt(this).IsEven
+		}
+	}
+}
+
+function&lt;void&gt; Run() {
+	var&lt;MyInt&gt; myInt = MyInt(42)
+	Log(myInt.IsEven)
+	Log(MyBetterInt(myInt).IsOdd)
+
+	var&lt;MyInt&gt; anotherInt = MyInt(17)
+	Log(anotherInt.IsEven)
+	Log(MyBetterInt(anotherInt).IsOdd)
+
+	Log(&amp;myInt) // Raw JS Number
+}
+</PlaygroundEditor>
+
+			<h3 id="generics">Generics</h3>
+			<p>All Serulian types are capable of being made <a href="https://en.wikipedia.org/wiki/Generic_programming" target="_blank">generic</a> to allow for type-safe reuse.</p>
+
+			<h4>Declaring generics on a type</h4>
+			<p>Generics are declared using the <code>&lt;T&gt;</code> syntax, similar to the type declarations on type members:</p>
+<div class="unreplaced-code">
+class MyCollection<strong>&lt;T, Q&gt;</strong> { ... }
+</div>
+
+			<h4>Using generics within a type</h4>
+			<p>Once declared, the generic can be used within the parent type wherever another type is expected:</p>
+<div class="unreplaced-code">
+class MyCollection&lt;T, Q&gt; {
+	function&lt;<strong>Q</strong>&gt; Get(key <strong>T</strong>) {
+		...
+	}
+}
+</div>
+			<h4>Declaring constraints on a generic</h4>
+			<p>By default, a generic type can be given any type (concrete or otherwise). To restrict the types that can be specified in a generic, an interface can be specified as a <strong>constraint</strong>:
+			</p>
+<div class="unreplaced-code">
+class MyCollection&lt;T <strong>: MyInterface</strong>&gt; { ... }
+</div>
+			<p>If specified as such, then any instance of the generic type can have the members of the interface called:</p>
+<div class="unreplaced-code">
+interface MyInterface {
+	property&lt;int&gt; IntValue { get }
+}
+
+class MyCollection&lt;T : MyInterface&gt; {
+	function&lt;int&gt; SomeFunction(value T) {
+		// Allowed because `T` is constrained to any type that implements interface `MyInterface`
+		return <strong>value.IntValue</strong>
+	}
+}
+</div>
+			<p>As well, if any constructors are defined on the interface, they can be called on the generic type:</p>
+<div class="unreplaced-code">
+interface MyInterface {
+	constructor Build() {
+		return SomeClass.new()
+	}
+}
+
+class MyCollection&lt;T : MyInterface&gt; {
+	function&lt;void&gt; SomeFunction() {
+		<strong>T.Build()</strong> // Allowed because `Build` is declared on `MyInterface`
+	}
+}</div>
+			<div class="bs-callout bs-callout-info">
+				<h4>Interface constructors and generics</h4>
+				The above pattern is particularly useful for interfaces that will define <strong>default and preferred</strong> implementations of themselves. For example, a Cache interface might declare that its <code>Create</code> constructor return, by default, an in-memory cache. A class which defines a generic <code>C : Cache</code> can then create the cache simply by calling <code>C.Create()</code>. By making the type generic, the class enables callers to override this behavior by specifying a generic type that <strong>implements</strong> the Cache interface, but instead constructs another kind of cache. This pattern is also quite useful for injecting mocks for testing.
+			</div>
+
+			<h4>Using generics at runtime</h4>
+			<p>Unlike some languages (like Java), generic type information is <strong>maintained at runtime</strong> by Serulian. This means that while the types are verified at compile time, the generic type var(s) of a type are available at runtime to be used for such operations as <a href="#casting">casting</a>:</p>
+<div class="unreplaced-code">
+class MyCollection&lt;T&gt; {
+	function&lt;void&gt; SomeFunction(value any) {
+		<strong>value.(T)</strong> // Will fail at runtime if `value` does not have a type matching T
+	}
+}</div>
+			<h4 class="working-example">Working with generics</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/corelib:master" import List
+from "github.com/Serulian/debuglib" import Log
+
+function&lt;void&gt; Run() {
+	var&lt;List&lt;int&gt;&gt; myList = List&lt;int&gt;.Empty()
+	myList.Add(123)
+	myList.Add(456)
+
+	// Uncomment this to see a type error:
+	// myList.Add('hello world')
+
+	Log(myList[0])
+}
+</PlaygroundEditor>
+
+			<h2 id="type-members">Type Members</h2>
+			<p>Serulian supports <a href="#member-constructor">constructors</a>, <a href="#member-variable">variables</a>, <a href="#member-function">functions</a>, <a href="#member-property">properties</a>, and <a href="#member-operator">operators</a> on types.</p>
+
+			<h3 id="member-constructor">Constructors</h4>
+			<p>A <strong>constructor</strong> is a static function found on a <a href="#type-class">class</a>, <a href="#type-interface">interface</a> or <a href="#type-nominal">nominal type</a> that creates an instance of that type.</p>
+
+			<h4>Defining constructors</h4>
+			<p>Constructors are defined using the <code>constructor</code> keyword, a name, and an optional list of arguments for the function:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	<strong>constructor CreateMe(firstParam int, secondParam string) { ... }</strong>
+}
+</div>
+			<p>All constructors <strong>must</strong> return an instance of the type being constructed.</p>
+
+			<h4>Calling constructors</h4>
+			<p>Constructors are called by name under the parent type:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	constructor CreateMe(firstParam int, secondParam string) { ... }
+}
+
+var&lt;SomeClass&gt; sc = <strong>SomeClass.CreateMe(1, 'hello')</strong>
+</div>
+			<p>Being functions, constructors can also be <strong>aliased</strong>:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	constructor CreateMe(firstParam int, secondParam string) { ... }
+}
+
+function&lt;SomeClass&gt; DoSomething() {
+	var&lt;function&lt;SomeClass&gt;(int, string)&gt; f = <strong>SomeClass.CreateMe</strong>
+	return <strong>f(1, 'hello')</strong> // Returns the new instance
+}
+</div>
+
+			<h4>Naming constructors</h4>
+			<p>Constructors should have <strong>descriptive</strong> names, such that they read when written in their called form: <code>TheType.constructor</code>.</p>
+			<p>For example, the <code>List</code> collection type has constructors <code>List&lt;T&gt;.Empty()</code>, <code>List&lt;T&gt;.CopyOf(otherList)</code> and <code>List&lt;T&gt;.Combine(firstList, secondList)</code>. In all three cases, it is clear what the state of the <code>List</code> will be once constructed.</p>
+
+			<h3 id="member-variable">Variables</h3>
+			<p>A <strong>variable</strong> is a field on a <a href="#type-class">class</a> that holds a value.</p>
+
+			<h4>Defining variables</h4>
+			<p>A variable is declared using the <code>var</code> keyword, its type, its name and an optional default value:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	<strong>var&lt;string&gt; myVariable</strong>
+	<strong>var&lt;int&gt; myVarWithDefault = 42</strong>
+}
+</div>
+			<h4>Accessing variables</h4>
+			<p>Variables are accessed under the <strong>instance</strong> of the class:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	var&lt;string&gt; myVariable
+
+	function&lt;void&gt; DoSomething() {
+		<strong>this.myVariable</strong>
+	}
+}
+</div>
+			<h4>Changing the value of variables</h4>
+			<p>The value of a variable can be changed using the assignment operator <code>=</code>:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	var&lt;string&gt; myVariable
+
+	function&lt;void&gt; DoSomething() {
+		<strong>this.myVariable = 'hello world'</strong>
+	}
+}
+</div>
+
+			<h4>Working with variables</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+var&lt;string&gt; someVar = 'hello world!'
+
+function&lt;void&gt; Run() {
+	Log(someVar)
+
+	someVar = 'new value'
+	Log(someVar)
+}
+</PlaygroundEditor>
+
+
+			<h3 id="member-function">Functions</h3>
+			<p>A <strong>function</strong> is an instance function found on a <a href="#type-class">class</a>, <a href="#type-interface">interface</a> or <a href="#type-nominal">nominal type</a>. Functions declared on interfaces do not have implementations.</p>
+
+			<h4>Defining functions</h4>
+			<p>Functions are defined using the <code>function</code> keyword, its return type, a name, and an optional list of arguments for the function:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	<strong>function DoSomething(firstParam int, secondParam string) { ... }</strong>
+}
+</div>
+			<p>If the function is not intended to return a value, the return type specified is <code>void</code></p>
+
+			<h4>Calling functions</h4>
+			<p>A function can be called on an <strong>instance</strong> of the class, interface or nominal type:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	var&lt;string&gt; myVariable
+
+	function&lt;void&gt; AnotherFunction() {}
+
+	function&lt;void&gt; DoSomething() {
+		<strong>this.AnotherFunction()</strong>
+	}
+}
+</div>
+					<p>Functions can also be <strong>aliased</strong>:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	function&lt;void&gt; AnotherFunction() {}
+}
+
+function&lt;void&gt; DoSomething(sc SomeClass) {
+	var&lt;function&lt;SomeClass&gt;()&gt; f = <strong>sc.AnotherFunction</strong>
+	<strong>f()</strong> // Calls the function.
+}
+</div>
+			<div class="bs-callout bs-callout-info">
+				<h4>What about the scope of <code>this</code> when aliased?</h4>
+				Serulian handles this for you. <code>this</code> will still refer to the parent class, even if aliased in the above manner.
+			</div>
+
+			<h4>Working with functions</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+class SomeClass {
+	function&lt;void&gt; LogMessage() {
+		Log(this)
+		Log('hi there!')
+	}
+}
+
+function&lt;void&gt; Run() {
+	sc := SomeClass.new()
+	sc.LogMessage() // Call the function on the class.
+}
+</PlaygroundEditor>
+
+			<h3 id="member-property">Properties</h3>
+			<p>A <strong>property</strong> is a set of instance functions found on a <a href="#type-class">class</a>, <a href="#type-interface">interface</a> or <a href="#type-nominal">nominal type</a> that act as if they are a single <strong>value</strong>. Properties declared on interfaces do not have implementations.</p>
+			</p>
+
+			<h4>Defining properties</h4>
+			<p>Properties are defined using the <code>property</code> keyword, its type, a name and then a getter and (optionally) a setter:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	<strong>property&lt;int&gt; ReadWriteProperty {
+		get {
+			return 42
+		}
+	}</strong>
+}
+</div>
+			<p>When defining a read-write property, a <code>set</code> block is added and the special keyword <code>val</code> is used to get the value in that block:
+			</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	property&lt;int&gt; ReadWriteProperty {
+		get {
+			return 42
+		}
+
+		<strong>set {
+			var&lt;int&gt; valueToBeSet = val // `val` holds the value being set.
+		}</strong>
+	}
+}
+</div>
+			<h4>Accessing properties</h4>
+			<p>Properties are accessed under the <strong>instance</strong> of the class:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	property&lt;int&gt; myProperty {
+		get { return 42 }
+	}
+
+	function&lt;void&gt; DoSomething() {
+		<strong>this.myProperty</strong>
+	}
+}
+</div>
+			<h4>Changing the value of properties</h4>
+			<p>The value of a property can be changed using the assignment operator <code>=</code> <strong>if it has a set block declared</strong>:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	property&lt;int&gt; myProperty {
+		get { ... }
+		set { ... }
+	}
+
+	function&lt;void&gt; DoSomething() {
+		<strong>this.myProperty = 42</strong>
+	}
+}
+</div>
+
+			<h4>Working with properties</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+class SomeClass {
+	property&lt;string&gt; SomeProperty {
+		get {
+			return 'hello world!'
+		}
+	}
+}
+
+function&lt;void&gt; Run() {
+	sc := SomeClass.new()
+	Log(sc.SomeProperty)
+}
+</PlaygroundEditor>
+
+			<h3 id="member-operator">Operators</h3>
+			<p>An <strong>operator</strong> is a (usually static) specialized function found on a <a href="#type-class">class</a>, <a href="#type-interface">interface</a> or <a href="#type-nominal">nominal type</a> that matches a syntactic operation.</p>
+			</p>
+
+			<h4>Defining operators</h4>
+			<p>Operators are defined using the <code>operator</code> keyword, optionally is return type (if required), its name and its implementation:</p>
+<div class="unreplaced-code">	
+class SomeClass {
+	<strong>operator Plus(left SomeClass, right SomeClass) {
+		return left
+	}</strong>
+}
+</div>
+
+			<h4>Supported operators</h4>
+			<p>Operators must match a predefined set of names and return types. The full list can be found <a href="https://github.com/Serulian/spec/blob/master/operators.md" target="_blank">specification repository</a>.</p>
+
+			<h4>Accessing operators</h4>
+			<p>An operator is accessed using its syntax. For example, the <code>plus</code> operator is invoked when two instances of the type defining that operator are placed around a plus operator <code>+</code>:
+<div class="unreplaced-code">	
+class SomeClass {
+	operator Plus(left SomeClass, right SomeClass) {
+		return left
+	}
+}
+
+function&lt;void&gt; DoSomething(first SomeClass, second SomeClass) {
+	<strong>first + second</strong> // Invokes the `Plus` operator on `SomeClass`
+}
+</div>
+			</p>
+
+			<h4>Working with operators</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+class SomeClass {
+	var&lt;string&gt; message
+
+	operator Plus(left SomeClass, right SomeClass) {
+		return SomeClass{
+			message: left.message + '+' + right.message,
+		}
+	}
+}
+
+function&lt;void&gt; Run() {
+	l := SomeClass.new('hello')
+	r := SomeClass.new('world!')
+	combined := l + r
+	Log(combined.message)
+}
+</PlaygroundEditor>
+
+
+			<h2 id="streams">Streams and Iterators</h2>
+			<p>Serulian has native support for a concept known as a <strong>stream</strong>, a (perhaps infinite) series of instances of a type.</p>
+			<p>Streams are declared using a type, followed by the asterisk operator: <code>SomeType*</code>.</p>
+			<div class="bs-callout bs-callout-info">
+				<h4>Hey! That looks familiar...</h4>
+				Indeed! Together with nullable types, the type declaration syntax in Serulian mirrors regular expressions:
+				<table class="table">
+					<thead><th>Syntax</th><th>Meaning</th></thead>
+					<tr>
+						<td><code>SomeType</code></td>
+						<td>Exactly one instance of <code>SomeType</code></td>
+					</tr>
+					<tr>
+						<td><code>SomeType?</code></td>
+						<td>Zero or one instance of <code>SomeType</code> (if zero, is <code>null</code>)</td>
+					</tr>
+					<tr>
+						<td><code>SomeType*</code></td>
+						<td>Zero or more instances of <code>SomeType</code></td>
+					</tr>
+				</table>
+			</div>
+
+			<h3>What is a stream in Serulian?</h3>
+			<p>A stream in Serulian is, simply put, a type matching the <a href="https://github.com/Serulian/corelib/blob/master/interfaces.seru#L27" target="_blank">Stream</a> interface. This interface provides a single method, <code>Next</code>, which returns a tuple containing the next instance in the stream and whether such an instance was found.</p>
+
+			<h3>How do I use a stream?</h3>
+			<p>Streams can be used in Serulian via the <code>for</code> statement:</p>
+<div class="unreplaced-code">	
+function&lt;void&gt; DoSomething(someIntStream int*) {
+	for value <strong>in someIntStream</strong> {
+		// `value` holds the current value.
+	}
+}
+</div>
+			<h3>How do I declare a stream?</h3>
+			<p>Streams in Serulian can be declared by either manually implementing the Stream interface (like <a href="https://github.com/Serulian/corelib/blob/master/helpertypes.seru#L18" target="_blank">IntStream</a> does), or by writing an <strong>iterator</strong>.
+
+			<h3 class="iterator">Iterators</h3>
+			<p>An <strong>iterator</strong> is any <a href="#member-function">function</a> or <a href="#member-property">property</a> that uses the <code>yield</code> keyword instead of the <strong>return</strong> keyword in its body.</p>
+			<p>Iterators allow for easy definition of state machine-like streams, without having to manually maintain the associated state.</p>
+
+			<h3>Declaring an iterator</h3>
+			<p>To declare an iterator, simply make the return or value type of a function or property into a stream, and then use <code>yield</code> keyword once (or more) to yield values:</p>
+<div class="unreplaced-code">	
+function&lt;<strong>int*</strong>&gt; MyCoolIterator() {
+	<strong>yield 1
+	yield 2
+	yield 3</strong>
+}
+</div>
+
+			<p>The above iterator, when called, will return a stream of <code>int</code>. Looping over this stream will yield three elements (1, 2, and 3) and then the stream will be empty.</p>
+
+			<h3>Yielding from another stream</h3>
+			<p>Sometimes it is useful to yield all the elements from another stream from within an iterator. Rather than having to write a for+yield, Serulian provides the <code>yield in</code> <abbr title="all-natural syntax sugar that is much healthier!">syntax honey</abbr>:</p>
+<div class="unreplaced-code">	
+function&lt;int*&gt; MyCoolIterator(anotherStream int*) {
+	yield 1
+	<strong>yield in anotherStream</strong>
+	yield 3
+}
+</div>
+			<p>The above iterator, when called, will return a stream of <code>int</code>. Looping over this stream will yield <code>1</code>, <strong>all values found in the other stream</strong>, and <code>3</code>.</p>
+
+			<h3>Terminating an iterator</h3>
+			<p>To terminate an iterator's stream, the <code>yield break</code> call can be used:</p>
+<div class="unreplaced-code">	
+function&lt;int*&gt; MyCoolIterator() {
+	yield 1
+	<strong>yield break</strong>
+	yield 3
+}
+</div>
+			<p>The above iterator, when called, will return a stream of <code>int</code>. Looping over this stream will yield only <code>1</code>, as the stream is terminated following that yield.</p>
+
+			<h3 class="working-example">Working with iterators</h3>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+function&lt;string*&gt; myIterator() {
+	yield 'I am the very model'
+	yield 'of a modern major general'
+	yield 'who loves to sing!'
+}
+
+function&lt;void&gt; Run() {
+	for piece in myIterator() {
+		Log(piece)
+	}
+}
+</PlaygroundEditor>
+
+			<h2>Statements</h2>
+			<h3 id="statement-return">Return</h3>
+			<p>A <code>return</code> statement terminates execution of a <a href="#member-function">function</a> or <a href="#member-property">property</a>, optionally returning a value.</p>
+<div class="unreplaced-code">	
+function&lt;int&gt; SomeFunction() {
+	<strong>return 42</strong>
+}
+</div>
+
+			<h3 id="statement-reject">Reject</h3>
+			<p>A <code>reject</code> statement is used for <a href="#error-handling">error handling</a> and terminates execution of a <a href="#member-function">function</a> or <a href="#member-property">property</a>, indicating an error or exception has occurred. All values rejected <strong>must</strong> implement the <code>Error</code> interface.
+			</p>
+<div class="unreplaced-code">	
+function&lt;int&gt; SomeFunction() {
+	<strong>reject SimpleError.WithMessage('oh no! Something went wrong!')</strong>
+}
+</div>
+			<h3 id="statement-var">Variable</h3>
+			<p>A <code>var</code> statement defines a variable with a name in the context. Its value is optional if it has an initializing expression.</p>
+<div class="unreplaced-code">	
+<strong>var someVar = 42</strong>
+<strong>var&lt;int&gt; anotherVar = 42</strong>
+<strong>var&lt;int?&gt; nullableVar</strong>
+</div>
+
+			<h3 id="statement-assignment">Assignment</h3>
+			<p>An <strong>assignment statement</strong> assigns a value to a variable or property.</p>
+<div class="unreplaced-code">	
+var someVar = 42
+<strong>someVar = 56</strong>
+</div>
+
+			<h3 id="statement-resolution">Resolve</h3>
+			<p>A <strong>resolve statement</strong> assigns a value to a read-only name, and optionally handles catching <a href="#error-handling">rejections</a> from any child expressions.</p>
+
+			<h4>Assigning a single value</h4>
+			<p>The simplest form of a resolve statement assigns the result of its expression to a name:</p>
+<div class="unreplaced-code">	
+<strong>someValue := 56</strong>
+</div>
+			<p>In the above example, the name <code>someValue</code> will be given the value <code>56</code> and is <strong>read only</strong></p>
+
+			<div class="bs-callout bs-callout-info">
+			  <h4>When should a resolve statement be used?</h4>
+			  <p>Simple resolution to names should be used if the name being assigned will never change. In most code, "variables" never, in fact, vary, making it safer to use a resolve statement. This prevents accidental overwriting of the existing value, which can break expectations.
+			</div>
+
+			<h4>Handling rejection</h4>
+			<div class="bs-callout bs-callout-warning">
+			  <h4>What's rejection?</h4>
+			  <p>If you haven't yet, please read the section on <a href="#error-handling">error handling</a>.
+			</div>
+
+			<p>If a second name is specified in a resolve statement, then the resolve statement is said to <strong>accept rejection</strong>, only filling in the first name if the value expression does not reject:</p>
+<div class="unreplaced-code">	
+someValue<strong>, err</strong> := SomeOtherFunction()
+</div>		
+			<p>In the above example, if the call to <code>SomeOtherFunction</code> rejects with an error, the error will be placed into the <code>err</code> name and the <code>someValue</code> value will be <code>null</code>. If the call succeeds, then <code>someValue</code> will be the value returned by the function and <code>err</code> will be null. It is typical to follow such a call with a conditional check:</p>
+<div class="unreplaced-code">	
+someValue, err := SomeOtherFunction()
+<strong>if err is not null {
+	  // Handle the error here. `err` will have the error and `someValue` will be null.
+}</strong>
+</div>
+			<h4>Ignoring errors or values</h4>
+			<p>If the error (or value) returned by a resolve statement should be ignored, the anonymous name operator <code>_</code> can be used:</p>
+<div class="unreplaced-code">	
+someValue, <strong>_</strong> := SomeOtherFunction()
+</div>
+			<p>In the above example, we've asked the compiler to accept all errors that may occur, but we don't care about the <strong>contents</strong> of the error. It is typical to follow such a call with a conditional check to see if the left hand value (<code>someValue</code>) is <code>null</code></p>
+			<p>Alternatively, the value itself can be ignored:</p>
+<div class="unreplaced-code">	
+function&lt;int&gt; SomeFunction() {
+	<strong>_</strong>, err := SomeOtherFunction()
+}
+</div>
+			<p>Like the previous example, it is typical to use a null check on the named value to determine what occurred.</p>
+
+			<h3 id="statement-conditional">Conditional</h3>
+			<p>A <strong>conditional statement</strong> allows for branching based on a <code>bool</code> condition:</p>
+<div class="unreplaced-code">	
+<strong>if someBool</strong> {
+    // Only executes if `someBool` is true
+}
+</div>
+			<p>A conditional statement can have an <code>else</code> block for the case when the condition is <code>false</code>:</p>
+<div class="unreplaced-code">	
+if someBool {
+    // Only executes if `someBool` is true
+}<strong> else {
+    // Only executes if `someBool` is false	
+}</strong>
+</div>
+			<p>Conditional statements can also be chained together:</p>
+<div class="unreplaced-code">	
+if someBool {
+    // Only executes if `someBool` is true
+}<strong> else if anotherBool {
+    // Only executes if `someBool` is false and `anotherBool` is true.
+}</strong>
+</div>
+
+			<h3 id="statement-loop">Loop</h3>
+			<p>A <strong>loop statement</strong> allows for looping.</p>
+			<h4>Looping forever</h4>
+			<p>A for loop without an expression will loop forever:</p>
+<div class="unreplaced-code">	
+<strong>for</strong> {
+  // Loops until end of time.
+}
+</div>
+			<p>The loop can be terminated via a <a href="#statement-return">return</a> statement, <a href="#statement-reject">reject</a> statement or a <code>break</code> statement:</p>
+
+<div class="unreplaced-code">	
+for {
+  <strong>break // Terminates the loop.</strong>
+}
+</div>
+
+			<h4>Looping while a conditional is met</h4>
+			<p>A for loop with a single expression will loop while the expression is <code>true</code>:</p>
+<div class="unreplaced-code">	
+for <strong>someExpression</strong> {
+  // Loops until `someExpression` is `false`.
+}
+</div>
+			<h4>Looping over a stream</h4>
+			A <code>for in</code> loop allows for looping over the values found in a <a href="#streams">stream</a>:</p>
+<div class="unreplaced-code">	
+for <strong>value in someStream</strong> {
+  // `value` holds the current value in the stream.
+}
+</div>
+			<p>The name given before the <code>in</code> keyword will hold the current value in the stream.</p>
+			<div class="bs-callout bs-callout-info">
+			  <h4>What about a "normal" for loop?</h4>
+			  <h5>How do I loop over a range of numbers?</h5>
+			  <p>Serulian has no concept of a "normal" for loop like other languages. Instead, the <code>range</code> <a href="#member-operator">operator</a> is used in conjunction with streams and the single loop syntax to accomplish the same goal:
+<div class="unreplaced-code">	
+for value in <strong>0..2</strong> {
+  // `value` will range from 0 to 2
+}
+</div>
+			  <p>This was a deliberate design choice, as numeric iteration can now be treated like any other form of iteration of streams. In fact, other types can define their own implementations of the range operator <code>..</code>, allowing for all sorts of iteration!</p>
+			</div>
+
+			<h3 id="statement-switch">Switch</h3>
+			<p>A <code>switch</code> statement is a compacted set of chained "conditional" statements, with slightly different syntax.</p>
+			<h4>Switching over a value</h4>
+			<p>A switch over a value expression will compare each of its <code>case</code> statements to that value:</p>
+<div class="unreplaced-code">
+<strong>switch someString</strong> {
+	case 'hello world':
+		// Called if someString == 'hello world'
+
+	case 'hi universe':
+		// Called if someString == 'hi universe'
+}
+</div>
+
+			<p>A <code>default</code> statement can also be added, to catch any value that doesn't match the cases listed:</p>
+<div class="unreplaced-code">
+switch someString {
+	case 'hello world':
+		// Called if someString == 'hello world'
+
+	case 'hi universe':
+		// Called if someString == 'hi universe'
+
+	<strong>default:
+		// Called otherwise
+	</strong>
+}
+</div>
+			<p>Note that the <code>default</code> branch <strong>must be the <u>last</u> branch in the switch</strong>.</p>
+			<p>Note that unlike other languages a "break" keyword is <strong>not necessary</strong>, as switch cases do <strong>not</strong> fallthrough.</p>
+
+			<div class="bs-callout bs-callout-info">
+			  <h4>Why must the default be last?</h4>
+			  <p>Because we think it reads better! Defaults are always evaluated after all other cases have been "checked" and, while this isn't necessarily how switch statements are implemented under the covers, it is how we as developers <strong>think</strong> they work, so we've decided to enforce this requirement to enhance readability.</p>
+			</div>
+
+			<h4>Switching over expressions</h4>
+
+			<p>If an expression is omitted from the switch statement, then each branch will be treated as boolean expression, with the <strong>first branch in order</strong> that evaluates to <code>true</code> being hit:</p>
+<div class="unreplaced-code">
+switch {
+	case <strong>someString == 'hello world'</strong>:
+		// Called if someString == 'hello world'
+
+	case <strong>someInt == 42</strong>:
+		// Called if someInt == 42 and none of the previous cases match
+
+	default:
+		// Called if none of the cases match
+}
+</div>
+			<h3 id="statement-match">Match</h3>
+			<p>A <code>match</code> statement is similar to a <strong>switch</strong> statement, except it operates over the <strong>type</strong> of an expression:</p>
+<div class="unreplaced-code">
+<strong>match someExpression</strong> {
+	case string:
+		// Called if `someExpression` is a string
+
+	case int:
+		// Called if `someExpression` is an int
+
+	case SomeInterface:
+		// Called if `someExpression` implements SomeInterface
+
+	default:
+		// Called otherwise
+}
+</div>
+			<p>If a reference to the expression, automatically setup to be the matched type is needed, the <code>as</code> clause can be added:</p>
+<div class="unreplaced-code">
+match someExpression <strong>as someValue</strong> {
+	case string:
+		// someValue is a `string` here
+
+	case int:
+		// someValue is an `int` here
+
+	case SomeInterface:
+		// someValue is a `SomeInterface` here
+}
+</div>
+
+			<div class="bs-callout bs-callout-info">
+			  <h4>When is a match useful?</h4>
+			  <p>A match statement is typically used when you have a value of type <a href="#any">any</a> and need to perform different actions based on its runtime type.</p>
+			</div>
+
+			<h3 id="statement-with">With</h3>
+			<p>A <code>with</code> statement is a specialized statement used for easy <strong>release</strong> of a value following its completion. The statement is always declared with an expression whose type <strong>must</strong> implement the <a href="https://github.com/Serulian/corelib/blob/master/interfaces.seru#L90" target="_blank">Releasable</a> interface.</p>
+			<p>When control flow leaves the <code>with</code> statement (naturally or via <a href="#statement-return">return</a> or <a href="#statement-reject">reject</a>), the <code>Release</code> function is immediately invoked on the expression:</p>
+<div class="unreplaced-code">
+<strong>with someExpression as someValue</strong> {
+	// Do stuff with `someValue`
+} // As soon as this point is reached, `Release` is called on `someExpression`.
+</div>
+
+			<div class="bs-callout bs-callout-info">
+			  <h4>So what do I use this for?</h4>
+			  <p>The primary use case for the <code>with</code> statement is managing of <strong>resources</strong>, expressions that require some form of release or cleanup. Rather than having to manually invoke the cleanup code, the <code>with</code> block ensures that the cleanup occurs, regardless of the flow of execution of the code.</p>
+			  <p>For example, imagine we are using an internal <code>canvas</code> element to determine the primary colors found in an image. We probably want to clean up the element once we're done, so we might write something like this:</p>
+<div class="unreplaced-code">
+// Create an append the canvas element.
+canvasElement := document.createElement('canvas')
+document.body.appendChild(canvasElement)
+
+// Do some work with the canvas element.
+...
+
+// Finally, remove the canvas element.
+document.body.removeChild(canvasElement)
+</div>
+			  <p>While the above code works in most cases, it fails if <strong>any</strong> of the statements or expression in the work section rejects with an error: in that case, the removal code will never be called and we're left with an extra canvas element in the DOM. If this code gets called many times over, we could potentially be left with hundreds or thousands of extra elements.</p>
+			  <p>If we instead change the code to use a <code>with</code>, we know we are safe:</p>
+			  <div class="unreplaced-code">
+with createReleasableElement('canvas') as elm:
+  // Do some work with the canvas element.
+  ...
+</div>
+
+			   <p>The <code>createReleasableElement</code> would return a class which, when its <code>Release</code> method is called, removes the element from the DOM.</p>
+			</div>
+
+			<h4>Working with resources</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+class SomeResource {
+	function&lt;void&gt; Release() {
+		Log('Released')
+	}
+
+	property&lt;string&gt; SomeValue {
+		get { return 'hello world!' }
+	}
+}
+
+function&lt;void&gt; Run() {
+	with SomeResource.new() as sr {
+		Log(sr.SomeValue)
+	}
+}</PlaygroundEditor>
+
+
+			<h2 id="expression">Notable Expressions and Operators</h2>
+
+			<h3>Functions and Closures</h3>
+			<h4>Aliasing functions</h4>
+			<p>Functions in Serulian are <strong>first class</strong>, able to be aliased into a variable and therefore called at a later location:
+			</p>
+<div class="unreplaced-code">
+function&lt;void&gt; SomeFunction(foo int) {}
+
+function&lt;void&gt; DoSomething() {
+	var&lt;function&lt;void&gt;(int)&gt; someFunction = SomeFunction	
+	<strong>someFunction(123)</strong> // Invokes SomeFunction with 123 as a parameter.
+}
+</div>
+			<p>Functions on types, including <a href="#member-constructor">constructors</a>, can also be aliased:</p>
+<div class="unreplaced-code">
+class SomeClass {
+  constructor SomeConstructor() { ... }
+  function&lt;void&gt; SomeFunction(foo int) { ... }
+}
+
+function&lt;void&gt; DoSomething(sc SomeClass) {
+	var&lt;function&lt;void&gt;(int)&gt; someFunction = sc.SomeFunction	
+	<strong>someFunction(123)</strong> // Invokes SomeFunction on SomeClass with 123 as a parameter.
+
+	var&lt;function&lt;SomeClass&gt;()&gt; someConstructor = SomeClass.someConstructor	
+	<strong>someConstructor()</strong> // Invokes SomeConstructor on the SomeClass class.
+}
+</div>
+
+			<h4>Declaring function types</h4>
+			<p>Function values are defined using the specialized type syntax <code>function&lt;returnType&gt;(param1Type, param2Type, paramNType)</code>:
+<div class="unreplaced-code">
+	var&lt;<strong>function&lt;void&gt;(int)</strong>&gt; firstFunction
+	var&lt;<strong>function&lt;SomeClass&gt;()</strong>&gt; secondFunction
+	var&lt;<strong>function&lt;void&gt;(int, string, bool)</strong>&gt; thirdFunction
+</div>
+		
+			<h4>Creating anonymous functions</h4>
+			<p>Serulian supports the concept of <strong>anonymous functions</strong> or <strong>lambda functions</strong>, which can be declared using two different forms of syntax.</p>
+
+			<h5>Full anonymous functions</h5>
+			<p>The first form of anonymous function supported by Serulian is the <strong>full lambda function</strong>, which is declared with syntax similar to module level and type level <a href="#member-function">functions</a>, just without a name:
+			</p>
+<div class="unreplaced-code">
+someFunction := <strong>function&lt;int&gt; (firstParam string) {
+	return firstParam.Length
+}</strong>
+</div>
+			<p>In the above example, the <code>someFunction</code> name will reference the created function, which can then be invoked with a string parameter.</p>
+
+			<p>The return type of <strong>most</strong> full lambda functions can be unspecified, in which case Serulian will infer it from the returned value(s) (if any):</p>
+<div class="unreplaced-code">
+someFunction := <strong>function (firstParam string) {
+	return firstParam.Length
+}</strong>
+
+// someFunction is inferred to return an int, because its `return` statement returns an int value.
+</div>
+	
+			<h5>Expression anonymous functions</h5>
+			<p>The second form of anonymous function supported by Serulian is the <strong>expression lambda function</strong>, which returns the result of evaluating a single expression:</p>
+<div class="unreplaced-code">
+someFunction := <strong>(firstParam, secondParam) => firstParam.Length + secondParam.Length</strong>
+</div>
+			<p>In the above example, the function created will take in two parameters (<code>firstParam</code> and <code>secondParam</code>) and will have a return type of <code>int</code>, as inferred from the expression.</p>
+
+			<h4 id="closures">Anonymous functions and binding (Closures)</h4>
+			<p>If a variable from the parent scope is used in an anonymous function, the name is automatically bound to the <strong>reference</strong> of the variable, <strong>not the <u>value</u></strong>:</p>
+<div class="unreplaced-code">
+var&lt;int&gt; someVar = 12
+
+someFunction := function () {
+	return <strong>someVar</strong>
+}
+
+someVar = 42
+someFunction() // Returns <strong>42</strong>, because the value of `someVar` changed.
+</div>
+			<p>In the above example, because the value of <code>someVar</code> changed before the function was <strong>executed</strong>, the returned value is <code>42</code>.</p>
+
+			<div class="bs-callout bs-callout-warning">
+				<h4>Closures and loops</h4>
+				<p>The behavior of function closures be an especially unexpected behavior when making use of function closures inside a loop:</p>
+<div class="unreplaced-code">
+var&lt;function&lt;int&gt;()?&gt; theFunction = null
+
+for i in 0..5 {
+	// Only create the function on the first iteration.
+	if i == 0 {
+		theFunction = function () {
+			return <strong>i * 2</strong>
+		}
+	}
+}
+
+theFunction() // Prints <strong>10</strong>
+</div>
+				<p>Some users would expect the value returned to be <code>2</code>, instead of <code>10</code>. However, since the variable <code>i</code> is bound inside the function <strong>by reference</strong>, when the function is invoked after the loop, the value of <code>i</code> is now <code>5</code>, making the returned result <code>10</code>.
+			</div>
+			
+			<h3>Template Strings</h3>
+			<p>Like ECMAScript 6, Serulian supports the concept of <strong>template literal strings</strong>, which allow for safe and readable construction of strings.</p>
+
+			<h4>Basic template strings</h4>
+			<p>Template string literals in Serulian are constructed using the backtick operator <code>`</code> and can span multiple lines:
+			</p>
+<div class="unreplaced-code">
+<strong>`I am a very long
+multiline and awesome
+template string`</strong>
+</div>
+			<h4>Including expressions</h4>
+			<p>Expressions can be included in template strings using the <code>${expression}</code> syntax. All expressions placed into a template string <strong>must</strong> implement the <a href="https://github.com/Serulian/corelib/blob/master/interfaces.seru#L7" target="_blank">Stringable</a> interface, which ensures they can be converted into a string:
+			</p>
+<div class="unreplaced-code">
+adjective := 'phenominal'
+
+`This is a <strong>${adjective}</strong> template string!` // Returns "This is a phenominal template string!"
+</div>
+
+			<h4>Custom handling of template strings</h4>
+			<p>In addition to producing a concatinated string by default, template string literals can also be used to call custom concatination and formatting functions, by placing the name of the function to invoke before the template string literal:
+			</p>
+<div class="unreplaced-code">
+adjective := 'best'
+<strong>myFormatFunction</strong>`This is the ${adjective} template string`
+</div>
+
+			<p>The function declared must take in a <a href="#corelib-slice">slice</a> of strings (<code>[]string</code>) as its first parameter and a slice of Stringable's (<code>[]Stringable</code>) as its second parameter:
+			</p>
+
+<div class="unreplaced-code">
+<strong>function&lt;string&gt; myFormatFunction(pieces []string, values []Stringable) { ... }</strong>
+
+adjective := 'best'
+myFormatFunction`This is the ${adjective} template string`
+</div>
+
+			<p>The function can then assemble the string (or even some other type!) however it sees fit, with each piece of the template string, followed by its value found in each of the slices.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Ordering of data</h4>
+				<p>The <code>pieces</code> and <code>values</code> slices will contain each string literal piece and expression value, respectively and in order, as found in the template string. For example, given the following template string:
+				</p>
+<div class="unreplaced-code">
+myFormatFunction`This is an ${adjective} template string that does ${anotherAdjective} things!`
+</div>
+				<table class="table">
+				<thead><th>Index</th><th><code>pieces</code></th><th><code>values</code></th></thead>
+				<tr>
+					<td>0</td>
+					<td><code>'This is an '</code></td>
+					<td><code>adjective</code></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><code>' template string that does '</code></td>
+					<td><code>anotherAdjective</code></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><code>' things!'</code></td>
+					<td>(Slice only has 2 elements)</td>
+				</tr>
+				</table>
+			</div>
+
+			<h4>Working with template strings</h4>
+
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/corelib:master" import Stringable
+from "github.com/Serulian/debuglib" import Log
+
+function&lt;string&gt; myFormatter(pieces []string, values []Stringable) {
+	var&lt;string&gt; value = ''
+	for i in 0..pieces.Length - 1 {
+		value = value + '[' + pieces[i] + ']'
+		if i < values.Length {
+			value = value + '(' + values[i].String() + ')'
+		}
+	}
+	return value
+}
+
+function&lt;void&gt; Run() {
+	firstValue := 2
+	secondValue := true
+	thirdValue := 'hello world!'
+
+	Log(`Is it ${secondValue} that I've said ${thirdValue} ${firstValue} times?`)
+	Log(myFormatter`Is it ${secondValue} that I've said ${thirdValue} ${firstValue} times?`)
+}</PlaygroundEditor>
+
+			<h3>Dynamic access</h3>
+			<p>When working with <a href="#native">native code</a> such as JavaScript, it is quite useful to have access to the formalized types by making use of <a href="#webidl">WebIDL</a>.</p>
+			<p>There are times, however, when a full interface definition for the external dependency or for a value of type <a href="#any">any</a> is not available. In such cases the <strong>dynamic access operator</strong> <code>-&gt;</code> can be used to safely access and invoke members on the value.
+			</p>
+
+			<h4>Basic dynamic access</h4>
+			<p>The dynamic access operator <code>-&gt;</code> performs the lookup of a member on a value at <strong>runtime</strong>, skipping the normal type checking associated with member access under a type. It can be used on <strong>any value</strong> and, being dynamic, itself returns a value of type <a href="#any">any</a>:
+			</p>
+<div class="unreplaced-code">
+function&lt;void&gt; SomeFunction(someValue any) {
+	// Get the length of the value (if it exists):
+	<strong>someValue-&gt;length</strong>
+}
+</div>
+			<p>In the above example, the expression will return the value found on the <code>length</code> property of the <code>someValue</code> variable, if such a property exists. If the property does not exist, or <code>someValue</code> is <code>null</code>, the value returned will be <code>null</code>.</p>
+
+			<div class="bs-callout bs-callout-warning">
+				<h4>Using the dynamic access operator</h4>
+				<p>The dynamic access operator is an incredibly powerful tool when working with a value of either unknown type or of a type that comes from JavaScript. Its use, however, should be <strong>carefully weighed</strong>, as it has a number of major downsides:
+
+				<ul>
+					<li>The returned type is itself <code>any</code>, meaning any further access will need to make use of the operator, cast the value to another type, or use a <a href="#statement-match">match</a> statement.</li>
+					<li>The dynamic access operator cannot be used on a type known at compile type, so if the declared type of the value changes, all accesses will need to be changed.</li>
+					<li>Due to the dynamic nature of the access, all dynamic access is treated as potentially accessing any member with that name, <strong>significantly reducing the kinds of optimizations the compiler can perform</strong>.</li>
+				</ul>
+				</p>
+
+				<p>It its <strong>highly</strong> recommended to avoid the dynamic access operator if a <a href="#webidl">WebIDL</a> specification for the native type being used can be written or found.</p>
+			</div>
+
+			<h2 id="error-handling">Error Handling</h2>
+			<p>Error handling is performed in Serulian by a concept called <strong>rejection</strong>. Rejection is defined as a function, property or other logical block deciding that it cannot continue execution and therefore deciding to terminate, rather than continuing or returning a value.</p>
+
+			<h3>Rejecting within a function</h3>
+			<p>Any code block can reject by using the <a href="#statement-reject">reject</a> statement at any point:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; SomeFunction() {
+	<strong>reject SimpleError.WithMessage('Not implemented!')</strong>
+}
+</div>
+
+			<p>All rejection must be given a rejection error value, which must implement the <strong>Error</strong> interface.</p>
+
+			<h3>Accepting rejection</h3>
+			<p>By default, rejection <strong>bubbles up</strong> from a function to the root call of the application. However, there are many times when the caller wishes to <strong>accept rejection</strong> and take action accordingly. To do so, the <a href="#statement-resolution">resolve statement</a> can be used to accept a rejection and process it:
+			</p>
+
+<div class="unreplaced-code">
+function&lt;int&gt; SomeFunction() {
+	reject SimpleError.WithMessage('Not implemented!')
+}
+
+function&lt;void&gt; CallingFunction() {
+	result<strong>, err</strong> := SomeFunction()
+}
+</div>
+			<p>In the above example, the <code>err</code> variable will be filled in with the <code>SimpleError</code> with which SomeFunction rejected. Since rejection is explicitly accepted here, it will <strong>not bubble up</strong>.</p>
+
+			<div class="bs-callout bs-callout-info">
+  				<h4>Why reject and not raise or throw?</h4>
+  				<p>The reject statement keyword and the rejection naming was explicitly chosen to match <a href="#promises">promises</a>, upon which Serulian is built. In addition, we felt that <strong>throw</strong> and <strong>raise</strong> applied more to an <strong>exception</strong> rather than a simple error.</p>
+ 			</div>
+
+			<div class="bs-callout bs-callout-info">
+  				<h4>Why doesn't Serulian have checked excep... errors?</h4>
+  				<p>We're exploring that now! We haven't quite figured out the syntax and haven't quite figured out how to make the developer experience overly unannoying, but as soon as we have a good design, we plan to add it! It is always better to be explicit, especially around errors.</p>
+  				<p>Have a strong opinion? <a href="https://github.com/Serulian/compiler">Please Contribute!</a></p>
+ 			</div>
+
+			<h2 id="async">Asynchronous code</h2>
+
+			<h3>Background</h3>
+			<p>Asynchronous code is a cornerstone of writing modern, scalable web and mobile applications. Unlike most traditional applications, which rely on synchronous, but parallel systems such as threads or processes, the majority of web applications make use of asychronous function calls, typically handling the results of operations via callbacks:
+			</p>
+<pre class="js">
+// Traditional asynchronous handling in JavaScript:
+doSomeAsyncOperation(function(result) {
+	// Handle the result here.	
+});
+</pre>
+			<p>However, while this solution is workable, it can rapidly lead to what is colloquially known as <strong>callback hell</strong>, when multiple calls become nested:</p>
+<pre class="js">
+doSomeAsyncOperation(function(result) {
+	if (result) {
+		doSomeOtherAsyncOperation(function(result2) {
+			if (result2) {
+				doSomeThirdAsyncOperation(function(result3) {
+					// And so on.
+				})
+			}
+		});
+	}
+});
+</pre>
+			<p>This problem has plagued web developers for many years, with many different solutions being proposed, mostly recently <strong>promises</strong> and <strong>specialized syntax in JavaScript</strong>.</p>
+
+			<h3 id="promises">Promises</h3>
+			<p>Recently introduced, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">promises</a> are an attempt to reduce the friction of working with asynchronous code by allowing for the chaining of asynchronous calls:
+			</p>
+<pre class="js">
+doSomeAsyncOperation().then(doSomeOtherAsyncOperation).then(doSomeThirdAsyncOperation).then(function(result) {
+	// Only executed if *all* the operations ran.
+});
+</pre>
+			<p>If given a second parameter on the <code>then</code> handler (or a <code>catch</code> handler is declared), errors can also be handled:</p>
+<pre class="js">
+doSomeAsyncOperation().then(doSomeOtherAsyncOperation).then(doSomeThirdAsyncOperation).then(function(result<strong>, err</strong>) {
+	// Either result or err will have a value.
+});
+</pre>
+			<p>A promise is said to <strong>reject</strong> (sound <a href="#statement-reject">familiar</a>?) if <strong>any</strong> of the calls raise an exception in JavaScript.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>So why not just use promises?</h4>
+				You can! In fact, all of Serulian's asynchronous handling is built <strong>on top</strong> of promises. As we'll see shortly, this allows us the power of promises while making the code far more readable.
+			</div>
+
+			<h3>Async/Await</h3>
+			<p>An fairly new feature found in the most recent releases of JavaScript, <strong>async/await</strong> allows code to be written as-if it were synchronous, even when calling asynchronous code:</p>
+<pre class="js">
+var result = await doSomeAsyncOperation()
+if (!result) {
+	return;
+}
+
+result = await doSomeOtherAsyncOperation();
+if (!result) {
+	return;
+}
+
+result = await doSomeThirdAsyncOperation();
+</pre>
+			<p>This has the nice property of making the code far more readable and easier to understand!</p>
+			<p>Unfortunately, <strong>async/await</strong> code suffers from a few major problems: <strong>verbosity</strong>, <strong>safety</strong> and <strong>coloring</strong>.
+
+			<h4>Verbosity</h4>
+			<p>Having to put the keyword <code>await</code> in front of <strong>every</strong> asynchronous function call and having to put the keyword <code>async</code> on every asynchronous function leads to code bloat:
+			</p>
+<pre class="js">
+<strong>async</strong> function doSomething() {
+	<strong>await</strong> doSomeAsyncOperation()
+	<strong>await</strong> doSomeOtherAsyncOperation()
+	<strong>await</strong> doSomeThirdAsyncOperation()
+}
+</pre>
+
+			<h4>Safety</h4>
+			<p>If you <strong>forget</strong> to put the <code>await</code> keyword in front of an asychronous function, then that function <strong>will execute</strong>, but your code will <strong>not wait for it to complete</strong>. Instead the value "returned" with be a <a href="#promise">promise</a>, which can lead to subtle bugs:
+			</p>
+<pre class="js">
+<strong>async</strong> function doSomething() {
+	doSomeAsyncOperation() // Whoops! Forgot `await`! Going to immediately return a promise.
+	<strong>await</strong> doSomeOtherAsyncOperation()
+	<strong>await</strong> doSomeThirdAsyncOperation()
+}
+</pre>
+
+			<h4>Coloring</h4>
+			<p>Sadly, not coloring in the fun sense. Functions which <code>await</code> are, by definition, <strong>asynchronous</strong>, which means they must be marked with <code>async</code>. In turn, any functions <strong>calling these functions</strong> must <strong>also</strong> be marked, and so on, and so forth. What happens if a function deep in your code suddenly needs to make an asychronous call and wait on its result? Now <strong>all the calling functions</strong> must be changed. This is known as the <a href="http://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/" target="_blank">coloring problem</a>, as synchronous and asynchronous functions have different <strong>colors</strong>.
+			</p>
+
+			<h3>Practical Asynchronous Code</h3>
+			<p>So how does Serulian solve this problem? Simple: <strong>every function in Serulian is (hypothetically) asynchronous!</strong>.</p>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Serulian and Promises</h4>
+				While a detail of the code generator, it is useful to know that <strong>every function</strong> generated by Serulian is created as a promise, unless it can be <strong>statically determined</strong> that the function <strong>never awaits</strong> another function's result.
+			</div>
+
+			<h4>Writing "asynchronous" code in Serulian</h4>
+			<p>As a result of the above decision, writing asynchronous code in Serulian becomes much simpler and safer. Consider the previous example, where we wish to await three functions that are asynchronous. In Serulian, we'd simply call them:
+			</p>
+<div class="unreplaced-code">
+doSomeOperation()
+doSomeOtherOperation()
+doSomeThirdOperation()
+</div>
+			<p>The Serulian compiler will determine whether the call to be made is synchronous or asynchronous, based on the calls made <strong>inside</strong> the functions being invoked. If the function itself becomes asynchronous, Serulian will change the call into an <strong>await</strong> for you!</p>
+
+			<h4>But what if I have a promise?</h4>
+			<p>Let's say you have a promise, constructed in either Serulian or in JavaScript that you wish to <code>await</code> on. To do so, Serulian provides the arrow operator <code>&lt;-</code>, which, like Go, will "block" (really <code>await</code>) the execution of the current function until the Promise resolves or reject:</p>
+
+<div class="unreplaced-code">
+function&lt;int&gt; doSomething(p promise&lt;int&gt;) {
+	// Wait for the promise to resolve.
+	result <strong>&lt;- p</strong>
+	return result * 2
+}
+</div>
+
+			<p>In the above example, the code in <code>doSomething</code> will wait for the promise <code>p</code> to resolve and, if it does successfully, continue execution to the next line. If the promise <strong>rejects</strong>, on the other hand, the rejection will "bubble up" the call stack.</p>
+
+			<h4>Handling rejection</h4>
+			<p>If you desire to handle the potential rejection of a promise, another argument can be added before the arrow operator:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; doSomething(p promise&lt;int&gt;) {
+	// Wait for the promise to resolve.
+	result<strong>, err</strong> &lt;- p
+	if result is not null {
+		return result * 2
+	}
+
+	return 42
+}
+</div>
+			<p>Just like the <a href="#statement-resolution">resolve statement</a>, a value will be either placed into <code>result</code> <strong>or</strong> <code>err</code>, with the other being <code>null</code>.</p>
+
+			<h3 id="async-functions">Asynchronous Functions</h3>
+			<p>There will be times, however, that <strong>truly asynchronous code</strong> is necessary, and simply writing a promise is insufficient. For example, heavy calculations or graphics rendering, which can block the main execution thread. In these cases, it would be ideal for this work to occur in another thread or process. While web browser do not grant access to threads or processes, they do provide <a href="https://www.w3schools.com/html/html5_webworkers.asp" target="_blank">web workers</a>.</p>
+
+			<h4>Web workers</h4>
+			<p>A <strong>web worker</strong> is a lightweight thread that can be created in the browser. Unlike normal application threads, <strong>web workers cannot share memory</strong> with the function that spawns them, which, while alleviating concurrency concerns, can make them a pain to work with.</p>
+			<p>Recognizing this friction, Serulian provides a <strong>native</strong> API for starting and running code inside of web workers, to provide for easy asynchronous execution.</p>
+
+			<h4>Defining an asychronous function</h4>
+			<p>In Serulian, to define a <strong>module-level</strong> function as <strong>asynchronous</strong> and, therefore, executed inside of a Web Worker, we simply append the name <code>Async</code> to the function name:</p>
+
+<div class="unreplaced-code">
+function&lt;int&gt; doSomething<strong>Async</strong>() { ... }
+</div>
+
+			<p>Once modified, the function can be called and we can await on its result with the arrow operator:</p>
+
+<div class="unreplaced-code">
+function&lt;int&gt; doSomethingAsync() { ... }
+
+function&lt;int&gt; callSomeFunction() {
+	return <strong>&lt;- doSomethingAsync()</strong> // Will start the web worker, run the function, and wait for its result.
+}
+</div>
+			<p>Since the function runs in a web worker (and therefore, all data must be serialized and deserialized), <strong>all arguments and return types must be <a href="#type-struct">structural</a></strong>. The compiler will enforce this restriction (for safety), as well as warning if the function is invoked and not awaited.</p>
+
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why is this feature enabled by name and not a keyword?</h4>
+				<p>Readability at the <strong>call site</strong>. By including the <code>Async</code> suffix in the function's <strong>name</strong>, it ensures that whenever the function is called it is <strong>super clear</strong> that it is an asynchronous function that should be awaited:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; callSomeFunction() {
+	doSomething<strong>Async</strong>() // Clearly an async call.
+}
+</div>
+			</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why only module-level functions?</h4>
+				<p>
+					Since all data sent to a web worker must be <strong>serializable</strong>, class-level functions could not be allowed, as we'd have to serialize the <code>this</code> implicit argument, which is unlikely to succeed.
+				</p>
+			</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>Why must all data be serializable?</h4>
+				<p>
+					A requirement of web workers to make sure they are concurrently safe. As <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">MDN states</a>:
+					<blockquote>
+						Data is sent between workers and the main thread via a system of messages - both sides send their messages using the postMessage() method, and respond to messages via the onmessage event handler (the message is contained within the Message event's data attribute.) <strong>The data is copied rather than shared.</strong>
+					</blockquote>
+				</p>
+			</div>
+
+			<h2 id="sml">Serulian Markup Language (SML)</h2>
+			<h3>Background</h3>
+			<p>A great deal of code in today's modern web and mobile applications revolves around the creation, modification and overall management of the Document Object Model (DOM). While modifying the DOM directly from within code is possible (and in fact, has been the standard for quite some time), the code produced can often be difficult to read and follow; heck even creating a simple table can be quite verbose:</p>
+<pre class="js">
+function createDom() {
+	var table = document.createElement('table');
+	var tbody = document.createElement('tbody');
+	var row = document.createElement('row');
+	var col1 = document.createElement('col1');
+	// and so on and so forth for *many* more lines.
+}
+</pre>
+			<h3>JSX and TSX</h3>
+			<p>Recognizing the difficulty in reading such code, extensions such as <a href="http://buildwithreact.com/tutorial/jsx" target="_blank">JSX</a> (and TSX for TypeScript) have been created, which allow for inline declaration of DOM structures in an "HTML-like" syntax:</p>
+<pre class="js">
+const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;
+</pre>
+
+			<p>While the above syntax makes working with the DOM <strong>much easier</strong>, it does have a few small downsides:
+			<ul>
+				<li>JSX and TSX is tied to the specific DOM library being used (in the above case, <a href="https://facebook.github.io/react" target="_blank">React</a>). It cannot be used for non-React code without changing a compilation flag.</li>
+				<li>JSX and TSX make use of naming case to determine whether the element being created is an HTML tag (lowercase) or a custom class (Uppercase). While this in theory leads to more readable code, in practice, it leads to less safety, as <strong>any</strong> lowercase name is "accepted" as an HTML tag, meaning a mistake in the naming can result in unexpected behavior.</li>
+				<li>It is quite hard to handle conditional tags, as JSX/TSX are <strong>expressions</strong>.</li>
+			</ul>
+			</p>
+
+			<h3>Serulian Markup Language</h3>
+			<p>Recognizing the importance of being able to define readable code for working with the DOM (but not wanting to be locked to a specific provider) we have chosen to implement a markup syntax entitled <strong>Serulian Markup Language</strong>, which is <strong>not bound to a specific downstream library</strong>, but is, instead a general-purpose expression building system with its own syntax.</p>
+
+			<h3>Tags in SML</h3>
+			<p>SML is, at its core, simply <strong>a different syntax for constructing and invoking function calls</strong>. Each <strong>tag</strong> in SML is a call to a function (or a <a href="#member-constructor">constructor</a> named <code>Declare</code> on the class), with attributes and contents being given to the function (or constructor) being called:
+			</p>
+<div class="unreplaced-code">
+function&lt;int&gt; SomeFunction() { ... }
+class SomeClass {
+	constructor Declare() { ... }
+}
+
+<strong>&lt;SomeFunction /&gt;</strong> // Calls SomeFunction with no arguments.
+<strong>&lt;SomeClass /&gt;</strong>    // Calls SomeClass.Declare with no arguments.
+</div>
+
+			<p>In the above example, by creating a tag with <code>SomeFunction</code> or <code>SomeClass</code> as its tag "name", we instruct Serulian to invoke the <code>SomeFunction</code> function (or <code>Declare</code> on <code>SomeClass</code>), with the SML expression returning the return value of the function or constructor.
+
+			<h3>Attributes in SML</h3>
+			<p>If we wish the function to take arguments, they can be supplied as <strong>attributes</strong> on the tag:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; SomeFunction(<strong>props []{any}</strong>) { ... } // Declare that we accept props
+
+&lt;SomeFunction <strong>foo="bar" baz={1234}</strong> /&gt; // Call with a few props
+</div>
+			<p>In the above example, we've specified that the function <code>SomeFunction</code> is allowed to accept properties by adding the first argument named <code>props</code>. By writing the type of the parameter as <code>[]{any}</code> (a <a href="#corelib-mapping">mapping</a> with value type <a href="#any">any</a>), the function has indicated to the compiler that <strong>attributes with values of any kind</strong> may be specified.</p>
+
+			<p>Alternatively, if we only wanted to accept properties of a specific type, we could specify a different value type:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; SomeFunction(<strong>props []{string}</strong>) { ... } // Declare that we accept *string* props
+
+&lt;SomeFunction <strong>foo="bar" baz="meh"</strong> /&gt; // Call with a few string props
+</div>
+			<p>By making the <code>props</code> into a <code>[]{string}</code>, the type checker will only allow attributes on the SML tag to have values of type <code>string</code>.
+			</p>
+
+			<h3>Typed attributes in SML</h3>
+			<p>While generic attributes are useful in many cases, there are times when a function (or <code>Declare</code> constructor) wants to <strong>require</strong> a <strong>specific set</strong> of properties. In to do in SML, the <code>props</code> parameter on the function can be changed into a <a href="#type-struct">struct</a>:
+			</p>
+<div class="unreplaced-code">
+struct SomeStruct {
+	RequiredParam int
+	OptionalParam string?
+}
+
+function&lt;int&gt; SomeFunction(props <strong>SomeStruct</strong>) { ... } // Declare that we accept SomeStruct props
+
+&lt;SomeFunction RequiredParam={42} /&gt;
+</div>
+			<p>In the above example, by making the <code>props</code> into a <code>SomeStruct</code>, we've instructed Serulian to treat the attributes of the SML tag as matching the fields of the structure. As a result, the type system will <strong>require</strong> any required fields (<code>RequiredParam</code> in this case), while allowing any nullable/default fields to be optional. Furthermore, since the fields of the struct are well-typed, Serulian will verify that the value given for each attribute matches the type declared in the structure.</p>
+
+			<h3>Boolean attributes in SML</h3>
+			<p>If an attribute is declared without a value, it is treated by SML as a <strong>boolean attribute</strong>, with its value being inferred to be <code>true</code> if present:</p>
+<div class="unreplaced-code">
+struct SomeStruct {
+	IsCoolThing bool
+}
+
+function&lt;int&gt; SomeFunction(props SomeStruct) { ... } // Declare that we accept SomeStruct props
+
+&lt;SomeFunction <strong>IsCoolThing</strong> /&gt; // IsCoolThing has no value, so treated as IsCoolThing = true
+</div>			
+
+			<h3>Children under SML tags</h3>
+			<p>In addition to attributes, Serulian also supports adding children to an SML tag. Children are declared as being supported by adding a second parameter to the function being called:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; SomeFunction(props SomeStruct, <strong>children any*</strong>) { ... } // Declare that we accept children
+
+&lt;SomeFunction&gt;
+   <strong>First child is text
+  {secondChildExpression}
+  &lt;AnotherFunction /&gt;</strong>
+&lt;/SomeFunction&gt;
+</div>	
+
+			<p>In the above example, by declaring that the <code>children</code> is a <a href="#streams">stream</a> of <a href="#any">any</a>, Serulian will accept any number of any children on the SML tag.</p>
+
+			<h3>Constraining children of SML tags</h3>
+			<p>If instead we wish to constraint the <strong>type</strong> of children, we can be more specific on the type allowed:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; SomeFunction(props SomeStruct, children <strong>int*</strong>) { ... } // Declare that we accept int children
+
+&lt;SomeFunction&gt;<strong>{1}{2}{3}</strong>&lt;/SomeFunction&gt;
+</div>	
+			<p>In the above example, by changing our accepting type of children to <code>int*</code>, we've told the type system that only children of type <code>int</code> will be allowed.</p>
+
+			<h3>Single children of SML tags</h3>
+			<p>Constraining the <strong>type</strong> of children allowed is not the only kind of constraint we can place on the children; if we instead wish to only accept a <strong>single chilld</strong> of a specific type, we can change the parameter to no longer be a stream:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; SomeFunction(props SomeStruct, child <strong>int?</strong>) { ... } // Declare that we accept a single int child
+
+&lt;SomeFunction /&gt;
+</div>	
+			<p>In the above example, by changing the <code>child</code> parameter into a nullable int <code>int?</code>, we've told Serulian that tags can have only zero or one children (of type <code>int</code>).</p>
+			<p>Similarly, if we wish to make the child <strong>required</strong>, we can simply make it non-nullable:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; SomeFunction(props SomeStruct, child <strong>int</strong>) { ... } // Declare that we require a single int child
+
+&lt;SomeFunction&gt;<strong>{1}</strong>&lt;/SomeFunction&gt;
+</div>
+
+			<h3 id="decorators">Decorators</h3>
+			<p><strong>Decorators</strong> are one of the most powerful components found in SML. A <strong>decorator</strong> is, at its core, simply a function that maps from a value and an option to another value:</p>
+<div class="unreplaced-code">
+function&lt;int&gt; MyDecorator(<strong>value int, option bool</strong>) {
+	if option {
+		return value
+	} else {
+		return 42
+	}
+}
+</div>
+			<p>Once declared, a decorator can then be <strong>applied</strong> to an SML tag using the decorator operator <code>@</code>:
+			</p>
+<div class="unreplaced-code">
+function&lt;int&gt; MyDecorator(value int, option bool) {
+	if option {
+		return value
+	} else {
+		return 42
+	}
+}
+
+&lt;SomeFunction <strong>@MyDecorator={true}</strong> /&lt;
+</div>
+			<p>When applied this way, the equivalent expression executed is:</p>
+<div class="unreplaced-code">
+MyDecorator(SomeFunction(), true)
+</div>
+			<p>If multiple decorators are specified, they are applied left-to-right, each decorator building on the value returned by the previous decorator:</p>
+
+<div class="unreplaced-code">
+&lt;SomeFunction <strong>@MyDecorator={true} @AnotherDecorator="hello"</strong>&gt;
+</div>
+becomes:
+<div class="unreplaced-code">
+AnotherDecorator(MyDecorator(SomeFunction(), 'hello'), true)
+</div>
+
+			<div class="bs-callout bs-callout-info">
+				<h4>So when are decorators useful?</h4>
+				<p>Decorators are useful when the state of the SML tag should be <strong>modified</strong> by the decorator's value. For example, the <a href="https://github.com/Serulian/virtualdom/" target="_blank">virtual dom library</a> defines an <code>If</code> decorator, which returns the decorated value if the condition is <code>true</code> and <code>null</code> otherwise. This allows for easy conditionals to be included in SML declarations:
+<div class="unreplaced-code">
+&lt;Div <strong>@If={somecondition}</strong>&gt; // Only rendered if `somecondition` is true.
+	Hello World!
+&lt;/Div&gt;
+</div>
+			because the equivalent code is:
+<div class="unreplaced-code">
+<strong>If</strong>(Div([]{any}{}, ['Hello World!']), somecondition)
+</div>
+			</div>
+
+			<h3>Working with SML</h3>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+function&lt;int&gt; GetNumber(props []{int}, child int?) {
+	return (props['value'] ?? 42) + (child ?? 0)
+}
+
+function&lt;int&gt; DoubleIf(value int, condition bool) {
+	return value * 2 if condition else value
+}
+
+function&lt;void&gt; Run() {
+	Log(&lt;GetNumber @DoubleIf={true} /&gt;)
+	Log(&lt;GetNumber @DoubleIf={false} /&gt;)
+	Log(&lt;GetNumber value={10} @DoubleIf={true} /&gt;)
+	Log(&lt;GetNumber value={10} @DoubleIf={true}&gt;{100}&lt;/GetNumber&gt;)
+}</PlaygroundEditor>
+
+
+			<h2 id="corelib">The Serulian Core Library</h2>
+			<h3 id="corelib-string">String</h3>
+			<p>The <code>string</code> type is a <a href="#type-nominal">nominal type</a> around the <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L17" target="_blank">native DOM String</a> and represents a unicode string in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/primitives.seru#L179" target="_blank">Code Link</a>]</p>
+
+			<h3 id="corelib-int">Integer</h3>
+			<p>The <code>int</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L53" target="_blank">Number</a> type and represents an integer value in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/primitives.seru#L19" target="_blank">Code Link</a>]</p>
+
+			<h3 id="corelib-float64">Float64</h3>
+			<p>The <code>float64</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L53" target="_blank">Number</a> type and represents a 64-bit floating point value in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/primitives.seru#L83" target="_blank">Code Link</a>]</p>
+
+			<h3 id="corelib-boolean">Boolean</h3>
+			<p>The <code>bool</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L44" target="_blank">Boolean</a> type and represents a boolean value in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/primitives.seru#L141" target="_blank">Code Link</a>]</p>
+
+			<h3 id="corelib-slice">Slice&lt;T&gt;</h3>
+			<p>The <code>slice</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L70" target="_blank">Array</a> type and represents a <strong>read-only</strong> slice of a collection in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/collections.seru#L129" target="_blank">Code Link</a>]</p>
+			<p>Slice types can be declared with specialized sytax:</p>
+<div class="unreplaced-code">
+var&lt;<strong>[]string</strong>&gt; someStringSlice = <strong>[]string{'first value', 'second value'}</strong>
+</div>
+			<h3 id="corelib-mapping">Mapping&lt;T, Q&gt;</h3>
+			<p>The <code>mapping</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L5" target="_blank">Object</a> type and represents a <strong>read-only</strong> slice of a Map in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/collections.seru#L59" target="_blank">Code Link</a>]</p>			
+
+			<p>Mapping types can be declared with specialized sytax:</p>
+<div class="unreplaced-code">
+var&lt;<strong>[]{int}</strong>&gt; someMappingOfInt = <strong>[]{int}{'foo': 1, 'bar': 2}</strong>
+</div>
+			<p>The keys in Mappings are <strong>always strings</strong>.</p>
+
+			<h3 id="corelib-list">List&lt;T&gt;</h3>
+			<p>The <strong>List</strong> class represents a readable and writeable list of values.</p>
+
+			<h4>Creating an empty List</h4>
+			<p>An empty list can be created using the <code>Empty</code> constructor:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = <strong>List&lt;string&gt;.Empty()</strong>
+</div>
+			<h4>Adding values to the List</h4>
+			<p>Values can be added to the list using the <code>Add</code> method:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+<strong>aListOfStrings.Add('hello world')</strong>
+<strong>aListOfStrings.Add('hi universe')</strong>
+</div>
+
+			<h4>Creating an inline list</h4>
+			<p>Specialized syntax can also be used to create an inline list literal:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = <strong>['hello world', 'hi universe']</strong>
+</div>
+
+			<h4>Checking if a list is empty</h4>
+			<p>The <code>IsEmpty</code> property on a list can be used to check if it is empty:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+<strong>aListOfStrings.IsEmpty</strong> // Returns `true` because list is currently empty.
+</div>
+			<p>The implicit boolean operator can also be used:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+if <strong>not aListOfStrings</strong> {
+	// Only called if the list is empty.
+}
+</div>
+
+			<h4>Iterating the list</h4>
+			<p>Lists are Streamable, so a <a href="#statement-for">for</a> loop can be used to iterate them:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+for value <strong>in aListOfStrings</strong> {
+	// Called for each value.
+}
+</div>
+
+			<h4>Checking for a value in a list</h4>
+			<p>To check if a value is in a List, the <code>IndexOf</code> method or the <code>contains</code> operator can be used:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+<strong>'some string' in aListOfStrings</strong> // Returns true if the list contains the value.
+<strong>aListOfStrings.IndexOf('some string')</strong> // Returns non-null index if the list contains the value.
+</div>
+
+
+			<h4>Getting and setting a value</h4>
+			<p>To retrieve a value in the list at a specific index or set a value at a specific index, the indexer can be used:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+aListOfStrings.Add('hello world')
+aListOfStrings.Add('hi universe')
+<strong>aListOfStrings[0]</strong> // Returns 'hello world'
+<strng>aListOfStrings[1] = 'yo!'</strng> // Sets index 1 to 'yo!'
+</div>
+
+			<div class="bs-callout bs-callout-warning">
+				<h4>Indexing out of bounds</h4>
+				Attempt to access or write a value at an index outside the bounds of the list will cause the action to <a href="#error-handling">reject</a> with an error.
+			</div>
+
+			<h4>Getting a slice of the List</h4>
+			<p>Slices of the list can be retrieved using the slice operator:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = ['one', 'two', 'three']
+<strong>aListOfStrings[0:1]</strong> // Returns a slice with ['one']
+<strong>aListOfStrings[0:2]</strong> // Returns a slice with ['one', 'two']
+<strong>aListOfStrings[-1:1]</strong> // Returns a slice with ['three', one']
+</div>
+
+			<h4>Removing values from the List</h4>
+			<p>Values can be removed from the list using the <code>Remove</code> method:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+<strong>aListOfStrings.Remove('hello world')</strong>
+<strong>aListOfStrings.Remove('hi universe')</strong>
+// List is now empty.
+</div>
+
+			<h3 id="corelib-set">Set&lt;T&gt;</h3>
+			<p>The <strong>Set</strong> class represents a set of <strong>Mappable</strong> values.</p>
+
+			<h4>Creating an empty Set</h4>
+			<p>An empty Set can be created using the <code>Empty</code> constructor:</p>
+<div class="unreplaced-code">
+var&lt;Set&lt;string&gt;&gt; aSetOfStrings = <strong>Set&lt;string&gt;.Empty()</strong>
+</div>
+
+			<h4>Adding values to a Set</h4>
+			<p>A value can be added to a Set using the <code>Add</code> method:</p>
+<div class="unreplaced-code">
+var&lt;Set&lt;string&gt;&gt; aSetOfStrings = Set&lt;string&gt;.Empty()
+<strong>aSetOfStrings.Add('some string')</strong>
+</div>
+
+			<h4>Removing values from a Set</h4>
+			<p>A value can be removed from a Set using the <code>Remove</code> method:</p>
+<div class="unreplaced-code">
+var&lt;Set&lt;string&gt;&gt; aSetOfStrings = Set&lt;string&gt;.Empty()
+<strong>aSetOfStrings.Remove('some string')</strong>
+</div>
+
+			<h4>Checking if an element is in a Set</h4>
+			<p>To check if a value is in a Set, the <code>Contains</code> method or the <code>contains</code> operator can be used:</p>
+<div class="unreplaced-code">
+var&lt;List&lt;string&gt;&gt; aSetOfStrings = Set&lt;string&gt;.Empty()
+<strong>'some string' in aSetOfStrings</strong>        // Returns true if the set contains the value.
+<strong>aSetOfStrings.Contains('some string')</strong> // Returns true if the set contains the value.
+</div>
+
+			<h4>Iterating the set</h4>
+			<p>Sets are Streamable, so a <a href="#statement-for">for</a> loop can be used to iterate them:</p>
+<div class="unreplaced-code">
+var&lt;Set&lt;string&gt;&gt; aSetOfStrings = Set&lt;string&gt;.Empty()
+for value <strong>in aSetOfStrings</strong> {
+	// Called for each value.
+}
+</div>
+
+
+			<h3 id="corelib-map">Map&lt;T, Q&gt;</h3>
+			<p>The <strong>Map</strong> class represents a readable and writeable map of <strong>Mappable</strong> keys to values.</p>
+
+			<h4>Creating an empty Map</h4>
+			<p>An empty Map can be created using the <code>Empty</code> constructor:</p>
+<div class="unreplaced-code">
+var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+</div>
+
+			<h4>Adding keys to a Map</h4>
+			<p>A key-value pair can be added to a Map using the indexer:</p>
+<div class="unreplaced-code">
+var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+<strong>aMapFromStringToInt['the answer'] = 42</strong>
+</div>
+
+			<h4>Removing keys from a Map</h4>
+			<p>A key (and its associated value) can be removed from a Map using the <code>RemoveKey</code> method:</p>
+<div class="unreplaced-code">
+var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+<strong>aMapFromStringToInt.RemoveKey('the answer')</strong>
+</div>
+
+			<h4>Checking if a key is in a Map</h4>
+			<p>To check if a <strong>key</strong> is in a Map, the <code>contains</code> operator can be used:</p>
+<div class="unreplaced-code">
+var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+<strong>'some string' in aMapFromStringToInt</strong> // Returns true if the map contains the key.
+</div>
+
+			<h4>Iterating the keys of the Map</h4>
+			<p>The <code>Keys</code> property can be used with a <a href="#statement-for">for</a> loop to iterate the keys in a Map:</p>
+<div class="unreplaced-code">
+var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+for key <strong>in aMapFromStringToInt.Keys</strong> {
+	// Called for each key.
+}
+</div>
+
+			<h2>That's it!</h2>
+			<p>Have a question? A feature you'd like to see? <a href="https://github.com/Serulian/compiler/issues/new">Add an issue!</a></p>.
+
+  		</div> <!-- /col -->
+	</div>
+</div>
+
+</body>
+</html>

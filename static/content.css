@@ -1,0 +1,162 @@
+body {
+	font-family: 'Fira Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.container {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.unreplaced-code strong {
+	color: #2598c7;
+}
+
+code {
+	color: #2598c7;
+	background-color: #eaf3ff;		
+}
+
+PlaygroundEditor.not-replaced+p {
+	display: block;
+}
+
+PlaygroundEditor.not-replaced::first-line, .unreplaced-code::first-line {
+	line-height: 0px;
+}
+
+.bs-callout {
+	padding: 20px;
+	margin: 20px 0;
+	border: 1px solid #eee;
+	border-left-width: 5px;
+	border-radius: 3px;
+}
+
+.bs-callout h4 {
+	margin-top: 0px;		
+}
+
+.bs-callout+.bs-callout {
+	margin-top: -5px;
+}
+
+.bs-callout-info {
+	border-left-color: #1b809e;
+}
+
+.bs-callout-info h4 {
+	color: #1b809e;
+}
+
+.bs-callout table {
+	margin-top: 20px;
+}
+
+.bs-callout-warning {
+	border-left-color: #fca657;
+}
+
+.bs-callout-warning h4 {
+	color: #fca657;
+}
+
+.bs-callout-danger {
+	border-left-color: #ce4844;
+}
+
+.bs-callout-danger h4 {
+	color: #ce4844;
+}
+
+.inline-image {
+	display: block;
+	width: 100%;
+	margin: 20px;
+}
+
+h3, h4, h5 {
+	margin-top: 40px;
+}
+
+h2 + h3, h3 + h4, h4 + h5 {
+	margin-top: 20px;
+}
+
+nav[data-toggle=toc] .nav>li>a:focus, nav[data-toggle=toc] .nav>li>a:hover {
+	color: #2061a4;
+	border-left: 1px solid #2061a4;
+}
+
+nav[data-toggle=toc] .nav>.active:focus>a, nav[data-toggle=toc] .nav>.active:hover>a, nav[data-toggle=toc] .nav>.active>a {
+	color: #2061a4;
+	border-left: 2px solid #2061a4;
+}
+
+header {
+	position: fixed;
+    padding: 2px;
+    font-size: 19px;
+    background-color: white;
+    z-index: 298;
+    display: block;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    border-bottom: 1px solid #eee;
+}
+
+header a.language-title {
+    font-size: 26px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+header a {
+    display: inline-block;
+    margin: 10px;
+}
+
+header a.active-section {
+	color: black;
+}
+
+.github-corner svg {
+	z-index: 299;
+	position: fixed !important;
+	top: 0px;
+	right: 0px;
+}
+
+.container-fluid {
+    margin-top: 90px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+strong {
+	color: #2061a4;			
+}
+
+@media (max-width: 1000px) {
+	.container-fluid {
+	    margin-top: 20px;
+	}
+
+	.affix {
+		position: relative;
+	}
+
+	header {
+		position: relative;
+	}
+}
+
+@media (max-width: 545px) {
+	header a {
+		display: block;
+	}
+
+	.github-corner svg {
+		position: absolute !important;
+	}
+}

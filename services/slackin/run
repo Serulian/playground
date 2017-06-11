@@ -1,0 +1,8 @@
+#! /bin/bash
+if [ -z "$SLACK_API_TOKEN" ]; then
+	sleep 100000000
+else
+	echo 'Starting slackin'
+	slackin -h 127.0.0.1 -p 3000 -i 60000 -P /slack/ serulian $SLACK_API_TOKEN
+	echo 'Slackin exited'
+fi

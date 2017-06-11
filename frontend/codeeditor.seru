@@ -1,6 +1,8 @@
 from webidl`github.com/Serulian/virtualdom` import Element, Node
+
 from "github.com/Serulian/virtualdom" import Div, Context
-from webidl`ace` import ace, aceEditor
+
+from webidl`ace` import ace, aceEditor, aceMode
 
 /**
  * codeEditorProps defines the properties for the code editor.
@@ -15,6 +17,16 @@ class codeEditorProps {
 	 * OnChanged is the callback to invoke when the contents of the editor have changed.
 	 */
 	var<function<void>(string)?> OnChanged
+
+	/**
+	 * The edit mode for the ACE editor.
+	 */
+	var<aceMode?> Mode
+
+	/**
+	 * Theme is the ACE theme to use. If none specified, the dark theme will be used.
+	 */
+	var<string?> Theme
 }
 
 /**
@@ -27,28 +39,29 @@ class CodeEditor {
 	var<string?> initialValue
 
 	constructor Declare(props codeEditorProps, initialValue string?) {
-		return CodeEditor{
-			props: props,
-			initialValue: initialValue,
-		}
+		return CodeEditor{props: props, initialValue: initialValue}
 	}
 
 	function<void> Attached(node Node) {
 		this.element = node.(Element)
 
 		var editor = ace.edit(this.element!)
-	    editor.setTheme("ace/theme/monokai")
+		editor.setTheme(`ace/theme/${this.props.Theme ?? "monokai"}`)
 
 		initialValue := this.initialValue?.Trim() ?? ''
 		editor.getSession().setValue(&initialValue)
 
+		if this.props.Mode is not null {
+			editor.getSession().setMode(this.props.Mode!)
+		}
+
 		// Listen for any changes to the code in the editor, and raise the onChanged
 		// callback.
-	    editor.getSession().on('change', function<void>(e any) {
-	    	onChanged := this.props.OnChanged
-	    	if onChanged is not null {
-	    		onChanged(string(editor.getSession().getValue()))
-	    	}
+		editor.getSession().on('change', function<void>(e any) {
+			onChanged := this.props.OnChanged
+			if onChanged is not null {
+				onChanged(string(editor.getSession().getValue()))
+			}
 		})
 
 		this.editor = editor
@@ -62,6 +75,11 @@ class CodeEditor {
 	function<void> PropsUpdated(props any) {
 		this.props = props.(codeEditorProps)
 		this.editor?.setReadOnly(this.props.IsReadOnly)
+		this.editor?.setTheme(`ace/theme/${this.props.Theme ?? "monokai"}`)
+
+		if this.props.Mode is not null {
+			this.editor?.getSession()?.setMode(this.props.Mode!)
+		}
 	}
 
 	function<any> Render(context Context) {

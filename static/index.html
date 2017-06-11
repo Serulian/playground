@@ -1,67 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>Serulian: A modern web development language and toolkit</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="/playground.css">
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 	<script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>
-	<script>
-	if (document.location.toString().indexOf('develop=true') > 0) {
-		document.write('<script src="http://localhost:8080/playground.seru.js"></sc' + 'ript>');
-	} else {
-		document.write('<script src="/playground.seru.js"></sc' + 'ript>');
-	}
-	</script>
-	<script>
-	  function startPlayground() {
-		  window.Serulian.then(function(global) {
-		  	global.playground.Start(document.getElementById('rootElement'))
-		  });
-	  }
-	</script>
+	<script src="/ace_grammar.min.js"></script>
+	<script src="/playground.seru.js"></script>
+
 	<style type="text/css">
-	.editor, iframe {
-		width: 100%;
-		min-height: 400px;
-	}
+		body {
+			font-family: 'Fira Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
+		}
 
-	.build-result {
-		margin-top: 15px;
-	}
+		header {
+		    top: 0px;
+		    left: 0px;
+		    right: 0px;
+		    background-color: #2061a4;
+		    padding: 40px;
+		    text-align: center;
+		    z-index: -1;
+		    color: white;
+		    background: linear-gradient(135deg, rgba(32,97,164,1) 0%,rgba(29,69,112,1) 100%);
+	        margin-bottom: 40px;
+		}
 
-	/* Source: http://tobiasahlin.com/spinkit/ */
-	.spinner {
-	  width: 32px;
-	  height: 32px;
-	  background-color: #337ab7;
+		header h1 {
+			font-size: 60px;
+    		margin-bottom: 20px;			
+		}
 
-	  border-radius: 100%;  
-	  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-	  animation: sk-scaleout 1.0s infinite ease-in-out;
-	}
+		header a {
+		    color: white !important;
+		    font-size: 20px;
+		    margin-left: 10px;
+		    margin-right: 20px;
+		}
 
-	@-webkit-keyframes sk-scaleout {
-	  0% { -webkit-transform: scale(0) }
-	  100% {
-	    -webkit-transform: scale(1.0);
-	    opacity: 0;
-	  }
-	}
+		.shoutout {
+			font-size: 24px;
+			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+			font-weight: 300;
+			text-align: center;
+			margin-bottom: 20px;
+		}
 
-	@keyframes sk-scaleout {
-	  0% { 
-	    -webkit-transform: scale(0);
-	    transform: scale(0);
-	  } 100% {
-	    -webkit-transform: scale(1.0);
-	    transform: scale(1.0);
-	    opacity: 0;
-	  }
-	}
+		.shoutout strong {
+			font-family: 'Fira Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
+			font-weight: 600;
+		}
+
+		.shoutout .btn {
+		    font-size: 30px;
+		    padding: 12px;
+		}
+
+		.features .col-md-4 {
+			text-align: center;
+		}
+
+		ul.side-tabs {
+		    padding: 0px;
+		    margin: 0px;
+		}
+
+		ul.side-tabs li {
+		    padding: 0px;
+		    margin: 0px;
+		    list-style: none;
+		    margin-top: 10px;
+		    background-color: white;
+		}
+
+		ul.side-tabs li a {
+		    color: black !important;
+		    display: block;
+		    text-decoration: none !important;
+		    padding: 10px;
+		}
+
+		ul.side-tabs strong {
+		    font-size: 20px;
+		    margin-bottom: 7px;
+		    display: block;
+		}
+
+		ul.side-tabs p {
+		    margin: 0px;
+		    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		    font-weight: 300;
+		}
+
+		@media only screen and (min-width: 990px) {
+			ul.side-tabs li.active {
+			    background-color: #2061a4;
+			}
+
+			ul.side-tabs li.active a {
+			    color: white !important;
+			    position: relative;
+			}
+
+			ul.side-tabs li.active a:after {
+			    left: 100%;
+			    top: 50%;
+			    border: solid transparent;
+			    content: " ";
+			    height: 0px;
+			    width: 0px;
+			    position: absolute;
+			    pointer-events: none;
+			    border-color: rgba(30, 77, 127, 0);
+			    border-left-color: #2061a4;
+			    border-width: 20px;
+			    margin-top: -20px;
+			}
+		}
+
+		@media only screen and (max-width: 1010px) {
+			.shoutout .btn {
+				margin-top: 20px;
+			}
+
+			.playgroundEditor {
+				margin: 0px;
+			}
+		}
+
+		@media only screen and (min-width: 1011px) {
+			.shoutout .btn {
+			    padding-left: 20px;
+	    		padding-right: 20px;
+			}
+		}
+
+		footer {
+			margin-top: 20px;
+		    padding: 10px;
+		    text-align: center;
+		    border-top: 1px solid #eee;
+		    font-size: 14px;
+		    padding-top: 20px;
+		    padding-bottom: 20px;
+		}
+
+		footer img {
+		    width: 80px;
+		}
+
+		header iframe {
+		    vertical-align: text-bottom;			
+		}
+
+		h4 {
+			text-align: center;
+	    	padding: 10px;
+	    	margin: 10px;			
+		}
+
+		playgroundeditor + h4 {
+			margin-top: 40px;
+		}
 	</style>
+
+	<script>
+		function runEditors() {
+			window.Serulian.then(function(global) {
+				global.playground.DecorateEditors()
+			});
+		}
+	</script>
 </head>
-<body onload="startPlayground()">
-	<div id="rootElement"></div>
+<body onload="runEditors()">
+	<!-- From: http://tholman.com/github-corners/ -->
+	<a href="https://github.com/Serulian/playground/tree/master/static/index.html" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#1d4672; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+	<header>
+		<h1>Serulian</h1>
+		<a href="/gettingstarted">Getting Started</a>
+		<a href="/guide">Guide</a>
+		<a href="/install">Install</a>
+		<a href="https://github.com/Serulian/compiler">File an issue</a>
+		<script async defer src="/slack/slackin.js"></script>
+	</header>
+
+	<div class="container">
+		<div class="row shoutout">
+			<div class="col-md-9">
+				<strong>Serulian</strong> is a modern language and toolkit for developing scalable web and mobile applications
+			</div>
+			<div class="col-md-3">
+				<a href="/install" class="btn btn-primary">Install Serulian</a>
+			</div>
+		</div>
+		<div class="row features">
+			<div class="col-md-4">
+				<ul class="side-tabs" role="tablist">
+				    <li role="presentation" class="active">
+				    	<a href="#types" role="tab" data-toggle="tab">
+				    		<strong>Strong but flexible typing</strong>
+				    		<p>A strong, extensible and generic type system with classes, implicit interfaces and native immutable structures</p>
+				    	</a>
+				    </li>
+				    <li role="presentation">
+				    	<a href="#native" role="tab" data-toggle="tab">
+				    		<strong>Safe, strong and standard interop with JS</strong>
+				    		<p>Builds on existing web standards to weave with plain JavaScript, without resorting to voodoo magic or broken types</p>
+				    	</a>
+				    </li>
+				   	<li role="presentation">
+				    	<a href="#packages" role="tab" data-toggle="tab">
+				    		<strong>Simple and powerful reuse of packages</strong>
+				    		<p>Opinionated but extensible packaging and import system that solves dependency hell</p>
+				    	</a>
+				    </li>
+				    <li role="presentation">
+				    	<a href="#async" role="tab" data-toggle="tab">
+				    		<strong>Straightforward and readable asynchronous code</strong>
+				    		<p>Readable asynchronous code without callback hell or superflouous (and verbose) keywords</p>
+				    	</a>
+				    </li>
+				    <li role="presentation">
+				    	<a href="#sml" role="tab" data-toggle="tab">
+				    		<strong>Inline declarative markup</strong>
+				    		<p>Extensible and generic declarative markup for easy definition of structures such as DOM</p>
+				    	</a>
+				    </li>
+  			    </ul>
+			</div>
+
+			<div class="col-md-8 hidden-xs">
+				 <div class="tab-content">
+				 	 <div role="tabpanel" class="tab-pane active" id="types">
+
+<h4>Fully verified code that won't break at runtime</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+class MyClass {
+	function&lt;string&gt; GetValue() { return 'hello world!' }
+}
+
+class AnotherClass {
+	function&lt;int&gt; GetValue() { return 42 }	
+}
+
+interface Logger&lt;T&gt; {
+	function&lt;T&gt; GetValue()
+}
+
+function&lt;void&gt; Run() {
+	// Full generics
+	var&lt;Logger&lt;string&gt;&gt; l1 = MyClass.new()
+	var&lt;Logger&lt;int&gt;&gt; l2 = AnotherClass.new()
+
+	Log(l1.GetValue())
+	Log(l2.GetValue())
+}
+</PlaygroundEditor>
+
+<h4>Type mismatches or missing members are reported as errors</h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+
+class MyClass {
+	function&lt;string&gt; GetValue() {
+		return 'hello world!'
+	}
+}
+
+function&lt;void&gt; Run() {
+	Log(MyClass.new().getValue()) // Will fail to compile with an error.
+}
+</PlaygroundEditor>
+				 	 </div> <!-- /types -->
+
+				 	 <div role="tabpanel" class="tab-pane" id="packages">
+<h4>Properly versioned imports prevents code breakage</h4>
+
+<PlaygroundEditor class="not-replaced">
+// Import HEAD of default branch
+from "github.com/Serulian/debuglib" import Log
+
+// Import HEAD of a specific branch
+from "github.com/Serulian/debuglib:master" import MasterLog
+
+// Import a specific commit
+from "github.com/Serulian/debuglib:ce6e94b" import SpecificLog
+
+// Import a specific version/tag
+from "github.com/Serulian/debuglib@v0.0.1" import VersionedLog
+</PlaygroundEditor>
+
+<h4>Tooling for seamlessly working with versioned packages</h4>
+<pre class="sh no-arrow">
+# Freeze to the latest commit
+serulian imports freeze myfile.seru github.com/somenamespace/somerepo
+
+# Unfreeze back to HEAD
+serulian imports unfreeze myfile.seru github.com/somenamespace/somerepo
+
+# Update the minor version of semantic versioned package
+serulian imports update myfile.seru github.com/somenamespace/somerepo
+
+# Upgrade the major version of semantic versioned package
+serulian imports upgrade myfile.seru github.com/somenamespace/somerepo
+</pre>
+
+				 	 </div> <!-- /packages -->
+
+				 	 <div role="tabpanel" class="tab-pane" id="native">
+
+<h4>Working with native JavaScript is as simple as importing an interface</h4>
+<PlaygroundEditor class="not-replaced">
+// Import WebIDL like any other import.
+from webidl`github.com/Serulian/debuglib:master` import console
+from webidl`github.com/Serulian/corelib:master` import JSON
+
+function&lt;void&gt; Run() {
+	// Call the native JS type with full type checking.
+	console.log(&amp;'hello world')
+
+	// Note the &amp; to send the native string (which String wraps) to
+	// the calls.
+	console.log(JSON.stringify(JSON.parse(&amp;'{"hello": "world"}')))
+}
+</PlaygroundEditor>
+				 	 </div> <!-- /native -->
+
+
+				 	 <div role="tabpanel" class="tab-pane" id="async">
+
+<h4>Asynchronous code without callbacks, <code>then</code> or <code>async</code></h4>
+<PlaygroundEditor class="not-replaced">
+from "github.com/Serulian/debuglib" import Log
+from "github.com/Serulian/request" import Get
+
+function&lt;void&gt; Run() {
+	// Get via XHR. This is an *async* call, but is written in sync style.
+	// Log will only be called once the call has succeeded.
+	result := Get('helloworld.txt')
+	Log(result.Text)
+
+	result2 := Get('hiuniverse.txt')
+	Log(result2.Text)
+}
+</PlaygroundEditor>
+				 	 </div> <!-- /native -->
+
+				 	 <div role="tabpanel" class="tab-pane" id="sml">
+<h4>Declare components in HTML-like syntax, without being tied to a specific framework or library</h4>
+<PlaygroundEditor class="not-replaced">
+from webidl`github.com/Serulian/virtualdom` import document
+from "github.com/Serulian/component" import RenderComponent
+from "github.com/Serulian/virtualdom" import Context, Div
+
+struct myComponentProps {
+	message string
+}
+
+class MyComponent {
+	var&lt;string&gt; message
+
+	constructor Declare(props myComponentProps) {
+		return MyComponent{
+		    message: props.message,
+		}
+	}
+
+	function&lt;any&gt; Render(context Context) {
+		return &lt;Div style="background-color: lightblue; padding: 6px;"&gt;
+			the message: {this.message}
+		&lt;/Div&gt;
+	}
+}
+
+function&lt;void&gt; Run() {
+	RenderComponent(&lt;MyComponent message="the message!" /&gt;, document.body)
+}
+</PlaygroundEditor>
+				</div> <!-- /sml -->
+			</div>
+
+			</div>
+		</div>
+	</div>
+
+<footer>
+Playground and Guide infrastructure sponsored by <a href="https://www.packet.net/"><img src="/packet_logo.png"></a>.
+</footer>
+
 </body>
 </html>
