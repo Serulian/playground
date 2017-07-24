@@ -1,6 +1,6 @@
-from webidl`github.com/Serulian/virtualdom` import Element, Node
+from webidl`github.com/serulian/virtualdom` import Element, Node
 
-from "github.com/Serulian/virtualdom" import Div, Context
+from "github.com/serulian/virtualdom" import Div, Context
 
 from webidl`ace` import ace, aceEditor, aceMode
 

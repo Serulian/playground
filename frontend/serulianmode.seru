@@ -1,6 +1,6 @@
 from webidl`ace` import aceMode
 from webidl`acegrammar` import AceGrammar
-from "github.com/Serulian/corelib:master" import ESObjectLiteral
+from "github.com/serulian/corelib:master" import ESObjectLiteral
 
 /**
  * buildSerulianAceMode returns an ACE edit mode for syntax highlighting of Serulian source code.
