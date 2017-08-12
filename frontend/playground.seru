@@ -1,4 +1,4 @@
-from webidl`github.com/serulian/corelib:master` import Number, Function, String as NativeString
+from webidl`@core` import Number, Function, String as NativeString
 from webidl`github.com/serulian/virtualdom` import document, Node, Element, Text, HTMLDocument, HTMLIFrameElement
 
 from "github.com/serulian/attachment" import Attachment
@@ -150,7 +150,8 @@ agent<StatefulComponent> playgroundBase {
 			// *any* value (JS "types" for the win! /s).
 			var<string> message = 'null'
 			if value is not null {
-				message = string(value->toString.(function<any>())().(NativeString))
+				rootValue := &value
+				message = string(rootValue->toString.(function<any>())().(NativeString))
 			}
 
 			// Note: Since this method will be called without awaiting (since JS has no idea
