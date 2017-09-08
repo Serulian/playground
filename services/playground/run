@@ -1,4 +1,4 @@
 #! /bin/bash
 echo 'Starting playground'
-/playgroundgo/src/github.com/Serulian/playground/playground
+/playgroundgo/src/github.com/serulian/playground/playground
 echo 'Playground exited'

@@ -3,20 +3,20 @@ RUN apt-get update && apt-get install -y nginx git wget gcc npm
 RUN wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
 RUN tar -zxvf  go1.7.1.linux-amd64.tar.gz -C /usr/local/
 ENV PATH $PATH:/usr/local/go/bin
-RUN mkdir -p playgroundgo/src/github.com/Serulian/playground
-ADD *.go playgroundgo/src/github.com/Serulian/playground/
+RUN mkdir -p playgroundgo/src/github.com/serulian/playground
+ADD *.go playgroundgo/src/github.com/serulian/playground/
 ENV GOPATH /playgroundgo
-WORKDIR playgroundgo/src/github.com/Serulian/playground
+WORKDIR playgroundgo/src/github.com/serulian/playground
 RUN go get ./...
 RUN go build .
 WORKDIR /
-RUN mkdir -p depcache/github.com/Serulian/
-WORKDIR depcache/github.com/Serulian/
-RUN git clone https://github.com/Serulian/debuglib.git
-RUN git clone https://github.com/Serulian/component.git
-RUN git clone https://github.com/Serulian/virtualdom.git
-RUN git clone https://github.com/Serulian/attachment.git
-RUN git clone https://github.com/Serulian/corelib.git
+RUN mkdir -p depcache/github.com/serulian/
+WORKDIR depcache/github.com/serulian/
+RUN git clone https://github.com/serulian/debuglib.git # 2017SEP08
+RUN git clone https://github.com/serulian/component.git
+RUN git clone https://github.com/serulian/virtualdom.git
+RUN git clone https://github.com/serulian/attachment.git
+RUN git clone https://github.com/serulian/corelib.git
 WORKDIR /
 RUN npm install -g slackin
 RUN mv /usr/bin/nodejs /usr/bin/node
