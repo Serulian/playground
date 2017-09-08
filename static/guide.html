@@ -38,14 +38,14 @@
 <body onload="runEditors()" data-spy="scroll" data-target="#toc">
 
 <!-- From: http://tholman.com/github-corners/ -->
-<a href="https://github.com/Serulian/playground/tree/master/static/guide.html" class="github-corner" aria-label="View source on Github"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#2061a4; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<a href="https://github.com/serulian/playground/tree/master/static/guide.html" class="github-corner" aria-label="View source on Github"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#2061a4; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
 <header>
 	<a href="/" class="language-title">Serulian</a>
 	<a href="/gettingstarted">Getting Started</a>
 	<a class="active-section" href="/guide">Guide</a>
 	<a href="/install">Install</a>
-	<a href="https://github.com/Serulian/compiler">File an issue</a>
+	<a href="https://github.com/serulian/compiler">File an issue</a>
 </header>
 
 <div class="container-fluid">
@@ -128,7 +128,7 @@
 
 			<div class="bs-callout bs-callout-info">
 				<h4>Semicolon insertion</h4>
-				The Serulian parser uses a technique called "semicolon insertion", styled after the Go compiler. The lexer will <a href="https://github.com/Serulian/compiler/blob/master/parser/lex.go#L364" target="_blank">insert synthetic semicolons</a> right before newlines (and EOF), if the last non-whitespace character on the line matches a <a href="https://github.com/Serulian/compiler/blob/master/parser/lex.go#L194" target="_blank">predefined list</a>.
+				The Serulian parser uses a technique called "semicolon insertion", styled after the Go compiler. The lexer will <a href="https://github.com/serulian/compiler/blob/master/parser/lex.go#L364" target="_blank">insert synthetic semicolons</a> right before newlines (and EOF), if the last non-whitespace character on the line matches a <a href="https://github.com/serulian/compiler/blob/master/parser/lex.go#L194" target="_blank">predefined list</a>.
 			</div>
 
 			<h4>Strings</h4>
@@ -302,13 +302,13 @@ import "../someparentpackage"
 			</p>
 			<div class="bs-callout bs-callout-info">
 				<h4>Remote package support</h4>
-				Serulian currently supports importing packages from any URL implementing the <code>go get</code> discovery mechanism and using <strong>git</strong>. Support for additional VCS systems (likely Mercurial) can be added by implementing <a href="https://github.com/Serulian/compiler/blob/master/vcs/handlers.go#L73" target="_blank">a structure</a> and will likely happen in the near future.
+				Serulian currently supports importing packages from any URL implementing the <code>go get</code> discovery mechanism and using <strong>git</strong>. Support for additional VCS systems (likely Mercurial) can be added by implementing <a href="https://github.com/serulian/compiler/blob/master/vcs/handlers.go#L73" target="_blank">a structure</a> and will likely happen in the near future.
 			</div>
 			<p>To use a remote package, simply specify the package's discovery URL in the <code>from</code> line:</p>
 <div class="unreplaced-code">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 </div>
-			<p>In the above example, the package being imported is <code>github.com/Serulian/debuglib</code> and, since both the branch and version are unspecified, the Serulian compiler will assume that the <code>HEAD</code> commit of the <strong>default branch</strong> should be used.</p>
+			<p>In the above example, the package being imported is <code>github.com/serulian/debuglib</code> and, since both the branch and version are unspecified, the Serulian compiler will assume that the <code>HEAD</code> commit of the <strong>default branch</strong> should be used.</p>
 			<div class="bs-callout bs-callout-warning">
 				<h4>Non-versioned package checkout</h4>
 				If a non-version remote package is specified in Serulian, then the (specified or default) branch will be checked out on <strong>every single build</strong>. This is done to ensure that the build is always using the latest copy of the branch, forcing the user to fix any issues they encounter. If this is not the desired behavior (it rarely is for production code), then the import should be <a href="#import-freeze">frozen</a> at a particular version or commit.
@@ -317,21 +317,21 @@ from "github.com/Serulian/debuglib" import Log
 			<p>If a particular branch of a remote repository is required, it can be specified following the package name in the import using a colon:
 			</p>
 <div class="unreplaced-code">
-from "github.com/Serulian/debuglib:master" import Log
+from "github.com/serulian/debuglib:master" import Log
 </div>
 			<p>The above import will cause the package to be imported from the <code>master</code> branch. <strong>The package will be retrieved and updated on every build</strong>.</p>
 
 			<h4>Using a specific tag/version of a remote package</h4>
 			<p>To specify a particular tag/version of the remote package, place the tag or version to be used after an at-sign <code>@</code>:</p>
 <div class="unreplaced-code">
-from "github.com/Serulian/debuglib@v1.0.0" import Log
+from "github.com/serulian/debuglib@v1.0.0" import Log
 </div>
 			<p>The above import will cause the package to be imported from the <code>v1.0.0</code> tag. The package will be cached and only pulled if not present in the cache.</p>
 
 			<h4>Using a specific commit of a remote package</h4>
 			<p>To specify a particular commit, place its short SHA in the import following the colon:</p>
 <div class="unreplaced-code">
-from "github.com/Serulian/debuglib:ce6e94" import Log
+from "github.com/serulian/debuglib:ce6e94" import Log
 </div>
 			<p>The above import will cause the package to be imported from the <code>ce6e94</code> commit. The package will be cached and only pulled if not present in the cache.</p>
 
@@ -538,7 +538,7 @@ function&lt;void&gt; CreateWebSocket() {
 
 			<div class="bs-callout bs-callout-info">
   				<h4>What about libraries that don't have a WebIDL?</h4>
-  				<p>Simple! Write your own! For example, this very playground makes use of the <a href="https://ace.c9.io/#nav=about" target="_blank">ACE Code Editor</a>. To make this integration as easy as possible, a very simple <a href="https://github.com/Serulian/playground/blob/master/frontend/ace.webidl" target="_blank">ace.webidl</a> specification was written.
+  				<p>Simple! Write your own! For example, this very playground makes use of the <a href="https://ace.c9.io/#nav=about" target="_blank">ACE Code Editor</a>. To make this integration as easy as possible, a very simple <a href="https://github.com/serulian/playground/blob/master/frontend/ace.webidl" target="_blank">ace.webidl</a> specification was written.
    			</div>
 
 			<div class="bs-callout bs-callout-info">
@@ -730,7 +730,7 @@ function&lt;void&gt; Run() {
 			<p>Putting this together, we can write a simple program that creates a new instance of as class:</p>
 
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 class SomeClass {
 	var&lt;string&gt; requiredValue
@@ -933,7 +933,7 @@ interface SomeCollection {
 
 			<h4 class="working-example">Working with interfaces</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 interface MyInterface {
 	property&lt;int&gt; SomeInt { get }
@@ -1045,7 +1045,7 @@ class SomeClass <strong>with MyAgent as myCustomFieldName</strong> {}
 
 			<h4 class="working-example">Working with agents</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 interface MyInterface {
 	property&lt;int&gt; SomeInt { get }
@@ -1184,7 +1184,7 @@ function&lt;void&gt; SerializeThing(myData MyData) {
 
 			<div class="bs-callout bs-callout-info">
 				<h4>What if I don't like JSON?</h4>
-				What?! I mean, sure... If you want to define your own implementation for serialization or deserialization of structures, you can implement the <a href="https://github.com/Serulian/corelib/blob/master/serialization.seru#L37" target="_blank">Stringifier</a> or <a href="https://github.com/Serulian/corelib/blob/master/serialization.seru#L52">Parser</a> interfaces (respectively). In fact, this is how JSON is implemented!
+				What?! I mean, sure... If you want to define your own implementation for serialization or deserialization of structures, you can implement the <a href="https://github.com/serulian/corelib/blob/master/serialization.seru#L37" target="_blank">Stringifier</a> or <a href="https://github.com/serulian/corelib/blob/master/serialization.seru#L52">Parser</a> interfaces (respectively). In fact, this is how JSON is implemented!
 			</div>
 
 			<h4>Custom names for serialization</h4>
@@ -1208,7 +1208,7 @@ struct MyData {
 </div>
 			<h4 class="working-example">Working with structs</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 struct Nested {
 	NestedString string
@@ -1359,7 +1359,7 @@ function&lt;void&gt; DoSomething(myTypeInstance MyType) {
 
 			<h4 class="working-example">Working with nominals</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 type MyInt : int {
 	property&lt;bool&gt; IsEven {
@@ -1455,8 +1455,8 @@ class MyCollection&lt;T&gt; {
 }</div>
 			<h4 class="working-example">Working with generics</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/corelib:master" import List
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/corelib:master" import List
+from "github.com/serulian/debuglib" import Log
 
 function&lt;void&gt; Run() {
 	var&lt;List&lt;int&gt;&gt; myList = List&lt;int&gt;.Empty()
@@ -1546,7 +1546,7 @@ class SomeClass {
 
 			<h4>Working with variables</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 var&lt;string&gt; someVar = 'hello world!'
 
@@ -1602,7 +1602,7 @@ function&lt;void&gt; DoSomething(sc SomeClass) {
 
 			<h4>Working with functions</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 class SomeClass {
 	function&lt;void&gt; LogMessage() {
@@ -1677,7 +1677,7 @@ class SomeClass {
 
 			<h4>Working with properties</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 class SomeClass {
 	property&lt;string&gt; SomeProperty {
@@ -1708,7 +1708,7 @@ class SomeClass {
 </div>
 
 			<h4>Supported operators</h4>
-			<p>Operators must match a predefined set of names and return types. The full list can be found <a href="https://github.com/Serulian/spec/blob/master/operators.md" target="_blank">specification repository</a>.</p>
+			<p>Operators must match a predefined set of names and return types. The full list can be found <a href="https://github.com/serulian/spec/blob/master/operators.md" target="_blank">specification repository</a>.</p>
 
 			<h4>Accessing operators</h4>
 			<p>An operator is accessed using its syntax. For example, the <code>plus</code> operator is invoked when two instances of the type defining that operator are placed around a plus operator <code>+</code>:
@@ -1727,7 +1727,7 @@ function&lt;void&gt; DoSomething(first SomeClass, second SomeClass) {
 
 			<h4>Working with operators</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 class SomeClass {
 	var&lt;string&gt; message
@@ -1772,7 +1772,7 @@ function&lt;void&gt; Run() {
 			</div>
 
 			<h3>What is a stream in Serulian?</h3>
-			<p>A stream in Serulian is, simply put, a type matching the <a href="https://github.com/Serulian/corelib/blob/master/interfaces.seru#L27" target="_blank">Stream</a> interface. This interface provides a single method, <code>Next</code>, which returns a tuple containing the next instance in the stream and whether such an instance was found.</p>
+			<p>A stream in Serulian is, simply put, a type matching the <a href="https://github.com/serulian/corelib/blob/master/interfaces.seru#L27" target="_blank">Stream</a> interface. This interface provides a single method, <code>Next</code>, which returns a tuple containing the next instance in the stream and whether such an instance was found.</p>
 
 			<h3>How do I use a stream?</h3>
 			<p>Streams can be used in Serulian via the <code>for</code> statement:</p>
@@ -1784,7 +1784,7 @@ function&lt;void&gt; DoSomething(someIntStream int*) {
 }
 </div>
 			<h3>How do I declare a stream?</h3>
-			<p>Streams in Serulian can be declared by either manually implementing the Stream interface (like <a href="https://github.com/Serulian/corelib/blob/master/helpertypes.seru#L18" target="_blank">IntStream</a> does), or by writing an <strong>iterator</strong>.
+			<p>Streams in Serulian can be declared by either manually implementing the Stream interface (like <a href="https://github.com/serulian/corelib/blob/master/helpertypes.seru#L18" target="_blank">IntStream</a> does), or by writing an <strong>iterator</strong>.
 
 			<h3 class="iterator">Iterators</h3>
 			<p>An <strong>iterator</strong> is any <a href="#member-function">function</a> or <a href="#member-property">property</a> that uses the <code>yield</code> keyword instead of the <strong>return</strong> keyword in its body.</p>
@@ -1826,7 +1826,7 @@ function&lt;int*&gt; MyCoolIterator() {
 
 			<h3 class="working-example">Working with iterators</h3>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 function&lt;string*&gt; myIterator() {
 	yield 'I am the very model'
@@ -2075,7 +2075,7 @@ match someExpression <strong>as someValue</strong> {
 			</div>
 
 			<h3 id="statement-with">With</h3>
-			<p>A <code>with</code> statement is a specialized statement used for easy <strong>release</strong> of a value following its completion. The statement is always declared with an expression whose type <strong>must</strong> implement the <a href="https://github.com/Serulian/corelib/blob/master/interfaces.seru#L90" target="_blank">Releasable</a> interface.</p>
+			<p>A <code>with</code> statement is a specialized statement used for easy <strong>release</strong> of a value following its completion. The statement is always declared with an expression whose type <strong>must</strong> implement the <a href="https://github.com/serulian/corelib/blob/master/interfaces.seru#L90" target="_blank">Releasable</a> interface.</p>
 			<p>When control flow leaves the <code>with</code> statement (naturally or via <a href="#statement-return">return</a> or <a href="#statement-reject">reject</a>), the <code>Release</code> function is immediately invoked on the expression:</p>
 <div class="unreplaced-code">
 <strong>with someExpression as someValue</strong> {
@@ -2111,7 +2111,7 @@ with createReleasableElement('canvas') as elm:
 
 			<h4>Working with resources</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 class SomeResource {
 	function&lt;void&gt; Release() {
@@ -2243,7 +2243,7 @@ multiline and awesome
 template string`</strong>
 </div>
 			<h4>Including expressions</h4>
-			<p>Expressions can be included in template strings using the <code>${expression}</code> syntax. All expressions placed into a template string <strong>must</strong> implement the <a href="https://github.com/Serulian/corelib/blob/master/interfaces.seru#L7" target="_blank">Stringable</a> interface, which ensures they can be converted into a string:
+			<p>Expressions can be included in template strings using the <code>${expression}</code> syntax. All expressions placed into a template string <strong>must</strong> implement the <a href="https://github.com/serulian/corelib/blob/master/interfaces.seru#L7" target="_blank">Stringable</a> interface, which ensures they can be converted into a string:
 			</p>
 <div class="unreplaced-code">
 adjective := 'phenominal'
@@ -2301,8 +2301,8 @@ myFormatFunction`This is an ${adjective} template string that does ${anotherAdje
 			<h4>Working with template strings</h4>
 
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/corelib:master" import Stringable
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/corelib:master" import Stringable
+from "github.com/serulian/debuglib" import Log
 
 function&lt;string&gt; myFormatter(pieces []string, values []Stringable) {
 	var&lt;string&gt; value = ''
@@ -2390,7 +2390,7 @@ function&lt;void&gt; CallingFunction() {
 			<div class="bs-callout bs-callout-info">
   				<h4>Why doesn't Serulian have checked excep... errors?</h4>
   				<p>We're exploring that now! We haven't quite figured out the syntax and haven't quite figured out how to make the developer experience overly unannoying, but as soon as we have a good design, we plan to add it! It is always better to be explicit, especially around errors.</p>
-  				<p>Have a strong opinion? <a href="https://github.com/Serulian/compiler">Please Contribute!</a></p>
+  				<p>Have a strong opinion? <a href="https://github.com/serulian/compiler">Please Contribute!</a></p>
  			</div>
 
 			<h2 id="async">Asynchronous code</h2>
@@ -2751,7 +2751,7 @@ AnotherDecorator(MyDecorator(SomeFunction(), 'hello'), true)
 
 			<div class="bs-callout bs-callout-info">
 				<h4>So when are decorators useful?</h4>
-				<p>Decorators are useful when the state of the SML tag should be <strong>modified</strong> by the decorator's value. For example, the <a href="https://github.com/Serulian/virtualdom/" target="_blank">virtual dom library</a> defines an <code>If</code> decorator, which returns the decorated value if the condition is <code>true</code> and <code>null</code> otherwise. This allows for easy conditionals to be included in SML declarations:
+				<p>Decorators are useful when the state of the SML tag should be <strong>modified</strong> by the decorator's value. For example, the <a href="https://github.com/serulian/virtualdom/" target="_blank">virtual dom library</a> defines an <code>If</code> decorator, which returns the decorated value if the condition is <code>true</code> and <code>null</code> otherwise. This allows for easy conditionals to be included in SML declarations:
 <div class="unreplaced-code">
 &lt;Div <strong>@If={somecondition}</strong>&gt; // Only rendered if `somecondition` is true.
 	Hello World!
@@ -2765,7 +2765,7 @@ AnotherDecorator(MyDecorator(SomeFunction(), 'hello'), true)
 
 			<h3>Working with SML</h3>
 <PlaygroundEditor class="not-replaced">
-from "github.com/Serulian/debuglib" import Log
+from "github.com/serulian/debuglib" import Log
 
 function&lt;int&gt; GetNumber(props []{int}, child int?) {
 	return (props['value'] ?? 42) + (child ?? 0)
@@ -2785,25 +2785,25 @@ function&lt;void&gt; Run() {
 
 			<h2 id="corelib">The Serulian Core Library</h2>
 			<h3 id="corelib-string">String</h3>
-			<p>The <code>string</code> type is a <a href="#type-nominal">nominal type</a> around the <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L17" target="_blank">native DOM String</a> and represents a unicode string in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/primitives.seru#L179" target="_blank">Code Link</a>]</p>
+			<p>The <code>string</code> type is a <a href="#type-nominal">nominal type</a> around the <a href="https://github.com/serulian/corelib/blob/master/core.webidl#L17" target="_blank">native DOM String</a> and represents a unicode string in Serulian. [<a href="https://github.com/serulian/corelib/blob/master/primitives.seru#L179" target="_blank">Code Link</a>]</p>
 
 			<h3 id="corelib-int">Integer</h3>
-			<p>The <code>int</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L53" target="_blank">Number</a> type and represents an integer value in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/primitives.seru#L19" target="_blank">Code Link</a>]</p>
+			<p>The <code>int</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/serulian/corelib/blob/master/core.webidl#L53" target="_blank">Number</a> type and represents an integer value in Serulian. [<a href="https://github.com/serulian/corelib/blob/master/primitives.seru#L19" target="_blank">Code Link</a>]</p>
 
 			<h3 id="corelib-float64">Float64</h3>
-			<p>The <code>float64</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L53" target="_blank">Number</a> type and represents a 64-bit floating point value in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/primitives.seru#L83" target="_blank">Code Link</a>]</p>
+			<p>The <code>float64</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/serulian/corelib/blob/master/core.webidl#L53" target="_blank">Number</a> type and represents a 64-bit floating point value in Serulian. [<a href="https://github.com/serulian/corelib/blob/master/primitives.seru#L83" target="_blank">Code Link</a>]</p>
 
 			<h3 id="corelib-boolean">Boolean</h3>
-			<p>The <code>bool</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L44" target="_blank">Boolean</a> type and represents a boolean value in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/primitives.seru#L141" target="_blank">Code Link</a>]</p>
+			<p>The <code>bool</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/serulian/corelib/blob/master/core.webidl#L44" target="_blank">Boolean</a> type and represents a boolean value in Serulian. [<a href="https://github.com/serulian/corelib/blob/master/primitives.seru#L141" target="_blank">Code Link</a>]</p>
 
 			<h3 id="corelib-slice">Slice&lt;T&gt;</h3>
-			<p>The <code>slice</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L70" target="_blank">Array</a> type and represents a <strong>read-only</strong> slice of a collection in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/collections.seru#L129" target="_blank">Code Link</a>]</p>
+			<p>The <code>slice</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/serulian/corelib/blob/master/core.webidl#L70" target="_blank">Array</a> type and represents a <strong>read-only</strong> slice of a collection in Serulian. [<a href="https://github.com/serulian/corelib/blob/master/collections.seru#L129" target="_blank">Code Link</a>]</p>
 			<p>Slice types can be declared with specialized sytax:</p>
 <div class="unreplaced-code">
 var&lt;<strong>[]string</strong>&gt; someStringSlice = <strong>[]string{'first value', 'second value'}</strong>
 </div>
 			<h3 id="corelib-mapping">Mapping&lt;T, Q&gt;</h3>
-			<p>The <code>mapping</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/Serulian/corelib/blob/master/core.webidl#L5" target="_blank">Object</a> type and represents a <strong>read-only</strong> slice of a Map in Serulian. [<a href="https://github.com/Serulian/corelib/blob/master/collections.seru#L59" target="_blank">Code Link</a>]</p>			
+			<p>The <code>mapping</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/serulian/corelib/blob/master/core.webidl#L5" target="_blank">Object</a> type and represents a <strong>read-only</strong> slice of a Map in Serulian. [<a href="https://github.com/serulian/corelib/blob/master/collections.seru#L59" target="_blank">Code Link</a>]</p>			
 
 			<p>Mapping types can be declared with specialized sytax:</p>
 <div class="unreplaced-code">
@@ -2979,7 +2979,7 @@ for key <strong>in aMapFromStringToInt.Keys</strong> {
 </div>
 
 			<h2>That's it!</h2>
-			<p>Have a question? A feature you'd like to see? <a href="https://github.com/Serulian/compiler/issues/new">Add an issue!</a></p>.
+			<p>Have a question? A feature you'd like to see? <a href="https://github.com/serulian/compiler/issues/new">Add an issue!</a></p>.
 
   		</div> <!-- /col -->
 	</div>

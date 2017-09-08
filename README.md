@@ -1,10 +1,10 @@
 # Serulian Playground
 
-[![godoc](https://godoc.org/github.com/Serulian/compiler?status.svg)](http://godoc.org/github.com/Serulian/playground)
-[![Build Status (Travis)](https://travis-ci.org/Serulian/playground.svg?branch=master)](https://travis-ci.org/Serulian/playground)
+[![godoc](https://godoc.org/github.com/serulian/compiler?status.svg)](http://godoc.org/github.com/serulian/playground)
+[![Build Status (Travis)](https://travis-ci.org/serulian/playground.svg?branch=master)](https://travis-ci.org/serulian/playground)
 [![Container Image on Quay](https://quay.io/repository/serulian/playground/status "Container Image on Quay")](https://quay.io/repository/serulian/playground)
 
-The Serulian Playground provides a browser-based playground for building and running small Serulian applications without installation of the [Serulian Toolkit](https://github.com/Serulian/compiler).
+The Serulian Playground provides a browser-based playground for building and running small Serulian applications without installation of the [Serulian Toolkit](https://github.com/serulian/compiler).
 
 ## Running the playground
 
