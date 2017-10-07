@@ -3,11 +3,14 @@ from webidl`github.com/serulian/virtualdom` import document, Node, Element, Text
 
 from "github.com/serulian/attachment" import Attachment
 from "github.com/serulian/component" import RenderComponent, UpdateComponentState, StatefulComponent
-from "github.com/serulian/request" import Post
+from "github.com/serulian/debuglib" import Log
+from "github.com/serulian/request" import Post, GetURLContents
 from "github.com/serulian/virtualdom" import Context, Div, Button, If, Span, TextArea, IFrame, HideIf
-from "github.com/serulian/virtualdom" import Nav, Ul, Li, A, DynamicAttributes, Pre
+from "github.com/serulian/virtualdom" import Nav, Ul, Li, A, DynamicAttributes, Pre, Img, Input
 
+from webidl`location` import location
 from webidl`timeout` import setTimeout, clearTimeout
+from webidl`history` import history
 
 from codeeditor import CodeEditor
 from serulianmode import buildSerulianAceMode
@@ -41,13 +44,38 @@ struct BuildResult {
  * playgroundState holds the state of the playground app or embeded editoor.
  */
 struct playgroundState {
-	working bool
+	stateId string
 	currentCode string
 	initialCode string
-	serverError bool
 	buildResult BuildResult?
 	currentView string
 	consoleOutput string
+	gistInfo gistInfo?
+}
+
+/**
+ * gistFile represents a single file defined in a GitHub gist.
+ */
+struct gistFile {
+	content string
+}
+
+/**
+ * createGistArgs are the arguments to create a gist via a POST.
+ */
+struct createGistArgs {
+	files []{gistFile}
+	description string
+	public bool = true
+}
+
+/**
+ * gistInfo represents a small slice of the information found in a gist.
+ */
+struct gistInfo {
+	id string
+	html_url string
+	files []{gistFile}
 }
 
 /**
@@ -63,13 +91,41 @@ agent<StatefulComponent> playgroundBase {
 	}
 
 	/**
+	 * shareProject shares the current project by creating a gist of its source code on GitHub.
+	 */
+	function<void> shareProject() {
+		UpdateComponentState(principal, this.state{stateId: 'sharing'})
+
+		// Create a public, anonymous gist containing the entered source code.
+		createArgs := createGistArgs{
+			files: []{gistFile}{"entrypoint.seru": gistFile{content: this.state.currentCode}},
+			description: "Serulian shared playground",
+		}
+
+		response, _ := Post('https://api.github.com/gists', createArgs.Stringify<json>())
+		if response is null {
+			UpdateComponentState(principal, this.state{stateId: 'couldnotshare'})
+		} else if response.StatusCode / 100 == 2 {
+			info := gistInfo.Parse<json>(response.Text)
+			UpdateComponentState(principal, this.state{stateId: 'editing', gistInfo: info})
+
+			// Update the page's URL to reflect the new state.
+			path := string(location.pathname)
+			if path.HasPrefix("/p/") {
+				history.replaceState({}, "Serulian Playground", `${string(location.origin)}/p/${info.id}`)
+			}
+		} else {
+			UpdateComponentState(principal, this.state{stateId: 'couldnotshare'})
+		}
+	}
+
+	/**
 	 * runProject runs the project by sending it off for compilation and then runs it in an iframe.
 	 */
 	function<void> runProject() {
 		// Set the project as running.
 		UpdateComponentState(principal, this.state{
-			working: true,
-			serverError: false,
+			stateId: 'building',
 			buildResult: null,
 			currentView: 'edit',
 			consoleOutput: '',
@@ -79,23 +135,20 @@ agent<StatefulComponent> playgroundBase {
 		response, _ := Post('/play/build', this.state.currentCode)
 		if response is null {
 			UpdateComponentState(principal, this.state{
-				working: false,
-				serverError: true,
+				stateId: 'servererror',
 				buildResult: null,
 				currentView: 'edit',
 			})
 		} else if response.StatusCode == 200 {
 			result := BuildResult.Parse<json>(response.Text)
 			UpdateComponentState(principal, this.state{
-				working: false,
-				serverError: false,
+				stateId: 'editing',
 				buildResult: result,
 				currentView: 'frame' if result.Status == 0 else 'output',
 			})
 		} else {
 			UpdateComponentState(principal, this.state{
-				working: false,
-				serverError: true,
+				stateId: 'servererror',
 				buildResult: null,
 				currentView: 'edit',
 			})
@@ -103,7 +156,7 @@ agent<StatefulComponent> playgroundBase {
 	}
 
 	function<void> codeChanged(value string) {
-		UpdateComponentState(principal, this.state{currentCode: value})
+		UpdateComponentState(principal, this.state{currentCode: value, gistInfo: null})
 	}
 
 	function<void> updateConsole() {
@@ -122,7 +175,6 @@ agent<StatefulComponent> playgroundBase {
 
 	function<void> registerConsoleUpdater() {
 		if this.timerHandle is not null { return }
-
 		this.timerHandle = setTimeout(this.updateConsole, 100)
 	}
 
@@ -185,26 +237,17 @@ agent<StatefulComponent> playgroundBase {
 	}
 }
 
-/**
- * App is the root component for the playground application.
- */
-class App with playgroundBase {
-	constructor Declare() {
-		return App{
-			playgroundBase: playgroundBase{
-				state: playgroundState{
-					working: false,
-					currentCode: '',
-					initialCode: '',
-					serverError: false,
-					currentView: '',
-					consoleOutput: '',
-				},
-			},
-		}
-	}
+struct playgroundAppProps {
+	InitialGistId string?
+}
 
-	function<any> Render(context Context) {
+/**
+ * PlaygroundApp is the root component for the playground application.
+ */
+class PlaygroundApp with playgroundBase {
+	constructor Declare(props playgroundAppProps) {
+		initialGistId := props.InitialGistId
+
 		// Note: lack of indentation is important here so the initial code is properly
 		// indented in the code editor.
 		initialCode := `from "github.com/serulian/debuglib:master" import Log
@@ -215,57 +258,155 @@ function<any> Run() {
 	return true
 }`
 
+		app := PlaygroundApp{
+			playgroundBase: playgroundBase{
+				state: playgroundState{
+					stateId: 'loadinggist' if initialGistId is not null else 'editing',
+					initialCode: initialCode,
+					currentCode: '',
+					currentView: '',
+					consoleOutput: '',
+				},
+			},
+		}
+
+		// If there is an initial gist ID, download it from GitHub. Note that we use the setTimeout
+		// to ensure that the UI is rendered before we make the request.
+		if initialGistId is not null {
+			setTimeout(function() {
+				app.loadGist(initialGistId)
+			}, 50)
+		}
+
+		return app
+	}
+
+	function<void> loadGist(initialGistId string) {
+		gistText, err := GetURLContents(`https://api.github.com/gists/${initialGistId}`)
+		if gistText is not null {
+			info := gistInfo.Parse<json>(gistText)
+			UpdateComponentState(this, this.state{
+				stateId: 'editing',
+				gistInfo: info,
+				initialCode: info.files['entrypoint.seru']?.content ?? this.state.initialCode,
+			})
+			return
+		}
+
+		UpdateComponentState(this, this.state{stateId: 'couldnotloadgist'})
+	}
+
+	function<void> dismissModal() {
+		UpdateComponentState(this, this.state{stateId: 'editing'})
+	}
+
+	function<any> Render(context Context) {
 		return <Div id="rootElement">
-			<Nav className="navbar navbar-default" style="margin-bottom: 0px">
-				<A className="navbar-brand" href="#">Serulian Playground</A>
-
-				<Div className="navbar-form navbar-left" @If={!this.state.working}>
-					<Button className="btn btn-primary" onclick={this.runProject}
-					        @DynamicAttributes={{'disabled': this.state.currentCode.IsEmpty}}>
-						Run
-					</Button>
-				</Div>
-
-				<Div className="navbar-form navbar-left" @If={this.state.working}>
+			<Div className="modal-overlay" @If={this.state.stateId == 'loadinggist'}>
+				<Div className="model-content">
 					<Div className="spinner" />
+					<Div className="model-overlay-message">
+						Please wait while we load the gist for this playground
+					</Div>
 				</Div>
+			</Div>
 
-				<Div className="navbar-form navbar-left" @If={this.state.serverError}>
-					A server error occurred. Please try again shortly.
+			<Div className="modal-overlay"
+			     @If={this.state.stateId == 'couldnotshare' || this.state.stateId == 'servererror' || this.state.stateId == 'couldnotloadgist'}>
+				<Div className="model-content">
+					<Div className="model-overlay-message"
+					     @If={this.state.stateId == 'couldnotshare'}>
+						An error occurred while trying to share this playground
+					</Div>
+					<Div className="model-overlay-message" @If={this.state.stateId == 'servererror'}>
+						An error occurred while trying to build this playground
+					</Div>
+					<Div className="model-overlay-message"
+					     @If={this.state.stateId == 'couldnotloadgist'}>
+						An error occurred while trying to load the gist for this playground
+					</Div>
+					<Div className="model-overlay-dismiss">
+						<Button className="btn btn-primary btn-large" onclick={this.dismissModal}>OKAY</Button>
+					</Div>
 				</Div>
-			</Nav>
+			</Div>
 
-			<Div className="container-fluid editor-and-viewer">
-				<Div className="row">
-					<Div className="col-md-6 col-sm-12">
-						<CodeEditor IsReadOnly={this.state.working} OnChanged={this.codeChanged}
-						            Mode={buildSerulianAceMode()}>
-							{initialCode}
-						</CodeEditor>
+			<Div>
+				<Nav className="navbar navbar-default">
+					<A className="navbar-brand" href="#">
+						<Img className="logo" src="serulian.png" />
+						<Span className="title">Serulian Playground</Span>
+					</A>
+
+					<Div className="navbar-form navbar-left" @If={this.state.stateId == 'editing'}>
+						<Button className="btn btn-primary" onclick={this.runProject}
+						        @DynamicAttributes={{'disabled': this.state.currentCode.IsEmpty}}>
+							Run
+						</Button>
+						<Button className="btn btn-default" onclick={this.shareProject}
+						        @DynamicAttributes={{'disabled': this.state.currentCode.IsEmpty}}
+						        @If={this.state.gistInfo is null}>
+							Share (Public)
+						</Button>
+						<Span className="shared" @If={this.state.gistInfo is not null}>
+							<Button className="btn" disabled>Shared</Button>
+							<Span className="shared-url url">
+								<Input className="form-control" type="text"
+								       value={'http://serulian.io/p/' + (this.state.gistInfo?.id ?? '')}
+								       readonly />
+							</Span>
+							<Span className="shared-url gist">
+								<Input className="form-control" type="text" value={this.state.gistInfo?.html_url}
+								       readonly />
+							</Span>
+						</Span>
 					</Div>
 
-					<Div className="col-md-6 col-sm-12">
-						<Div style="text-align: center; margin-top: 20px;"
+					<Div className="navbar-form navbar-left"
+					     @If={this.state.stateId == 'building' || this.state.stateId == 'sharing'}>
+						<Div className="spinner" />
+					</Div>
+				</Nav>
+
+				<Div className="editor-and-viewer">
+					<Div className="left-col">
+						<Div className="code-editor-row">
+							<Div className="section-title">Serulian</Div>
+							<Div style="height: 100%;" @If={this.state.stateId != 'loadinggist'}>
+								<CodeEditor IsReadOnly={this.state.stateId != 'editing'}
+								            OnChanged={this.codeChanged} Mode={buildSerulianAceMode()}
+								            Theme="chrome">
+									{this.state.initialCode}
+								</CodeEditor>
+							</Div>
+						</Div>
+						<Div className="output-row">
+							<Div className="section-title">Build Output</Div>
+							<Pre className="build-result"
+							     @If={!(this.state.buildResult?.Output?.IsEmpty ?? true)}>
+								{this.state.buildResult?.Output}
+							</Pre>
+						</Div>
+					</Div>
+
+					<Div className="right-col">
+						<Div className="section-title">Running Application</Div>
+
+						<Div className="enter-code"
 						     @If={this.state.buildResult?.GeneratedSourceFile is null}
-						     @If={!this.state.working}>
-							<Span className="glyphicon glyphicon-arrow-left" /> Enter some code and hit "Run"
+						     @If={this.state.stateId != 'building'}>
+							<Span className="glyphicon glyphicon-arrow-left" /> Enter code and hit "Run"
 						</Div>
 
-						<Div style="text-align: center; margin-top: 20px;" @If={this.state.working}>
-							Building...
+						<Div class="building" @If={this.state.stateId == 'building'}>
+							<Span className="glyphicon glyphicon-refresh" />
+							Building
 						</Div>
 
 						<IFrame ondomnodeinserted={this.emitCode}
 						        sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals"
 						        frameborder="0"
 						        @If={!(this.state.buildResult?.GeneratedSourceFile?.IsEmpty ?? true)} />
-					</Div>
-				</Div>
-
-				<Div className="row" @If={this.state.buildResult is not null}
-				     @If={!this.state.working}>
-					<Div className="col-md-12">
-						<Pre className="build-result">{this.state.buildResult?.Output}</Pre>
 					</Div>
 				</Div>
 			</Div>
@@ -277,7 +418,18 @@ function<any> Run() {
  * Start starts the playground user interface, attaching it to the given DOM element.
  */
 function<void> Start(element Element) {
-	RenderComponent(<App />, element)
+	var<string?> gistId = null
+
+	// Extract the gist ID from the URL, if applicable.
+	path := string(location.pathname)
+	if path.HasPrefix("/p/") {
+		gistId = path['/p/'.Length:]
+		if gistId?.IsEmpty ?? false {
+			gistId = null
+		}
+	}
+
+	RenderComponent(<PlaygroundApp InitialGistId={gistId} />, element)
 }
 
 /**
@@ -288,10 +440,9 @@ class PlaygroundEditor with playgroundBase {
 		return PlaygroundEditor{
 			playgroundBase: playgroundBase{
 				state: playgroundState{
-					working: false,
+					stateId: 'editing',
 					currentCode: code,
 					initialCode: code,
-					serverError: false,
 					currentView: 'edit',
 					consoleOutput: '',
 				},
@@ -326,8 +477,9 @@ class PlaygroundEditor with playgroundBase {
 
 		return <Div className="playgroundEditor" style={'height: ' + height}>
 			<Div className="pane" @HideIf={this.state.currentView != 'edit'}>
-				<CodeEditor IsReadOnly={this.state.working} OnChanged={this.codeChanged}
-				            Theme="chrome" Mode={buildSerulianAceMode()}>
+				<CodeEditor IsReadOnly={this.state.stateId != 'editing'}
+				            OnChanged={this.codeChanged} Theme="chrome"
+				            Mode={buildSerulianAceMode()}>
 					{this.state.currentCode.Trim()}
 				</CodeEditor>
 			</Div>
@@ -367,13 +519,13 @@ class PlaygroundEditor with playgroundBase {
 				</Ul>
 
 				<Button className="btn btn-primary" onclick={this.runProject}
-				        @If={!this.state.working}>
+				        @If={this.state.stateId == 'editing'}>
 					Run
 				</Button>
 
-				<Div className="spinner" @If={this.state.working} />
+				<Div className="spinner" @If={this.state.stateId == 'building'} />
 
-				<Div className="server-error" @If={this.state.serverError}>
+				<Div className="server-error" @If={this.state.stateId == 'servererror'}>
 					A server error occurred. Please try again shortly.
 				</Div>
 			</Div>
