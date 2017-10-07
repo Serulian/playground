@@ -759,13 +759,13 @@ this.Serulian = (function ($global) {
               fullId = fullId + arguments[i].$typeId;
               generics[i] = arguments[i];
             }
-            var cached = module[fullName];
+            var cached = module[fullId];
             if (cached) {
               return cached;
             }
             var tpe = buildType(fullId + '>', fullName, generics);
             tpe.$generic = genericType;
-            return module[fullName] = tpe;
+            return module[fullId] = tpe;
           };
         } else {
           module[name] = buildType(typeId, name);
@@ -827,11 +827,11 @@ this.Serulian = (function ($global) {
             case 0:
               $this.element = $t.cast(node, $global.Element, false);
               editor = $global.ace.edit($t.assertnotnull($this.element));
-              editor.setTheme($t.unbox($g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("ace/theme/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([$t.syncnullcompare($this.props.Theme, function () {
-                return $t.fastbox("monokai", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              editor.setTheme($t.unbox($g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("ace/theme/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([$t.syncnullcompare($this.props.Theme, function () {
+                return $t.fastbox("monokai", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               })]))));
               initialValue = $t.syncnullcompare($t.nullableinvoke($this.initialValue, 'Trim', false, []), function () {
-                return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+                return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               });
               editor.getSession().setValue(initialValue.$wrapped);
               if ($this.props.Mode != null) {
@@ -866,7 +866,7 @@ this.Serulian = (function ($global) {
                       break;
 
                     case 1:
-                      onChanged($t.fastbox(editor.getSession().getValue(), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                      onChanged($t.fastbox(editor.getSession().getValue(), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                       $current = 2;
                       continue syncloop;
 
@@ -896,8 +896,8 @@ this.Serulian = (function ($global) {
             case 0:
               $this.props = $t.cast(props, $g.codeeditor.codeEditorProps, false);
               $t.nullableinvoke($this.editor, 'setReadOnly', false, [$t.unbox($this.props.IsReadOnly)]);
-              $t.nullableinvoke($this.editor, 'setTheme', false, [$t.unbox($g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("ace/theme/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([$t.syncnullcompare($this.props.Theme, function () {
-                return $t.fastbox("monokai", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              $t.nullableinvoke($this.editor, 'setTheme', false, [$t.unbox($g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("ace/theme/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([$t.syncnullcompare($this.props.Theme, function () {
+                return $t.fastbox("monokai", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               })])))]);
               if ($this.props.Mode != null) {
                 $current = 1;
@@ -920,8 +920,8 @@ this.Serulian = (function ($global) {
       };
       $instance.Render = function (context) {
         var $this = this;
-        return $g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-          className: $t.fastbox("editor", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+        return $g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+          className: $t.fastbox("editor", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
         }), $generator.directempty());
       };
       this.$typesig = function () {
@@ -929,11 +929,11 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Declare|1|1f77dd0b<b33a874e>": true,
-          "Attached|2|1f77dd0b<void>": true,
+          "Declare|1|e429e0b7<b33a874e>": true,
+          "Attached|2|e429e0b7<void>": true,
           "Props|3|any": true,
-          "PropsUpdated|2|1f77dd0b<void>": true,
-          "Render|2|1f77dd0b<any>": true,
+          "PropsUpdated|2|e429e0b7<void>": true,
+          "Render|2|e429e0b7<any>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -951,11 +951,11 @@ this.Serulian = (function ($global) {
         return instance;
       };
       $static.Global = function (globalId) {
-        return $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment(T).new($g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("@@", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([globalId])));
+        return $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment(T).new($g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("@@", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([globalId])));
       };
       $static.Unique = function (prefix) {
-        $g.pkg.github.com.serulian.attachment.HEAD.attachment.attachmentCounter = $t.fastbox($g.pkg.github.com.serulian.attachment.HEAD.attachment.attachmentCounter.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
-        return $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment(T).new($g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("@@", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("-", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([prefix, $g.pkg.github.com.serulian.attachment.HEAD.attachment.attachmentCounter])));
+        $g.pkg.github.com.serulian.attachment.HEAD.attachment.attachmentCounter = $t.fastbox($g.pkg.github.com.serulian.attachment.HEAD.attachment.attachmentCounter.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+        return $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment(T).new($g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("@@", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("-", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([prefix, $g.pkg.github.com.serulian.attachment.HEAD.attachment.attachmentCounter])));
       };
       $instance.$index = function (instance) {
         var $this = this;
@@ -1042,7 +1042,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 3:
-              $global.Object.defineProperty(obj, propName.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($global.Boolean).overObject((function () {
+              $global.Object.defineProperty(obj, propName.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($global.Boolean).overObject((function () {
                 var obj = {
                 };
                 obj['writable'] = true;
@@ -1067,20 +1067,20 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "setindex|4|1f77dd0b<void>": true,
-          "Set|2|1f77dd0b<void>": true,
+          "setindex|4|e429e0b7<void>": true,
+          "Set|2|e429e0b7<void>": true,
         };
-        computed[("Global|1|1f77dd0b<9dc93e00<" + $t.typeid(T)) + ">>"] = true;
-        computed[("Unique|1|1f77dd0b<9dc93e00<" + $t.typeid(T)) + ">>"] = true;
-        computed[("index|4|1f77dd0b<" + $t.typeid(T)) + ">"] = true;
-        computed[("Get|2|1f77dd0b<" + $t.typeid(T)) + ">"] = true;
+        computed[("Global|1|e429e0b7<9dc93e00<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Unique|1|e429e0b7<9dc93e00<" + $t.typeid(T)) + ">>"] = true;
+        computed[("index|4|e429e0b7<" + $t.typeid(T)) + ">"] = true;
+        computed[("Get|2|e429e0b7<" + $t.typeid(T)) + ">"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.attachmentCounter = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        $static.attachmentCounter = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
         resolve();
       });
     }, 'e9c3608f', []);
@@ -1213,9 +1213,9 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "NodeRemoved|2|1f77dd0b<void>": true,
-          "NodeCreated|2|1f77dd0b<void>": true,
-          "NodeUpdated|2|1f77dd0b<void>": true,
+          "NodeRemoved|2|e429e0b7<void>": true,
+          "NodeCreated|2|e429e0b7<void>": true,
+          "NodeUpdated|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -1256,11 +1256,11 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "ForElement|1|1f77dd0b<34ad949c>": true,
+          "ForElement|1|e429e0b7<34ad949c>": true,
           "Renderer|3|3a8d0c9f": true,
           "EventManager|3|7a954a75": true,
         };
-        computed[("Get|2|1f77dd0b<" + $t.typeid(T)) + ">"] = true;
+        computed[("Get|2|e429e0b7<" + $t.typeid(T)) + ">"] = true;
         return this.$cachedtypesig = computed;
       };
     });
@@ -1309,7 +1309,7 @@ this.Serulian = (function ($global) {
                 break;
 
               case 2:
-                cached = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.component.HEAD.interfaces.PropsUpdatable).Global($g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("cache-", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([pathUnderRoot]))).Get(context);
+                cached = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.component.HEAD.interfaces.PropsUpdatable).Global($g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("cache-", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([pathUnderRoot]))).Get(context);
                 if (cached != null) {
                   $current = 3;
                   continue localasyncloop;
@@ -1353,14 +1353,14 @@ this.Serulian = (function ($global) {
 
               case 7:
                 rendered = ($temp0 = rendered.Clone(), $temp0.Key = $t.syncnullcompare(rendered.Key, function () {
-                  return $g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("__component_propsupdated_", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([$g.pkg.github.com.serulian.component.HEAD.component.propsKeyCounter]));
+                  return $g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("__component_propsupdated_", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([$g.pkg.github.com.serulian.component.HEAD.component.propsKeyCounter]));
                 }), $temp0);
-                $g.pkg.github.com.serulian.component.HEAD.component.propsKeyCounter = $t.fastbox($g.pkg.github.com.serulian.component.HEAD.component.propsKeyCounter.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+                $g.pkg.github.com.serulian.component.HEAD.component.propsKeyCounter = $t.fastbox($g.pkg.github.com.serulian.component.HEAD.component.propsKeyCounter.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
                 $current = 8;
                 continue localasyncloop;
 
               case 8:
-                requiresCallback = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+                requiresCallback = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
                 try {
                   var $expr = $t.cast(component, $g.pkg.github.com.serulian.component.HEAD.interfaces.DOMAttached, false);
                   attachEvented = $expr;
@@ -1381,7 +1381,7 @@ this.Serulian = (function ($global) {
                 break;
 
               case 10:
-                requiresCallback = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+                requiresCallback = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
                 $current = 11;
                 continue localasyncloop;
 
@@ -1406,7 +1406,7 @@ this.Serulian = (function ($global) {
                 break;
 
               case 13:
-                requiresCallback = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+                requiresCallback = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
                 $current = 14;
                 continue localasyncloop;
 
@@ -1431,7 +1431,7 @@ this.Serulian = (function ($global) {
                 break;
 
               case 16:
-                requiresCallback = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+                requiresCallback = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
                 $current = 17;
                 continue localasyncloop;
 
@@ -1496,7 +1496,7 @@ this.Serulian = (function ($global) {
                 break;
 
               case 20:
-                $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.component.HEAD.interfaces.PropsUpdatable).Global($g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("cache-", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([pathUnderRoot]))).Set(context, propsUpdatable);
+                $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.component.HEAD.interfaces.PropsUpdatable).Global($g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("cache-", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([pathUnderRoot]))).Set(context, propsUpdatable);
                 $current = 21;
                 continue localasyncloop;
 
@@ -1517,7 +1517,7 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Render|2|1f77dd0b<141b3b08>": true,
+          "Render|2|e429e0b7<141b3b08>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -1539,7 +1539,7 @@ this.Serulian = (function ($global) {
               currentVirtualNode = $t.assertnotnull($g.pkg.github.com.serulian.component.HEAD.component.componentVirtualNode.Get(component));
               context = $t.assertnotnull($g.pkg.github.com.serulian.component.HEAD.component.componentsContext.Get(component));
               node = $t.assertnotnull($g.pkg.github.com.serulian.component.HEAD.component.componentDOMNode.Get(component));
-              $promise.maybe(context.renderer.Render(component, component, $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), context)).then(function ($result0) {
+              $promise.maybe(context.renderer.Render(component, component, $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), context)).then(function ($result0) {
                 $result = $result0;
                 $current = 1;
                 $continue($resolve, $reject);
@@ -1602,7 +1602,7 @@ this.Serulian = (function ($global) {
           switch ($current) {
             case 0:
               context = $g.pkg.github.com.serulian.component.HEAD.component.componentContext.ForElement(parent);
-              $promise.maybe(context.renderer.Render(component, component, $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), context)).then(function ($result0) {
+              $promise.maybe(context.renderer.Render(component, component, $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), context)).then(function ($result0) {
                 $result = $result0;
                 $current = 1;
                 $continue($resolve, $reject);
@@ -1615,7 +1615,7 @@ this.Serulian = (function ($global) {
 
             case 1:
               rendered = $result;
-              parentVNode = ($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.TagName = $t.fastbox(parent.tagName, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp0.Children = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).overArray([rendered]), $temp0);
+              parentVNode = ($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.TagName = $t.fastbox(parent.tagName, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.Children = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).overArray([rendered]), $temp0);
               $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.diff.ComputeDiff(parentVNode, $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.NodeWrapper.For(parent))).then(function ($result0) {
                 $result = $result0;
                 $current = 2;
@@ -1650,31 +1650,31 @@ this.Serulian = (function ($global) {
     });
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.componentVirtualNode = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Unique($t.fastbox('cvn', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+        $static.componentVirtualNode = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Unique($t.fastbox('cvn', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
         resolve();
       });
     }, 'd4385989', ['e9c3608f']);
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.componentDOMNode = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($global.Node).Unique($t.fastbox('cdn', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+        $static.componentDOMNode = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($global.Node).Unique($t.fastbox('cdn', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
         resolve();
       });
     }, 'da9888d0', ['e9c3608f']);
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.domNodeComponent = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($t.any).Unique($t.fastbox('dnc', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+        $static.domNodeComponent = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($t.any).Unique($t.fastbox('dnc', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
         resolve();
       });
     }, 'aee71e3d', ['e9c3608f']);
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.componentsContext = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.component.HEAD.component.componentContext).Unique($t.fastbox('cc', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+        $static.componentsContext = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.component.HEAD.component.componentContext).Unique($t.fastbox('cc', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
         resolve();
       });
     }, '9637de47', ['e9c3608f']);
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.propsKeyCounter = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        $static.propsKeyCounter = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
         resolve();
       });
     }, '11de8f53', []);
@@ -1689,7 +1689,7 @@ this.Serulian = (function ($global) {
         }
         var computed = {
           "Props|3|any": true,
-          "PropsUpdated|2|1f77dd0b<void>": true,
+          "PropsUpdated|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -1702,7 +1702,7 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Attached|2|1f77dd0b<void>": true,
+          "Attached|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -1715,7 +1715,7 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Detached|2|1f77dd0b<void>": true,
+          "Detached|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -1728,27 +1728,27 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Render|2|1f77dd0b<any>": true,
-          "StateUpdated|2|1f77dd0b<void>": true,
+          "Render|2|e429e0b7<any>": true,
+          "StateUpdated|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
   });
-  $module('pkg.github.com.serulian.corelib.branch.master.collections', function () {
+  $module('pkg.github.com.serulian.corelib.HEAD.collections', function () {
     var $static = this;
-    this.$class('4967f98a', 'listStream', true, '', function (I) {
+    this.$class('07d5dc65', 'listStream', true, '', function (I) {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function (list) {
         var instance = new $static();
         instance.list = list;
-        instance.index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        instance.index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
         return instance;
       };
-      $static.For = function (list) {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.listStream(I).new(list);
+      $static.forList = function (list) {
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.listStream(I).new(list);
       };
       $instance.Next = function () {
         var $this = this;
@@ -1766,11 +1766,11 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              return $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.Tuple(I, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean).Build(null, $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean));
+              return $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.Tuple(I, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean).Build(null, $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean));
 
             case 2:
-              $this.index = $t.fastbox($this.index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
-              return $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.Tuple(I, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean).Build($this.list.$index($t.fastbox($this.index.$wrapped - 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)), $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean));
+              $this.index = $t.fastbox($this.index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+              return $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.Tuple(I, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean).Build($this.list.$index($t.fastbox($this.index.$wrapped - 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)), $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean));
 
             default:
               return;
@@ -1783,23 +1783,22 @@ this.Serulian = (function ($global) {
         }
         var computed = {
         };
-        computed[("For|1|1f77dd0b<4967f98a<" + $t.typeid(I)) + ">>"] = true;
-        computed[("Next|2|1f77dd0b<a9e856d3<" + $t.typeid(I)) + ",8ffa0597>>"] = true;
+        computed[("Next|2|e429e0b7<e53a4f4a<" + $t.typeid(I)) + ",8db7ac13>>"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$class('917e49ae', 'sliceStream', true, '', function (I) {
+    this.$class('c13a5776', 'sliceStream', true, '', function (I) {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function (slice) {
         var instance = new $static();
         instance.slice = slice;
-        instance.index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        instance.index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
         return instance;
       };
-      $static.For = function (slice) {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.sliceStream(I).new(slice);
+      $static.forStream = function (slice) {
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.sliceStream(I).new(slice);
       };
       $instance.Next = function () {
         var $this = this;
@@ -1817,11 +1816,11 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              return $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.Tuple(I, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean).Build(null, $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean));
+              return $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.Tuple(I, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean).Build(null, $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean));
 
             case 2:
-              $this.index = $t.fastbox($this.index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
-              return $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.Tuple(I, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean).Build($this.slice.$index($t.fastbox($this.index.$wrapped - 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)), $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean));
+              $this.index = $t.fastbox($this.index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+              return $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.Tuple(I, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean).Build($this.slice.$index($t.fastbox($this.index.$wrapped - 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)), $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean));
 
             default:
               return;
@@ -1834,13 +1833,12 @@ this.Serulian = (function ($global) {
         }
         var computed = {
         };
-        computed[("For|1|1f77dd0b<917e49ae<" + $t.typeid(I)) + ">>"] = true;
-        computed[("Next|2|1f77dd0b<a9e856d3<" + $t.typeid(I)) + ",8ffa0597>>"] = true;
+        computed[("Next|2|e429e0b7<e53a4f4a<" + $t.typeid(I)) + ",8db7ac13>>"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$class('1489face', 'List', true, 'list', function (T) {
+    this.$class('93e1affb', 'List', true, 'list', function (T) {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function () {
@@ -1858,12 +1856,12 @@ this.Serulian = (function ($global) {
         syncloop: while (true) {
           switch ($current) {
             case 0:
-              l = $g.pkg.github.com.serulian.corelib.branch.master.collections.List(T).Empty();
+              l = $g.pkg.github.com.serulian.corelib.HEAD.collections.List(T).Empty();
               $current = 1;
               continue syncloop;
 
             case 1:
-              $temp1 = $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), $t.fastbox(arr.length - 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
+              $temp1 = $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $t.fastbox(arr.length - 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
               $current = 2;
               continue syncloop;
 
@@ -1893,13 +1891,13 @@ this.Serulian = (function ($global) {
         }
       };
       $static.Empty = function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.List(T).new();
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.List(T).new();
       };
       $static.CopyOf = function (other) {
         var l;
-        l = $g.pkg.github.com.serulian.corelib.branch.master.collections.List(T).Empty();
-        l.internalArray = other.internalArray.slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
-        l.indexArray = other.indexArray.slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
+        l = $g.pkg.github.com.serulian.corelib.HEAD.collections.List(T).Empty();
+        l.internalArray = other.internalArray.slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
+        l.indexArray = other.indexArray.slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
         return l;
       };
       $static.Of = $t.markpromising(function (stream) {
@@ -1913,7 +1911,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                l = $g.pkg.github.com.serulian.corelib.branch.master.collections.List(T).Empty();
+                l = $g.pkg.github.com.serulian.corelib.HEAD.collections.List(T).Empty();
                 $current = 1;
                 continue localasyncloop;
 
@@ -1965,19 +1963,19 @@ this.Serulian = (function ($global) {
       });
       $static.Concat = function (first, second) {
         var l;
-        l = $g.pkg.github.com.serulian.corelib.branch.master.collections.List(T).Empty();
-        l.internalArray = first.internalArray.slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)).concat(second.internalArray);
-        l.indexArray = first.indexArray.slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)).concat(second.indexArray);
+        l = $g.pkg.github.com.serulian.corelib.HEAD.collections.List(T).Empty();
+        l.internalArray = first.internalArray.slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)).concat(second.internalArray);
+        l.indexArray = first.indexArray.slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)).concat(second.indexArray);
         return l;
       };
       $static.$bool = function (value) {
-        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $instance.$contains = function (value) {
         var $this = this;
         return $t.fastbox($t.syncnullcompare($this.IndexOf(value), function () {
-          return $t.fastbox(-1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
-        }).$wrapped >= 0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+          return $t.fastbox(-1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+        }).$wrapped >= 0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $instance.$slice = function (startindex, endindex) {
         var $this = this;
@@ -1988,7 +1986,7 @@ this.Serulian = (function ($global) {
           switch ($current) {
             case 0:
               start = $t.syncnullcompare(startindex, function () {
-                return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+                return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               });
               end = $t.syncnullcompare(endindex, function () {
                 return $this.Count();
@@ -2003,7 +2001,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              start = $t.fastbox(start.$wrapped + $this.Count().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              start = $t.fastbox(start.$wrapped + $this.Count().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 2;
               continue syncloop;
 
@@ -2018,7 +2016,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 3:
-              end = $t.fastbox(end.$wrapped + $this.Count().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              end = $t.fastbox(end.$wrapped + $this.Count().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 4;
               continue syncloop;
 
@@ -2033,10 +2031,10 @@ this.Serulian = (function ($global) {
               break;
 
             case 5:
-              return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice(T).Empty();
+              return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice(T).Empty();
 
             case 6:
-              return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice(T).overArray($this.internalArray.slice(start.$wrapped, end.$wrapped));
+              return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice(T).overArray($this.internalArray.slice(start.$wrapped, end.$wrapped));
 
             default:
               return;
@@ -2061,7 +2059,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              finalIndex = $t.fastbox($this.Count().$wrapped + index.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              finalIndex = $t.fastbox($this.Count().$wrapped + index.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 2;
               continue syncloop;
 
@@ -2076,7 +2074,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 3:
-              throw $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.SimpleError.WithMessage($t.fastbox('Index is out of bounds', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              throw $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.SimpleError.WithMessage($t.fastbox('Index is out of bounds', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
 
             case 4:
               return $t.cast($this.internalArray[finalIndex.$wrapped], T, false);
@@ -2104,7 +2102,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              finalIndex = $t.fastbox($this.Count().$wrapped + index.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              finalIndex = $t.fastbox($this.Count().$wrapped + index.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 2;
               continue syncloop;
 
@@ -2119,7 +2117,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 3:
-              throw $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.SimpleError.WithMessage($t.fastbox('Index is out of bounds', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              throw $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.SimpleError.WithMessage($t.fastbox('Index is out of bounds', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
 
             case 4:
               $this.internalArray[finalIndex.$wrapped] = value;
@@ -2132,7 +2130,7 @@ this.Serulian = (function ($global) {
       };
       $instance.Stream = function () {
         var $this = this;
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.listStream(T).For($this);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.listStream(T).forList($this);
       };
       $instance.Add = function (element) {
         var $this = this;
@@ -2178,9 +2176,9 @@ this.Serulian = (function ($global) {
           switch ($current) {
             case 0:
               finalIndex = $t.syncnullcompare(startIndex, function () {
-                return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+                return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               });
-              foundIndex = $t.fastbox($this.indexArray.indexOf($t.unbox(element), finalIndex.$wrapped), $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              foundIndex = $t.fastbox($this.indexArray.indexOf($t.unbox(element), finalIndex.$wrapped), $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               if (foundIndex.$wrapped < 0) {
                 $current = 1;
                 continue syncloop;
@@ -2203,49 +2201,140 @@ this.Serulian = (function ($global) {
       };
       $instance.Count = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.internalArray.length, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox($this.internalArray.length, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       });
       $instance.IsEmpty = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.Count().$wrapped == 0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox($this.Count().$wrapped == 0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       });
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "bool|4|1f77dd0b<8ffa0597>": true,
-          "contains|4|1f77dd0b<8ffa0597>": true,
-          "setindex|4|1f77dd0b<void>": true,
-          "Add|2|1f77dd0b<void>": true,
-          "Remove|2|1f77dd0b<void>": true,
-          "IndexOf|2|1f77dd0b<de04b2c1>": true,
-          "Count|3|de04b2c1": true,
-          "IsEmpty|3|8ffa0597": true,
+          "bool|4|e429e0b7<8db7ac13>": true,
+          "contains|4|e429e0b7<8db7ac13>": true,
+          "setindex|4|e429e0b7<void>": true,
+          "Add|2|e429e0b7<void>": true,
+          "Remove|2|e429e0b7<void>": true,
+          "IndexOf|2|e429e0b7<800df61b>": true,
+          "Count|3|800df61b": true,
+          "IsEmpty|3|8db7ac13": true,
         };
-        computed[("Empty|1|1f77dd0b<1489face<" + $t.typeid(T)) + ">>"] = true;
-        computed[("CopyOf|1|1f77dd0b<1489face<" + $t.typeid(T)) + ">>"] = true;
-        computed[("Of|1|1f77dd0b<1489face<" + $t.typeid(T)) + ">>"] = true;
-        computed[("Concat|1|1f77dd0b<1489face<" + $t.typeid(T)) + ">>"] = true;
-        computed[("slice|4|1f77dd0b<e364cd9a<" + $t.typeid(T)) + ">>"] = true;
-        computed[("index|4|1f77dd0b<" + $t.typeid(T)) + ">"] = true;
-        computed[("Stream|2|1f77dd0b<e2f3e027<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Empty|1|e429e0b7<93e1affb<" + $t.typeid(T)) + ">>"] = true;
+        computed[("CopyOf|1|e429e0b7<93e1affb<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Of|1|e429e0b7<93e1affb<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Concat|1|e429e0b7<93e1affb<" + $t.typeid(T)) + ">>"] = true;
+        computed[("slice|4|e429e0b7<6fe53884<" + $t.typeid(T)) + ">>"] = true;
+        computed[("index|4|e429e0b7<" + $t.typeid(T)) + ">"] = true;
+        computed[("Stream|2|e429e0b7<4c5b42a7<" + $t.typeid(T)) + ">>"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$class('6dc4bfd3', 'Set', true, 'set', function (T) {
+    this.$class('6dc2016b', 'Set', true, 'set', function (T) {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function () {
         var instance = new $static();
         instance.keyMap = $t.nativenew($global.Object)();
-        instance.keys = $g.pkg.github.com.serulian.corelib.branch.master.collections.List(T).Empty();
+        instance.keys = $g.pkg.github.com.serulian.corelib.HEAD.collections.List(T).Empty();
         return instance;
       };
       $static.Empty = function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Set(T).new();
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Set(T).new();
       };
+      $static.Of = $t.markpromising(function (stream) {
+        var $result;
+        var $temp0;
+        var $temp1;
+        var element;
+        var s;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                s = $g.pkg.github.com.serulian.corelib.HEAD.collections.Set(T).Empty();
+                $current = 1;
+                continue localasyncloop;
+
+              case 1:
+                $temp1 = stream;
+                $current = 2;
+                continue localasyncloop;
+
+              case 2:
+                $promise.maybe($temp1.Next()).then(function ($result0) {
+                  $temp0 = $result0;
+                  $result = $temp0;
+                  $current = 3;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 3:
+                element = $temp0.First;
+                if ($temp0.Second.$wrapped) {
+                  $current = 4;
+                  continue localasyncloop;
+                } else {
+                  $current = 5;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 4:
+                s.Add(element);
+                $current = 2;
+                continue localasyncloop;
+
+              case 5:
+                $resolve(s);
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
+      });
+      $static.From = $t.markpromising(function (streamable) {
+        var $result;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                $promise.maybe($g.pkg.github.com.serulian.corelib.HEAD.collections.Set(T).Of(streamable.Stream())).then(function ($result0) {
+                  $result = $result0;
+                  $current = 1;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 1:
+                $resolve($result);
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
+      });
       $instance.Add = function (item) {
         var $this = this;
         var $current = 0;
@@ -2262,12 +2351,12 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              return $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+              return $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
 
             case 2:
               $this.keys.Add(item);
-              $this.keyMap[item.MapKey().String().$wrapped] = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-              return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+              $this.keyMap[item.MapKey().String().$wrapped] = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+              return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
 
             default:
               return;
@@ -2290,12 +2379,12 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              return $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+              return $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
 
             case 2:
               $this.keys.Remove(item);
               $this.keyMap[item.MapKey().String().$wrapped] = null;
-              return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+              return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
 
             default:
               return;
@@ -2304,7 +2393,7 @@ this.Serulian = (function ($global) {
       };
       $instance.Contains = function (item) {
         var $this = this;
-        return $t.fastbox(!($this.keyMap[item.MapKey().String().$wrapped] == null), $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox(!($this.keyMap[item.MapKey().String().$wrapped] == null), $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $instance.Stream = function () {
         var $this = this;
@@ -2315,7 +2404,7 @@ this.Serulian = (function ($global) {
         return $this.keys.IsEmpty();
       });
       $static.$bool = function (value) {
-        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $instance.$contains = function (value) {
         var $this = this;
@@ -2326,30 +2415,32 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Add|2|1f77dd0b<8ffa0597>": true,
-          "Remove|2|1f77dd0b<8ffa0597>": true,
-          "Contains|2|1f77dd0b<8ffa0597>": true,
-          "IsEmpty|3|8ffa0597": true,
-          "bool|4|1f77dd0b<8ffa0597>": true,
-          "contains|4|1f77dd0b<8ffa0597>": true,
+          "Add|2|e429e0b7<8db7ac13>": true,
+          "Remove|2|e429e0b7<8db7ac13>": true,
+          "Contains|2|e429e0b7<8db7ac13>": true,
+          "IsEmpty|3|8db7ac13": true,
+          "bool|4|e429e0b7<8db7ac13>": true,
+          "contains|4|e429e0b7<8db7ac13>": true,
         };
-        computed[("Empty|1|1f77dd0b<6dc4bfd3<" + $t.typeid(T)) + ">>"] = true;
-        computed[("Stream|2|1f77dd0b<e2f3e027<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Empty|1|e429e0b7<6dc2016b<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Of|1|e429e0b7<6dc2016b<" + $t.typeid(T)) + ">>"] = true;
+        computed[("From|1|e429e0b7<6dc2016b<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Stream|2|e429e0b7<4c5b42a7<" + $t.typeid(T)) + ">>"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$class('2772657a', 'Map', true, 'map', function (T, Q) {
+    this.$class('4998eb02', 'Map', true, 'map', function (T, Q) {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function () {
         var instance = new $static();
         instance.internalObject = $t.nativenew($global.Object)();
-        instance.keys = $g.pkg.github.com.serulian.corelib.branch.master.collections.Set(T).Empty();
+        instance.keys = $g.pkg.github.com.serulian.corelib.HEAD.collections.Set(T).Empty();
         return instance;
       };
       $static.Empty = function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Map(T, Q).new();
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Map(T, Q).new();
       };
       $static.forArrays = function (keys, values) {
         var $temp0;
@@ -2362,13 +2453,13 @@ this.Serulian = (function ($global) {
         syncloop: while (true) {
           switch ($current) {
             case 0:
-              map = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map(T, Q).new();
-              len = $t.fastbox(keys.length, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              map = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map(T, Q).new();
+              len = $t.fastbox(keys.length, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 1;
               continue syncloop;
 
             case 1:
-              $temp1 = $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), $t.fastbox(len.$wrapped - 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
+              $temp1 = $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $t.fastbox(len.$wrapped - 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
               $current = 2;
               continue syncloop;
 
@@ -2398,10 +2489,37 @@ this.Serulian = (function ($global) {
           }
         }
       };
-      $instance.Mapping = function () {
+      $instance.Mapping = $t.markpromising(function () {
         var $this = this;
-        return $t.fastbox($this.internalObject, $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping(Q));
-      };
+        var $result;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                $promise.maybe($t.fastbox($this.internalObject, $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping(Q)).Clone()).then(function ($result0) {
+                  $result = $result0;
+                  $current = 1;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 1:
+                $resolve($result);
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
+      });
       $instance.Keys = $t.property(function () {
         var $this = this;
         return $this.keys.Stream();
@@ -2470,29 +2588,10 @@ this.Serulian = (function ($global) {
       $instance.$setindex = function (key, value) {
         var $this = this;
         var keyString;
-        var $current = 0;
-        syncloop: while (true) {
-          switch ($current) {
-            case 0:
-              keyString = key.MapKey().String();
-              if ($this.keys.Add(key).$wrapped) {
-                $current = 1;
-                continue syncloop;
-              } else {
-                $current = 2;
-                continue syncloop;
-              }
-              break;
-
-            case 1:
-              $this.internalObject[keyString.$wrapped] = value;
-              $current = 2;
-              continue syncloop;
-
-            default:
-              return;
-          }
-        }
+        keyString = key.MapKey().String();
+        $this.keys.Add(key);
+        $this.internalObject[keyString.$wrapped] = value;
+        return;
       };
       $instance.IsEmpty = $t.property(function () {
         var $this = this;
@@ -2503,29 +2602,29 @@ this.Serulian = (function ($global) {
         return $this.HasKey(key);
       };
       $static.$bool = function (value) {
-        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "RemoveKey|2|1f77dd0b<void>": true,
-          "HasKey|2|1f77dd0b<8ffa0597>": true,
-          "setindex|4|1f77dd0b<void>": true,
-          "IsEmpty|3|8ffa0597": true,
-          "contains|4|1f77dd0b<8ffa0597>": true,
-          "bool|4|1f77dd0b<8ffa0597>": true,
+          "RemoveKey|2|e429e0b7<void>": true,
+          "HasKey|2|e429e0b7<8db7ac13>": true,
+          "setindex|4|e429e0b7<void>": true,
+          "IsEmpty|3|8db7ac13": true,
+          "contains|4|e429e0b7<8db7ac13>": true,
+          "bool|4|e429e0b7<8db7ac13>": true,
         };
-        computed[((("Empty|1|1f77dd0b<2772657a<" + $t.typeid(T)) + ",") + $t.typeid(Q)) + ">>"] = true;
-        computed[("Mapping|2|1f77dd0b<75a81c47<" + $t.typeid(Q)) + ">>"] = true;
-        computed[("Keys|3|e2f3e027<" + $t.typeid(T)) + ">"] = true;
-        computed[("index|4|1f77dd0b<" + $t.typeid(Q)) + ">"] = true;
+        computed[((("Empty|1|e429e0b7<4998eb02<" + $t.typeid(T)) + ",") + $t.typeid(Q)) + ">>"] = true;
+        computed[("Mapping|2|e429e0b7<1898496b<" + $t.typeid(Q)) + ">>"] = true;
+        computed[("Keys|3|4c5b42a7<" + $t.typeid(T)) + ">"] = true;
+        computed[("index|4|e429e0b7<" + $t.typeid(Q)) + ">"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$type('75a81c47', 'Mapping', true, 'mapping', function (T) {
+    this.$type('1898496b', 'Mapping', true, 'mapping', function (T) {
       var $instance = this.prototype;
       var $static = this;
       this.$box = function ($wrapped) {
@@ -2537,20 +2636,86 @@ this.Serulian = (function ($global) {
         return $global.Object;
       };
       $static.Empty = function () {
-        return $t.fastbox($t.nativenew($global.Object)(), $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping(T));
+        return $t.fastbox($t.nativenew($global.Object)(), $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping(T));
       };
       $static.overObject = function (obj) {
-        return $t.fastbox(obj, $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping(T));
+        return $t.fastbox(obj, $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping(T));
       };
       $instance.Keys = $t.property(function () {
         var $this = this;
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray($global.Object.keys($this.$wrapped));
+        var $result;
+        var $temp0;
+        var $temp1;
+        var index;
+        var nativeKeys;
+        var $current = 0;
+        var $continue = function ($yield, $yieldin, $reject, $done) {
+          while (true) {
+            switch ($current) {
+              case 0:
+                nativeKeys = $global.Object.keys($this.$wrapped);
+                $current = 1;
+                $continue($yield, $yieldin, $reject, $done);
+                return;
+
+              case 1:
+                $temp1 = $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$exclusiverange($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $t.fastbox(nativeKeys.length, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
+                $current = 2;
+                $continue($yield, $yieldin, $reject, $done);
+                return;
+
+              case 2:
+                $promise.maybe($temp1.Next()).then(function ($result0) {
+                  $temp0 = $result0;
+                  $result = $temp0;
+                  $current = 3;
+                  $continue($yield, $yieldin, $reject, $done);
+                  return;
+                }).catch(function (err) {
+                  throw err;
+                });
+                return;
+
+              case 3:
+                index = $temp0.First;
+                if ($temp0.Second.$wrapped) {
+                  $current = 4;
+                  $continue($yield, $yieldin, $reject, $done);
+                  return;
+                } else {
+                  $current = 6;
+                  $continue($yield, $yieldin, $reject, $done);
+                  return;
+                }
+                break;
+
+              case 4:
+                $yield($t.fastbox($t.cast(nativeKeys[$t.unbox(index)], $global.String, false), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                $current = 5;
+                return;
+
+              case 5:
+                $current = 2;
+                $continue($yield, $yieldin, $reject, $done);
+                return;
+
+              case 6:
+                $done();
+                return;
+
+              default:
+                $done();
+                return;
+            }
+          }
+        };
+        return $generator.new($continue, true);
       });
       $instance.IsEmpty = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.Keys().Length().$wrapped == 0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox($global.Object.keys($this.$wrapped).length == 0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       });
-      $instance.WithEntry = $t.markpromising(function (key, value) {
+      $instance.Clone = $t.markpromising(function () {
         var $this = this;
         var $result;
         var $temp0;
@@ -2567,15 +2732,9 @@ this.Serulian = (function ($global) {
                 continue localasyncloop;
 
               case 1:
-                $temp1 = $this.Keys().Stream();
-                $current = 2;
-                continue localasyncloop;
-
-              case 2:
-                $promise.maybe($temp1.Next()).then(function ($result0) {
-                  $temp0 = $result0;
-                  $result = $temp0;
-                  $current = 3;
+                $promise.maybe($this.Keys()).then(function ($result0) {
+                  $result = $result0;
+                  $current = 2;
                   $continue($resolve, $reject);
                   return;
                 }).catch(function (err) {
@@ -2584,25 +2743,78 @@ this.Serulian = (function ($global) {
                 });
                 return;
 
+              case 2:
+                $temp1 = $result;
+                $current = 3;
+                continue localasyncloop;
+
               case 3:
+                $promise.maybe($temp1.Next()).then(function ($result0) {
+                  $temp0 = $result0;
+                  $result = $temp0;
+                  $current = 4;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 4:
                 existingKey = $temp0.First;
                 if ($temp0.Second.$wrapped) {
-                  $current = 4;
+                  $current = 5;
                   continue localasyncloop;
                 } else {
-                  $current = 5;
+                  $current = 6;
                   continue localasyncloop;
                 }
                 break;
 
-              case 4:
+              case 5:
                 copy[existingKey.$wrapped] = $this.$index(existingKey);
-                $current = 2;
+                $current = 3;
                 continue localasyncloop;
 
-              case 5:
-                copy[key.$wrapped] = value;
-                $resolve($t.fastbox(copy, $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping(T)));
+              case 6:
+                $resolve($t.fastbox(copy, $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping(T)));
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
+      });
+      $instance.WithEntry = $t.markpromising(function (key, value) {
+        var $this = this;
+        var $result;
+        var copy;
+        var o;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                $promise.maybe($this.Clone()).then(function ($result0) {
+                  $result = $result0;
+                  $current = 1;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 1:
+                copy = $result;
+                o = copy.$wrapped;
+                o[key.$wrapped] = value;
+                $resolve(copy);
                 return;
 
               default:
@@ -2614,14 +2826,7 @@ this.Serulian = (function ($global) {
         return $promise.new($continue);
       });
       $static.$bool = function (value) {
-        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-      };
-      $instance.$setindex = function (key, value) {
-        var $this = this;
-        var o;
-        o = $this.$wrapped;
-        o[key.$wrapped] = value;
-        return;
+        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $instance.$index = function (key) {
         var $this = this;
@@ -2656,19 +2861,19 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Keys|3|e364cd9a<5208c0f1>": true,
-          "IsEmpty|3|8ffa0597": true,
-          "bool|4|1f77dd0b<8ffa0597>": true,
-          "setindex|4|1f77dd0b<void>": true,
+          "Keys|3|4c5b42a7<6b38bbd3>": true,
+          "IsEmpty|3|8db7ac13": true,
+          "bool|4|e429e0b7<8db7ac13>": true,
         };
-        computed[("Empty|1|1f77dd0b<75a81c47<" + $t.typeid(T)) + ">>"] = true;
-        computed[("WithEntry|2|1f77dd0b<75a81c47<" + $t.typeid(T)) + ">>"] = true;
-        computed[("index|4|1f77dd0b<" + $t.typeid(T)) + ">"] = true;
+        computed[("Empty|1|e429e0b7<1898496b<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Clone|2|e429e0b7<1898496b<" + $t.typeid(T)) + ">>"] = true;
+        computed[("WithEntry|2|e429e0b7<1898496b<" + $t.typeid(T)) + ">>"] = true;
+        computed[("index|4|e429e0b7<" + $t.typeid(T)) + ">"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$type('e364cd9a', 'Slice', true, 'slice', function (T) {
+    this.$type('6fe53884', 'Slice', true, 'slice', function (T) {
       var $instance = this.prototype;
       var $static = this;
       this.$box = function ($wrapped) {
@@ -2680,7 +2885,7 @@ this.Serulian = (function ($global) {
         return $global.Array;
       };
       $static.Empty = function () {
-        return $t.fastbox($t.nativenew($global.Array)(), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice(T));
+        return $t.fastbox($t.nativenew($global.Array)(), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice(T));
       };
       $static.From = $t.markpromising(function (items) {
         var $result;
@@ -2693,7 +2898,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                s = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice(T).Empty();
+                s = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice(T).Empty();
                 $current = 1;
                 continue localasyncloop;
 
@@ -2744,10 +2949,10 @@ this.Serulian = (function ($global) {
         return $promise.new($continue);
       });
       $static.ForArray = function (arr) {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice(T).overArray(arr);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice(T).overArray(arr);
       };
       $static.overArray = function (arr) {
-        return $t.fastbox(arr, $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice(T));
+        return $t.fastbox(arr, $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice(T));
       };
       $instance.$slice = function (startindex, endindex) {
         var $this = this;
@@ -2758,7 +2963,7 @@ this.Serulian = (function ($global) {
           switch ($current) {
             case 0:
               start = $t.syncnullcompare(startindex, function () {
-                return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+                return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               });
               end = $t.syncnullcompare(endindex, function () {
                 return $this.Length();
@@ -2773,7 +2978,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              start = $t.fastbox(start.$wrapped + $this.Length().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              start = $t.fastbox(start.$wrapped + $this.Length().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 2;
               continue syncloop;
 
@@ -2788,7 +2993,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 3:
-              end = $t.fastbox(end.$wrapped + $this.Length().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              end = $t.fastbox(end.$wrapped + $this.Length().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 4;
               continue syncloop;
 
@@ -2803,10 +3008,10 @@ this.Serulian = (function ($global) {
               break;
 
             case 5:
-              return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice(T).Empty();
+              return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice(T).Empty();
 
             case 6:
-              return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice(T).overArray($this.$wrapped.slice(start.$wrapped, end.$wrapped));
+              return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice(T).overArray($this.$wrapped.slice(start.$wrapped, end.$wrapped));
 
             default:
               return;
@@ -2831,7 +3036,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              finalIndex = $t.fastbox($this.Length().$wrapped + index.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              finalIndex = $t.fastbox($this.Length().$wrapped + index.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 2;
               continue syncloop;
 
@@ -2846,7 +3051,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 3:
-              throw $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.SimpleError.WithMessage($t.fastbox('Index is out of bounds', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              throw $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.SimpleError.WithMessage($t.fastbox('Index is out of bounds', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
 
             case 4:
               return $t.cast($this.$wrapped[finalIndex.$wrapped], T, false);
@@ -2858,42 +3063,170 @@ this.Serulian = (function ($global) {
       };
       $instance.Stream = function () {
         var $this = this;
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.sliceStream(T).For($this);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.sliceStream(T).forStream($this);
       };
       $instance.Length = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.length, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox($this.$wrapped.length, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       });
       $instance.IsEmpty = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.Length().$wrapped == 0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox($this.Length().$wrapped == 0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+      });
+      $instance.IndexOf = $t.markpromising(function (element) {
+        var $this = this;
+        var $result;
+        var $temp0;
+        var $temp1;
+        var foundIndex;
+        var index;
+        var normalized;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                foundIndex = $t.fastbox($this.$wrapped.indexOf($t.unbox(element), 0), $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+                if (foundIndex.$wrapped >= 0) {
+                  $current = 1;
+                  continue localasyncloop;
+                } else {
+                  $current = 2;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 1:
+                $resolve(foundIndex);
+                return;
+
+              case 2:
+                normalized = $t.nativenew($global.Array)();
+                $current = 3;
+                continue localasyncloop;
+
+              case 3:
+                $temp1 = $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$exclusiverange($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $this.Length());
+                $current = 4;
+                continue localasyncloop;
+
+              case 4:
+                $promise.maybe($temp1.Next()).then(function ($result0) {
+                  $temp0 = $result0;
+                  $result = $temp0;
+                  $current = 5;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 5:
+                index = $temp0.First;
+                if ($temp0.Second.$wrapped) {
+                  $current = 6;
+                  continue localasyncloop;
+                } else {
+                  $current = 7;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 6:
+                normalized.push($t.unbox($this.$index(index)));
+                $current = 4;
+                continue localasyncloop;
+
+              case 7:
+                foundIndex = $t.fastbox(normalized.indexOf($t.unbox(element), 0), $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+                if (foundIndex.$wrapped < 0) {
+                  $current = 8;
+                  continue localasyncloop;
+                } else {
+                  $current = 9;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 8:
+                $resolve(null);
+                return;
+
+              case 9:
+                $resolve(foundIndex);
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
+      });
+      $instance.$contains = $t.markpromising(function (value) {
+        var $this = this;
+        var $result;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                $promise.maybe($this.IndexOf(value)).then(function ($result1) {
+                  return $promise.resolve($result1).then(function ($result0) {
+                    $result = $t.fastbox($t.asyncnullcompare($result0, $t.fastbox(-1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)).$wrapped >= 0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+                    $current = 1;
+                    $continue($resolve, $reject);
+                    return;
+                  });
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 1:
+                $resolve($result);
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
       });
       $static.$bool = function (value) {
-        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Length|3|de04b2c1": true,
-          "IsEmpty|3|8ffa0597": true,
-          "bool|4|1f77dd0b<8ffa0597>": true,
+          "Length|3|800df61b": true,
+          "IsEmpty|3|8db7ac13": true,
+          "IndexOf|2|e429e0b7<800df61b>": true,
+          "contains|4|e429e0b7<8db7ac13>": true,
+          "bool|4|e429e0b7<8db7ac13>": true,
         };
-        computed[("Empty|1|1f77dd0b<e364cd9a<" + $t.typeid(T)) + ">>"] = true;
-        computed[("From|1|1f77dd0b<e364cd9a<" + $t.typeid(T)) + ">>"] = true;
-        computed[("ForArray|1|1f77dd0b<e364cd9a<" + $t.typeid(T)) + ">>"] = true;
-        computed[("slice|4|1f77dd0b<e364cd9a<" + $t.typeid(T)) + ">>"] = true;
-        computed[("index|4|1f77dd0b<" + $t.typeid(T)) + ">"] = true;
-        computed[("Stream|2|1f77dd0b<e2f3e027<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Empty|1|e429e0b7<6fe53884<" + $t.typeid(T)) + ">>"] = true;
+        computed[("From|1|e429e0b7<6fe53884<" + $t.typeid(T)) + ">>"] = true;
+        computed[("ForArray|1|e429e0b7<6fe53884<" + $t.typeid(T)) + ">>"] = true;
+        computed[("slice|4|e429e0b7<6fe53884<" + $t.typeid(T)) + ">>"] = true;
+        computed[("index|4|e429e0b7<" + $t.typeid(T)) + ">"] = true;
+        computed[("Stream|2|e429e0b7<4c5b42a7<" + $t.typeid(T)) + ">>"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
   });
-  $module('pkg.github.com.serulian.corelib.branch.master.helpertypes', function () {
+  $module('pkg.github.com.serulian.corelib.HEAD.helpertypes', function () {
     var $static = this;
-    this.$class('a9e856d3', 'Tuple', true, 'tuple', function (T, Q) {
+    this.$class('e53a4f4a', 'Tuple', true, 'tuple', function (T, Q) {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function () {
@@ -2904,7 +3237,7 @@ this.Serulian = (function ($global) {
       };
       $static.Build = function (first, second) {
         var tuple;
-        tuple = $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.Tuple(T, Q).new();
+        tuple = $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.Tuple(T, Q).new();
         tuple.First = first;
         tuple.Second = second;
         return tuple;
@@ -2915,12 +3248,12 @@ this.Serulian = (function ($global) {
         }
         var computed = {
         };
-        computed[((("Build|1|1f77dd0b<a9e856d3<" + $t.typeid(T)) + ",") + $t.typeid(Q)) + ">>"] = true;
+        computed[((("Build|1|e429e0b7<e53a4f4a<" + $t.typeid(T)) + ",") + $t.typeid(Q)) + ">>"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$class('6033af7f', 'IntStream', false, '$intstream', function () {
+    this.$class('3834b762', 'IntStream', false, '$intstream', function () {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function (start, end, current) {
@@ -2931,7 +3264,7 @@ this.Serulian = (function ($global) {
         return instance;
       };
       $static.OverRange = function (start, end) {
-        return $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.IntStream.new(start, end, $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
+        return $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.IntStream.new(start, end, start);
       };
       $instance.Next = function () {
         var $this = this;
@@ -2950,12 +3283,12 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              t = $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.Tuple($g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean).Build($this.current, $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean));
-              $this.current = $t.fastbox($this.current.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              t = $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.Tuple($g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean).Build($this.current, $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean));
+              $this.current = $t.fastbox($this.current.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               return t;
 
             case 2:
-              return $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.Tuple($g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean).Build($this.current, $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean));
+              return $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.Tuple($g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean).Build($this.current, $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean));
 
             default:
               return;
@@ -2967,14 +3300,14 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "OverRange|1|1f77dd0b<6033af7f>": true,
-          "Next|2|1f77dd0b<a9e856d3<de04b2c1,8ffa0597>>": true,
+          "OverRange|1|e429e0b7<3834b762>": true,
+          "Next|2|e429e0b7<e53a4f4a<800df61b,8db7ac13>>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$type('63d35c81', 'SimpleError', false, '', function () {
+    this.$type('44858e36', 'SimpleError', false, '', function () {
       var $instance = this.prototype;
       var $static = this;
       this.$box = function ($wrapped) {
@@ -2986,25 +3319,25 @@ this.Serulian = (function ($global) {
         return $global.String;
       };
       $static.WithMessage = function (message) {
-        return $t.box(message, $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.SimpleError);
+        return $t.box(message, $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.SimpleError);
       };
       $instance.Message = $t.property(function () {
         var $this = this;
-        return $t.box($this, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.box($this, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       });
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "WithMessage|1|1f77dd0b<63d35c81>": true,
-          "Message|3|5208c0f1": true,
+          "WithMessage|1|e429e0b7<44858e36>": true,
+          "Message|3|6b38bbd3": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$type('20ccc817', 'WrappedError', false, 'wrappederror', function () {
+    this.$type('3e195fca', 'WrappedError', false, 'wrappederror', function () {
       var $instance = this.prototype;
       var $static = this;
       this.$box = function ($wrapped) {
@@ -3016,54 +3349,41 @@ this.Serulian = (function ($global) {
         return $global.Error;
       };
       $static.For = function (err) {
-        return $t.fastbox(err, $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.WrappedError);
+        return $t.fastbox(err, $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.WrappedError);
       };
       $instance.Message = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.message, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.fastbox($this.$wrapped.message, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       });
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "For|1|1f77dd0b<20ccc817>": true,
-          "Message|3|5208c0f1": true,
+          "For|1|e429e0b7<3e195fca>": true,
+          "Message|3|6b38bbd3": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
   });
-  $module('pkg.github.com.serulian.corelib.branch.master.interfaces', function () {
+  $module('pkg.github.com.serulian.corelib.HEAD.interfaces', function () {
     var $static = this;
-    this.$interface('2a5b9506', 'Stringable', false, 'stringable', function () {
+    this.$interface('07af289b', 'Stringable', false, 'stringable', function () {
       var $static = this;
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "String|2|1f77dd0b<5208c0f1>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$interface('e2f3e027', 'Stream', true, 'stream', function (T) {
-      var $static = this;
-      this.$typesig = function () {
-        if (this.$cachedtypesig) {
-          return this.$cachedtypesig;
-        }
-        var computed = {
-        };
-        computed[("Next|2|1f77dd0b<a9e856d3<" + $t.typeid(T)) + ",8ffa0597>>"] = true;
-        return this.$cachedtypesig = computed;
-      };
-    });
-
-    this.$interface('b91a6ccb', 'Streamable', true, 'streamable', function (T) {
+    this.$interface('4c5b42a7', 'Stream', true, 'stream', function (T) {
       var $static = this;
       this.$typesig = function () {
         if (this.$cachedtypesig) {
@@ -3071,25 +3391,12 @@ this.Serulian = (function ($global) {
         }
         var computed = {
         };
-        computed[("Stream|2|1f77dd0b<e2f3e027<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Next|2|e429e0b7<e53a4f4a<" + $t.typeid(T)) + ",8db7ac13>>"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$interface('32d166b6', 'Mappable', false, 'mappable', function () {
-      var $static = this;
-      this.$typesig = function () {
-        if (this.$cachedtypesig) {
-          return this.$cachedtypesig;
-        }
-        var computed = {
-          "MapKey|3|2a5b9506": true,
-        };
-        return this.$cachedtypesig = computed;
-      };
-    });
-
-    this.$interface('ef49bfa7', 'Awaitable', true, 'awaitable', function (T) {
+    this.$interface('c3e1f088', 'Streamable', true, 'streamable', function (T) {
       var $static = this;
       this.$typesig = function () {
         if (this.$cachedtypesig) {
@@ -3097,33 +3404,59 @@ this.Serulian = (function ($global) {
         }
         var computed = {
         };
-        computed[("Then|2|1f77dd0b<ef49bfa7<" + $t.typeid(T)) + ">>"] = true;
-        computed[("Catch|2|1f77dd0b<ef49bfa7<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Stream|2|e429e0b7<4c5b42a7<" + $t.typeid(T)) + ">>"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$interface('19e70293', 'Error', false, 'error', function () {
+    this.$interface('88590731', 'Mappable', false, 'mappable', function () {
       var $static = this;
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Message|3|5208c0f1": true,
+          "MapKey|3|07af289b": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$interface('1ec4d01b', 'Releasable', false, 'releasable', function () {
+    this.$interface('ab613954', 'Awaitable', true, 'awaitable', function (T) {
       var $static = this;
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Release|2|1f77dd0b<void>": true,
+        };
+        computed[("Then|2|e429e0b7<ab613954<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Catch|2|e429e0b7<ab613954<" + $t.typeid(T)) + ">>"] = true;
+        return this.$cachedtypesig = computed;
+      };
+    });
+
+    this.$interface('49046a73', 'Error', false, 'error', function () {
+      var $static = this;
+      this.$typesig = function () {
+        if (this.$cachedtypesig) {
+          return this.$cachedtypesig;
+        }
+        var computed = {
+          "Message|3|6b38bbd3": true,
+        };
+        return this.$cachedtypesig = computed;
+      };
+    });
+
+    this.$interface('a11d43a5', 'Releasable', false, 'releasable', function () {
+      var $static = this;
+      this.$typesig = function () {
+        if (this.$cachedtypesig) {
+          return this.$cachedtypesig;
+        }
+        var computed = {
+          "Release|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -3196,15 +3529,15 @@ this.Serulian = (function ($global) {
       return $f;
     };
   });
-  $module('pkg.github.com.serulian.corelib.branch.master.native', function () {
+  $module('pkg.github.com.serulian.corelib.HEAD.native', function () {
     var $static = this;
     $static.ESObjectLiteral = function (mapping) {
-      return $global.JSON.parse($g.pkg.github.com.serulian.corelib.branch.master.serialization.JSON.Get().Stringify(mapping).$wrapped);
+      return $global.JSON.parse($g.pkg.github.com.serulian.corelib.HEAD.serialization.JSON.Get().Stringify(mapping).$wrapped);
     };
   });
-  $module('pkg.github.com.serulian.corelib.branch.master.primitives', function () {
+  $module('pkg.github.com.serulian.corelib.HEAD.primitives', function () {
     var $static = this;
-    this.$class('1f77dd0b', 'functionType', true, 'function', function (T) {
+    this.$class('e429e0b7', 'functionType', true, 'function', function (T) {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function () {
@@ -3217,7 +3550,7 @@ this.Serulian = (function ($global) {
       };
     });
 
-    this.$type('de04b2c1', 'Integer', false, 'int', function () {
+    this.$type('800df61b', 'Integer', false, 'int', function () {
       var $instance = this.prototype;
       var $static = this;
       this.$box = function ($wrapped) {
@@ -3229,63 +3562,67 @@ this.Serulian = (function ($global) {
         return $global.Number;
       };
       $static.$range = function (start, end) {
-        return $g.pkg.github.com.serulian.corelib.branch.master.helpertypes.IntStream.OverRange(start, end);
+        return $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.IntStream.OverRange(start, end);
+      };
+      $static.$exclusiverange = function (start, end) {
+        return $g.pkg.github.com.serulian.corelib.HEAD.helpertypes.IntStream.OverRange(start, $t.fastbox(end.$wrapped - 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
       };
       $static.$plus = function (left, right) {
-        return $t.fastbox(left.$wrapped + right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox(left.$wrapped + right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       };
       $static.$minus = function (left, right) {
-        return $t.fastbox(left.$wrapped - right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox(left.$wrapped - right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       };
       $static.$times = function (left, right) {
-        return $t.fastbox(left.$wrapped * right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox(left.$wrapped * right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       };
       $static.$div = function (left, right) {
-        return $t.fastbox(left.$wrapped / right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Float64).Floor();
+        return $t.fastbox(left.$wrapped / right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Float64).Floor();
       };
       $static.$mod = function (left, right) {
-        return $t.fastbox(left.$wrapped % right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox(left.$wrapped % right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       };
       $static.$compare = function (left, right) {
-        return $t.fastbox(left.$wrapped - right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox(left.$wrapped - right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       };
       $static.$equals = function (left, right) {
-        return $t.box(left.$wrapped == right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.box(left.$wrapped == right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $instance.String = function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.toString(), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.fastbox($this.$wrapped.toString(), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       };
       $instance.MapKey = $t.property(function () {
         var $this = this;
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($t.fastbox('int::', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $this.String());
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($t.fastbox('int::', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $this.String());
       });
       $instance.AsFloat = function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Float64);
+        return $t.fastbox($this.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Float64);
       };
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "range|4|1f77dd0b<e2f3e027<de04b2c1>>": true,
-          "plus|4|1f77dd0b<de04b2c1>": true,
-          "minus|4|1f77dd0b<de04b2c1>": true,
-          "times|4|1f77dd0b<de04b2c1>": true,
-          "div|4|1f77dd0b<de04b2c1>": true,
-          "mod|4|1f77dd0b<de04b2c1>": true,
-          "compare|4|1f77dd0b<de04b2c1>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "String|2|1f77dd0b<5208c0f1>": true,
-          "MapKey|3|2a5b9506": true,
-          "AsFloat|2|1f77dd0b<d251bb90>": true,
+          "range|4|e429e0b7<4c5b42a7<800df61b>>": true,
+          "exclusiverange|4|e429e0b7<4c5b42a7<800df61b>>": true,
+          "plus|4|e429e0b7<800df61b>": true,
+          "minus|4|e429e0b7<800df61b>": true,
+          "times|4|e429e0b7<800df61b>": true,
+          "div|4|e429e0b7<800df61b>": true,
+          "mod|4|e429e0b7<800df61b>": true,
+          "compare|4|e429e0b7<800df61b>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
+          "MapKey|3|07af289b": true,
+          "AsFloat|2|e429e0b7<7e9e849d>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$type('d251bb90', 'Float64', false, 'float64', function () {
+    this.$type('7e9e849d', 'Float64', false, 'float64', function () {
       var $instance = this.prototype;
       var $static = this;
       this.$box = function ($wrapped) {
@@ -3298,59 +3635,59 @@ this.Serulian = (function ($global) {
       };
       $instance.String = function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.toString(), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.fastbox($this.$wrapped.toString(), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       };
       $static.$plus = function (left, right) {
-        return $t.fastbox(left.$wrapped + right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Float64);
+        return $t.fastbox(left.$wrapped + right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Float64);
       };
       $static.$minus = function (left, right) {
-        return $t.fastbox(left.$wrapped - right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Float64);
+        return $t.fastbox(left.$wrapped - right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Float64);
       };
       $static.$times = function (left, right) {
-        return $t.fastbox(left.$wrapped * right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Float64);
+        return $t.fastbox(left.$wrapped * right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Float64);
       };
       $static.$div = function (left, right) {
-        return $t.fastbox(left.$wrapped / right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Float64);
+        return $t.fastbox(left.$wrapped / right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Float64);
       };
       $static.$equals = function (left, right) {
-        return $t.box(left.$wrapped == right.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.box(left.$wrapped == right.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $static.$compare = function (left, right) {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Float64.$minus(left, right).Floor();
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.Float64.$minus(left, right).Floor();
       };
       $instance.Floor = function () {
         var $this = this;
-        return $t.fastbox($global.Math.floor($this.$wrapped), $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox($global.Math.floor($this.$wrapped), $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       };
       $instance.Ceil = function () {
         var $this = this;
-        return $t.fastbox($global.Math.ceil($this.$wrapped), $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox($global.Math.ceil($this.$wrapped), $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       };
       $instance.Round = function () {
         var $this = this;
-        return $t.fastbox($global.Math.round($this.$wrapped), $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox($global.Math.round($this.$wrapped), $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       };
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "String|2|1f77dd0b<5208c0f1>": true,
-          "plus|4|1f77dd0b<d251bb90>": true,
-          "minus|4|1f77dd0b<d251bb90>": true,
-          "times|4|1f77dd0b<d251bb90>": true,
-          "div|4|1f77dd0b<d251bb90>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "compare|4|1f77dd0b<de04b2c1>": true,
-          "Floor|2|1f77dd0b<de04b2c1>": true,
-          "Ceil|2|1f77dd0b<de04b2c1>": true,
-          "Round|2|1f77dd0b<de04b2c1>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
+          "plus|4|e429e0b7<7e9e849d>": true,
+          "minus|4|e429e0b7<7e9e849d>": true,
+          "times|4|e429e0b7<7e9e849d>": true,
+          "div|4|e429e0b7<7e9e849d>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "compare|4|e429e0b7<800df61b>": true,
+          "Floor|2|e429e0b7<800df61b>": true,
+          "Ceil|2|e429e0b7<800df61b>": true,
+          "Round|2|e429e0b7<800df61b>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$type('8ffa0597', 'Boolean', false, 'bool', function () {
+    this.$type('8db7ac13', 'Boolean', false, 'bool', function () {
       var $instance = this.prototype;
       var $static = this;
       this.$box = function ($wrapped) {
@@ -3363,10 +3700,10 @@ this.Serulian = (function ($global) {
       };
       $instance.String = function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.toString(), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.fastbox($this.$wrapped.toString(), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       };
       $static.$equals = function (first, second) {
-        return $t.box(first.$wrapped == second.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.box(first.$wrapped == second.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $static.$bool = function (value) {
         return value;
@@ -3376,15 +3713,15 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "String|2|1f77dd0b<5208c0f1>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "bool|4|1f77dd0b<8ffa0597>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "bool|4|e429e0b7<8db7ac13>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$type('5208c0f1', 'String', false, 'string', function () {
+    this.$type('6b38bbd3', 'String', false, 'string', function () {
       var $instance = this.prototype;
       var $static = this;
       this.$box = function ($wrapped) {
@@ -3396,10 +3733,10 @@ this.Serulian = (function ($global) {
         return $global.String;
       };
       $static.$equals = function (first, second) {
-        return $t.box(first.$wrapped == second.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.box(first.$wrapped == second.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $static.$plus = function (first, second) {
-        return $t.fastbox(first.$wrapped + second.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.fastbox(first.$wrapped + second.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       };
       $instance.$slice = function (startindex, endindex) {
         var $this = this;
@@ -3410,7 +3747,7 @@ this.Serulian = (function ($global) {
           switch ($current) {
             case 0:
               start = $t.syncnullcompare(startindex, function () {
-                return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+                return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               });
               end = $t.syncnullcompare(endindex, function () {
                 return $this.Length();
@@ -3425,7 +3762,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              start = $t.fastbox(start.$wrapped + $this.Length().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              start = $t.fastbox(start.$wrapped + $this.Length().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 2;
               continue syncloop;
 
@@ -3440,7 +3777,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 3:
-              end = $t.fastbox(end.$wrapped + $this.Length().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              end = $t.fastbox(end.$wrapped + $this.Length().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 4;
               continue syncloop;
 
@@ -3455,10 +3792,10 @@ this.Serulian = (function ($global) {
               break;
 
             case 5:
-              return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
 
             case 6:
-              return $t.fastbox($this.$wrapped.substring(start.$wrapped, end.$wrapped), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              return $t.fastbox($this.$wrapped.substring(start.$wrapped, end.$wrapped), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
 
             default:
               return;
@@ -3466,33 +3803,45 @@ this.Serulian = (function ($global) {
         }
       };
       $static.$bool = function (value) {
-        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox(!value.IsEmpty().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       };
       $instance.Trim = function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.trim(), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.fastbox($this.$wrapped.trim(), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       };
       $instance.ToLowerCase = function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.toLowerCase(), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.fastbox($this.$wrapped.toLowerCase(), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+      };
+      $instance.ToUpperCase = function () {
+        var $this = this;
+        return $t.fastbox($this.$wrapped.toUpperCase(), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       };
       $instance.Split = function (separator, limit) {
         var $this = this;
         var arr;
         arr = $this.$wrapped.split(separator.$wrapped, $t.syncnullcompare(limit, function () {
-          return $t.fastbox(-1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+          return $t.fastbox(-1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
         }).$wrapped);
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).ForArray(arr);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).ForArray(arr);
       };
       $instance.HasPrefix = function (prefix) {
         var $this = this;
-        return $t.fastbox($this.$wrapped.indexOf(prefix.$wrapped) == 0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), prefix.Length()), prefix);
+      };
+      $instance.HasSuffix = function (suffix) {
+        var $this = this;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.$slice($t.fastbox($this.Length().$wrapped - suffix.Length().$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $this.Length()), suffix);
       };
       $instance.Contains = function (otherString) {
         var $this = this;
         var index;
-        index = $t.fastbox($this.$wrapped.indexOf(otherString.$wrapped), $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
-        return $t.fastbox(index.$wrapped >= 0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        index = $t.fastbox($this.$wrapped.indexOf(otherString.$wrapped), $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+        return $t.fastbox(index.$wrapped >= 0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+      };
+      $instance.$contains = function (other) {
+        var $this = this;
+        return $this.Contains(other);
       };
       $instance.String = function () {
         var $this = this;
@@ -3504,30 +3853,33 @@ this.Serulian = (function ($global) {
       });
       $instance.IsEmpty = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.Length().$wrapped == 0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox($this.Length().$wrapped == 0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       });
       $instance.Length = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.length, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox($this.$wrapped.length, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       });
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "plus|4|1f77dd0b<5208c0f1>": true,
-          "slice|4|1f77dd0b<5208c0f1>": true,
-          "bool|4|1f77dd0b<8ffa0597>": true,
-          "Trim|2|1f77dd0b<5208c0f1>": true,
-          "ToLowerCase|2|1f77dd0b<5208c0f1>": true,
-          "Split|2|1f77dd0b<e364cd9a<5208c0f1>>": true,
-          "HasPrefix|2|1f77dd0b<8ffa0597>": true,
-          "Contains|2|1f77dd0b<8ffa0597>": true,
-          "String|2|1f77dd0b<5208c0f1>": true,
-          "MapKey|3|2a5b9506": true,
-          "IsEmpty|3|8ffa0597": true,
-          "Length|3|de04b2c1": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "plus|4|e429e0b7<6b38bbd3>": true,
+          "slice|4|e429e0b7<6b38bbd3>": true,
+          "bool|4|e429e0b7<8db7ac13>": true,
+          "Trim|2|e429e0b7<6b38bbd3>": true,
+          "ToLowerCase|2|e429e0b7<6b38bbd3>": true,
+          "ToUpperCase|2|e429e0b7<6b38bbd3>": true,
+          "Split|2|e429e0b7<6fe53884<6b38bbd3>>": true,
+          "HasPrefix|2|e429e0b7<8db7ac13>": true,
+          "HasSuffix|2|e429e0b7<8db7ac13>": true,
+          "Contains|2|e429e0b7<8db7ac13>": true,
+          "contains|4|e429e0b7<8db7ac13>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
+          "MapKey|3|07af289b": true,
+          "IsEmpty|3|8db7ac13": true,
+          "Length|3|800df61b": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -3547,7 +3899,7 @@ this.Serulian = (function ($global) {
             continue syncloop;
 
           case 1:
-            $temp1 = $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), $t.fastbox(pieces.Length().$wrapped - 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
+            $temp1 = $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $t.fastbox(pieces.Length().$wrapped - 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
             $current = 2;
             continue syncloop;
 
@@ -3584,7 +3936,7 @@ this.Serulian = (function ($global) {
             continue syncloop;
 
           case 6:
-            return $t.fastbox(overallPieces.join(''), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+            return $t.fastbox(overallPieces.join(''), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
 
           default:
             return;
@@ -3592,9 +3944,9 @@ this.Serulian = (function ($global) {
       }
     };
   });
-  $module('pkg.github.com.serulian.corelib.branch.master.promise', function () {
+  $module('pkg.github.com.serulian.corelib.HEAD.promise', function () {
     var $static = this;
-    this.$type('acdfa2c6', 'Promise', true, 'promise', function (T) {
+    this.$type('890013f6', 'Promise', true, 'promise', function (T) {
       var $instance = this.prototype;
       var $static = this;
       this.$box = function ($wrapped) {
@@ -3617,7 +3969,7 @@ this.Serulian = (function ($global) {
           });
           return;
         });
-        return $t.fastbox(native, $g.pkg.github.com.serulian.corelib.branch.master.promise.Promise(T));
+        return $t.fastbox(native, $g.pkg.github.com.serulian.corelib.HEAD.promise.Promise(T));
       };
       $instance.Then = function (callback) {
         var $this = this;
@@ -3635,17 +3987,17 @@ this.Serulian = (function ($global) {
         }
         var computed = {
         };
-        computed[("Execute|1|1f77dd0b<acdfa2c6<" + $t.typeid(T)) + ">>"] = true;
-        computed[("Then|2|1f77dd0b<ef49bfa7<" + $t.typeid(T)) + ">>"] = true;
-        computed[("Catch|2|1f77dd0b<ef49bfa7<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Execute|1|e429e0b7<890013f6<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Then|2|e429e0b7<ab613954<" + $t.typeid(T)) + ">>"] = true;
+        computed[("Catch|2|e429e0b7<ab613954<" + $t.typeid(T)) + ">>"] = true;
         return this.$cachedtypesig = computed;
       };
     });
 
   });
-  $module('pkg.github.com.serulian.corelib.branch.master.serialization', function () {
+  $module('pkg.github.com.serulian.corelib.HEAD.serialization', function () {
     var $static = this;
-    this.$class('80fe66ab', 'JSON', false, 'json', function () {
+    this.$class('42126b74', 'JSON', false, 'json', function () {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function () {
@@ -3653,63 +4005,70 @@ this.Serulian = (function ($global) {
         return instance;
       };
       $static.Get = function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.serialization.JSON.new();
+        return $g.pkg.github.com.serulian.corelib.HEAD.serialization.JSON.new();
       };
       $instance.Stringify = function (value) {
         var $this = this;
-        return $t.fastbox($global.JSON.stringify(value.$wrapped, $t.dynamicaccess($global.__serulian_internal, 'autoUnbox', false)), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.fastbox($global.JSON.stringify(value.$wrapped, $t.dynamicaccess($global.__serulian_internal, 'autoUnbox', false)), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       };
       $instance.Parse = function (value) {
         var $this = this;
-        return $t.fastbox($global.JSON.parse(value.$wrapped, $t.dynamicaccess($global.__serulian_internal, 'autoBox', false)), $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any));
+        return $t.fastbox($global.JSON.parse(value.$wrapped, $t.dynamicaccess($global.__serulian_internal, 'autoBox', false)), $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any));
       };
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Get|1|1f77dd0b<80fe66ab>": true,
-          "Stringify|2|1f77dd0b<5208c0f1>": true,
-          "Parse|2|1f77dd0b<75a81c47<any>>": true,
+          "Get|1|e429e0b7<42126b74>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Parse|2|e429e0b7<1898496b<any>>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$interface('b6d104c5', 'Stringifier', false, '$stringifier', function () {
+    this.$interface('15bc6968', 'Stringifier', false, '$stringifier', function () {
       var $static = this;
       $static.Get = function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.serialization.JSON.new();
+        return $g.pkg.github.com.serulian.corelib.HEAD.serialization.JSON.new();
       };
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Get|1|1f77dd0b<b6d104c5>": true,
-          "Stringify|2|1f77dd0b<5208c0f1>": true,
+          "Get|1|e429e0b7<15bc6968>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$interface('ff0bdbd9', 'Parser', false, '$parser', function () {
+    this.$interface('18d7ace6', 'Parser', false, '$parser', function () {
       var $static = this;
       $static.Get = function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.serialization.JSON.new();
+        return $g.pkg.github.com.serulian.corelib.HEAD.serialization.JSON.new();
       };
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Get|1|1f77dd0b<ff0bdbd9>": true,
-          "Parse|2|1f77dd0b<75a81c47<any>>": true,
+          "Get|1|e429e0b7<18d7ace6>": true,
+          "Parse|2|e429e0b7<1898496b<any>>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
+  });
+  $module('pkg.github.com.serulian.debuglib.HEAD.debuglib', function () {
+    var $static = this;
+    $static.Log = function (value) {
+      $global.console.log(value);
+      return;
+    };
   });
   $module('pkg.github.com.serulian.request.HEAD.request', function () {
     var $static = this;
@@ -3723,14 +4082,14 @@ this.Serulian = (function ($global) {
       };
       $instance.Message = $t.property(function () {
         var $this = this;
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("Got non-OK response: ", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(": ", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([$this.response.StatusCode(), $this.response.StatusText()]));
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("Got non-OK response: ", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(": ", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([$this.response.StatusCode(), $this.response.StatusText()]));
       });
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Message|3|5208c0f1": true,
+          "Message|3|6b38bbd3": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -3745,14 +4104,14 @@ this.Serulian = (function ($global) {
       };
       $instance.Message = $t.property(function () {
         var $this = this;
-        return $t.fastbox('An error occurred when constructing the request', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $t.fastbox('An error occurred when constructing the request', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       });
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Message|3|5208c0f1": true,
+          "Message|3|6b38bbd3": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -3783,7 +4142,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                $promise.maybe($g.pkg.github.com.serulian.corelib.branch.master.promise.Promise($g.pkg.github.com.serulian.request.HEAD.request.Response).Execute(function (resolve, rejectNow) {
+                $promise.maybe($g.pkg.github.com.serulian.corelib.HEAD.promise.Promise($g.pkg.github.com.serulian.request.HEAD.request.Response).Execute(function (resolve, rejectNow) {
                   var xhr;
                   xhr = $t.nativenew($global.XMLHttpRequest)();
                   xhr.open($t.unbox($this.method), $t.unbox($this.url));
@@ -3802,7 +4161,7 @@ this.Serulian = (function ($global) {
                           break;
 
                         case 1:
-                          resolve($t.box($g.pkg.github.com.serulian.request.HEAD.request.responseData.new($t.fastbox(xhr.status, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), $t.fastbox(xhr.statusText, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(xhr.responseText, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)), $g.pkg.github.com.serulian.request.HEAD.request.Response));
+                          resolve($t.box($g.pkg.github.com.serulian.request.HEAD.request.responseData.new($t.fastbox(xhr.status, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $t.fastbox(xhr.statusText, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(xhr.responseText, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), $g.pkg.github.com.serulian.request.HEAD.request.Response));
                           $current = 2;
                           continue syncloop;
 
@@ -3878,10 +4237,10 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "For|1|1f77dd0b<2aff66ba>": true,
-          "WithBody|2|1f77dd0b<2aff66ba>": true,
-          "ExecuteAndReturn|2|1f77dd0b<acdfa2c6<4d5def0c>>": true,
-          "Execute|2|1f77dd0b<4d5def0c>": true,
+          "For|1|e429e0b7<2aff66ba>": true,
+          "WithBody|2|e429e0b7<2aff66ba>": true,
+          "ExecuteAndReturn|2|e429e0b7<890013f6<4d5def0c>>": true,
+          "Execute|2|e429e0b7<4d5def0c>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -3916,7 +4275,7 @@ this.Serulian = (function ($global) {
         syncloop: while (true) {
           switch ($current) {
             case 0:
-              if (($this.StatusCode().$wrapped / 100) != 2) {
+              if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$div($this.StatusCode(), $t.fastbox(100, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)).$wrapped != 2) {
                 $current = 1;
                 continue syncloop;
               } else {
@@ -3941,10 +4300,10 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "StatusCode|3|de04b2c1": true,
-          "StatusText|3|5208c0f1": true,
-          "Text|3|5208c0f1": true,
-          "RejectOnFailure|2|1f77dd0b<4d5def0c>": true,
+          "StatusCode|3|800df61b": true,
+          "StatusText|3|6b38bbd3": true,
+          "Text|3|6b38bbd3": true,
+          "RejectOnFailure|2|e429e0b7<4d5def0c>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -3965,31 +4324,31 @@ this.Serulian = (function ($global) {
       };
       $static.$fields = [];
       $t.defineStructField($static, 'StatusCode', 'StatusCode', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer;
       }, false);
       $t.defineStructField($static, 'StatusText', 'StatusText', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       $t.defineStructField($static, 'Text', 'Text', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Parse|1|1f77dd0b<aa9ee593>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "Stringify|2|1f77dd0b<5208c0f1>": true,
-          "Mapping|2|1f77dd0b<75a81c47<any>>": true,
-          "Clone|2|1f77dd0b<aa9ee593>": true,
-          "String|2|1f77dd0b<5208c0f1>": true,
+          "Parse|1|e429e0b7<aa9ee593>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<aa9ee593>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -4002,7 +4361,7 @@ this.Serulian = (function ($global) {
         localasyncloop: while (true) {
           switch ($current) {
             case 0:
-              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('GET', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), url).Execute()).then(function ($result0) {
+              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('GET', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), url).Execute()).then(function ($result0) {
                 $result = $result0;
                 $current = 1;
                 $continue($resolve, $reject);
@@ -4032,7 +4391,7 @@ this.Serulian = (function ($global) {
         localasyncloop: while (true) {
           switch ($current) {
             case 0:
-              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('POST', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), url).WithBody(body).Execute()).then(function ($result0) {
+              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('POST', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), url).WithBody(body).Execute()).then(function ($result0) {
                 $result = $result0;
                 $current = 1;
                 $continue($resolve, $reject);
@@ -4062,7 +4421,7 @@ this.Serulian = (function ($global) {
         localasyncloop: while (true) {
           switch ($current) {
             case 0:
-              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('PUT', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), url).WithBody(body).Execute()).then(function ($result0) {
+              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('PUT', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), url).WithBody(body).Execute()).then(function ($result0) {
                 $result = $result0;
                 $current = 1;
                 $continue($resolve, $reject);
@@ -4092,7 +4451,7 @@ this.Serulian = (function ($global) {
         localasyncloop: while (true) {
           switch ($current) {
             case 0:
-              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('PATCH', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), url).WithBody(body).Execute()).then(function ($result0) {
+              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('PATCH', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), url).WithBody(body).Execute()).then(function ($result0) {
                 $result = $result0;
                 $current = 1;
                 $continue($resolve, $reject);
@@ -4122,7 +4481,7 @@ this.Serulian = (function ($global) {
         localasyncloop: while (true) {
           switch ($current) {
             case 0:
-              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('DELETE', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), url).Execute()).then(function ($result0) {
+              $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Request.For($t.fastbox('DELETE', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), url).Execute()).then(function ($result0) {
                 $result = $result0;
                 $current = 1;
                 $continue($resolve, $reject);
@@ -4222,7 +4581,7 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Render|2|1f77dd0b<any>": true,
+          "Render|2|e429e0b7<any>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -4230,7 +4589,7 @@ this.Serulian = (function ($global) {
 
     $static.If = function (value, condition) {
       var $temp0;
-      return condition.$wrapped ? value : ($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.Text = $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp0);
+      return condition.$wrapped ? value : ($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.Text = $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0);
     };
     $static.DynamicAttributes = $t.markpromising(function (value, attributes) {
       var $result;
@@ -4246,15 +4605,9 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 1:
-              $temp1 = attributes.Keys().Stream();
-              $current = 2;
-              continue localasyncloop;
-
-            case 2:
-              $promise.maybe($temp1.Next()).then(function ($result0) {
-                $temp0 = $result0;
-                $result = $temp0;
-                $current = 3;
+              $promise.maybe(attributes.Keys()).then(function ($result0) {
+                $result = $result0;
+                $current = 2;
                 $continue($resolve, $reject);
                 return;
               }).catch(function (err) {
@@ -4263,10 +4616,40 @@ this.Serulian = (function ($global) {
               });
               return;
 
+            case 2:
+              $temp1 = $result;
+              $current = 3;
+              continue localasyncloop;
+
             case 3:
+              $promise.maybe($temp1.Next()).then(function ($result0) {
+                $temp0 = $result0;
+                $result = $temp0;
+                $current = 4;
+                $continue($resolve, $reject);
+                return;
+              }).catch(function (err) {
+                $reject(err);
+                return;
+              });
+              return;
+
+            case 4:
               attributeName = $temp0.First;
               if ($temp0.Second.$wrapped) {
-                $current = 4;
+                $current = 5;
+                continue localasyncloop;
+              } else {
+                $current = 9;
+                continue localasyncloop;
+              }
+              break;
+
+            case 5:
+              if ($t.syncnullcompare(attributes.$index(attributeName), function () {
+                return $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+              }).$wrapped) {
+                $current = 6;
                 continue localasyncloop;
               } else {
                 $current = 8;
@@ -4274,22 +4657,10 @@ this.Serulian = (function ($global) {
               }
               break;
 
-            case 4:
-              if ($t.syncnullcompare(attributes.$index(attributeName), function () {
-                return $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-              }).$wrapped) {
-                $current = 5;
-                continue localasyncloop;
-              } else {
-                $current = 7;
-                continue localasyncloop;
-              }
-              break;
-
-            case 5:
-              $promise.maybe(value.props.WithEntry(attributeName, $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean))).then(function ($result0) {
+            case 6:
+              $promise.maybe(value.props.WithEntry(attributeName, $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean))).then(function ($result0) {
                 $result = value.props = $result0;
-                $current = 6;
+                $current = 7;
                 $continue($resolve, $reject);
                 return;
               }).catch(function (err) {
@@ -4298,15 +4669,15 @@ this.Serulian = (function ($global) {
               });
               return;
 
-            case 6:
-              $current = 7;
-              continue localasyncloop;
-
             case 7:
-              $current = 2;
+              $current = 8;
               continue localasyncloop;
 
             case 8:
+              $current = 3;
+              continue localasyncloop;
+
+            case 9:
               $resolve(value);
               return;
 
@@ -4343,7 +4714,7 @@ this.Serulian = (function ($global) {
                   return;
 
                 case 2:
-                  $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.addStyle(virtualNode, $t.fastbox('display', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox('none', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String))).then(function ($result0) {
+                  $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.addStyle(virtualNode, $t.fastbox('display', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox('none', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))).then(function ($result0) {
                     $result = $result0;
                     $current = 3;
                     $continue($resolve, $reject);
@@ -4382,10 +4753,10 @@ this.Serulian = (function ($global) {
           switch ($current) {
             case 0:
               attributes = $t.syncnullcompare(virtualNode.Attributes, function () {
-                return $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Empty();
+                return $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Empty();
               });
-              styleString = $t.syncnullcompare(attributes.$index($t.fastbox('style', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)), function () {
-                return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              styleString = $t.syncnullcompare(attributes.$index($t.fastbox('style', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), function () {
+                return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               });
               if (!styleString.IsEmpty().$wrapped) {
                 $current = 1;
@@ -4397,12 +4768,12 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              styleString = $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus(styleString, $t.fastbox('; ', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              styleString = $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus(styleString, $t.fastbox('; ', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
               $current = 2;
               continue localasyncloop;
 
             case 2:
-              $promise.maybe(attributes.WithEntry($t.fastbox('style', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(": ", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([styleString, styleName, styleValue])))).then(function ($result0) {
+              $promise.maybe(attributes.WithEntry($t.fastbox('style', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(": ", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([styleString, styleName, styleValue])))).then(function ($result0) {
                 $result = $result0;
                 $current = 3;
                 $continue($resolve, $reject);
@@ -4436,9 +4807,9 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "NodeRemoved|2|1f77dd0b<void>": true,
-          "NodeCreated|2|1f77dd0b<void>": true,
-          "NodeUpdated|2|1f77dd0b<void>": true,
+          "NodeRemoved|2|e429e0b7<void>": true,
+          "NodeCreated|2|e429e0b7<void>": true,
+          "NodeUpdated|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -4457,26 +4828,26 @@ this.Serulian = (function ($global) {
       };
       $static.$fields = [];
       $t.defineStructField($static, 'Name', 'Name', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       $t.defineStructField($static, 'Value', 'Value', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, true);
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Parse|1|1f77dd0b<287d574a>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "Stringify|2|1f77dd0b<5208c0f1>": true,
-          "Mapping|2|1f77dd0b<75a81c47<any>>": true,
-          "Clone|2|1f77dd0b<287d574a>": true,
-          "String|2|1f77dd0b<5208c0f1>": true,
+          "Parse|1|e429e0b7<287d574a>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<287d574a>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -4498,14 +4869,14 @@ this.Serulian = (function ($global) {
       };
       $static.$fields = [];
       $t.defineStructField($static, 'Type', 'Type', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       $t.defineStructField($static, 'NodeIndex', 'NodeIndex', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer;
       }, false);
       $t.defineStructField($static, 'ReplacementNode', 'ReplacementNode', function () {
         return $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode;
@@ -4513,33 +4884,33 @@ this.Serulian = (function ($global) {
         return $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode;
       }, true);
       $t.defineStructField($static, 'Children', 'Children', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff);
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff);
       }, false);
       $t.defineStructField($static, 'Attributes', 'Attributes', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff);
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff);
       }, false);
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Parse|1|1f77dd0b<cb2fd2bd>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "Stringify|2|1f77dd0b<5208c0f1>": true,
-          "Mapping|2|1f77dd0b<75a81c47<any>>": true,
-          "Clone|2|1f77dd0b<cb2fd2bd>": true,
-          "String|2|1f77dd0b<5208c0f1>": true,
+          "Parse|1|e429e0b7<cb2fd2bd>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<cb2fd2bd>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
     $static.generateId = function () {
-      $g.pkg.github.com.serulian.virtualdom.HEAD.diff.nodeCounter = $t.fastbox($g.pkg.github.com.serulian.virtualdom.HEAD.diff.nodeCounter.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+      $g.pkg.github.com.serulian.virtualdom.HEAD.diff.nodeCounter = $t.fastbox($g.pkg.github.com.serulian.virtualdom.HEAD.diff.nodeCounter.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       return $g.pkg.github.com.serulian.virtualdom.HEAD.diff.nodeCounter.String();
     };
     $static.buildDOM = $t.markpromising(function (vNode, parentPath, reporter) {
@@ -4596,7 +4967,7 @@ this.Serulian = (function ($global) {
                 $current = 5;
                 continue localasyncloop;
               } else {
-                $current = 13;
+                $current = 14;
                 continue localasyncloop;
               }
               break;
@@ -4606,15 +4977,9 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 6:
-              $temp1 = attributes.Keys().Stream();
-              $current = 7;
-              continue localasyncloop;
-
-            case 7:
-              $promise.maybe($temp1.Next()).then(function ($result0) {
-                $temp0 = $result0;
-                $result = $temp0;
-                $current = 8;
+              $promise.maybe(attributes.Keys()).then(function ($result0) {
+                $result = $result0;
+                $current = 7;
                 $continue($resolve, $reject);
                 return;
               }).catch(function (err) {
@@ -4623,10 +4988,39 @@ this.Serulian = (function ($global) {
               });
               return;
 
+            case 7:
+              $temp1 = $result;
+              $current = 8;
+              continue localasyncloop;
+
             case 8:
+              $promise.maybe($temp1.Next()).then(function ($result0) {
+                $temp0 = $result0;
+                $result = $temp0;
+                $current = 9;
+                $continue($resolve, $reject);
+                return;
+              }).catch(function (err) {
+                $reject(err);
+                return;
+              });
+              return;
+
+            case 9:
               attrName = $temp0.First;
               if ($temp0.Second.$wrapped) {
-                $current = 9;
+                $current = 10;
+                continue localasyncloop;
+              } else {
+                $current = 13;
+                continue localasyncloop;
+              }
+              break;
+
+            case 10:
+              attrValue = attributes.$index(attrName);
+              if (attrValue == null) {
+                $current = 11;
                 continue localasyncloop;
               } else {
                 $current = 12;
@@ -4634,36 +5028,58 @@ this.Serulian = (function ($global) {
               }
               break;
 
-            case 9:
-              attrValue = attributes.$index(attrName);
-              if (attrValue == null) {
-                $current = 10;
+            case 11:
+              $current = 8;
+              continue localasyncloop;
+
+            case 12:
+              node.setAttribute(attrName.$wrapped, $t.assertnotnull(attrValue).$wrapped);
+              $current = 8;
+              continue localasyncloop;
+
+            case 13:
+              $current = 14;
+              continue localasyncloop;
+
+            case 14:
+              elementPath = $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus(parentPath, $t.fastbox('.', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), $g.pkg.github.com.serulian.virtualdom.HEAD.diff.generateId());
+              $g.pkg.github.com.serulian.virtualdom.HEAD.internal.setDOMPath(node, elementPath);
+              children = vNode.Children;
+              if (children != null) {
+                $current = 15;
                 continue localasyncloop;
               } else {
-                $current = 11;
+                $current = 23;
                 continue localasyncloop;
               }
               break;
 
-            case 10:
-              $current = 7;
+            case 15:
+              $current = 16;
               continue localasyncloop;
 
-            case 11:
-              node.setAttribute(attrName.$wrapped, $t.assertnotnull(attrValue).$wrapped);
-              $current = 7;
+            case 16:
+              $temp3 = children.Stream();
+              $current = 17;
               continue localasyncloop;
 
-            case 12:
-              $current = 13;
-              continue localasyncloop;
+            case 17:
+              $promise.maybe($temp3.Next()).then(function ($result0) {
+                $temp2 = $result0;
+                $result = $temp2;
+                $current = 18;
+                $continue($resolve, $reject);
+                return;
+              }).catch(function (err) {
+                $reject(err);
+                return;
+              });
+              return;
 
-            case 13:
-              elementPath = $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus(parentPath, $t.fastbox('.', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)), $g.pkg.github.com.serulian.virtualdom.HEAD.diff.generateId());
-              $g.pkg.github.com.serulian.virtualdom.HEAD.internal.setDOMPath(node, elementPath);
-              children = vNode.Children;
-              if (children != null) {
-                $current = 14;
+            case 18:
+              child = $temp2.First;
+              if ($temp2.Second.$wrapped) {
+                $current = 19;
                 continue localasyncloop;
               } else {
                 $current = 22;
@@ -4671,55 +5087,8 @@ this.Serulian = (function ($global) {
               }
               break;
 
-            case 14:
-              $current = 15;
-              continue localasyncloop;
-
-            case 15:
-              $temp3 = children.Stream();
-              $current = 16;
-              continue localasyncloop;
-
-            case 16:
-              $promise.maybe($temp3.Next()).then(function ($result0) {
-                $temp2 = $result0;
-                $result = $temp2;
-                $current = 17;
-                $continue($resolve, $reject);
-                return;
-              }).catch(function (err) {
-                $reject(err);
-                return;
-              });
-              return;
-
-            case 17:
-              child = $temp2.First;
-              if ($temp2.Second.$wrapped) {
-                $current = 18;
-                continue localasyncloop;
-              } else {
-                $current = 21;
-                continue localasyncloop;
-              }
-              break;
-
-            case 18:
-              $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.diff.buildDOM(child, elementPath, reporter)).then(function ($result0) {
-                $result = $result0;
-                $current = 19;
-                $continue($resolve, $reject);
-                return;
-              }).catch(function (err) {
-                $reject(err);
-                return;
-              });
-              return;
-
             case 19:
-              built = $result;
-              node.appendChild(built);
-              $t.nullableinvoke(reporter, 'NodeCreated', true, [child, built]).then(function ($result0) {
+              $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.diff.buildDOM(child, elementPath, reporter)).then(function ($result0) {
                 $result = $result0;
                 $current = 20;
                 $continue($resolve, $reject);
@@ -4731,14 +5100,28 @@ this.Serulian = (function ($global) {
               return;
 
             case 20:
-              $current = 16;
-              continue localasyncloop;
+              built = $result;
+              node.appendChild(built);
+              $t.nullableinvoke(reporter, 'NodeCreated', true, [child, built]).then(function ($result0) {
+                $result = $result0;
+                $current = 21;
+                $continue($resolve, $reject);
+                return;
+              }).catch(function (err) {
+                $reject(err);
+                return;
+              });
+              return;
 
             case 21:
-              $current = 22;
+              $current = 17;
               continue localasyncloop;
 
             case 22:
+              $current = 23;
+              continue localasyncloop;
+
+            case 23:
               $resolve(node);
               return;
 
@@ -4757,7 +5140,7 @@ this.Serulian = (function ($global) {
         localasyncloop: while (true) {
           switch ($current) {
             case 0:
-              $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.diff.computeDiff(updated, existing, $t.fastbox(-1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer))).then(function ($result0) {
+              $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.diff.computeDiff(updated, existing, $t.fastbox(-1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer))).then(function ($result0) {
                 $result = $result0;
                 $current = 1;
                 $continue($resolve, $reject);
@@ -4801,7 +5184,7 @@ this.Serulian = (function ($global) {
           switch ($current) {
             case 0:
               $temp0 = diff.Type;
-              if ($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_SAME).$wrapped) {
+              if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_SAME).$wrapped) {
                 $current = 1;
                 continue localasyncloop;
               } else {
@@ -4815,7 +5198,7 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 3:
-              if ($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_THUNK).$wrapped) {
+              if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_THUNK).$wrapped) {
                 $current = 4;
                 continue localasyncloop;
               } else {
@@ -4927,7 +5310,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 17:
-              if ($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals(childDiff.Type, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_CREATE_NODE).$wrapped) {
+              if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals(childDiff.Type, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_CREATE_NODE).$wrapped) {
                 $current = 18;
                 continue localasyncloop;
               } else {
@@ -4964,7 +5347,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 21:
-              $reject($g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.WithMessage($t.fastbox('Missing expected child', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)));
+              $reject($g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.WithMessage($t.fastbox('Missing expected child', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)));
               return;
 
             case 22:
@@ -4988,7 +5371,7 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 25:
-              if ($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_REMOVE_NODE).$wrapped) {
+              if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_REMOVE_NODE).$wrapped) {
                 $current = 26;
                 continue localasyncloop;
               } else {
@@ -5019,7 +5402,7 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 29:
-              if ($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_CREATE_NODE).$wrapped) {
+              if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_CREATE_NODE).$wrapped) {
                 $current = 30;
                 continue localasyncloop;
               } else {
@@ -5103,7 +5486,7 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 38:
-              if ($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_REPLACE_NODE).$wrapped) {
+              if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($temp0, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_REPLACE_NODE).$wrapped) {
                 $current = 39;
                 continue localasyncloop;
               } else {
@@ -5195,10 +5578,10 @@ this.Serulian = (function ($global) {
             break;
 
           case 3:
-            return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus(node.TagName(), $t.fastbox(':', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)), index.String());
+            return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus(node.TagName(), $t.fastbox(':', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), index.String());
 
           case 4:
-            return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($t.assertnotnull(node.TextData()), $t.fastbox(':', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)), index.String());
+            return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($t.assertnotnull(node.TextData()), $t.fastbox(':', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), index.String());
 
           default:
             return;
@@ -5272,7 +5655,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 2:
-              $resolve(($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_SAME, parentIndex, $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty(), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty()), $temp0.ReplacementNode = updatedNode, $temp0));
+              $resolve(($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_SAME, parentIndex, $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty(), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty()), $temp0.ReplacementNode = updatedNode, $temp0));
               return;
 
             case 3:
@@ -5282,23 +5665,23 @@ this.Serulian = (function ($global) {
             case 4:
               updated = $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.VirtualNodeWrapper.For(updatedNode);
               updatedKey = $t.syncnullcompare(updated.Key(), function () {
-                return $t.fastbox('---updating---', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+                return $t.fastbox('---updating---', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               });
               existingKey = $t.syncnullcompare(existing.Key(), function () {
-                return $t.fastbox('---existing--', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+                return $t.fastbox('---existing--', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               });
-              needsReplacement = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-              if ($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals(updatedKey, existingKey).$wrapped) {
+              needsReplacement = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+              if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals(updatedKey, existingKey).$wrapped) {
                 $current = 5;
                 continue localasyncloop;
               } else {
-                $current = 52;
+                $current = 53;
                 continue localasyncloop;
               }
               break;
 
             case 5:
-              needsReplacement = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+              needsReplacement = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
               $current = 6;
               continue localasyncloop;
 
@@ -5313,22 +5696,22 @@ this.Serulian = (function ($global) {
               break;
 
             case 7:
-              $resolve(($temp1 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_REPLACE_NODE, parentIndex, $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty(), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty()), $temp1.ReplacementNode = updatedNode, $temp1));
+              $resolve(($temp1 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_REPLACE_NODE, parentIndex, $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty(), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty()), $temp1.ReplacementNode = updatedNode, $temp1));
               return;
 
             case 8:
-              attributeDiffs = $g.pkg.github.com.serulian.corelib.branch.master.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty();
+              attributeDiffs = $g.pkg.github.com.serulian.corelib.HEAD.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty();
               if (existing.IsElement().$wrapped) {
                 $current = 9;
                 continue localasyncloop;
               } else {
-                $current = 27;
+                $current = 28;
                 continue localasyncloop;
               }
               break;
 
             case 9:
-              existingAttributes = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map($g.pkg.github.com.serulian.corelib.branch.master.primitives.String, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Empty();
+              existingAttributes = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map($g.pkg.github.com.serulian.corelib.HEAD.primitives.String, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Empty();
               $current = 10;
               continue localasyncloop;
 
@@ -5398,15 +5781,9 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 18:
-              $temp5 = updated.AttributeNames().Stream();
-              $current = 19;
-              continue localasyncloop;
-
-            case 19:
-              $promise.maybe($temp5.Next()).then(function ($result0) {
-                $temp4 = $result0;
-                $result = $temp4;
-                $current = 20;
+              $promise.maybe(updated.AttributeNames()).then(function ($result0) {
+                $result = $result0.Stream();
+                $current = 19;
                 $continue($resolve, $reject);
                 return;
               }).catch(function (err) {
@@ -5415,10 +5792,54 @@ this.Serulian = (function ($global) {
               });
               return;
 
+            case 19:
+              $temp5 = $result;
+              $current = 20;
+              continue localasyncloop;
+
             case 20:
+              $promise.maybe($temp5.Next()).then(function ($result0) {
+                $temp4 = $result0;
+                $result = $temp4;
+                $current = 21;
+                $continue($resolve, $reject);
+                return;
+              }).catch(function (err) {
+                $reject(err);
+                return;
+              });
+              return;
+
+            case 21:
               attributeName = $temp4.First;
               if ($temp4.Second.$wrapped) {
-                $current = 21;
+                $current = 22;
+                continue localasyncloop;
+              } else {
+                $current = 27;
+                continue localasyncloop;
+              }
+              break;
+
+            case 22:
+              attributeValue = updated.GetAttribute(attributeName);
+              existingValue = existingAttributes.$index(attributeName);
+              if (attributeValue == null) {
+                $current = 23;
+                continue localasyncloop;
+              } else {
+                $current = 24;
+                continue localasyncloop;
+              }
+              break;
+
+            case 23:
+              $current = 20;
+              continue localasyncloop;
+
+            case 24:
+              if ((existingValue == null) || !$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($t.assertnotnull(attributeValue), $t.assertnotnull(existingValue)).$wrapped) {
+                $current = 25;
                 continue localasyncloop;
               } else {
                 $current = 26;
@@ -5426,55 +5847,62 @@ this.Serulian = (function ($global) {
               }
               break;
 
-            case 21:
-              attributeValue = updated.GetAttribute(attributeName);
-              existingValue = existingAttributes.$index(attributeName);
-              if (attributeValue == null) {
-                $current = 22;
-                continue localasyncloop;
-              } else {
-                $current = 23;
-                continue localasyncloop;
-              }
-              break;
-
-            case 22:
-              $current = 19;
-              continue localasyncloop;
-
-            case 23:
-              if ((existingValue == null) || !$g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($t.assertnotnull(attributeValue), $t.assertnotnull(existingValue)).$wrapped) {
-                $current = 24;
-                continue localasyncloop;
-              } else {
-                $current = 25;
-                continue localasyncloop;
-              }
-              break;
-
-            case 24:
-              attributeDiffs.Add(($temp6 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff.new(attributeName), $temp6.Value = attributeValue, $temp6));
-              $current = 25;
-              continue localasyncloop;
-
             case 25:
-              $current = 19;
+              attributeDiffs.Add(($temp6 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff.new(attributeName), $temp6.Value = attributeValue, $temp6));
+              $current = 26;
               continue localasyncloop;
 
             case 26:
-              $current = 27;
+              $current = 20;
               continue localasyncloop;
 
             case 27:
-              childInPlaceDiffs = $g.pkg.github.com.serulian.corelib.branch.master.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty();
-              childRemovalDiffs = $g.pkg.github.com.serulian.corelib.branch.master.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty();
-              childInsertionDiffs = $g.pkg.github.com.serulian.corelib.branch.master.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty();
-              updatedByKey = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map($g.pkg.github.com.serulian.corelib.branch.master.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Empty();
-              keysHandled = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map($g.pkg.github.com.serulian.corelib.branch.master.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty();
-              index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              $current = 28;
+              continue localasyncloop;
+
+            case 28:
+              childInPlaceDiffs = $g.pkg.github.com.serulian.corelib.HEAD.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty();
+              childRemovalDiffs = $g.pkg.github.com.serulian.corelib.HEAD.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty();
+              childInsertionDiffs = $g.pkg.github.com.serulian.corelib.HEAD.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty();
+              updatedByKey = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map($g.pkg.github.com.serulian.corelib.HEAD.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Empty();
+              keysHandled = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map($g.pkg.github.com.serulian.corelib.HEAD.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty();
+              index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               updatedChildren = updatedNode.Children;
               if (updatedChildren != null) {
-                $current = 28;
+                $current = 29;
+                continue localasyncloop;
+              } else {
+                $current = 35;
+                continue localasyncloop;
+              }
+              break;
+
+            case 29:
+              $current = 30;
+              continue localasyncloop;
+
+            case 30:
+              $temp8 = updatedChildren.Stream();
+              $current = 31;
+              continue localasyncloop;
+
+            case 31:
+              $promise.maybe($temp8.Next()).then(function ($result0) {
+                $temp7 = $result0;
+                $result = $temp7;
+                $current = 32;
+                $continue($resolve, $reject);
+                return;
+              }).catch(function (err) {
+                $reject(err);
+                return;
+              });
+              return;
+
+            case 32:
+              child = $temp7.First;
+              if ($temp7.Second.$wrapped) {
+                $current = 33;
                 continue localasyncloop;
               } else {
                 $current = 34;
@@ -5482,47 +5910,10 @@ this.Serulian = (function ($global) {
               }
               break;
 
-            case 28:
-              $current = 29;
-              continue localasyncloop;
-
-            case 29:
-              $temp8 = updatedChildren.Stream();
-              $current = 30;
-              continue localasyncloop;
-
-            case 30:
-              $promise.maybe($temp8.Next()).then(function ($result0) {
-                $temp7 = $result0;
-                $result = $temp7;
-                $current = 31;
-                $continue($resolve, $reject);
-                return;
-              }).catch(function (err) {
-                $reject(err);
-                return;
-              });
-              return;
-
-            case 31:
-              child = $temp7.First;
-              if ($temp7.Second.$wrapped) {
-                $current = 32;
-                continue localasyncloop;
-              } else {
-                $current = 33;
-                continue localasyncloop;
-              }
-              break;
-
-            case 32:
-              updatedByKey.$setindex($g.pkg.github.com.serulian.virtualdom.HEAD.diff.getInferredNodeKey($g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.VirtualNodeWrapper.For(child), index), child);
-              index = $t.fastbox(index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
-              $current = 30;
-              continue localasyncloop;
-
             case 33:
-              $current = 34;
+              updatedByKey.$setindex($g.pkg.github.com.serulian.virtualdom.HEAD.diff.getInferredNodeKey($g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.VirtualNodeWrapper.For(child), index), child);
+              index = $t.fastbox(index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+              $current = 31;
               continue localasyncloop;
 
             case 34:
@@ -5530,45 +5921,49 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 35:
-              $temp10 = $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), $t.fastbox(existing.ChildCount().$wrapped - 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
               $current = 36;
               continue localasyncloop;
 
             case 36:
+              $temp10 = $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $t.fastbox(existing.ChildCount().$wrapped - 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
+              $current = 37;
+              continue localasyncloop;
+
+            case 37:
               $temp9 = $temp10.Next();
               counter = $temp9.First;
               if ($temp9.Second.$wrapped) {
-                $current = 37;
-                continue localasyncloop;
-              } else {
-                $current = 41;
-                continue localasyncloop;
-              }
-              break;
-
-            case 37:
-              index = $t.fastbox((existing.ChildCount().$wrapped - 1) - counter.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
-              child = existing.GetChild(index);
-              childKey = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.getInferredNodeKey(child, index);
-              vNode = updatedByKey.$index(childKey);
-              if (vNode == null) {
                 $current = 38;
                 continue localasyncloop;
               } else {
-                $current = 39;
+                $current = 42;
                 continue localasyncloop;
               }
               break;
 
             case 38:
-              childRemovalDiffs.Add($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_REMOVE_NODE, index, $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty(), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty()));
-              $current = 36;
-              continue localasyncloop;
+              index = $t.fastbox((existing.ChildCount().$wrapped - 1) - counter.$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+              child = existing.GetChild(index);
+              childKey = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.getInferredNodeKey(child, index);
+              vNode = updatedByKey.$index(childKey);
+              if (vNode == null) {
+                $current = 39;
+                continue localasyncloop;
+              } else {
+                $current = 40;
+                continue localasyncloop;
+              }
+              break;
 
             case 39:
+              childRemovalDiffs.Add($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_REMOVE_NODE, index, $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty(), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty()));
+              $current = 37;
+              continue localasyncloop;
+
+            case 40:
               $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.diff.computeDiff($t.assertnotnull(vNode), child, index)).then(function ($result0) {
                 $result = keysHandled.$setindex(childKey, $result0);
-                $current = 40;
+                $current = 41;
                 $continue($resolve, $reject);
                 return;
               }).catch(function (err) {
@@ -5577,14 +5972,35 @@ this.Serulian = (function ($global) {
               });
               return;
 
-            case 40:
-              $current = 36;
+            case 41:
+              $current = 37;
               continue localasyncloop;
 
-            case 41:
+            case 42:
               updatedChildren = updatedNode.Children;
               if (updatedChildren != null) {
-                $current = 42;
+                $current = 43;
+                continue localasyncloop;
+              } else {
+                $current = 52;
+                continue localasyncloop;
+              }
+              break;
+
+            case 43:
+              $current = 44;
+              continue localasyncloop;
+
+            case 44:
+              $temp12 = $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $t.fastbox(updatedChildren.Length().$wrapped - 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
+              $current = 45;
+              continue localasyncloop;
+
+            case 45:
+              $temp11 = $temp12.Next();
+              index = $temp11.First;
+              if ($temp11.Second.$wrapped) {
+                $current = 46;
                 continue localasyncloop;
               } else {
                 $current = 51;
@@ -5592,20 +6008,29 @@ this.Serulian = (function ($global) {
               }
               break;
 
-            case 42:
-              $current = 43;
+            case 46:
+              child = updatedChildren.$index(index);
+              childKey = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.getInferredNodeKey($g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.VirtualNodeWrapper.For(child), index);
+              addCreate = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+              handledDiff = keysHandled.$index(childKey);
+              if (handledDiff != null) {
+                $current = 47;
+                continue localasyncloop;
+              } else {
+                $current = 48;
+                continue localasyncloop;
+              }
+              break;
+
+            case 47:
+              childInPlaceDiffs.Add(handledDiff);
+              addCreate = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+              $current = 48;
               continue localasyncloop;
 
-            case 43:
-              $temp12 = $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), $t.fastbox(updatedChildren.Length().$wrapped - 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
-              $current = 44;
-              continue localasyncloop;
-
-            case 44:
-              $temp11 = $temp12.Next();
-              index = $temp11.First;
-              if ($temp11.Second.$wrapped) {
-                $current = 45;
+            case 48:
+              if (addCreate.$wrapped) {
+                $current = 49;
                 continue localasyncloop;
               } else {
                 $current = 50;
@@ -5613,87 +6038,57 @@ this.Serulian = (function ($global) {
               }
               break;
 
-            case 45:
-              child = updatedChildren.$index(index);
-              childKey = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.getInferredNodeKey($g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.VirtualNodeWrapper.For(child), index);
-              addCreate = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-              handledDiff = keysHandled.$index(childKey);
-              if (handledDiff != null) {
-                $current = 46;
-                continue localasyncloop;
-              } else {
-                $current = 47;
-                continue localasyncloop;
-              }
-              break;
-
-            case 46:
-              childInPlaceDiffs.Add(handledDiff);
-              addCreate = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-              $current = 47;
-              continue localasyncloop;
-
-            case 47:
-              if (addCreate.$wrapped) {
-                $current = 48;
-                continue localasyncloop;
-              } else {
-                $current = 49;
-                continue localasyncloop;
-              }
-              break;
-
-            case 48:
-              childInsertionDiffs.Add(($temp13 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_CREATE_NODE, index, $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty(), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty()), $temp13.ReplacementNode = child, $temp13));
-              $current = 49;
-              continue localasyncloop;
-
             case 49:
-              $current = 44;
+              childInsertionDiffs.Add(($temp13 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_CREATE_NODE, index, $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Empty(), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.diff.AttributeDiff).Empty()), $temp13.ReplacementNode = child, $temp13));
+              $current = 50;
               continue localasyncloop;
 
             case 50:
-              $current = 51;
+              $current = 45;
               continue localasyncloop;
 
             case 51:
-              childrenDiffs = $g.pkg.github.com.serulian.corelib.branch.master.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Concat($g.pkg.github.com.serulian.corelib.branch.master.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Concat(childInPlaceDiffs, childRemovalDiffs), childInsertionDiffs);
-              $resolve(($temp14 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_THUNK, parentIndex, childrenDiffs.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), null), attributeDiffs.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), null)), $temp14.ReplacementNode = updatedNode, $temp14));
-              return;
+              $current = 52;
+              continue localasyncloop;
 
             case 52:
-              if (!$g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean.$equals(updated.IsElement(), existing.IsElement()).$wrapped) {
-                $current = 53;
-                continue localasyncloop;
-              } else {
-                $current = 54;
-                continue localasyncloop;
-              }
-              break;
+              childrenDiffs = $g.pkg.github.com.serulian.corelib.HEAD.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Concat($g.pkg.github.com.serulian.corelib.HEAD.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff).Concat(childInPlaceDiffs, childRemovalDiffs), childInsertionDiffs);
+              $resolve(($temp14 = $g.pkg.github.com.serulian.virtualdom.HEAD.diff.Diff.new($g.pkg.github.com.serulian.virtualdom.HEAD.diff.DIFF_THUNK, parentIndex, childrenDiffs.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null), attributeDiffs.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null)), $temp14.ReplacementNode = updatedNode, $temp14));
+              return;
 
             case 53:
-              needsReplacement = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-              $current = 6;
-              continue localasyncloop;
-
-            case 54:
-              if (existing.IsElement().$wrapped && !$g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals(updated.TagName().ToLowerCase(), existing.TagName().ToLowerCase()).$wrapped) {
-                $current = 55;
+              if (!$g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean.$equals(updated.IsElement(), existing.IsElement()).$wrapped) {
+                $current = 54;
                 continue localasyncloop;
               } else {
-                $current = 56;
+                $current = 55;
                 continue localasyncloop;
               }
               break;
 
-            case 55:
-              needsReplacement = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+            case 54:
+              needsReplacement = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
               $current = 6;
               continue localasyncloop;
 
-            case 56:
-              if (!existing.IsElement().$wrapped) {
+            case 55:
+              if (existing.IsElement().$wrapped && !$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals(updated.TagName().ToLowerCase(), existing.TagName().ToLowerCase()).$wrapped) {
+                $current = 56;
+                continue localasyncloop;
+              } else {
                 $current = 57;
+                continue localasyncloop;
+              }
+              break;
+
+            case 56:
+              needsReplacement = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+              $current = 6;
+              continue localasyncloop;
+
+            case 57:
+              if (!existing.IsElement().$wrapped) {
+                $current = 58;
                 continue localasyncloop;
               } else {
                 $current = 6;
@@ -5701,12 +6096,12 @@ this.Serulian = (function ($global) {
               }
               break;
 
-            case 57:
-              needsReplacement = $t.fastbox(!$g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($t.syncnullcompare(updated.TextData(), function () {
-                return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+            case 58:
+              needsReplacement = $t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($t.syncnullcompare(updated.TextData(), function () {
+                return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               }), $t.syncnullcompare(existing.TextData(), function () {
-                return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-              })).$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+                return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+              })).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
               $current = 6;
               continue localasyncloop;
 
@@ -5720,37 +6115,37 @@ this.Serulian = (function ($global) {
     });
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.DIFF_REPLACE_NODE = $t.fastbox('replace-node', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        $static.DIFF_REPLACE_NODE = $t.fastbox('replace-node', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         resolve();
       });
     }, '34d354f1', []);
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.DIFF_REMOVE_NODE = $t.fastbox('remove-node', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        $static.DIFF_REMOVE_NODE = $t.fastbox('remove-node', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         resolve();
       });
     }, 'c9a68495', []);
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.DIFF_CREATE_NODE = $t.fastbox('create-node', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        $static.DIFF_CREATE_NODE = $t.fastbox('create-node', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         resolve();
       });
     }, '4768db6c', []);
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.DIFF_SAME = $t.fastbox('same-node', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        $static.DIFF_SAME = $t.fastbox('same-node', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         resolve();
       });
     }, '7676b392', []);
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.DIFF_THUNK = $t.fastbox('thunk', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        $static.DIFF_THUNK = $t.fastbox('thunk', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         resolve();
       });
     }, '7d07aed6', []);
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.nodeCounter = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        $static.nodeCounter = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
         resolve();
       });
     }, '22b35a5a', []);
@@ -5763,9 +6158,9 @@ this.Serulian = (function ($global) {
       $static.new = function (element) {
         var instance = new $static();
         instance.element = element;
-        instance.registered = $g.pkg.github.com.serulian.corelib.branch.master.collections.Set($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Empty();
-        instance.functionRefCounter = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
-        instance.handlers = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map($g.pkg.github.com.serulian.corelib.branch.master.primitives.String, $g.pkg.github.com.serulian.corelib.branch.master.primitives.functionType($t.void)).Empty();
+        instance.registered = $g.pkg.github.com.serulian.corelib.HEAD.collections.Set($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Empty();
+        instance.functionRefCounter = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+        instance.handlers = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map($g.pkg.github.com.serulian.corelib.HEAD.primitives.String, $g.pkg.github.com.serulian.corelib.HEAD.primitives.functionType($t.void)).Empty();
         instance.tree = $g.pkg.github.com.serulian.virtualdom.HEAD.eventmanager.eventTree.new();
         return instance;
       };
@@ -5794,7 +6189,7 @@ this.Serulian = (function ($global) {
 
             case 2:
               path = $g.pkg.github.com.serulian.virtualdom.HEAD.internal.getDOMPath(domNode);
-              split = path.Split($t.fastbox('.', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              split = path.Split($t.fastbox('.', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
               $this.tree.removeBranch(split);
               return;
 
@@ -5852,7 +6247,7 @@ this.Serulian = (function ($global) {
                   $current = 4;
                   continue localasyncloop;
                 } else {
-                  $current = 13;
+                  $current = 14;
                   continue localasyncloop;
                 }
                 break;
@@ -5873,22 +6268,16 @@ this.Serulian = (function ($global) {
 
               case 6:
                 path = $g.pkg.github.com.serulian.virtualdom.HEAD.internal.getDOMPath(domNode);
-                split = path.Split($t.fastbox('.', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                split = path.Split($t.fastbox('.', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                 treeEntry = $this.tree.getOrAddBranch(split);
                 treeEntry.clearHandlers();
                 $current = 7;
                 continue localasyncloop;
 
               case 7:
-                $temp1 = eventHandlers.Keys().Stream();
-                $current = 8;
-                continue localasyncloop;
-
-              case 8:
-                $promise.maybe($temp1.Next()).then(function ($result0) {
-                  $temp0 = $result0;
-                  $result = $temp0;
-                  $current = 9;
+                $promise.maybe(eventHandlers.Keys()).then(function ($result0) {
+                  $result = $result0;
+                  $current = 8;
                   $continue($resolve, $reject);
                   return;
                 }).catch(function (err) {
@@ -5897,21 +6286,39 @@ this.Serulian = (function ($global) {
                 });
                 return;
 
+              case 8:
+                $temp1 = $result;
+                $current = 9;
+                continue localasyncloop;
+
               case 9:
+                $promise.maybe($temp1.Next()).then(function ($result0) {
+                  $temp0 = $result0;
+                  $result = $temp0;
+                  $current = 10;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 10:
                 eventName = $temp0.First;
                 if ($temp0.Second.$wrapped) {
-                  $current = 10;
+                  $current = 11;
                   continue localasyncloop;
                 } else {
-                  $current = 12;
+                  $current = 13;
                   continue localasyncloop;
                 }
                 break;
 
-              case 10:
+              case 11:
                 $promise.maybe($this.register(eventName)).then(function ($result0) {
                   $result = $result0;
-                  $current = 11;
+                  $current = 12;
                   $continue($resolve, $reject);
                   return;
                 }).catch(function (err) {
@@ -5920,14 +6327,14 @@ this.Serulian = (function ($global) {
                 });
                 return;
 
-              case 11:
+              case 12:
                 handlerRef = eventHandlers.$index(eventName);
                 treeEntry.addHandler(eventName, $t.assertnotnull(handlerRef));
-                $current = 8;
+                $current = 9;
                 continue localasyncloop;
 
-              case 12:
-                $current = 13;
+              case 13:
+                $current = 14;
                 continue localasyncloop;
 
               default:
@@ -5955,7 +6362,7 @@ this.Serulian = (function ($global) {
             switch ($current) {
               case 0:
                 path = $g.pkg.github.com.serulian.virtualdom.HEAD.internal.getDOMPath(domNode);
-                split = path.Split($t.fastbox('.', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                split = path.Split($t.fastbox('.', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                 treeEntry = $this.tree.getOrAddBranch(split);
                 treeEntry.clearHandlers();
                 eventHandlers = virtualNode.EventHandlers;
@@ -5963,7 +6370,7 @@ this.Serulian = (function ($global) {
                   $current = 1;
                   continue localasyncloop;
                 } else {
-                  $current = 8;
+                  $current = 9;
                   continue localasyncloop;
                 }
                 break;
@@ -5973,15 +6380,9 @@ this.Serulian = (function ($global) {
                 continue localasyncloop;
 
               case 2:
-                $temp1 = eventHandlers.Keys().Stream();
-                $current = 3;
-                continue localasyncloop;
-
-              case 3:
-                $promise.maybe($temp1.Next()).then(function ($result0) {
-                  $temp0 = $result0;
-                  $result = $temp0;
-                  $current = 4;
+                $promise.maybe(eventHandlers.Keys()).then(function ($result0) {
+                  $result = $result0;
+                  $current = 3;
                   $continue($resolve, $reject);
                   return;
                 }).catch(function (err) {
@@ -5990,21 +6391,39 @@ this.Serulian = (function ($global) {
                 });
                 return;
 
+              case 3:
+                $temp1 = $result;
+                $current = 4;
+                continue localasyncloop;
+
               case 4:
+                $promise.maybe($temp1.Next()).then(function ($result0) {
+                  $temp0 = $result0;
+                  $result = $temp0;
+                  $current = 5;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 5:
                 eventName = $temp0.First;
                 if ($temp0.Second.$wrapped) {
-                  $current = 5;
+                  $current = 6;
                   continue localasyncloop;
                 } else {
-                  $current = 7;
+                  $current = 8;
                   continue localasyncloop;
                 }
                 break;
 
-              case 5:
+              case 6:
                 $promise.maybe($this.register(eventName)).then(function ($result0) {
                   $result = $result0;
-                  $current = 6;
+                  $current = 7;
                   $continue($resolve, $reject);
                   return;
                 }).catch(function (err) {
@@ -6013,14 +6432,14 @@ this.Serulian = (function ($global) {
                 });
                 return;
 
-              case 6:
+              case 7:
                 handlerRef = eventHandlers.$index(eventName);
                 treeEntry.addHandler(eventName, $t.assertnotnull(handlerRef));
-                $current = 3;
+                $current = 4;
                 continue localasyncloop;
 
-              case 7:
-                $current = 8;
+              case 8:
+                $current = 9;
                 continue localasyncloop;
 
               default:
@@ -6036,7 +6455,7 @@ this.Serulian = (function ($global) {
         var ref;
         ref = $this.functionRefCounter.String();
         $this.handlers.$setindex(ref, func);
-        $this.functionRefCounter = $t.fastbox($this.functionRefCounter.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        $this.functionRefCounter = $t.fastbox($this.functionRefCounter.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
         return $t.box(ref, $g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference);
       };
       $instance.handleEvent = $t.markpromising(function (evt) {
@@ -6068,7 +6487,7 @@ this.Serulian = (function ($global) {
 
               case 2:
                 path = $g.pkg.github.com.serulian.virtualdom.HEAD.internal.getDOMPath($t.assertnotnull(target));
-                split = path.Split($t.fastbox('.', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                split = path.Split($t.fastbox('.', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                 treeEntry = $this.tree.getBranch(split);
                 if (treeEntry == null) {
                   $current = 3;
@@ -6084,7 +6503,7 @@ this.Serulian = (function ($global) {
                 return;
 
               case 4:
-                handler = $t.assertnotnull(treeEntry).lookupHandler($t.fastbox(evt['type'], $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                handler = $t.assertnotnull(treeEntry).lookupHandler($t.fastbox(evt['type'], $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                 if (handler != null) {
                   $current = 5;
                   continue localasyncloop;
@@ -6125,7 +6544,7 @@ this.Serulian = (function ($global) {
         syncloop: while (true) {
           switch ($current) {
             case 0:
-              handlerFunc = $this.handlers.$index($t.box(handler, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              handlerFunc = $this.handlers.$index($t.box(handler, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
               if (handlerFunc != null) {
                 $current = 1;
                 continue syncloop;
@@ -6208,11 +6627,11 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "ForElement|1|1f77dd0b<7a954a75>": true,
-          "NodeRemoved|2|1f77dd0b<void>": true,
-          "NodeCreated|2|1f77dd0b<void>": true,
-          "NodeUpdated|2|1f77dd0b<void>": true,
-          "RegisterFunction|2|1f77dd0b<c842d36c>": true,
+          "ForElement|1|e429e0b7<7a954a75>": true,
+          "NodeRemoved|2|e429e0b7<void>": true,
+          "NodeCreated|2|e429e0b7<void>": true,
+          "NodeUpdated|2|e429e0b7<void>": true,
+          "RegisterFunction|2|e429e0b7<c842d36c>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -6223,8 +6642,8 @@ this.Serulian = (function ($global) {
       var $instance = this.prototype;
       $static.new = function () {
         var instance = new $static();
-        instance.children = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map($g.pkg.github.com.serulian.corelib.branch.master.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.eventmanager.eventTree).Empty();
-        instance.handlers = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map($g.pkg.github.com.serulian.corelib.branch.master.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference).Empty();
+        instance.children = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map($g.pkg.github.com.serulian.corelib.HEAD.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.eventmanager.eventTree).Empty();
+        instance.handlers = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map($g.pkg.github.com.serulian.corelib.HEAD.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference).Empty();
         return instance;
       };
       $instance.removeBranch = function (parts) {
@@ -6244,11 +6663,11 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              $this.children.RemoveKey(parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)));
+              $this.children.RemoveKey(parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)));
               return;
 
             case 2:
-              child = $this.children.$index(parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)));
+              child = $this.children.$index(parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)));
               if (child == null) {
                 $current = 3;
                 continue syncloop;
@@ -6262,7 +6681,7 @@ this.Serulian = (function ($global) {
               return;
 
             case 4:
-              $t.assertnotnull(child).removeBranch(parts.$slice($t.fastbox(1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), null));
+              $t.assertnotnull(child).removeBranch(parts.$slice($t.fastbox(1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null));
               return;
 
             default:
@@ -6292,7 +6711,7 @@ this.Serulian = (function ($global) {
               return $this;
 
             case 2:
-              child = $this.children.$index(parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)));
+              child = $this.children.$index(parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)));
               if (child == null) {
                 $current = 3;
                 continue syncloop;
@@ -6304,12 +6723,12 @@ this.Serulian = (function ($global) {
 
             case 3:
               newBranch = $g.pkg.github.com.serulian.virtualdom.HEAD.eventmanager.eventTree.new();
-              index = parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
+              index = parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
               $this.children.$setindex(index, newBranch);
-              return newBranch.getOrAddBranch(parts.$slice($t.fastbox(1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), null));
+              return newBranch.getOrAddBranch(parts.$slice($t.fastbox(1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null));
 
             case 4:
-              return $t.assertnotnull(child).getOrAddBranch(parts.$slice($t.fastbox(1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), null));
+              return $t.assertnotnull(child).getOrAddBranch(parts.$slice($t.fastbox(1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null));
 
             default:
               return;
@@ -6336,7 +6755,7 @@ this.Serulian = (function ($global) {
               return $this;
 
             case 2:
-              child = $this.children.$index(parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)));
+              child = $this.children.$index(parts.$index($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)));
               if (child == null) {
                 $current = 3;
                 continue syncloop;
@@ -6350,7 +6769,7 @@ this.Serulian = (function ($global) {
               return null;
 
             case 4:
-              return $t.assertnotnull(child).getBranch(parts.$slice($t.fastbox(1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), null));
+              return $t.assertnotnull(child).getBranch(parts.$slice($t.fastbox(1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null));
 
             default:
               return;
@@ -6359,7 +6778,7 @@ this.Serulian = (function ($global) {
       };
       $instance.clearHandlers = function () {
         var $this = this;
-        $this.handlers = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map($g.pkg.github.com.serulian.corelib.branch.master.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference).Empty();
+        $this.handlers = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map($g.pkg.github.com.serulian.corelib.HEAD.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference).Empty();
         return;
       };
       $instance.addHandler = function (eventName, funcRef) {
@@ -6397,10 +6816,10 @@ this.Serulian = (function ($global) {
             break;
 
           case 1:
-            return $t.fastbox('(root)', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+            return $t.fastbox('(root)', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
 
           case 2:
-            return $t.fastbox($t.cast(existingPath, $global.String, false), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+            return $t.fastbox($t.cast(existingPath, $global.String, false), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
 
           default:
             return;
@@ -6413,7 +6832,7 @@ this.Serulian = (function ($global) {
     };
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.elementInternalPath = $t.fastbox("__internal_dom_path", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        $static.elementInternalPath = $t.fastbox("__internal_dom_path", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         resolve();
       });
     }, '1c1a7e08', []);
@@ -6508,11 +6927,11 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "WithEventManager|1|1f77dd0b<c783d28c>": true,
+          "WithEventManager|1|e429e0b7<c783d28c>": true,
           "EventManager|3|7a954a75": true,
           "Renderer|3|3a8d0c9f": true,
         };
-        computed[("Get|2|1f77dd0b<" + $t.typeid(T)) + ">"] = true;
+        computed[("Get|2|e429e0b7<" + $t.typeid(T)) + ">"] = true;
         return this.$cachedtypesig = computed;
       };
     });
@@ -6533,7 +6952,7 @@ this.Serulian = (function ($global) {
         syncloop: while (true) {
           switch ($current) {
             case 0:
-              if ($this.props.$index($t.fastbox("Key", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)) != null) {
+              if ($this.props.$index($t.fastbox("Key", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)) != null) {
                 $current = 1;
                 continue syncloop;
               } else {
@@ -6543,7 +6962,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              return $t.cast($this.props.$index($t.fastbox("Key", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String, false);
+              return $t.cast($this.props.$index($t.fastbox("Key", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String, false);
 
             case 2:
               return null;
@@ -6561,7 +6980,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                $promise.maybe($this.renderUnderRoot($this, $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), context)).then(function ($result0) {
+                $promise.maybe($this.renderUnderRoot($this, $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), context)).then(function ($result0) {
                   $result = $result0;
                   $current = 1;
                   $continue($resolve, $reject);
@@ -6615,8 +7034,8 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                attributes = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map($g.pkg.github.com.serulian.corelib.branch.master.primitives.String, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Empty();
-                eventHandlers = $g.pkg.github.com.serulian.corelib.branch.master.collections.Map($g.pkg.github.com.serulian.corelib.branch.master.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference).Empty();
+                attributes = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map($g.pkg.github.com.serulian.corelib.HEAD.primitives.String, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Empty();
+                eventHandlers = $g.pkg.github.com.serulian.corelib.HEAD.collections.Map($g.pkg.github.com.serulian.corelib.HEAD.primitives.String, $g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference).Empty();
                 key = null;
                 nodeInsertedHandler = null;
                 props = $this.props;
@@ -6625,13 +7044,13 @@ this.Serulian = (function ($global) {
                   $current = 1;
                   continue localasyncloop;
                 } else {
-                  $current = 26;
+                  $current = 27;
                   continue localasyncloop;
                 }
                 break;
 
               case 1:
-                if (props.$index($t.fastbox("Key", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)) != null) {
+                if (props.$index($t.fastbox("Key", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)) != null) {
                   $current = 2;
                   continue localasyncloop;
                 } else {
@@ -6641,7 +7060,7 @@ this.Serulian = (function ($global) {
                 break;
 
               case 2:
-                key = $t.cast(props.$index($t.fastbox("Key", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String, false);
+                key = $t.cast(props.$index($t.fastbox("Key", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String, false);
                 $current = 3;
                 continue localasyncloop;
 
@@ -6650,15 +7069,9 @@ this.Serulian = (function ($global) {
                 continue localasyncloop;
 
               case 4:
-                $temp1 = props.Keys().Stream();
-                $current = 5;
-                continue localasyncloop;
-
-              case 5:
-                $promise.maybe($temp1.Next()).then(function ($result0) {
-                  $temp0 = $result0;
-                  $result = $temp0;
-                  $current = 6;
+                $promise.maybe(props.Keys()).then(function ($result0) {
+                  $result = $result0;
+                  $current = 5;
                   $continue($resolve, $reject);
                   return;
                 }).catch(function (err) {
@@ -6667,69 +7080,77 @@ this.Serulian = (function ($global) {
                 });
                 return;
 
+              case 5:
+                $temp1 = $result;
+                $current = 6;
+                continue localasyncloop;
+
               case 6:
-                name = $temp0.First;
-                if ($temp0.Second.$wrapped) {
+                $promise.maybe($temp1.Next()).then(function ($result0) {
+                  $temp0 = $result0;
+                  $result = $temp0;
                   $current = 7;
-                  continue localasyncloop;
-                } else {
-                  $current = 25;
-                  continue localasyncloop;
-                }
-                break;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
 
               case 7:
-                if ($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals(name, $t.fastbox("ondomnodeinserted", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped) {
+                name = $temp0.First;
+                if ($temp0.Second.$wrapped) {
                   $current = 8;
                   continue localasyncloop;
                 } else {
-                  $current = 10;
+                  $current = 26;
                   continue localasyncloop;
                 }
                 break;
 
               case 8:
-                fn = $t.cast(props.$index(name), $g.pkg.github.com.serulian.corelib.branch.master.primitives.functionType($t.void), false);
-                nodeInsertedHandler = context.EventManager().RegisterFunction(fn);
-                $current = 9;
-                continue localasyncloop;
+                if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals(name, $t.fastbox("ondomnodeinserted", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped) {
+                  $current = 9;
+                  continue localasyncloop;
+                } else {
+                  $current = 11;
+                  continue localasyncloop;
+                }
+                break;
 
               case 9:
-                $current = 5;
+                fn = $t.cast(props.$index(name), $g.pkg.github.com.serulian.corelib.HEAD.primitives.functionType($t.void), false);
+                nodeInsertedHandler = context.EventManager().RegisterFunction(fn);
+                $current = 10;
                 continue localasyncloop;
 
               case 10:
-                if (name.HasPrefix($t.fastbox("on", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped) {
-                  $current = 11;
+                $current = 6;
+                continue localasyncloop;
+
+              case 11:
+                if (name.HasPrefix($t.fastbox("on", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped) {
+                  $current = 12;
                   continue localasyncloop;
                 } else {
-                  $current = 13;
+                  $current = 14;
                   continue localasyncloop;
                 }
                 break;
 
-              case 11:
-                fn = $t.cast(props.$index(name), $g.pkg.github.com.serulian.corelib.branch.master.primitives.functionType($t.void), false);
-                eventHandlers.$setindex(name.$slice($t.fastbox(2, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), null), context.EventManager().RegisterFunction(fn));
-                $current = 12;
-                continue localasyncloop;
-
               case 12:
-                $current = 9;
+                fn = $t.cast(props.$index(name), $g.pkg.github.com.serulian.corelib.HEAD.primitives.functionType($t.void), false);
+                eventHandlers.$setindex(name.$slice($t.fastbox(2, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null), context.EventManager().RegisterFunction(fn));
+                $current = 13;
                 continue localasyncloop;
 
               case 13:
-                if (!$g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals(name, $t.fastbox("Key", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped) {
-                  $current = 14;
-                  continue localasyncloop;
-                } else {
-                  $current = 17;
-                  continue localasyncloop;
-                }
-                break;
+                $current = 10;
+                continue localasyncloop;
 
               case 14:
-                if ($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals(name, $t.fastbox("className", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped) {
+                if (!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals(name, $t.fastbox("Key", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped) {
                   $current = 15;
                   continue localasyncloop;
                 } else {
@@ -6739,22 +7160,66 @@ this.Serulian = (function ($global) {
                 break;
 
               case 15:
-                attributes.$setindex($t.fastbox('class', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.cast(props.$index(name), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String, false));
-                $current = 16;
-                continue localasyncloop;
+                if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals(name, $t.fastbox("className", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped) {
+                  $current = 16;
+                  continue localasyncloop;
+                } else {
+                  $current = 19;
+                  continue localasyncloop;
+                }
+                break;
 
               case 16:
+                attributes.$setindex($t.fastbox('class', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.cast(props.$index(name), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String, false));
                 $current = 17;
                 continue localasyncloop;
 
               case 17:
-                $current = 12;
+                $current = 18;
                 continue localasyncloop;
 
               case 18:
+                $current = 13;
+                continue localasyncloop;
+
+              case 19:
                 propValue = props.$index(name);
-                if ($t.istype(propValue, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)) {
-                  $current = 19;
+                if ($t.istype(propValue, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)) {
+                  $current = 20;
+                  continue localasyncloop;
+                } else {
+                  $current = 22;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 20:
+                attributes.$setindex(name, propValue);
+                $current = 21;
+                continue localasyncloop;
+
+              case 21:
+                $current = 17;
+                continue localasyncloop;
+
+              case 22:
+                if ($t.istype(propValue, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)) {
+                  $current = 23;
+                  continue localasyncloop;
+                } else {
+                  $current = 24;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 23:
+                attributes.$setindex(name, name);
+                $current = 21;
+                continue localasyncloop;
+
+              case 24:
+                if (true) {
+                  $current = 25;
                   continue localasyncloop;
                 } else {
                   $current = 21;
@@ -6762,64 +7227,30 @@ this.Serulian = (function ($global) {
                 }
                 break;
 
-              case 19:
-                attributes.$setindex(name, propValue);
-                $current = 20;
-                continue localasyncloop;
-
-              case 20:
-                $current = 16;
-                continue localasyncloop;
-
-              case 21:
-                if ($t.istype(propValue, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)) {
-                  $current = 22;
-                  continue localasyncloop;
-                } else {
-                  $current = 23;
-                  continue localasyncloop;
-                }
-                break;
-
-              case 22:
-                attributes.$setindex(name, name);
-                $current = 20;
-                continue localasyncloop;
-
-              case 23:
-                if (true) {
-                  $current = 24;
-                  continue localasyncloop;
-                } else {
-                  $current = 20;
-                  continue localasyncloop;
-                }
-                break;
-
-              case 24:
-                $reject($g.pkg.github.com.serulian.corelib.branch.master.helpertypes.SimpleError.WithMessage($t.fastbox('Unsupported attribute type', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)));
+              case 25:
+                $reject($g.pkg.github.com.serulian.corelib.HEAD.helpertypes.SimpleError.WithMessage($t.fastbox('Unsupported attribute type', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)));
                 return;
 
-              case 25:
-                $current = 26;
-                continue localasyncloop;
-
               case 26:
-                childList = $g.pkg.github.com.serulian.corelib.branch.master.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Empty();
-                index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
                 $current = 27;
                 continue localasyncloop;
 
               case 27:
-                $temp3 = children;
+                childList = $g.pkg.github.com.serulian.corelib.HEAD.collections.List($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Empty();
+                index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
                 $current = 28;
                 continue localasyncloop;
 
               case 28:
+                $temp3 = children;
+                $current = 29;
+                continue localasyncloop;
+
+              case 29:
                 $promise.maybe($temp3.Next()).then(function ($result0) {
                   $temp2 = $result0;
                   $result = $temp2;
-                  $current = 29;
+                  $current = 30;
                   $continue($resolve, $reject);
                   return;
                 }).catch(function (err) {
@@ -6828,36 +7259,172 @@ this.Serulian = (function ($global) {
                 });
                 return;
 
-              case 29:
+              case 30:
                 child = $temp2.First;
                 if ($temp2.Second.$wrapped) {
-                  $current = 30;
-                  continue localasyncloop;
-                } else {
-                  $current = 51;
-                  continue localasyncloop;
-                }
-                break;
-
-              case 30:
-                index = $t.fastbox(index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
-                if (child == null) {
                   $current = 31;
                   continue localasyncloop;
                 } else {
-                  $current = 32;
+                  $current = 52;
                   continue localasyncloop;
                 }
                 break;
 
               case 31:
-                $current = 28;
-                continue localasyncloop;
+                index = $t.fastbox(index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
+                if (child == null) {
+                  $current = 32;
+                  continue localasyncloop;
+                } else {
+                  $current = 33;
+                  continue localasyncloop;
+                }
+                break;
 
               case 32:
+                $current = 29;
+                continue localasyncloop;
+
+              case 33:
                 typedChild = child;
-                if ($t.istype(typedChild, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)) {
-                  $current = 33;
+                if ($t.istype(typedChild, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)) {
+                  $current = 34;
+                  continue localasyncloop;
+                } else {
+                  $current = 36;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 34:
+                childList.Add(($temp4 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp4.Text = typedChild, $temp4));
+                $current = 35;
+                continue localasyncloop;
+
+              case 35:
+                $current = 29;
+                continue localasyncloop;
+
+              case 36:
+                if ($t.istype(typedChild, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode)) {
+                  $current = 37;
+                  continue localasyncloop;
+                } else {
+                  $current = 38;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 37:
+                childList.Add(typedChild);
+                $current = 35;
+                continue localasyncloop;
+
+              case 38:
+                if ($t.istype(typedChild, $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode)) {
+                  $current = 39;
+                  continue localasyncloop;
+                } else {
+                  $current = 41;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 39:
+                currentPathUnderRoot = $g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("[", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("]", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([pathUnderRoot, index]));
+                $promise.maybe(typedChild.renderUnderRoot(root, currentPathUnderRoot, context)).then(function ($result0) {
+                  $result = $result0;
+                  $current = 40;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 40:
+                cn = $result;
+                childList.Add(cn);
+                $current = 35;
+                continue localasyncloop;
+
+              case 41:
+                if ($t.istype(typedChild, $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.Renderable)) {
+                  $current = 42;
+                  continue localasyncloop;
+                } else {
+                  $current = 48;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 42:
+                renderer = context.Renderer();
+                if (renderer != null) {
+                  $current = 43;
+                  continue localasyncloop;
+                } else {
+                  $current = 46;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 43:
+                currentPathUnderRoot = $g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("[", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("]", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([pathUnderRoot, index]));
+                $promise.maybe(renderer.Render(typedChild, root, currentPathUnderRoot, context)).then(function ($result0) {
+                  $result = childList.Add($result0);
+                  $current = 44;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 44:
+                $current = 45;
+                continue localasyncloop;
+
+              case 45:
+                $current = 35;
+                continue localasyncloop;
+
+              case 46:
+                $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.renderable.RenderToVirtualNode(typedChild, context)).then(function ($result0) {
+                  $result = childList.Add($result0);
+                  $current = 47;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 47:
+                $current = 45;
+                continue localasyncloop;
+
+              case 48:
+                if ($t.istype(typedChild, $g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable)) {
+                  $current = 49;
+                  continue localasyncloop;
+                } else {
+                  $current = 50;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 49:
+                childList.Add(($temp5 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp5.Text = typedChild.String(), $temp5));
+                $current = 35;
+                continue localasyncloop;
+
+              case 50:
+                if (true) {
+                  $current = 51;
                   continue localasyncloop;
                 } else {
                   $current = 35;
@@ -6865,148 +7432,26 @@ this.Serulian = (function ($global) {
                 }
                 break;
 
-              case 33:
-                childList.Add(($temp4 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp4.Text = typedChild, $temp4));
-                $current = 34;
-                continue localasyncloop;
-
-              case 34:
-                $current = 28;
-                continue localasyncloop;
-
-              case 35:
-                if ($t.istype(typedChild, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode)) {
-                  $current = 36;
-                  continue localasyncloop;
-                } else {
-                  $current = 37;
-                  continue localasyncloop;
-                }
-                break;
-
-              case 36:
-                childList.Add(typedChild);
-                $current = 34;
-                continue localasyncloop;
-
-              case 37:
-                if ($t.istype(typedChild, $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode)) {
-                  $current = 38;
-                  continue localasyncloop;
-                } else {
-                  $current = 40;
-                  continue localasyncloop;
-                }
-                break;
-
-              case 38:
-                currentPathUnderRoot = $g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("[", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("]", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([pathUnderRoot, index]));
-                $promise.maybe(typedChild.renderUnderRoot(root, currentPathUnderRoot, context)).then(function ($result0) {
-                  $result = $result0;
-                  $current = 39;
-                  $continue($resolve, $reject);
-                  return;
-                }).catch(function (err) {
-                  $reject(err);
-                  return;
-                });
-                return;
-
-              case 39:
-                cn = $result;
-                childList.Add(cn);
-                $current = 34;
-                continue localasyncloop;
-
-              case 40:
-                if ($t.istype(typedChild, $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.Renderable)) {
-                  $current = 41;
-                  continue localasyncloop;
-                } else {
-                  $current = 47;
-                  continue localasyncloop;
-                }
-                break;
-
-              case 41:
-                renderer = context.Renderer();
-                if (renderer != null) {
-                  $current = 42;
-                  continue localasyncloop;
-                } else {
-                  $current = 45;
-                  continue localasyncloop;
-                }
-                break;
-
-              case 42:
-                currentPathUnderRoot = $g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("[", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("]", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([pathUnderRoot, index]));
-                $promise.maybe(renderer.Render(typedChild, root, currentPathUnderRoot, context)).then(function ($result0) {
-                  $result = childList.Add($result0);
-                  $current = 43;
-                  $continue($resolve, $reject);
-                  return;
-                }).catch(function (err) {
-                  $reject(err);
-                  return;
-                });
-                return;
-
-              case 43:
-                $current = 44;
-                continue localasyncloop;
-
-              case 44:
-                $current = 34;
-                continue localasyncloop;
-
-              case 45:
-                $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.renderable.RenderToVirtualNode(typedChild, context)).then(function ($result0) {
-                  $result = childList.Add($result0);
-                  $current = 46;
-                  $continue($resolve, $reject);
-                  return;
-                }).catch(function (err) {
-                  $reject(err);
-                  return;
-                });
-                return;
-
-              case 46:
-                $current = 44;
-                continue localasyncloop;
-
-              case 47:
-                if ($t.istype(typedChild, $g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable)) {
-                  $current = 48;
-                  continue localasyncloop;
-                } else {
-                  $current = 49;
-                  continue localasyncloop;
-                }
-                break;
-
-              case 48:
-                childList.Add(($temp5 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp5.Text = typedChild.String(), $temp5));
-                $current = 34;
-                continue localasyncloop;
-
-              case 49:
-                if (true) {
-                  $current = 50;
-                  continue localasyncloop;
-                } else {
-                  $current = 34;
-                  continue localasyncloop;
-                }
-                break;
-
-              case 50:
-                $reject($g.pkg.github.com.serulian.corelib.branch.master.helpertypes.SimpleError.WithMessage($t.fastbox('Unsupported instance under VirtualNode. Did you forget to add a Render() method to a class?', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)));
-                return;
-
               case 51:
-                $resolve(($temp6 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp6.Children = childList.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), null), $temp6.DOMNodeInserted = nodeInsertedHandler, $temp6.Key = key, $temp6.TagName = $this.tagName, $temp6.EventHandlers = eventHandlers.Mapping(), $temp6.Attributes = attributes.Mapping(), $temp6));
+                $reject($g.pkg.github.com.serulian.corelib.HEAD.helpertypes.SimpleError.WithMessage($t.fastbox('Unsupported instance under VirtualNode. Did you forget to add a Render() method to a class?', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)));
+                return;
+
+              case 52:
+                $promise.maybe(eventHandlers.Mapping()).then(function ($result0) {
+                  return $promise.maybe(attributes.Mapping()).then(function ($result1) {
+                    $result = ($temp6 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp6.TagName = $this.tagName, $temp6.EventHandlers = $result0, $temp6.Attributes = $result1, $temp6.Children = childList.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null), $temp6.DOMNodeInserted = nodeInsertedHandler, $temp6.Key = key, $temp6);
+                    $current = 53;
+                    $continue($resolve, $reject);
+                    return;
+                  });
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 53:
+                $resolve($result);
                 return;
 
               default:
@@ -7022,8 +7467,8 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "RenderKey|3|5208c0f1": true,
-          "Render|2|1f77dd0b<any>": true,
+          "RenderKey|3|6b38bbd3": true,
+          "Render|2|e429e0b7<any>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -7036,7 +7481,7 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "RenderKey|3|5208c0f1": true,
+          "RenderKey|3|6b38bbd3": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -7052,7 +7497,7 @@ this.Serulian = (function ($global) {
           "Renderer|3|3a8d0c9f": true,
           "EventManager|3|7a954a75": true,
         };
-        computed[("Get|2|1f77dd0b<" + $t.typeid(T)) + ">"] = true;
+        computed[("Get|2|e429e0b7<" + $t.typeid(T)) + ">"] = true;
         return this.$cachedtypesig = computed;
       };
     });
@@ -7064,7 +7509,7 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Render|2|1f77dd0b<141b3b08>": true,
+          "Render|2|e429e0b7<141b3b08>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -7077,7 +7522,7 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Render|2|1f77dd0b<any>": true,
+          "Render|2|e429e0b7<any>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -7101,7 +7546,7 @@ this.Serulian = (function ($global) {
             case 0:
               current = instance;
               rootParent = null;
-              index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              index = $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 1;
               continue localasyncloop;
 
@@ -7126,7 +7571,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 3:
-              $resolve(($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.Text = $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp0));
+              $resolve(($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.Text = $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0));
               return;
 
             case 4:
@@ -7183,7 +7628,7 @@ this.Serulian = (function ($global) {
             case 10:
               $promise.maybe(typedValue.renderUnderRoot($t.syncnullcompare(rootParent, function () {
                 return typedValue;
-              }), $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), context)).then(function ($result0) {
+              }), $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), context)).then(function ($result0) {
                 current = $result0;
                 $result = current;
                 $current = 11;
@@ -7200,7 +7645,7 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 12:
-              index = $t.fastbox(index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              index = $t.fastbox(index.$wrapped + 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 1;
               continue localasyncloop;
 
@@ -7257,11 +7702,11 @@ this.Serulian = (function ($global) {
               break;
 
             case 19:
-              $reject($g.pkg.github.com.serulian.corelib.branch.master.helpertypes.SimpleError.WithMessage($t.fastbox('Unsupported value under Render. Did you forget to add a Render method?', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)));
+              $reject($g.pkg.github.com.serulian.corelib.HEAD.helpertypes.SimpleError.WithMessage($t.fastbox('Unsupported value under Render. Did you forget to add a Render method?', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)));
               return;
 
             case 20:
-              $resolve(($temp2 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp2.Text = $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp2));
+              $resolve(($temp2 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp2.Text = $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp2));
               return;
 
             default:
@@ -7312,14 +7757,14 @@ this.Serulian = (function ($global) {
             break;
 
           case 3:
-            return $g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(".", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([parentPath, key]));
+            return $g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(".", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([parentPath, key]));
 
           case 4:
             $current = 5;
             continue syncloop;
 
           case 5:
-            return $g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("[", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("]", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([parentPath, childIndex]));
+            return $g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("[", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("]", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([parentPath, childIndex]));
 
           default:
             return;
@@ -7341,21 +7786,21 @@ this.Serulian = (function ($global) {
       };
       $static.$fields = [];
       $t.defineStructField($static, 'Contents', 'Contents', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, true);
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Parse|1|1f77dd0b<7e99579e>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "Stringify|2|1f77dd0b<5208c0f1>": true,
-          "Mapping|2|1f77dd0b<75a81c47<any>>": true,
-          "Clone|2|1f77dd0b<7e99579e>": true,
-          "String|2|1f77dd0b<5208c0f1>": true,
+          "Parse|1|e429e0b7<7e99579e>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<7e99579e>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -7367,15 +7812,15 @@ this.Serulian = (function ($global) {
       var cssContents;
       cssContents = $t.syncnullcompare(definition, function () {
         return $t.syncnullcompare(props.Contents, function () {
-          return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+          return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         });
       });
-      return ($temp1 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp1.TagName = $t.fastbox('style', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp1.Attributes = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overObject((function () {
+      return ($temp1 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp1.Attributes = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overObject((function () {
         var obj = {
         };
-        obj["type"] = $t.fastbox("text/css", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        obj["type"] = $t.fastbox("text/css", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         return obj;
-      })()), $temp1.Children = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).overArray([($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.Text = cssContents, $temp0)]), $temp1);
+      })()), $temp1.Children = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).overArray([($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.Text = cssContents, $temp0)]), $temp1.TagName = $t.fastbox('style', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp1);
     };
   });
   $module('pkg.github.com.serulian.virtualdom.HEAD.types', function () {
@@ -7409,51 +7854,51 @@ this.Serulian = (function ($global) {
       };
       $static.$fields = [];
       $t.defineStructField($static, 'TagName', 'TagName', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, true);
       $t.defineStructField($static, 'Attributes', 'Attributes', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
       }, true);
       $t.defineStructField($static, 'Key', 'Key', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, true);
       $t.defineStructField($static, 'Text', 'Text', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, true);
       $t.defineStructField($static, 'Children', 'Children', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode);
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode);
       }, true);
       $t.defineStructField($static, 'EventHandlers', 'EventHandlers', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference);
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference);
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference);
       }, true);
       $t.defineStructField($static, 'DOMNodeInserted', 'DOMNodeInserted', function () {
         return $g.pkg.github.com.serulian.virtualdom.HEAD.types.FunctionReference;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, true);
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Parse|1|1f77dd0b<141b3b08>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "Stringify|2|1f77dd0b<5208c0f1>": true,
-          "Mapping|2|1f77dd0b<75a81c47<any>>": true,
-          "Clone|2|1f77dd0b<141b3b08>": true,
-          "String|2|1f77dd0b<5208c0f1>": true,
+          "Parse|1|e429e0b7<141b3b08>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<141b3b08>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -7463,49 +7908,49 @@ this.Serulian = (function ($global) {
   $module('pkg.github.com.serulian.virtualdom.HEAD.vdom', function () {
     var $static = this;
     $static.A = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('a', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('a', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Span = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('span', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('span', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Div = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('div', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('div', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Img = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('img', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('img', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Select = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('select', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('select', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Option = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('option', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('option', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Style = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('style', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('style', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Button = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('button', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('button', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.TextArea = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('textarea', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('textarea', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.IFrame = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('iframe', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('iframe', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Pre = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('pre', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('pre', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Nav = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('nav', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('nav', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Ul = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('ul', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('ul', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Li = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('li', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('li', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
     $static.Input = function (props, childStream) {
-      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('input', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), props, childStream);
+      return $g.pkg.github.com.serulian.virtualdom.HEAD.renderable.renderableVirtualNode.new($t.fastbox('input', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), props, childStream);
     };
   });
   $module('pkg.github.com.serulian.virtualdom.HEAD.wrappers', function () {
@@ -7530,8 +7975,8 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "WithMessage|1|1f77dd0b<546ab407>": true,
-          "Message|3|5208c0f1": true,
+          "WithMessage|1|e429e0b7<546ab407>": true,
+          "Message|3|6b38bbd3": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -7544,14 +7989,14 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "IsElement|3|8ffa0597": true,
-          "TagName|3|5208c0f1": true,
-          "Key|3|5208c0f1": true,
-          "TextData|3|5208c0f1": true,
-          "AttributeNames|3|e364cd9a<5208c0f1>": true,
-          "ChildCount|3|de04b2c1": true,
-          "GetChild|2|1f77dd0b<ad5543d4>": true,
-          "GetAttribute|2|1f77dd0b<5208c0f1>": true,
+          "IsElement|3|8db7ac13": true,
+          "TagName|3|6b38bbd3": true,
+          "Key|3|6b38bbd3": true,
+          "TextData|3|6b38bbd3": true,
+          "AttributeNames|3|6fe53884<6b38bbd3>": true,
+          "ChildCount|3|800df61b": true,
+          "GetChild|2|e429e0b7<ad5543d4>": true,
+          "GetAttribute|2|e429e0b7<6b38bbd3>": true,
           "Virtual|3|141b3b08": true,
         };
         return this.$cachedtypesig = computed;
@@ -7595,17 +8040,17 @@ this.Serulian = (function ($global) {
                 break;
 
               case 1:
-                $resolve($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Empty());
+                $resolve($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Empty());
                 return;
 
               case 2:
                 attributes = $this.$wrapped.attributes;
-                names = $g.pkg.github.com.serulian.corelib.branch.master.collections.List($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Empty();
+                names = $g.pkg.github.com.serulian.corelib.HEAD.collections.List($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Empty();
                 $current = 3;
                 continue localasyncloop;
 
               case 3:
-                $temp1 = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($t.any).ForArray(attributes).Stream();
+                $temp1 = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($t.any).ForArray(attributes).Stream();
                 $current = 4;
                 continue localasyncloop;
 
@@ -7634,12 +8079,12 @@ this.Serulian = (function ($global) {
                 break;
 
               case 6:
-                names.Add($t.fastbox($t.cast($t.dynamicaccess(attr, 'name', false), $global.String, false), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                names.Add($t.fastbox($t.cast($t.dynamicaccess(attr, 'name', false), $global.String, false), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                 $current = 4;
                 continue localasyncloop;
 
               case 7:
-                $resolve(names.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), null));
+                $resolve(names.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null));
                 return;
 
               default:
@@ -7656,7 +8101,7 @@ this.Serulian = (function ($global) {
       });
       $instance.IsElement = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.nodeType == 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox($this.$wrapped.nodeType == 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       });
       $instance.TagName = $t.property(function () {
         var $this = this;
@@ -7674,10 +8119,10 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
 
             case 2:
-              return $t.fastbox($this.$wrapped.tagName, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String).ToLowerCase();
+              return $t.fastbox($this.$wrapped.tagName, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String).ToLowerCase();
 
             default:
               return;
@@ -7703,7 +8148,7 @@ this.Serulian = (function ($global) {
               return null;
 
             case 2:
-              return $t.fastbox($this.$wrapped.wholeText, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              return $t.fastbox($this.$wrapped.wholeText, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
 
             default:
               return;
@@ -7712,7 +8157,7 @@ this.Serulian = (function ($global) {
       });
       $instance.ChildCount = $t.property(function () {
         var $this = this;
-        return $t.fastbox($this.$wrapped.childNodes.length, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+        return $t.fastbox($this.$wrapped.childNodes.length, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
       });
       $instance.Virtual = $t.property(function () {
         var $this = this;
@@ -7736,7 +8181,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              throw $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.new($t.fastbox('Invalid child index', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              throw $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.new($t.fastbox('Invalid child index', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
 
             case 2:
               return $t.fastbox($t.assertnotnull(child), $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.NodeWrapper);
@@ -7762,10 +8207,10 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              throw $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.new($t.fastbox('Cannot retrieve attribute for non-element', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              throw $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.new($t.fastbox('Cannot retrieve attribute for non-element', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
 
             case 2:
-              return $t.fastbox($this.$wrapped.getAttribute(name.$wrapped), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              return $t.fastbox($this.$wrapped.getAttribute(name.$wrapped), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
 
             default:
               return;
@@ -7777,16 +8222,16 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "For|1|1f77dd0b<c804ff09>": true,
-          "AttributeNames|3|e364cd9a<5208c0f1>": true,
-          "Key|3|5208c0f1": true,
-          "IsElement|3|8ffa0597": true,
-          "TagName|3|5208c0f1": true,
-          "TextData|3|5208c0f1": true,
-          "ChildCount|3|de04b2c1": true,
+          "For|1|e429e0b7<c804ff09>": true,
+          "AttributeNames|3|6fe53884<6b38bbd3>": true,
+          "Key|3|6b38bbd3": true,
+          "IsElement|3|8db7ac13": true,
+          "TagName|3|6b38bbd3": true,
+          "TextData|3|6b38bbd3": true,
+          "ChildCount|3|800df61b": true,
           "Virtual|3|141b3b08": true,
-          "GetChild|2|1f77dd0b<ad5543d4>": true,
-          "GetAttribute|2|1f77dd0b<5208c0f1>": true,
+          "GetChild|2|e429e0b7<ad5543d4>": true,
+          "GetAttribute|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -7814,42 +8259,63 @@ this.Serulian = (function ($global) {
         var $this = this;
         return $t.box($this, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Key;
       });
-      $instance.AttributeNames = $t.property(function () {
+      $instance.AttributeNames = $t.property($t.markpromising(function () {
         var $this = this;
+        var $result;
         var attrs;
         var $current = 0;
-        syncloop: while (true) {
-          switch ($current) {
-            case 0:
-              attrs = $t.box($this, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Attributes;
-              if (attrs == null) {
-                $current = 1;
-                continue syncloop;
-              } else {
-                $current = 2;
-                continue syncloop;
-              }
-              break;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                attrs = $t.box($this, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Attributes;
+                if (attrs == null) {
+                  $current = 1;
+                  continue localasyncloop;
+                } else {
+                  $current = 2;
+                  continue localasyncloop;
+                }
+                break;
 
-            case 1:
-              return $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Empty();
+              case 1:
+                $resolve($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Empty());
+                return;
 
-            case 2:
-              return attrs.Keys();
+              case 2:
+                $promise.maybe(attrs.Keys()).then(function ($result1) {
+                  return $promise.maybe($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).From($result1)).then(function ($result0) {
+                    $result = $result0;
+                    $current = 3;
+                    $continue($resolve, $reject);
+                    return;
+                  });
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
 
-            default:
-              return;
+              case 3:
+                $resolve($result);
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
           }
-        }
-      });
+        };
+        return $promise.new($continue);
+      }));
       $instance.IsElement = $t.property(function () {
         var $this = this;
-        return $t.fastbox(!($t.box($this, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).TagName == null), $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
+        return $t.fastbox(!($t.box($this, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).TagName == null), $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
       });
       $instance.TagName = $t.property(function () {
         var $this = this;
         return $t.syncnullcompare($t.box($this, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).TagName, function () {
-          return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+          return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         });
       });
       $instance.ChildCount = $t.property(function () {
@@ -7870,7 +8336,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              return $t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
 
             case 2:
               return children.Length();
@@ -7901,7 +8367,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              throw $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.new($t.fastbox('Invalid child index', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              throw $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.new($t.fastbox('Invalid child index', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
 
             case 2:
               children = $t.box($this, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Children;
@@ -7929,7 +8395,7 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              throw $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.new($t.fastbox('Cannot retrieve attribute for non-element', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+              throw $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.DOMError.new($t.fastbox('Cannot retrieve attribute for non-element', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
 
             case 2:
               attributes = $t.box($this, $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).Attributes;
@@ -7958,16 +8424,16 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "For|1|1f77dd0b<4ef0c84c>": true,
+          "For|1|e429e0b7<4ef0c84c>": true,
           "Virtual|3|141b3b08": true,
-          "Key|3|5208c0f1": true,
-          "AttributeNames|3|e364cd9a<5208c0f1>": true,
-          "IsElement|3|8ffa0597": true,
-          "TagName|3|5208c0f1": true,
-          "ChildCount|3|de04b2c1": true,
-          "TextData|3|5208c0f1": true,
-          "GetChild|2|1f77dd0b<ad5543d4>": true,
-          "GetAttribute|2|1f77dd0b<5208c0f1>": true,
+          "Key|3|6b38bbd3": true,
+          "AttributeNames|3|6fe53884<6b38bbd3>": true,
+          "IsElement|3|8db7ac13": true,
+          "TagName|3|6b38bbd3": true,
+          "ChildCount|3|800df61b": true,
+          "TextData|3|6b38bbd3": true,
+          "GetChild|2|e429e0b7<ad5543d4>": true,
+          "GetAttribute|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -7975,14 +8441,14 @@ this.Serulian = (function ($global) {
 
     this.$init(function () {
       return $promise.new(function (resolve) {
-        $static.keyAttachment = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Unique($t.fastbox('vdom-key', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+        $static.keyAttachment = $g.pkg.github.com.serulian.attachment.HEAD.attachment.Attachment($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Unique($t.fastbox('vdom-key', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
         resolve();
       });
     }, 'ff11ece1', ['e9c3608f']);
   });
   $module('playground', function () {
     var $static = this;
-    this.$class('6b4e2324', 'App', false, '', function () {
+    this.$class('72688f50', 'PlaygroundApp', false, '', function () {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function (playgroundBase) {
@@ -7991,78 +8457,236 @@ this.Serulian = (function ($global) {
         instance.playgroundBase.$principal = instance;
         return instance;
       };
-      $static.Declare = function () {
-        return $g.playground.App.new($g.playground.playgroundBase.new($g.playground.playgroundState.new($t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String))));
-      };
+      $static.Declare = $t.markpromising(function (props) {
+        var app;
+        var initialCode;
+        var initialGistId;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                initialGistId = props.InitialGistId;
+                initialCode = $t.fastbox("from \"github.com/serulian/debuglib:master\" import Log\n\nfunction<any> Run() {\n\t// Note: open the browser console to see Log outputs.\n\tLog('hello world!')\n\treturn true\n}", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+                app = $g.playground.PlaygroundApp.new($g.playground.playgroundBase.new($g.playground.playgroundState.new(initialGistId != null ? $t.fastbox('loadinggist', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String) : $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), initialCode, $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
+                if (initialGistId != null) {
+                  $current = 1;
+                  continue localasyncloop;
+                } else {
+                  $current = 2;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 1:
+                $global.setTimeout($t.markpromising(function () {
+                  var $result;
+                  var $current = 0;
+                  var $continue = function ($resolve, $reject) {
+                    localasyncloop: while (true) {
+                      switch ($current) {
+                        case 0:
+                          $promise.maybe(app.loadGist(initialGistId)).then(function ($result0) {
+                            $result = $result0;
+                            $current = 1;
+                            $continue($resolve, $reject);
+                            return;
+                          }).catch(function (err) {
+                            $reject(err);
+                            return;
+                          });
+                          return;
+
+                        case 1:
+                          $resolve();
+                          return;
+
+                        default:
+                          $resolve();
+                          return;
+                      }
+                    }
+                  };
+                  return $promise.new($continue);
+                }), 50);
+                $current = 2;
+                continue localasyncloop;
+
+              case 2:
+                $resolve(app);
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
+      });
+      $instance.loadGist = $t.markpromising(function (initialGistId) {
+        var $this = this;
+        var $result;
+        var $temp0;
+        var $temp1;
+        var err;
+        var gistText;
+        var info;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.GetURLContents($g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("https://api.github.com/gists/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([initialGistId])))).then(function ($result0) {
+                  gistText = $result0;
+                  err = null;
+                  $current = 1;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function ($rejected) {
+                  err = $t.ensureerror($rejected);
+                  gistText = null;
+                  $current = 1;
+                  $continue($resolve, $reject);
+                  return;
+                });
+                return;
+
+              case 1:
+                if (gistText != null) {
+                  $current = 2;
+                  continue localasyncloop;
+                } else {
+                  $current = 5;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 2:
+                $promise.maybe($g.playground.gistInfo.Parse($g.pkg.github.com.serulian.corelib.HEAD.serialization.JSON)(gistText)).then(function ($result0) {
+                  $result = $result0;
+                  $current = 3;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 3:
+                info = $result;
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.initialCode = $t.syncnullcompare($t.dynamicaccess(info.files.$index($t.fastbox('entrypoint.seru', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), 'content', false), function () {
+                  return $this.state.initialCode;
+                }), $temp0.stateId = $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.gistInfo = info, $temp0))).then(function ($result0) {
+                  $result = $result0;
+                  $current = 4;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 4:
+                $resolve();
+                return;
+
+              case 5:
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp1 = $this.state.Clone(), $temp1.stateId = $t.fastbox('couldnotloadgist', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp1))).then(function ($result0) {
+                  $result = $result0;
+                  $current = 6;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
+      });
+      $instance.dismissModal = $t.markpromising(function () {
+        var $this = this;
+        var $result;
+        var $temp0;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.stateId = $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0))).then(function ($result0) {
+                  $result = $result0;
+                  $current = 1;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 1:
+                $resolve();
+                return;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
+      });
       $instance.Render = function (context) {
         var $this = this;
-        var initialCode;
-        initialCode = $t.fastbox("from \"github.com/serulian/debuglib:master\" import Log\n\nfunction<any> Run() {\n\t// Note: open the browser console to see Log outputs.\n\tLog('hello world!')\n\treturn true\n}", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-        return $g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-          id: $t.fastbox("rootElement", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+        return $g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+          id: $t.fastbox("rootElement", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
         }), (function () {
           var $current = 0;
           var $continue = function ($yield, $yieldin, $reject, $done) {
             while (true) {
               switch ($current) {
                 case 0:
-                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Nav($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                    className: $t.fastbox("navbar navbar-default", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                    style: $t.fastbox("margin-bottom: 0px", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                    className: $t.fastbox("modal-overlay", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                   }), (function () {
                     var $current = 0;
                     var $continue = function ($yield, $yieldin, $reject, $done) {
                       while (true) {
                         switch ($current) {
                           case 0:
-                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.A($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                              className: $t.fastbox("navbar-brand", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                              href: $t.fastbox("#", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                              className: $t.fastbox("model-content", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                             }), (function () {
                               var $current = 0;
                               var $continue = function ($yield, $yieldin, $reject, $done) {
                                 while (true) {
                                   switch ($current) {
                                     case 0:
-                                      $yield($t.fastbox("Serulian Playground", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("spinner", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                      }), $generator.directempty()));
                                       $current = 1;
                                       return;
 
                                     case 1:
-                                      $done();
-                                      return;
-
-                                    default:
-                                      $done();
-                                      return;
-                                  }
-                                }
-                              };
-                              return $generator.new($continue, false);
-                            })()));
-                            $current = 1;
-                            return;
-
-                          case 1:
-                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                              className: $t.fastbox("navbar-form navbar-left", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                            }), (function () {
-                              var $result;
-                              var $current = 0;
-                              var $continue = function ($yield, $yieldin, $reject, $done) {
-                                while (true) {
-                                  switch ($current) {
-                                    case 0:
-                                      $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.DynamicAttributes($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Button($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                        className: $t.fastbox("btn btn-primary", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                                        onclick: $t.dynamicaccess($this, 'runProject', false),
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("model-overlay-message", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                       }), (function () {
                                         var $current = 0;
                                         var $continue = function ($yield, $yieldin, $reject, $done) {
                                           while (true) {
                                             switch ($current) {
                                               case 0:
-                                                $yield($t.fastbox("\n\t\t\t\t\t\tRun\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                                                $yield($t.fastbox("\n\t\t\t\t\t\tPlease wait while we load the gist for this playground\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                                                 $current = 1;
                                                 return;
 
@@ -8077,23 +8701,7 @@ this.Serulian = (function ($global) {
                                           }
                                         };
                                         return $generator.new($continue, false);
-                                      })()), $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean).overObject((function () {
-                                        var obj = {
-                                        };
-                                        obj['disabled'] = $this.state.currentCode.IsEmpty();
-                                        return obj;
-                                      })()))).then(function ($result0) {
-                                        $result = $result0;
-                                        $current = 1;
-                                        $continue($yield, $yieldin, $reject, $done);
-                                        return;
-                                      }).catch(function (err) {
-                                        throw err;
-                                      });
-                                      return;
-
-                                    case 1:
-                                      $yield($result);
+                                      })()));
                                       $current = 2;
                                       return;
 
@@ -8103,67 +8711,13 @@ this.Serulian = (function ($global) {
                                   }
                                 }
                               };
-                              return $generator.new($continue, true);
-                            })()), $t.fastbox(!$this.state.working.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)));
-                            $current = 2;
+                              return $generator.new($continue, false);
+                            })()));
+                            $current = 1;
                             return;
 
-                          case 2:
-                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                              className: $t.fastbox("navbar-form navbar-left", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                            }), (function () {
-                              var $current = 0;
-                              var $continue = function ($yield, $yieldin, $reject, $done) {
-                                while (true) {
-                                  switch ($current) {
-                                    case 0:
-                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                        className: $t.fastbox("spinner", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                                      }), $generator.directempty()));
-                                      $current = 1;
-                                      return;
-
-                                    case 1:
-                                      $done();
-                                      return;
-
-                                    default:
-                                      $done();
-                                      return;
-                                  }
-                                }
-                              };
-                              return $generator.new($continue, false);
-                            })()), $this.state.working));
-                            $current = 3;
-                            return;
-
-                          case 3:
-                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                              className: $t.fastbox("navbar-form navbar-left", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                            }), (function () {
-                              var $current = 0;
-                              var $continue = function ($yield, $yieldin, $reject, $done) {
-                                while (true) {
-                                  switch ($current) {
-                                    case 0:
-                                      $yield($t.fastbox("\n\t\t\t\t\tA server error occurred. Please try again shortly.\n\t\t\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
-                                      $current = 1;
-                                      return;
-
-                                    case 1:
-                                      $done();
-                                      return;
-
-                                    default:
-                                      $done();
-                                      return;
-                                  }
-                                }
-                              };
-                              return $generator.new($continue, false);
-                            })()), $this.state.serverError));
-                            $current = 4;
+                          case 1:
+                            $done();
                             return;
 
                           default:
@@ -8173,37 +8727,36 @@ this.Serulian = (function ($global) {
                       }
                     };
                     return $generator.new($continue, false);
-                  })()));
+                  })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('loadinggist', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
                   $current = 1;
                   return;
 
                 case 1:
-                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                    className: $t.fastbox("container-fluid editor-and-viewer", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                    className: $t.fastbox("modal-overlay", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                   }), (function () {
                     var $current = 0;
                     var $continue = function ($yield, $yieldin, $reject, $done) {
                       while (true) {
                         switch ($current) {
                           case 0:
-                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                              className: $t.fastbox("row", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                              className: $t.fastbox("model-content", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                             }), (function () {
                               var $current = 0;
                               var $continue = function ($yield, $yieldin, $reject, $done) {
                                 while (true) {
                                   switch ($current) {
                                     case 0:
-                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                        className: $t.fastbox("col-md-6 col-sm-12", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("model-overlay-message", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                       }), (function () {
-                                        var $temp0;
                                         var $current = 0;
                                         var $continue = function ($yield, $yieldin, $reject, $done) {
                                           while (true) {
                                             switch ($current) {
                                               case 0:
-                                                $yield($g.codeeditor.CodeEditor.Declare(($temp0 = $g.codeeditor.codeEditorProps.new($this.state.working), $temp0.OnChanged = $t.dynamicaccess($this, 'codeChanged', false), $temp0.Mode = $g.serulianmode.buildSerulianAceMode(), $temp0), initialCode));
+                                                $yield($t.fastbox("\n\t\t\t\t\t\tAn error occurred while trying to share this playground\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                                                 $current = 1;
                                                 return;
 
@@ -8218,86 +8771,25 @@ this.Serulian = (function ($global) {
                                           }
                                         };
                                         return $generator.new($continue, false);
-                                      })()));
+                                      })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('couldnotshare', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
                                       $current = 1;
                                       return;
 
                                     case 1:
-                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                        className: $t.fastbox("col-md-6 col-sm-12", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("model-overlay-message", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                       }), (function () {
                                         var $current = 0;
                                         var $continue = function ($yield, $yieldin, $reject, $done) {
                                           while (true) {
                                             switch ($current) {
                                               case 0:
-                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                                  style: $t.fastbox("text-align: center; margin-top: 20px;", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                                                }), (function () {
-                                                  var $current = 0;
-                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
-                                                    while (true) {
-                                                      switch ($current) {
-                                                        case 0:
-                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                                            className: $t.fastbox("glyphicon glyphicon-arrow-left", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                                                          }), $generator.directempty()));
-                                                          $current = 1;
-                                                          return;
-
-                                                        case 1:
-                                                          $yield($t.fastbox(" Enter some code and hit \"Run\"\n\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
-                                                          $current = 2;
-                                                          return;
-
-                                                        default:
-                                                          $done();
-                                                          return;
-                                                      }
-                                                    }
-                                                  };
-                                                  return $generator.new($continue, false);
-                                                })()), $t.fastbox($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false) == null, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)), $t.fastbox(!$this.state.working.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)));
+                                                $yield($t.fastbox("\n\t\t\t\t\t\tAn error occurred while trying to build this playground\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                                                 $current = 1;
                                                 return;
 
                                               case 1:
-                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                                  style: $t.fastbox("text-align: center; margin-top: 20px;", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                                                }), (function () {
-                                                  var $current = 0;
-                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
-                                                    while (true) {
-                                                      switch ($current) {
-                                                        case 0:
-                                                          $yield($t.fastbox("\n\t\t\t\t\t\t\tBuilding...\n\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
-                                                          $current = 1;
-                                                          return;
-
-                                                        case 1:
-                                                          $done();
-                                                          return;
-
-                                                        default:
-                                                          $done();
-                                                          return;
-                                                      }
-                                                    }
-                                                  };
-                                                  return $generator.new($continue, false);
-                                                })()), $this.state.working));
-                                                $current = 2;
-                                                return;
-
-                                              case 2:
-                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.IFrame($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                                  frameborder: $t.fastbox("0", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                                                  ondomnodeinserted: $t.dynamicaccess($this, 'emitCode', false),
-                                                  sandbox: $t.fastbox("allow-forms allow-popups allow-scripts allow-same-origin allow-modals", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                                                }), $generator.directempty()), $t.fastbox(!$t.syncnullcompare($t.dynamicaccess($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false), 'IsEmpty', false), function () {
-                                                  return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-                                                }).$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)));
-                                                $current = 3;
+                                                $done();
                                                 return;
 
                                               default:
@@ -8307,47 +8799,57 @@ this.Serulian = (function ($global) {
                                           }
                                         };
                                         return $generator.new($continue, false);
-                                      })()));
+                                      })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('servererror', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
                                       $current = 2;
                                       return;
 
-                                    default:
-                                      $done();
-                                      return;
-                                  }
-                                }
-                              };
-                              return $generator.new($continue, false);
-                            })()));
-                            $current = 1;
-                            return;
-
-                          case 1:
-                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                              className: $t.fastbox("row", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                            }), (function () {
-                              var $current = 0;
-                              var $continue = function ($yield, $yieldin, $reject, $done) {
-                                while (true) {
-                                  switch ($current) {
-                                    case 0:
-                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                        className: $t.fastbox("col-md-12", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                    case 2:
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("model-overlay-message", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                       }), (function () {
                                         var $current = 0;
                                         var $continue = function ($yield, $yieldin, $reject, $done) {
                                           while (true) {
                                             switch ($current) {
                                               case 0:
-                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Pre($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                                  className: $t.fastbox("build-result", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                                $yield($t.fastbox("\n\t\t\t\t\t\tAn error occurred while trying to load the gist for this playground\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                $current = 1;
+                                                return;
+
+                                              case 1:
+                                                $done();
+                                                return;
+
+                                              default:
+                                                $done();
+                                                return;
+                                            }
+                                          }
+                                        };
+                                        return $generator.new($continue, false);
+                                      })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('couldnotloadgist', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
+                                      $current = 3;
+                                      return;
+
+                                    case 3:
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("model-overlay-dismiss", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                      }), (function () {
+                                        var $current = 0;
+                                        var $continue = function ($yield, $yieldin, $reject, $done) {
+                                          while (true) {
+                                            switch ($current) {
+                                              case 0:
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Button($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("btn btn-primary btn-large", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                  onclick: $t.dynamicaccess($this, 'dismissModal', false),
                                                 }), (function () {
                                                   var $current = 0;
                                                   var $continue = function ($yield, $yieldin, $reject, $done) {
                                                     while (true) {
                                                       switch ($current) {
                                                         case 0:
-                                                          $yield($t.dynamicaccess($this.state.buildResult, 'Output', false));
+                                                          $yield($t.fastbox("OKAY", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                                                           $current = 1;
                                                           return;
 
@@ -8378,11 +8880,7 @@ this.Serulian = (function ($global) {
                                         };
                                         return $generator.new($continue, false);
                                       })()));
-                                      $current = 1;
-                                      return;
-
-                                    case 1:
-                                      $done();
+                                      $current = 4;
                                       return;
 
                                     default:
@@ -8392,7 +8890,776 @@ this.Serulian = (function ($global) {
                                 }
                               };
                               return $generator.new($continue, false);
-                            })()), $t.fastbox($this.state.buildResult != null, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)), $t.fastbox(!$this.state.working.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)));
+                            })()));
+                            $current = 1;
+                            return;
+
+                          case 1:
+                            $done();
+                            return;
+
+                          default:
+                            $done();
+                            return;
+                        }
+                      }
+                    };
+                    return $generator.new($continue, false);
+                  })()), $t.fastbox(($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('couldnotshare', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped || $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('servererror', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped) || $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('couldnotloadgist', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                  $current = 2;
+                  return;
+
+                case 2:
+                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).Empty(), (function () {
+                    var $current = 0;
+                    var $continue = function ($yield, $yieldin, $reject, $done) {
+                      while (true) {
+                        switch ($current) {
+                          case 0:
+                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Nav($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                              className: $t.fastbox("navbar navbar-default", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                            }), (function () {
+                              var $current = 0;
+                              var $continue = function ($yield, $yieldin, $reject, $done) {
+                                while (true) {
+                                  switch ($current) {
+                                    case 0:
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.A($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("navbar-brand", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                        href: $t.fastbox("#", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                      }), (function () {
+                                        var $current = 0;
+                                        var $continue = function ($yield, $yieldin, $reject, $done) {
+                                          while (true) {
+                                            switch ($current) {
+                                              case 0:
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Img($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("logo", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                  src: $t.fastbox("serulian.png", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                }), $generator.directempty()));
+                                                $current = 1;
+                                                return;
+
+                                              case 1:
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("title", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                }), (function () {
+                                                  var $current = 0;
+                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                    while (true) {
+                                                      switch ($current) {
+                                                        case 0:
+                                                          $yield($t.fastbox("Serulian Playground", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                          $current = 1;
+                                                          return;
+
+                                                        case 1:
+                                                          $done();
+                                                          return;
+
+                                                        default:
+                                                          $done();
+                                                          return;
+                                                      }
+                                                    }
+                                                  };
+                                                  return $generator.new($continue, false);
+                                                })()));
+                                                $current = 2;
+                                                return;
+
+                                              default:
+                                                $done();
+                                                return;
+                                            }
+                                          }
+                                        };
+                                        return $generator.new($continue, false);
+                                      })()));
+                                      $current = 1;
+                                      return;
+
+                                    case 1:
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("navbar-form navbar-left", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                      }), (function () {
+                                        var $result;
+                                        var $current = 0;
+                                        var $continue = function ($yield, $yieldin, $reject, $done) {
+                                          while (true) {
+                                            switch ($current) {
+                                              case 0:
+                                                $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.DynamicAttributes($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Button($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("btn btn-primary", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                  onclick: $t.dynamicaccess($this, 'runProject', false),
+                                                }), (function () {
+                                                  var $current = 0;
+                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                    while (true) {
+                                                      switch ($current) {
+                                                        case 0:
+                                                          $yield($t.fastbox("\n\t\t\t\t\t\t\tRun\n\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                          $current = 1;
+                                                          return;
+
+                                                        case 1:
+                                                          $done();
+                                                          return;
+
+                                                        default:
+                                                          $done();
+                                                          return;
+                                                      }
+                                                    }
+                                                  };
+                                                  return $generator.new($continue, false);
+                                                })()), $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean).overObject((function () {
+                                                  var obj = {
+                                                  };
+                                                  obj['disabled'] = $this.state.currentCode.IsEmpty();
+                                                  return obj;
+                                                })()))).then(function ($result0) {
+                                                  $result = $result0;
+                                                  $current = 1;
+                                                  $continue($yield, $yieldin, $reject, $done);
+                                                  return;
+                                                }).catch(function (err) {
+                                                  throw err;
+                                                });
+                                                return;
+
+                                              case 1:
+                                                $yield($result);
+                                                $current = 2;
+                                                return;
+
+                                              case 2:
+                                                $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.DynamicAttributes($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Button($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("btn btn-default", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                  onclick: $t.dynamicaccess($this, 'shareProject', false),
+                                                }), (function () {
+                                                  var $current = 0;
+                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                    while (true) {
+                                                      switch ($current) {
+                                                        case 0:
+                                                          $yield($t.fastbox("\n\t\t\t\t\t\t\tShare (Public)\n\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                          $current = 1;
+                                                          return;
+
+                                                        case 1:
+                                                          $done();
+                                                          return;
+
+                                                        default:
+                                                          $done();
+                                                          return;
+                                                      }
+                                                    }
+                                                  };
+                                                  return $generator.new($continue, false);
+                                                })()), $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean).overObject((function () {
+                                                  var obj = {
+                                                  };
+                                                  obj['disabled'] = $this.state.currentCode.IsEmpty();
+                                                  return obj;
+                                                })()))).then(function ($result0) {
+                                                  $result = $g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($result0, $t.fastbox($this.state.gistInfo == null, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean));
+                                                  $current = 3;
+                                                  $continue($yield, $yieldin, $reject, $done);
+                                                  return;
+                                                }).catch(function (err) {
+                                                  throw err;
+                                                });
+                                                return;
+
+                                              case 3:
+                                                $yield($result);
+                                                $current = 4;
+                                                return;
+
+                                              case 4:
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("shared", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                }), (function () {
+                                                  var $current = 0;
+                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                    while (true) {
+                                                      switch ($current) {
+                                                        case 0:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Button($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("btn", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                            disabled: $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($t.fastbox("Shared", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()));
+                                                          $current = 1;
+                                                          return;
+
+                                                        case 1:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("shared-url url", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Input($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                                      className: $t.fastbox("form-control", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                                      readonly: $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean),
+                                                                      type: $t.fastbox("text", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                                      value: $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($t.fastbox('http://serulian.io/p/', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.syncnullcompare($t.dynamicaccess($this.state.gistInfo, 'id', false), function () {
+                                                                        return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+                                                                      })),
+                                                                    }), $generator.directempty()));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()));
+                                                          $current = 2;
+                                                          return;
+
+                                                        case 2:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("shared-url gist", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Input($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                                      className: $t.fastbox("form-control", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                                      readonly: $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean),
+                                                                      type: $t.fastbox("text", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                                      value: $t.dynamicaccess($this.state.gistInfo, 'html_url', false),
+                                                                    }), $generator.directempty()));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()));
+                                                          $current = 3;
+                                                          return;
+
+                                                        default:
+                                                          $done();
+                                                          return;
+                                                      }
+                                                    }
+                                                  };
+                                                  return $generator.new($continue, false);
+                                                })()), $t.fastbox($this.state.gistInfo != null, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                                                $current = 5;
+                                                return;
+
+                                              default:
+                                                $done();
+                                                return;
+                                            }
+                                          }
+                                        };
+                                        return $generator.new($continue, true);
+                                      })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
+                                      $current = 2;
+                                      return;
+
+                                    case 2:
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("navbar-form navbar-left", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                      }), (function () {
+                                        var $current = 0;
+                                        var $continue = function ($yield, $yieldin, $reject, $done) {
+                                          while (true) {
+                                            switch ($current) {
+                                              case 0:
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("spinner", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                }), $generator.directempty()));
+                                                $current = 1;
+                                                return;
+
+                                              case 1:
+                                                $done();
+                                                return;
+
+                                              default:
+                                                $done();
+                                                return;
+                                            }
+                                          }
+                                        };
+                                        return $generator.new($continue, false);
+                                      })()), $t.fastbox($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped || $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('sharing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                                      $current = 3;
+                                      return;
+
+                                    default:
+                                      $done();
+                                      return;
+                                  }
+                                }
+                              };
+                              return $generator.new($continue, false);
+                            })()));
+                            $current = 1;
+                            return;
+
+                          case 1:
+                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                              className: $t.fastbox("editor-and-viewer", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                            }), (function () {
+                              var $current = 0;
+                              var $continue = function ($yield, $yieldin, $reject, $done) {
+                                while (true) {
+                                  switch ($current) {
+                                    case 0:
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("left-col", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                      }), (function () {
+                                        var $current = 0;
+                                        var $continue = function ($yield, $yieldin, $reject, $done) {
+                                          while (true) {
+                                            switch ($current) {
+                                              case 0:
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("code-editor-row", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                }), (function () {
+                                                  var $current = 0;
+                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                    while (true) {
+                                                      switch ($current) {
+                                                        case 0:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("section-title", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($t.fastbox("Serulian", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()));
+                                                          $current = 1;
+                                                          return;
+
+                                                        case 1:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            style: $t.fastbox("height: 100%;", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $temp0;
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($g.codeeditor.CodeEditor.Declare(($temp0 = $g.codeeditor.codeEditorProps.new($t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)), $temp0.OnChanged = $t.dynamicaccess($this, 'codeChanged', false), $temp0.Mode = $g.serulianmode.buildSerulianAceMode(), $temp0.Theme = $t.fastbox("chrome", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0), $this.state.initialCode));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()), $t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('loadinggist', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                                                          $current = 2;
+                                                          return;
+
+                                                        default:
+                                                          $done();
+                                                          return;
+                                                      }
+                                                    }
+                                                  };
+                                                  return $generator.new($continue, false);
+                                                })()));
+                                                $current = 1;
+                                                return;
+
+                                              case 1:
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("output-row", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                }), (function () {
+                                                  var $current = 0;
+                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                    while (true) {
+                                                      switch ($current) {
+                                                        case 0:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("section-title", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($t.fastbox("Build Output", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()));
+                                                          $current = 1;
+                                                          return;
+
+                                                        case 1:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Pre($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("build-result", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($t.dynamicaccess($this.state.buildResult, 'Output', false));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()), $t.fastbox(!$t.syncnullcompare($t.dynamicaccess($t.dynamicaccess($this.state.buildResult, 'Output', false), 'IsEmpty', false), function () {
+                                                            return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+                                                          }).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                                                          $current = 2;
+                                                          return;
+
+                                                        default:
+                                                          $done();
+                                                          return;
+                                                      }
+                                                    }
+                                                  };
+                                                  return $generator.new($continue, false);
+                                                })()));
+                                                $current = 2;
+                                                return;
+
+                                              default:
+                                                $done();
+                                                return;
+                                            }
+                                          }
+                                        };
+                                        return $generator.new($continue, false);
+                                      })()));
+                                      $current = 1;
+                                      return;
+
+                                    case 1:
+                                      $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                        className: $t.fastbox("right-col", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                      }), (function () {
+                                        var $current = 0;
+                                        var $continue = function ($yield, $yieldin, $reject, $done) {
+                                          while (true) {
+                                            switch ($current) {
+                                              case 0:
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("iframe-row", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                }), (function () {
+                                                  var $current = 0;
+                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                    while (true) {
+                                                      switch ($current) {
+                                                        case 0:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("section-title", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($t.fastbox("Running Application", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()));
+                                                          $current = 1;
+                                                          return;
+
+                                                        case 1:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("enter-code", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                                      className: $t.fastbox("glyphicon glyphicon-arrow-left", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                                    }), $generator.directempty()));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $yield($t.fastbox(" Enter code and hit \"Run\"\n\t\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 2;
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()), $t.fastbox($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false) == null, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)), $t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                                                          $current = 2;
+                                                          return;
+
+                                                        case 2:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            class: $t.fastbox("building", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                                      className: $t.fastbox("glyphicon glyphicon-refresh", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                                    }), $generator.directempty()));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $yield($t.fastbox("\n\t\t\t\t\t\t\t\tBuilding\n\t\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 2;
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
+                                                          $current = 3;
+                                                          return;
+
+                                                        case 3:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.IFrame($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            frameborder: $t.fastbox("0", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                            ondomnodeinserted: $t.dynamicaccess($this, 'emitCode', false),
+                                                            sandbox: $t.fastbox("allow-forms allow-popups allow-scripts allow-same-origin allow-modals", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), $generator.directempty()), $t.fastbox(!$t.syncnullcompare($t.dynamicaccess($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false), 'IsEmpty', false), function () {
+                                                            return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+                                                          }).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                                                          $current = 4;
+                                                          return;
+
+                                                        default:
+                                                          $done();
+                                                          return;
+                                                      }
+                                                    }
+                                                  };
+                                                  return $generator.new($continue, false);
+                                                })()));
+                                                $current = 1;
+                                                return;
+
+                                              case 1:
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("console-row", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                }), (function () {
+                                                  var $result;
+                                                  var $current = 0;
+                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                    while (true) {
+                                                      switch ($current) {
+                                                        case 0:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("section-title", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($t.fastbox("Console Output", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()));
+                                                          $current = 1;
+                                                          return;
+
+                                                        case 1:
+                                                          $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Pre($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("console-output", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($this.state.consoleOutput);
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()), $this.state.consoleOutput.IsEmpty())).then(function ($result0) {
+                                                            $result = $result0;
+                                                            $current = 2;
+                                                            $continue($yield, $yieldin, $reject, $done);
+                                                            return;
+                                                          }).catch(function (err) {
+                                                            throw err;
+                                                          });
+                                                          return;
+
+                                                        case 2:
+                                                          $yield($result);
+                                                          $current = 3;
+                                                          return;
+
+                                                        default:
+                                                          $done();
+                                                          return;
+                                                      }
+                                                    }
+                                                  };
+                                                  return $generator.new($continue, true);
+                                                })()));
+                                                $current = 2;
+                                                return;
+
+                                              default:
+                                                $done();
+                                                return;
+                                            }
+                                          }
+                                        };
+                                        return $generator.new($continue, false);
+                                      })()));
+                                      $current = 2;
+                                      return;
+
+                                    default:
+                                      $done();
+                                      return;
+                                  }
+                                }
+                              };
+                              return $generator.new($continue, false);
+                            })()));
                             $current = 2;
                             return;
 
@@ -8404,7 +9671,7 @@ this.Serulian = (function ($global) {
                     };
                     return $generator.new($continue, false);
                   })()));
-                  $current = 2;
+                  $current = 3;
                   return;
 
                 default:
@@ -8445,6 +9712,11 @@ this.Serulian = (function ($global) {
           return this.playgroundBase.StateUpdated.bind(this.playgroundBase);
         },
       });
+      Object.defineProperty($instance, 'shareProject', {
+        get: function () {
+          return this.playgroundBase.shareProject.bind(this.playgroundBase);
+        },
+      });
       Object.defineProperty($instance, 'runProject', {
         get: function () {
           return this.playgroundBase.runProject.bind(this.playgroundBase);
@@ -8475,15 +9747,15 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Declare|1|1f77dd0b<6b4e2324>": true,
-          "Render|2|1f77dd0b<any>": true,
-          "StateUpdated|2|1f77dd0b<void>": true,
+          "Declare|1|e429e0b7<72688f50>": true,
+          "Render|2|e429e0b7<any>": true,
+          "StateUpdated|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$class('14ef5f4f', 'PlaygroundEditor', false, '', function () {
+    this.$class('2ce910e7', 'PlaygroundEditor', false, '', function () {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function (playgroundBase) {
@@ -8493,7 +9765,7 @@ this.Serulian = (function ($global) {
         return instance;
       };
       $static.Declare = function (attributes, code) {
-        return $g.playground.PlaygroundEditor.new($g.playground.playgroundBase.new($g.playground.playgroundState.new($t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), code, code, $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String))));
+        return $g.playground.PlaygroundEditor.new($g.playground.playgroundBase.new($g.playground.playgroundState.new($t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), code, code, $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
       };
       $instance.showEditTab = $t.markpromising(function () {
         var $this = this;
@@ -8504,7 +9776,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp0))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0))).then(function ($result0) {
                   $result = $result0;
                   $current = 1;
                   $continue($resolve, $reject);
@@ -8536,7 +9808,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.currentView = $t.fastbox('output', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp0))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.currentView = $t.fastbox('output', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0))).then(function ($result0) {
                   $result = $result0;
                   $current = 1;
                   $continue($resolve, $reject);
@@ -8568,7 +9840,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.currentView = $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp0))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.currentView = $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0))).then(function ($result0) {
                   $result = $result0;
                   $current = 1;
                   $continue($resolve, $reject);
@@ -8600,7 +9872,7 @@ this.Serulian = (function ($global) {
         syncloop: while (true) {
           switch ($current) {
             case 0:
-              height = $t.fastbox('auto', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              height = $t.fastbox('auto', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               if (!$this.state.initialCode.IsEmpty().$wrapped) {
                 $current = 1;
                 continue syncloop;
@@ -8611,8 +9883,8 @@ this.Serulian = (function ($global) {
               break;
 
             case 1:
-              lineCount = $this.state.initialCode.Split($t.fastbox('\n', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).Length();
-              heightPx = $t.fastbox((lineCount.$wrapped * 16) + 50, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              lineCount = $this.state.initialCode.Split($t.fastbox('\n', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).Length();
+              heightPx = $t.fastbox((lineCount.$wrapped * 16) + 50, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               if (heightPx.$wrapped > 1000) {
                 $current = 2;
                 continue syncloop;
@@ -8623,19 +9895,19 @@ this.Serulian = (function ($global) {
               break;
 
             case 2:
-              heightPx = $t.fastbox(1000, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer);
+              heightPx = $t.fastbox(1000, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer);
               $current = 3;
               continue syncloop;
 
             case 3:
-              height = $g.pkg.github.com.serulian.corelib.branch.master.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("px", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.interfaces.Stringable).overArray([heightPx]));
+              height = $g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("px", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([heightPx]));
               $current = 4;
               continue syncloop;
 
             case 4:
-              return $g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                className: $t.fastbox("playgroundEditor", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                style: $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($t.fastbox('height: ', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), height),
+              return $g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                className: $t.fastbox("playgroundEditor", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                style: $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($t.fastbox('height: ', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), height),
               }), (function () {
                 var $result;
                 var $current = 0;
@@ -8643,8 +9915,8 @@ this.Serulian = (function ($global) {
                   while (true) {
                     switch ($current) {
                       case 0:
-                        $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                          className: $t.fastbox("pane", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                        $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                          className: $t.fastbox("pane", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                         }), (function () {
                           var $temp0;
                           var $current = 0;
@@ -8652,7 +9924,7 @@ this.Serulian = (function ($global) {
                             while (true) {
                               switch ($current) {
                                 case 0:
-                                  $yield($g.codeeditor.CodeEditor.Declare(($temp0 = $g.codeeditor.codeEditorProps.new($this.state.working), $temp0.Theme = $t.fastbox("chrome", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp0.Mode = $g.serulianmode.buildSerulianAceMode(), $temp0.OnChanged = $t.dynamicaccess($this, 'codeChanged', false), $temp0), $this.state.currentCode.Trim()));
+                                  $yield($g.codeeditor.CodeEditor.Declare(($temp0 = $g.codeeditor.codeEditorProps.new($t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)), $temp0.Mode = $g.serulianmode.buildSerulianAceMode(), $temp0.OnChanged = $t.dynamicaccess($this, 'codeChanged', false), $temp0.Theme = $t.fastbox("chrome", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0), $this.state.currentCode.Trim()));
                                   $current = 1;
                                   return;
 
@@ -8667,7 +9939,7 @@ this.Serulian = (function ($global) {
                             }
                           };
                           return $generator.new($continue, false);
-                        })()), $t.fastbox(!$g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($this.state.currentView, $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean))).then(function ($result0) {
+                        })()), $t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.currentView, $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean))).then(function ($result0) {
                           $result = $result0;
                           $current = 1;
                           $continue($yield, $yieldin, $reject, $done);
@@ -8683,16 +9955,16 @@ this.Serulian = (function ($global) {
                         return;
 
                       case 2:
-                        $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                          className: $t.fastbox("pane", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                        $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                          className: $t.fastbox("pane", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                         }), (function () {
                           var $current = 0;
                           var $continue = function ($yield, $yieldin, $reject, $done) {
                             while (true) {
                               switch ($current) {
                                 case 0:
-                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Pre($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                    className: $t.fastbox("build-result", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Pre($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                    className: $t.fastbox("build-result", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                   }), (function () {
                                     var $current = 0;
                                     var $continue = function ($yield, $yieldin, $reject, $done) {
@@ -8714,7 +9986,7 @@ this.Serulian = (function ($global) {
                                       }
                                     };
                                     return $generator.new($continue, false);
-                                  })()), $t.fastbox($this.state.buildResult != null, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)));
+                                  })()), $t.fastbox($this.state.buildResult != null, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
                                   $current = 1;
                                   return;
 
@@ -8729,7 +10001,7 @@ this.Serulian = (function ($global) {
                             }
                           };
                           return $generator.new($continue, false);
-                        })()), $t.fastbox(!$g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($this.state.currentView, $t.fastbox('output', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean))).then(function ($result0) {
+                        })()), $t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.currentView, $t.fastbox('output', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean))).then(function ($result0) {
                           $result = $result0;
                           $current = 3;
                           $continue($yield, $yieldin, $reject, $done);
@@ -8745,8 +10017,8 @@ this.Serulian = (function ($global) {
                         return;
 
                       case 4:
-                        $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                          className: $t.fastbox("pane", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                        $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                          className: $t.fastbox("pane", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                         }), (function () {
                           var $result;
                           var $current = 0;
@@ -8754,8 +10026,8 @@ this.Serulian = (function ($global) {
                             while (true) {
                               switch ($current) {
                                 case 0:
-                                  $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Pre($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                    className: $t.fastbox("console-output", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                  $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Pre($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                    className: $t.fastbox("console-output", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                   }), (function () {
                                     var $current = 0;
                                     var $continue = function ($yield, $yieldin, $reject, $done) {
@@ -8793,13 +10065,13 @@ this.Serulian = (function ($global) {
                                   return;
 
                                 case 2:
-                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.IFrame($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                    frameborder: $t.fastbox("0", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.IFrame($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                    frameborder: $t.fastbox("0", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                     ondomnodeinserted: $t.dynamicaccess($this, 'emitCode', false),
-                                    sandbox: $t.fastbox("allow-forms allow-popups allow-scripts allow-same-origin allow-modals", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                    sandbox: $t.fastbox("allow-forms allow-popups allow-scripts allow-same-origin allow-modals", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                   }), $generator.directempty()), $t.fastbox(!$t.syncnullcompare($t.dynamicaccess($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false), 'IsEmpty', false), function () {
-                                    return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-                                  }).$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)));
+                                    return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+                                  }).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
                                   $current = 3;
                                   return;
 
@@ -8810,7 +10082,7 @@ this.Serulian = (function ($global) {
                             }
                           };
                           return $generator.new($continue, true);
-                        })()), $t.fastbox(!$g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($this.state.currentView, $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean))).then(function ($result0) {
+                        })()), $t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.currentView, $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean))).then(function ($result0) {
                           $result = $result0;
                           $current = 5;
                           $continue($yield, $yieldin, $reject, $done);
@@ -8826,24 +10098,24 @@ this.Serulian = (function ($global) {
                         return;
 
                       case 6:
-                        $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                          className: $t.fastbox("toolbar", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                        $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                          className: $t.fastbox("toolbar", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                         }), (function () {
                           var $current = 0;
                           var $continue = function ($yield, $yieldin, $reject, $done) {
                             while (true) {
                               switch ($current) {
                                 case 0:
-                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Ul($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                    className: $t.fastbox("tabs", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Ul($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                    className: $t.fastbox("tabs", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                   }), (function () {
                                     var $current = 0;
                                     var $continue = function ($yield, $yieldin, $reject, $done) {
                                       while (true) {
                                         switch ($current) {
                                           case 0:
-                                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Li($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                              className: $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($this.state.currentView, $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped ? $t.fastbox('active', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String) : $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Li($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                              className: $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.currentView, $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped ? $t.fastbox('active', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String) : $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                               onclick: $t.dynamicaccess($this, 'showEditTab', false),
                                             }), (function () {
                                               var $current = 0;
@@ -8851,7 +10123,7 @@ this.Serulian = (function ($global) {
                                                 while (true) {
                                                   switch ($current) {
                                                     case 0:
-                                                      $yield($t.fastbox("\n\t\t\t\t\t\tCode\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                                                      $yield($t.fastbox("\n\t\t\t\t\t\tCode\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                                                       $current = 1;
                                                       return;
 
@@ -8871,8 +10143,8 @@ this.Serulian = (function ($global) {
                                             return;
 
                                           case 1:
-                                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Li($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                              className: $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($this.state.currentView, $t.fastbox('output', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped ? $t.fastbox('active', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String) : $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Li($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                              className: $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.currentView, $t.fastbox('output', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped ? $t.fastbox('active', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String) : $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                               onclick: $t.dynamicaccess($this, 'showOutputTab', false),
                                             }), (function () {
                                               var $current = 0;
@@ -8880,7 +10152,7 @@ this.Serulian = (function ($global) {
                                                 while (true) {
                                                   switch ($current) {
                                                     case 0:
-                                                      $yield($t.fastbox("\n\t\t\t\t\t\tOutput\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                                                      $yield($t.fastbox("\n\t\t\t\t\t\tOutput\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                                                       $current = 1;
                                                       return;
 
@@ -8895,13 +10167,13 @@ this.Serulian = (function ($global) {
                                                 }
                                               };
                                               return $generator.new($continue, false);
-                                            })()), $t.fastbox($this.state.buildResult != null, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)));
+                                            })()), $t.fastbox($this.state.buildResult != null, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
                                             $current = 2;
                                             return;
 
                                           case 2:
-                                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Li($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                              className: $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$equals($this.state.currentView, $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).$wrapped ? $t.fastbox('active', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String) : $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                            $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Li($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                              className: $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.currentView, $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped ? $t.fastbox('active', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String) : $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                               onclick: $t.dynamicaccess($this, 'showFrameTab', false),
                                             }), (function () {
                                               var $current = 0;
@@ -8909,7 +10181,7 @@ this.Serulian = (function ($global) {
                                                 while (true) {
                                                   switch ($current) {
                                                     case 0:
-                                                      $yield($t.fastbox("\n\t\t\t\t\t\tCompiled\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                                                      $yield($t.fastbox("\n\t\t\t\t\t\tCompiled\n\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                                                       $current = 1;
                                                       return;
 
@@ -8925,8 +10197,8 @@ this.Serulian = (function ($global) {
                                               };
                                               return $generator.new($continue, false);
                                             })()), $t.fastbox(!$t.syncnullcompare($t.dynamicaccess($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false), 'IsEmpty', false), function () {
-                                              return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-                                            }).$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)));
+                                              return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+                                            }).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
                                             $current = 3;
                                             return;
 
@@ -8942,8 +10214,8 @@ this.Serulian = (function ($global) {
                                   return;
 
                                 case 1:
-                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Button($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                    className: $t.fastbox("btn btn-primary", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Button($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                    className: $t.fastbox("btn btn-primary", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                     onclick: $t.dynamicaccess($this, 'runProject', false),
                                   }), (function () {
                                     var $current = 0;
@@ -8951,7 +10223,7 @@ this.Serulian = (function ($global) {
                                       while (true) {
                                         switch ($current) {
                                           case 0:
-                                            $yield($t.fastbox("\n\t\t\t\t\tRun\n\t\t\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                                            $yield($t.fastbox("\n\t\t\t\t\tRun\n\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                                             $current = 1;
                                             return;
 
@@ -8966,27 +10238,27 @@ this.Serulian = (function ($global) {
                                       }
                                     };
                                     return $generator.new($continue, false);
-                                  })()), $t.fastbox(!$this.state.working.$wrapped, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean)));
+                                  })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
                                   $current = 2;
                                   return;
 
                                 case 2:
-                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                    className: $t.fastbox("spinner", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-                                  }), $generator.directempty()), $this.state.working));
+                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                    className: $t.fastbox("spinner", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                  }), $generator.directempty()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
                                   $current = 3;
                                   return;
 
                                 case 3:
-                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-                                    className: $t.fastbox("server-error", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
+                                  $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                    className: $t.fastbox("server-error", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                   }), (function () {
                                     var $current = 0;
                                     var $continue = function ($yield, $yieldin, $reject, $done) {
                                       while (true) {
                                         switch ($current) {
                                           case 0:
-                                            $yield($t.fastbox("\n\t\t\t\t\tA server error occurred. Please try again shortly.\n\t\t\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                                            $yield($t.fastbox("\n\t\t\t\t\tA server error occurred. Please try again shortly.\n\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                                             $current = 1;
                                             return;
 
@@ -9001,7 +10273,7 @@ this.Serulian = (function ($global) {
                                       }
                                     };
                                     return $generator.new($continue, false);
-                                  })()), $this.state.serverError));
+                                  })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('servererror', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
                                   $current = 4;
                                   return;
 
@@ -9059,6 +10331,11 @@ this.Serulian = (function ($global) {
           return this.playgroundBase.StateUpdated.bind(this.playgroundBase);
         },
       });
+      Object.defineProperty($instance, 'shareProject', {
+        get: function () {
+          return this.playgroundBase.shareProject.bind(this.playgroundBase);
+        },
+      });
       Object.defineProperty($instance, 'runProject', {
         get: function () {
           return this.playgroundBase.runProject.bind(this.playgroundBase);
@@ -9089,15 +10366,15 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Declare|1|1f77dd0b<14ef5f4f>": true,
-          "Render|2|1f77dd0b<any>": true,
-          "StateUpdated|2|1f77dd0b<void>": true,
+          "Declare|1|e429e0b7<2ce910e7>": true,
+          "Render|2|e429e0b7<any>": true,
+          "StateUpdated|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$struct('a0a229ba', 'BuildResult', false, '', function () {
+    this.$struct('2fc4f1e3', 'BuildResult', false, '', function () {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function (Status, Output, GeneratedSourceFile, GeneratedSourceMap) {
@@ -9113,51 +10390,50 @@ this.Serulian = (function ($global) {
       };
       $static.$fields = [];
       $t.defineStructField($static, 'Status', 'Status', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer;
       }, false);
       $t.defineStructField($static, 'Output', 'Output', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       $t.defineStructField($static, 'GeneratedSourceFile', 'GeneratedSourceFile', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       $t.defineStructField($static, 'GeneratedSourceMap', 'GeneratedSourceMap', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Parse|1|1f77dd0b<a0a229ba>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "Stringify|2|1f77dd0b<5208c0f1>": true,
-          "Mapping|2|1f77dd0b<75a81c47<any>>": true,
-          "Clone|2|1f77dd0b<a0a229ba>": true,
-          "String|2|1f77dd0b<5208c0f1>": true,
+          "Parse|1|e429e0b7<2fc4f1e3>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<2fc4f1e3>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$struct('ac365358', 'playgroundState', false, '', function () {
+    this.$struct('f3ced3b2', 'playgroundState', false, '', function () {
       var $static = this;
       var $instance = this.prototype;
-      $static.new = function (working, currentCode, initialCode, serverError, currentView, consoleOutput) {
+      $static.new = function (stateId, currentCode, initialCode, currentView, consoleOutput) {
         var instance = new $static();
         instance[BOXED_DATA_PROPERTY] = {
-          working: working,
+          stateId: stateId,
           currentCode: currentCode,
           initialCode: initialCode,
-          serverError: serverError,
           currentView: currentView,
           consoleOutput: consoleOutput,
         };
@@ -9165,25 +10441,20 @@ this.Serulian = (function ($global) {
         return instance;
       };
       $static.$fields = [];
-      $t.defineStructField($static, 'working', 'working', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean;
+      $t.defineStructField($static, 'stateId', 'stateId', function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       $t.defineStructField($static, 'currentCode', 'currentCode', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       $t.defineStructField($static, 'initialCode', 'initialCode', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
-      }, false);
-      $t.defineStructField($static, 'serverError', 'serverError', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean;
-      }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       $t.defineStructField($static, 'buildResult', 'buildResult', function () {
         return $g.playground.BuildResult;
@@ -9191,32 +10462,198 @@ this.Serulian = (function ($global) {
         return $g.playground.BuildResult;
       }, true);
       $t.defineStructField($static, 'currentView', 'currentView', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       $t.defineStructField($static, 'consoleOutput', 'consoleOutput', function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, function () {
-        return $g.pkg.github.com.serulian.corelib.branch.master.primitives.String;
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, false);
+      $t.defineStructField($static, 'gistInfo', 'gistInfo', function () {
+        return $g.playground.gistInfo;
+      }, function () {
+        return $g.playground.gistInfo;
+      }, true);
+      this.$typesig = function () {
+        if (this.$cachedtypesig) {
+          return this.$cachedtypesig;
+        }
+        var computed = {
+          "Parse|1|e429e0b7<f3ced3b2>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<f3ced3b2>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
+        };
+        return this.$cachedtypesig = computed;
+      };
+    });
+
+    this.$struct('64afddb7', 'gistFile', false, '', function () {
+      var $static = this;
+      var $instance = this.prototype;
+      $static.new = function (content) {
+        var instance = new $static();
+        instance[BOXED_DATA_PROPERTY] = {
+          content: content,
+        };
+        instance.$markruntimecreated();
+        return instance;
+      };
+      $static.$fields = [];
+      $t.defineStructField($static, 'content', 'content', function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
       }, false);
       this.$typesig = function () {
         if (this.$cachedtypesig) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Parse|1|1f77dd0b<ac365358>": true,
-          "equals|4|1f77dd0b<8ffa0597>": true,
-          "Stringify|2|1f77dd0b<5208c0f1>": true,
-          "Mapping|2|1f77dd0b<75a81c47<any>>": true,
-          "Clone|2|1f77dd0b<ac365358>": true,
-          "String|2|1f77dd0b<5208c0f1>": true,
+          "Parse|1|e429e0b7<64afddb7>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<64afddb7>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
         };
         return this.$cachedtypesig = computed;
       };
     });
 
-    this.$agent('26f12ca7', 'playgroundBase', false, '', function () {
+    this.$struct('5da089f9', 'createGistArgs', false, '', function () {
+      var $static = this;
+      var $instance = this.prototype;
+      $static.new = function (files, description) {
+        var instance = new $static();
+        instance[BOXED_DATA_PROPERTY] = {
+          files: files,
+          description: description,
+        };
+        instance.$markruntimecreated();
+        return $static.$initDefaults(instance, true);
+      };
+      $static.$initDefaults = function (instance, isRuntimeCreated) {
+        var boxed = instance[BOXED_DATA_PROPERTY];
+        if (isRuntimeCreated || (boxed['public'] === undefined)) {
+          instance.public = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+        }
+        return instance;
+      };
+      $static.$fields = [];
+      $t.defineStructField($static, 'files', 'files', function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.playground.gistFile);
+      }, function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.playground.gistFile);
+      }, false);
+      $t.defineStructField($static, 'description', 'description', function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, false);
+      $t.defineStructField($static, 'public', 'public', function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean;
+      }, function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean;
+      }, false);
+      this.$typesig = function () {
+        if (this.$cachedtypesig) {
+          return this.$cachedtypesig;
+        }
+        var computed = {
+          "Parse|1|e429e0b7<5da089f9>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<5da089f9>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
+        };
+        return this.$cachedtypesig = computed;
+      };
+    });
+
+    this.$struct('bf0da5bc', 'gistInfo', false, '', function () {
+      var $static = this;
+      var $instance = this.prototype;
+      $static.new = function (id, html_url, files) {
+        var instance = new $static();
+        instance[BOXED_DATA_PROPERTY] = {
+          id: id,
+          "html_url": html_url,
+          files: files,
+        };
+        instance.$markruntimecreated();
+        return instance;
+      };
+      $static.$fields = [];
+      $t.defineStructField($static, 'id', 'id', function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, false);
+      $t.defineStructField($static, 'html_url', 'html_url', function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, false);
+      $t.defineStructField($static, 'files', 'files', function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.playground.gistFile);
+      }, function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.playground.gistFile);
+      }, false);
+      this.$typesig = function () {
+        if (this.$cachedtypesig) {
+          return this.$cachedtypesig;
+        }
+        var computed = {
+          "Parse|1|e429e0b7<bf0da5bc>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<bf0da5bc>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
+        };
+        return this.$cachedtypesig = computed;
+      };
+    });
+
+    this.$struct('ae84a15b', 'playgroundAppProps', false, '', function () {
+      var $static = this;
+      var $instance = this.prototype;
+      $static.new = function () {
+        var instance = new $static();
+        instance[BOXED_DATA_PROPERTY] = {
+        };
+        instance.$markruntimecreated();
+        return instance;
+      };
+      $static.$fields = [];
+      $t.defineStructField($static, 'InitialGistId', 'InitialGistId', function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, function () {
+        return $g.pkg.github.com.serulian.corelib.HEAD.primitives.String;
+      }, true);
+      this.$typesig = function () {
+        if (this.$cachedtypesig) {
+          return this.$cachedtypesig;
+        }
+        var computed = {
+          "Parse|1|e429e0b7<ae84a15b>": true,
+          "equals|4|e429e0b7<8db7ac13>": true,
+          "Stringify|2|e429e0b7<6b38bbd3>": true,
+          "Mapping|2|e429e0b7<1898496b<any>>": true,
+          "Clone|2|e429e0b7<ae84a15b>": true,
+          "String|2|e429e0b7<6b38bbd3>": true,
+        };
+        return this.$cachedtypesig = computed;
+      };
+    });
+
+    this.$agent('ca308009', 'playgroundBase', false, '', function () {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function (state) {
@@ -9229,6 +10666,164 @@ this.Serulian = (function ($global) {
         $this.state = $t.cast(state, $g.playground.playgroundState, false);
         return;
       };
+      $instance.shareProject = $t.markpromising(function () {
+        var $this = this;
+        var $result;
+        var $temp0;
+        var $temp1;
+        var $temp2;
+        var $temp3;
+        var createArgs;
+        var info;
+        var path;
+        var response;
+        var $current = 0;
+        var $continue = function ($resolve, $reject) {
+          localasyncloop: while (true) {
+            switch ($current) {
+              case 0:
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp0 = $this.state.Clone(), $temp0.stateId = $t.fastbox('sharing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0))).then(function ($result0) {
+                  $result = $result0;
+                  $current = 1;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 1:
+                createArgs = $g.playground.createGistArgs.new($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.playground.gistFile).overObject((function () {
+                  var obj = {
+                  };
+                  obj["entrypoint.seru"] = $g.playground.gistFile.new($this.state.currentCode);
+                  return obj;
+                })()), $t.fastbox("Serulian shared playground", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                $promise.maybe(createArgs.Stringify($g.pkg.github.com.serulian.corelib.HEAD.serialization.JSON)()).then(function ($result1) {
+                  return $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Post($t.fastbox('https://api.github.com/gists', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $result1)).then(function ($result0) {
+                    response = $result0;
+                    $current = 2;
+                    $continue($resolve, $reject);
+                    return;
+                  });
+                }).catch(function ($rejected) {
+                  response = null;
+                  $current = 2;
+                  $continue($resolve, $reject);
+                  return;
+                });
+                return;
+
+              case 2:
+                if (response == null) {
+                  $current = 3;
+                  continue localasyncloop;
+                } else {
+                  $current = 6;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 3:
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp1 = $this.state.Clone(), $temp1.stateId = $t.fastbox('couldnotshare', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp1))).then(function ($result0) {
+                  $result = $result0;
+                  $current = 4;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 4:
+                $current = 5;
+                continue localasyncloop;
+
+              case 6:
+                if ($g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$div(response.StatusCode(), $t.fastbox(100, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)).$wrapped == 2) {
+                  $current = 7;
+                  continue localasyncloop;
+                } else {
+                  $current = 13;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 7:
+                $promise.maybe($g.playground.gistInfo.Parse($g.pkg.github.com.serulian.corelib.HEAD.serialization.JSON)(response.Text())).then(function ($result0) {
+                  $result = $result0;
+                  $current = 8;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 8:
+                info = $result;
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp2 = $this.state.Clone(), $temp2.stateId = $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp2.gistInfo = info, $temp2))).then(function ($result0) {
+                  $result = $result0;
+                  $current = 9;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 9:
+                path = $t.fastbox($global.location.pathname, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+                if (path.HasPrefix($t.fastbox("/p/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped) {
+                  $current = 10;
+                  continue localasyncloop;
+                } else {
+                  $current = 11;
+                  continue localasyncloop;
+                }
+                break;
+
+              case 10:
+                $global.history.replaceState($t.unbox($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).Empty()), "Serulian Playground", $t.unbox($g.pkg.github.com.serulian.corelib.HEAD.primitives.formatTemplateString($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("/p/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.interfaces.Stringable).overArray([$t.fastbox($global.location.origin, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), info.id]))));
+                $current = 11;
+                continue localasyncloop;
+
+              case 11:
+                $current = 12;
+                continue localasyncloop;
+
+              case 12:
+                $current = 5;
+                continue localasyncloop;
+
+              case 13:
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp3 = $this.state.Clone(), $temp3.stateId = $t.fastbox('couldnotshare', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp3))).then(function ($result0) {
+                  $result = $result0;
+                  $current = 14;
+                  $continue($resolve, $reject);
+                  return;
+                }).catch(function (err) {
+                  $reject(err);
+                  return;
+                });
+                return;
+
+              case 14:
+                $current = 12;
+                continue localasyncloop;
+
+              default:
+                $resolve();
+                return;
+            }
+          }
+        };
+        return $promise.new($continue);
+      });
       $instance.runProject = $t.markpromising(function () {
         var $this = this;
         var $result;
@@ -9243,7 +10838,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp0 = $this.state.Clone(), $temp0.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp0.consoleOutput = $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp0.working = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $temp0.serverError = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $temp0.buildResult = null, $temp0))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp0 = $this.state.Clone(), $temp0.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.consoleOutput = $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.stateId = $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.buildResult = null, $temp0))).then(function ($result0) {
                   $result = $result0;
                   $current = 1;
                   $continue($resolve, $reject);
@@ -9255,7 +10850,7 @@ this.Serulian = (function ($global) {
                 return;
 
               case 1:
-                $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Post($t.fastbox('/play/build', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $this.state.currentCode)).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.request.HEAD.request.Post($t.fastbox('/play/build', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $this.state.currentCode)).then(function ($result0) {
                   response = $result0;
                   $current = 2;
                   $continue($resolve, $reject);
@@ -9279,7 +10874,7 @@ this.Serulian = (function ($global) {
                 break;
 
               case 3:
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp1 = $this.state.Clone(), $temp1.working = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $temp1.serverError = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $temp1.buildResult = null, $temp1.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp1))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp1 = $this.state.Clone(), $temp1.stateId = $t.fastbox('servererror', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp1.buildResult = null, $temp1.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp1))).then(function ($result0) {
                   $result = $result0;
                   $current = 4;
                   $continue($resolve, $reject);
@@ -9305,7 +10900,7 @@ this.Serulian = (function ($global) {
                 break;
 
               case 7:
-                $promise.maybe($g.playground.BuildResult.Parse($g.pkg.github.com.serulian.corelib.branch.master.serialization.JSON)(response.Text())).then(function ($result0) {
+                $promise.maybe($g.playground.BuildResult.Parse($g.pkg.github.com.serulian.corelib.HEAD.serialization.JSON)(response.Text())).then(function ($result0) {
                   $result = $result0;
                   $current = 8;
                   $continue($resolve, $reject);
@@ -9318,7 +10913,7 @@ this.Serulian = (function ($global) {
 
               case 8:
                 result = $result;
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp2 = $this.state.Clone(), $temp2.working = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $temp2.serverError = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $temp2.buildResult = result, $temp2.currentView = result.Status.$wrapped == 0 ? $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String) : $t.fastbox('output', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp2))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp2 = $this.state.Clone(), $temp2.stateId = $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp2.buildResult = result, $temp2.currentView = result.Status.$wrapped == 0 ? $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String) : $t.fastbox('output', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp2))).then(function ($result0) {
                   $result = $result0;
                   $current = 9;
                   $continue($resolve, $reject);
@@ -9338,7 +10933,7 @@ this.Serulian = (function ($global) {
                 continue localasyncloop;
 
               case 11:
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp3 = $this.state.Clone(), $temp3.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $temp3.working = $t.fastbox(false, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $temp3.serverError = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean), $temp3.buildResult = null, $temp3))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp3 = $this.state.Clone(), $temp3.stateId = $t.fastbox('servererror', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp3.buildResult = null, $temp3.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp3))).then(function ($result0) {
                   $result = $result0;
                   $current = 12;
                   $continue($resolve, $reject);
@@ -9370,7 +10965,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp0 = $this.state.Clone(), $temp0.currentCode = value, $temp0))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp0 = $this.state.Clone(), $temp0.currentCode = value, $temp0.gistInfo = null, $temp0))).then(function ($result0) {
                   $result = $result0;
                   $current = 1;
                   $continue($resolve, $reject);
@@ -9404,10 +10999,10 @@ this.Serulian = (function ($global) {
             switch ($current) {
               case 0:
                 buffer = $t.syncnullcompare($this.consoleOutputBuffer, function () {
-                  return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+                  return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
                 });
                 $this.consoleOutputBuffer = null;
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp0 = $this.state.Clone(), $temp0.consoleOutput = $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($this.state.consoleOutput, buffer), $t.fastbox('\n', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Trim()), $temp0))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp0 = $this.state.Clone(), $temp0.consoleOutput = $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($this.state.consoleOutput, buffer), $t.fastbox('\n', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Trim()), $temp0))).then(function ($result0) {
                   $result = $result0;
                   $current = 1;
                   $continue($resolve, $reject);
@@ -9489,7 +11084,7 @@ this.Serulian = (function ($global) {
         var sourceCode;
         var startCode;
         sourceCode = $t.syncnullcompare($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false), function () {
-          return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+          return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         });
         iframeElement = $t.cast(iframeNode, $global.HTMLIFrameElement, false);
         iframeDoc = iframeElement.contentWindow.document;
@@ -9504,7 +11099,7 @@ this.Serulian = (function ($global) {
           syncloop: while (true) {
             switch ($current) {
               case 0:
-                message = $t.fastbox('null', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+                message = $t.fastbox('null', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
                 if (value != null) {
                   $current = 1;
                   continue syncloop;
@@ -9516,14 +11111,14 @@ this.Serulian = (function ($global) {
 
               case 1:
                 rootValue = $t.unbox(value);
-                message = $t.fastbox($t.cast($t.cast($t.dynamicaccess(rootValue, 'toString', false), $g.pkg.github.com.serulian.corelib.branch.master.primitives.functionType($t.any), false)(), $global.String, false), $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+                message = $t.fastbox($t.cast($t.cast($t.dynamicaccess(rootValue, 'toString', false), $g.pkg.github.com.serulian.corelib.HEAD.primitives.functionType($t.any), false)(), $global.String, false), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
                 $current = 2;
                 continue syncloop;
 
               case 2:
-                $this.consoleOutputBuffer = $g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($g.pkg.github.com.serulian.corelib.branch.master.primitives.String.$plus($t.syncnullcompare($this.consoleOutputBuffer, function () {
-                  return $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-                }), message), $t.fastbox('\n', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String));
+                $this.consoleOutputBuffer = $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$plus($t.syncnullcompare($this.consoleOutputBuffer, function () {
+                  return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+                }), message), $t.fastbox('\n', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
                 $this.registerConsoleUpdater();
                 return;
 
@@ -9532,7 +11127,7 @@ this.Serulian = (function ($global) {
             }
           }
         };
-        startCode = $t.fastbox("\n\t\t\tvar oldLog = window.console.log;\n\t\t\twindow.console.log = function(msg) {\n\t\t\t\toldLog.apply(this, arguments);\n\t\t\t\twindow.frameElement.handler(msg);\n\t\t\t};\n\n\t\t\twindow.Serulian.then(function(global) {\n\t\t\t\tglobal.playground.Run();\n\t\t\t}).catch(function(e) {\n\t\t\t\tconsole.error(e);\n\t\t\t});\n\t\t", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+        startCode = $t.fastbox("\n\t\t\tvar oldLog = window.console.log;\n\t\t\twindow.console.log = function(msg) {\n\t\t\t\toldLog.apply(this, arguments);\n\t\t\t\twindow.frameElement.handler(msg);\n\t\t\t};\n\n\t\t\twindow.Serulian.then(function(global) {\n\t\t\t\tglobal.playground.Run();\n\t\t\t}).catch(function(e) {\n\t\t\t\tconsole.error(e);\n\t\t\t});\n\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         loadScriptTag = iframeDoc.createElement('script');
         loadScriptTag.setAttribute('type', 'text/javascript');
         loadScriptTag.appendChild(iframeDoc.createTextNode($t.unbox(startCode)));
@@ -9544,7 +11139,7 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "StateUpdated|2|1f77dd0b<void>": true,
+          "StateUpdated|2|e429e0b7<void>": true,
         };
         return this.$cachedtypesig = computed;
       };
@@ -9552,24 +11147,59 @@ this.Serulian = (function ($global) {
 
     $static.Start = $t.markpromising(function (element) {
       var $result;
+      var $temp0;
+      var gistId;
+      var path;
       var $current = 0;
       var $continue = function ($resolve, $reject) {
         localasyncloop: while (true) {
           switch ($current) {
             case 0:
-              $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.RenderComponent($g.playground.App.Declare(), element)).then(function ($result0) {
-                $result = $result0;
+              gistId = null;
+              path = $t.fastbox($global.location.pathname, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+              if (path.HasPrefix($t.fastbox("/p/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped) {
                 $current = 1;
-                $continue($resolve, $reject);
-                return;
+                continue localasyncloop;
+              } else {
+                $current = 4;
+                continue localasyncloop;
+              }
+              break;
+
+            case 1:
+              gistId = path.$slice($t.fastbox('/p/', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Length(), null);
+              if ($t.syncnullcompare($t.dynamicaccess(gistId, 'IsEmpty', false), function () {
+                return $t.fastbox(false, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+              }).$wrapped) {
+                $current = 2;
+                continue localasyncloop;
+              } else {
+                $current = 3;
+                continue localasyncloop;
+              }
+              break;
+
+            case 2:
+              gistId = null;
+              $current = 3;
+              continue localasyncloop;
+
+            case 3:
+              $current = 4;
+              continue localasyncloop;
+
+            case 4:
+              $promise.maybe($g.playground.PlaygroundApp.Declare(($temp0 = $g.playground.playgroundAppProps.new(), $temp0.InitialGistId = gistId, $temp0))).then(function ($result1) {
+                return $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.RenderComponent($result1, element)).then(function ($result0) {
+                  $result = $result0;
+                  $current = 5;
+                  $continue($resolve, $reject);
+                  return;
+                });
               }).catch(function (err) {
                 $reject(err);
                 return;
               });
-              return;
-
-            case 1:
-              $resolve();
               return;
 
             default:
@@ -9599,7 +11229,7 @@ this.Serulian = (function ($global) {
               continue localasyncloop;
 
             case 1:
-              $temp1 = $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer), $t.fastbox(elements.length - 1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer));
+              $temp1 = $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer.$range($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), $t.fastbox(elements.length - 1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer));
               $current = 2;
               continue localasyncloop;
 
@@ -9618,7 +11248,7 @@ this.Serulian = (function ($global) {
             case 3:
               editorElement = $t.cast(elements[i.$wrapped], $global.Element, false);
               firstChild = editorElement.firstChild;
-              initialCode = $t.fastbox('', $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              initialCode = $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               if (firstChild != null) {
                 $current = 4;
                 continue localasyncloop;
@@ -9629,13 +11259,13 @@ this.Serulian = (function ($global) {
               break;
 
             case 4:
-              initialCode = $t.fastbox($t.cast(firstChild, $global.Text, false).wholeText, $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+              initialCode = $t.fastbox($t.cast(firstChild, $global.Text, false).wholeText, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
               $current = 5;
               continue localasyncloop;
 
             case 5:
               editorElement.setAttribute('className', '');
-              $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.RenderComponent($g.playground.PlaygroundEditor.Declare($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).Empty(), initialCode), editorElement)).then(function ($result0) {
+              $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.RenderComponent($g.playground.PlaygroundEditor.Declare($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).Empty(), initialCode), editorElement)).then(function ($result0) {
                 $result = $result0;
                 $current = 6;
                 $continue($resolve, $reject);
@@ -9664,110 +11294,110 @@ this.Serulian = (function ($global) {
     $static.buildSerulianAceMode = function () {
       var definition;
       var single_quote;
-      single_quote = $t.fastbox("`", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-      definition = $g.pkg.github.com.serulian.corelib.branch.master.native.ESObjectLiteral($g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject({
-        Lex: $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject((function () {
+      single_quote = $t.fastbox("`", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+      definition = $g.pkg.github.com.serulian.corelib.HEAD.native.ESObjectLiteral($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+        Lex: $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject((function () {
           var obj = {
           };
-          obj["string"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.struct).overObject((function () {
+          obj["string"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.struct).overObject((function () {
             var obj = {
             };
-            obj["type"] = $t.fastbox("escaped-block", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-            obj["escape"] = $t.fastbox("\\", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-            obj["tokens"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($t.struct).overArray([$t.fastbox("RE::/(['\"])/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)]);
+            obj["type"] = $t.fastbox("escaped-block", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+            obj["escape"] = $t.fastbox("\\", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+            obj["tokens"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($t.struct).overArray([$t.fastbox("RE::/(['\"])/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)]);
             return obj;
           })());
-          obj["template_string"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.struct).overObject((function () {
+          obj["template_string"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.struct).overObject((function () {
             var obj = {
             };
-            obj["type"] = $t.fastbox("escaped-block", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-            obj["escape"] = $t.fastbox("\\", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-            obj["tokens"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($t.struct).overArray([$t.fastbox("RE::/([`])/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(1, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Integer)]);
+            obj["type"] = $t.fastbox("escaped-block", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+            obj["escape"] = $t.fastbox("\\", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+            obj["tokens"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($t.struct).overArray([$t.fastbox("RE::/([`])/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(1, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer)]);
             return obj;
           })());
-          obj["operator"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).overObject((function () {
+          obj["operator"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).overObject((function () {
             var obj = {
             };
-            obj["tokens"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("+", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("-", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("%", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("<<", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("*", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("^", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("|", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("&", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("!", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("~", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(">", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("<", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("<=", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(">=", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("!=", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("=", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("==", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("->", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(".", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("?.", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("??", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(":=", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("?", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("&", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
+            obj["tokens"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("+", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("-", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("%", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("<<", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("*", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("^", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("|", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("&", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("!", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("~", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(">", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("<", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("<=", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(">=", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("!=", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("=", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("==", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("->", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(".", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("?.", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("??", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(":=", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("?", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("&", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
             return obj;
           })());
-          obj["atom"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.struct).overObject((function () {
+          obj["atom"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.struct).overObject((function () {
             var obj = {
             };
-            obj["autocomplete"] = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-            obj["tokens"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("true", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("false", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("any", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("null", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
+            obj["autocomplete"] = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+            obj["tokens"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("true", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("false", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("any", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("null", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
             return obj;
           })());
-          obj["keyword"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.struct).overObject((function () {
+          obj["keyword"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.struct).overObject((function () {
             var obj = {
             };
-            obj["autocomplete"] = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.branch.master.primitives.Boolean);
-            obj["tokens"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("import", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("from", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("as", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("class", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("interface", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("agent", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("type", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("struct", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("default", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("function", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("property", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("var", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("constructor", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("operator", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("static", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("void", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("get", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("set", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("val", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("this", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("null", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("principal", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("is", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("not", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("in", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("for", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("if", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("else", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("return", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("reject", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("yield", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("break", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("continue", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("with", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("match", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("case", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("switch", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
+            obj["autocomplete"] = $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+            obj["tokens"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("import", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("from", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("as", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("class", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("interface", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("agent", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("type", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("struct", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("default", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("function", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("property", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("var", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("constructor", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("operator", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("static", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("void", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("get", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("set", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("val", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("this", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("null", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("principal", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("is", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("not", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("in", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("for", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("if", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("else", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("return", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("reject", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("yield", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("break", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("continue", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("with", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("match", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("case", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("switch", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
             return obj;
           })());
-          obj["open_brace"] = $t.fastbox("{", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["close_brace"] = $t.fastbox("}", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["delimeter"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).overObject((function () {
+          obj["open_brace"] = $t.fastbox("{", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["close_brace"] = $t.fastbox("}", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["delimeter"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).overObject((function () {
             var obj = {
             };
-            obj["tokens"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("(", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox(")", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("[", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("]", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
+            obj["tokens"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("(", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox(")", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("[", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("]", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
             return obj;
           })());
-          obj["property"] = $t.fastbox("RE::/[_A-Za-z$][_A-Za-z0-9$]*/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["identifier"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("RE::/[0-9a-zA-Z]+/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
-          obj["decorator"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("RE::/@[0-9a-zA-Z]+/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
-          obj["sml_open_tag"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("RE::/<[0-9a-zA-Z]+ /", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
-          obj["sml_close_tag"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("RE::/<\/[0-9a-zA-Z]+>/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
-          obj["comment"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.any).overObject((function () {
+          obj["property"] = $t.fastbox("RE::/[_A-Za-z$][_A-Za-z0-9$]*/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["identifier"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("RE::/[0-9a-zA-Z]+/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
+          obj["decorator"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("RE::/@[0-9a-zA-Z]+/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
+          obj["sml_open_tag"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("RE::/<[0-9a-zA-Z]+ /", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
+          obj["sml_close_tag"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("RE::/<\/[0-9a-zA-Z]+>/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
+          obj["comment"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject((function () {
             var obj = {
             };
-            obj["type"] = $t.fastbox("comment", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-            obj["tokens"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($t.any).overArray([$g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($t.any).overArray([$t.fastbox("//", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), null]), $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("/*", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("*/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)])]);
+            obj["type"] = $t.fastbox("comment", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+            obj["tokens"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($t.any).overArray([$g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($t.any).overArray([$t.fastbox("//", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), null]), $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("/*", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("*/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)])]);
             return obj;
           })());
-          obj["number"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("RE::/\\d*\\.\\d+(e[\\+\\-]?\\d+)?/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("RE::/\\d+\\.\\d*/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("RE::/\\.\\d+/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("RE::/0x[0-9a-fA-F]+L?/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("RE::/0b[01]+L?/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("RE::/0o[0-7]+L?/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("RE::/[1-9]\\d*(e[\\+\\-]?\\d+)?L?/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("RE::/0(?![\\dx])/", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
+          obj["number"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("RE::/\\d*\\.\\d+(e[\\+\\-]?\\d+)?/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("RE::/\\d+\\.\\d*/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("RE::/\\.\\d+/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("RE::/0x[0-9a-fA-F]+L?/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("RE::/0b[01]+L?/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("RE::/0o[0-7]+L?/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("RE::/[1-9]\\d*(e[\\+\\-]?\\d+)?L?/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("RE::/0(?![\\dx])/", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
           return obj;
         })()),
-        Parser: $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).overArray([$g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("serulian", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)])]),
-        RegExpID: $t.fastbox("RE::", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String),
-        Style: $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overObject((function () {
+        Parser: $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).overArray([$g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("serulian", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)])]),
+        RegExpID: $t.fastbox("RE::", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+        Style: $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overObject((function () {
           var obj = {
           };
-          obj["comment"] = $t.fastbox("comment", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["number"] = $t.fastbox("constant.numeric", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["atom"] = $t.fastbox("constant.language", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["identifier"] = $t.fastbox("identifier", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["keyword"] = $t.fastbox("keyword", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["string"] = $t.fastbox("string", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["template_string"] = $t.fastbox("string", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["operator"] = $t.fastbox("keyword.operator", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["delimeter"] = $t.fastbox("delimeter", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["sml_attribute"] = $t.fastbox("variable", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["sml_decorator"] = $t.fastbox("variable.parameter", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["sml"] = $t.fastbox("support.constant", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+          obj["comment"] = $t.fastbox("comment", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["number"] = $t.fastbox("constant.numeric", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["atom"] = $t.fastbox("constant.language", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["identifier"] = $t.fastbox("identifier", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["keyword"] = $t.fastbox("keyword", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["string"] = $t.fastbox("string", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["template_string"] = $t.fastbox("string", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["operator"] = $t.fastbox("keyword.operator", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["delimeter"] = $t.fastbox("delimeter", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["sml_attribute"] = $t.fastbox("variable", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["sml_decorator"] = $t.fastbox("variable.parameter", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["sml"] = $t.fastbox("support.constant", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
           return obj;
         })()),
-        Syntax: $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($t.struct).overObject((function () {
+        Syntax: $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.struct).overObject((function () {
           var obj = {
           };
-          obj["dot_property"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).overObject((function () {
+          obj["dot_property"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).overObject((function () {
             var obj = {
             };
-            obj["sequence"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox(".", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("property", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
+            obj["sequence"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox(".", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("property", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
             return obj;
           })());
-          obj["null_dot_property"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Mapping($g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String)).overObject((function () {
+          obj["null_dot_property"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).overObject((function () {
             var obj = {
             };
-            obj["sequence"] = $g.pkg.github.com.serulian.corelib.branch.master.collections.Slice($g.pkg.github.com.serulian.corelib.branch.master.primitives.String).overArray([$t.fastbox("?.", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String), $t.fastbox("property", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String)]);
+            obj["sequence"] = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overArray([$t.fastbox("?.", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $t.fastbox("property", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)]);
             return obj;
           })());
-          obj["text"] = $t.fastbox("identifier | '!' | '.' | ':'", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["sml_child"] = $t.fastbox("sml | open_brace serulian+ close_brace | text+", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["sml_extended_tag"] = $t.fastbox("'>'.sml sml_child*  sml_close_tag.sml", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["sml_attribute"] = $t.fastbox("(identifier.sml_attribute | decorator.sml_decorator) '='.operator (string|open_brace serulian+ close_brace)", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["sml"] = $t.fastbox("sml_open_tag.sml (sml_attribute)* ('/>'.sml | sml_extended_tag)", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
-          obj["serulian"] = $t.fastbox("comment | sml | number | atom | keyword | operator | identifier | template_string | string | dot_property | null_dot_property | delimeter", $g.pkg.github.com.serulian.corelib.branch.master.primitives.String);
+          obj["text"] = $t.fastbox("identifier | '!' | '.' | ':'", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["sml_child"] = $t.fastbox("sml | open_brace serulian+ close_brace | text+", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["sml_extended_tag"] = $t.fastbox("'>'.sml sml_child*  sml_close_tag.sml", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["sml_attribute"] = $t.fastbox("(identifier.sml_attribute | decorator.sml_decorator) '='.operator (string|open_brace serulian+ close_brace)", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["sml"] = $t.fastbox("sml_open_tag.sml (sml_attribute)* ('/>'.sml | sml_extended_tag)", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
+          obj["serulian"] = $t.fastbox("comment | sml | number | atom | keyword | operator | identifier | template_string | string | dot_property | null_dot_property | delimeter", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
           return obj;
         })()),
       }));
