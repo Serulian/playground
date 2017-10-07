@@ -8,9 +8,9 @@ from "github.com/serulian/request" import Post, GetURLContents
 from "github.com/serulian/virtualdom" import Context, Div, Button, If, Span, TextArea, IFrame, HideIf
 from "github.com/serulian/virtualdom" import Nav, Ul, Li, A, DynamicAttributes, Pre, Img, Input
 
+from webidl`history` import history
 from webidl`location` import location
 from webidl`timeout` import setTimeout, clearTimeout
-from webidl`history` import history
 
 from codeeditor import CodeEditor
 from serulianmode import buildSerulianAceMode
@@ -250,7 +250,7 @@ class PlaygroundApp with playgroundBase {
 
 		// Note: lack of indentation is important here so the initial code is properly
 		// indented in the code editor.
-		initialCode := `from "github.com/serulian/debuglib:master" import Log
+		initialCode := `from "github.com/serulian/debuglib" import Log
 
 function<any> Run() {
 	// Note: open the browser console to see Log outputs.
@@ -352,8 +352,7 @@ function<any> Run() {
 							<Button className="btn" disabled>Shared</Button>
 							<Span className="shared-url url">
 								<Input className="form-control" type="text"
-								       value={'http://serulian.io/p/' + (this.state.gistInfo?.id ?? '')}
-								       readonly />
+								       value={'http://serulian.io/p/' + (this.state.gistInfo?.id ?? '')} readonly />
 							</Span>
 							<Span className="shared-url gist">
 								<Input className="form-control" type="text" value={this.state.gistInfo?.html_url}
@@ -390,23 +389,32 @@ function<any> Run() {
 					</Div>
 
 					<Div className="right-col">
-						<Div className="section-title">Running Application</Div>
+						<Div className="iframe-row">
+							<Div className="section-title">Running Application</Div>
 
-						<Div className="enter-code"
-						     @If={this.state.buildResult?.GeneratedSourceFile is null}
-						     @If={this.state.stateId != 'building'}>
-							<Span className="glyphicon glyphicon-arrow-left" /> Enter code and hit "Run"
+							<Div className="enter-code"
+							     @If={this.state.buildResult?.GeneratedSourceFile is null}
+							     @If={this.state.stateId != 'building'}>
+								<Span className="glyphicon glyphicon-arrow-left" /> Enter code and hit "Run"
+							</Div>
+
+							<Div class="building" @If={this.state.stateId == 'building'}>
+								<Span className="glyphicon glyphicon-refresh" />
+								Building
+							</Div>
+
+							<IFrame ondomnodeinserted={this.emitCode}
+							        sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals"
+							        frameborder="0"
+							        @If={!(this.state.buildResult?.GeneratedSourceFile?.IsEmpty ?? true)} />
 						</Div>
 
-						<Div class="building" @If={this.state.stateId == 'building'}>
-							<Span className="glyphicon glyphicon-refresh" />
-							Building
+						<Div className="console-row">
+							<Div className="section-title">Console Output</Div>
+							<Pre className="console-output" @HideIf={this.state.consoleOutput.IsEmpty}>
+								{this.state.consoleOutput}
+							</Pre>
 						</Div>
-
-						<IFrame ondomnodeinserted={this.emitCode}
-						        sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-modals"
-						        frameborder="0"
-						        @If={!(this.state.buildResult?.GeneratedSourceFile?.IsEmpty ?? true)} />
 					</Div>
 				</Div>
 			</Div>

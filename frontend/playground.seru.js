@@ -1615,7 +1615,7 @@ this.Serulian = (function ($global) {
 
             case 1:
               rendered = $result;
-              parentVNode = ($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.Children = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).overArray([rendered]), $temp0.TagName = $t.fastbox(parent.tagName, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0);
+              parentVNode = ($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.TagName = $t.fastbox(parent.tagName, $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.Children = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).overArray([rendered]), $temp0);
               $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.diff.ComputeDiff(parentVNode, $g.pkg.github.com.serulian.virtualdom.HEAD.wrappers.NodeWrapper.For(parent))).then(function ($result0) {
                 $result = $result0;
                 $current = 2;
@@ -7439,7 +7439,7 @@ this.Serulian = (function ($global) {
               case 52:
                 $promise.maybe(eventHandlers.Mapping()).then(function ($result0) {
                   return $promise.maybe(attributes.Mapping()).then(function ($result1) {
-                    $result = ($temp6 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp6.DOMNodeInserted = nodeInsertedHandler, $temp6.Key = key, $temp6.TagName = $this.tagName, $temp6.EventHandlers = $result0, $temp6.Attributes = $result1, $temp6.Children = childList.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null), $temp6);
+                    $result = ($temp6 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp6.TagName = $this.tagName, $temp6.EventHandlers = $result0, $temp6.Attributes = $result1, $temp6.Children = childList.$slice($t.fastbox(0, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Integer), null), $temp6.DOMNodeInserted = nodeInsertedHandler, $temp6.Key = key, $temp6);
                     $current = 53;
                     $continue($resolve, $reject);
                     return;
@@ -7815,12 +7815,12 @@ this.Serulian = (function ($global) {
           return $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         });
       });
-      return ($temp1 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp1.TagName = $t.fastbox('style', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp1.Attributes = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overObject((function () {
+      return ($temp1 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp1.Attributes = $g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($g.pkg.github.com.serulian.corelib.HEAD.primitives.String).overObject((function () {
         var obj = {
         };
         obj["type"] = $t.fastbox("text/css", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String);
         return obj;
-      })()), $temp1.Children = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).overArray([($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.Text = cssContents, $temp0)]), $temp1);
+      })()), $temp1.Children = $g.pkg.github.com.serulian.corelib.HEAD.collections.Slice($g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode).overArray([($temp0 = $g.pkg.github.com.serulian.virtualdom.HEAD.types.VirtualNode.new(), $temp0.Text = cssContents, $temp0)]), $temp1.TagName = $t.fastbox('style', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp1);
     };
   });
   $module('pkg.github.com.serulian.virtualdom.HEAD.types', function () {
@@ -8576,9 +8576,9 @@ this.Serulian = (function ($global) {
 
               case 3:
                 info = $result;
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.stateId = $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.gistInfo = info, $temp0.initialCode = $t.syncnullcompare($t.dynamicaccess(info.files.$index($t.fastbox('entrypoint.seru', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), 'content', false), function () {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this, ($temp0 = $this.state.Clone(), $temp0.initialCode = $t.syncnullcompare($t.dynamicaccess(info.files.$index($t.fastbox('entrypoint.seru', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)), 'content', false), function () {
                   return $this.state.initialCode;
-                }), $temp0))).then(function ($result0) {
+                }), $temp0.stateId = $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.gistInfo = info, $temp0))).then(function ($result0) {
                   $result = $result0;
                   $current = 4;
                   $continue($resolve, $reject);
@@ -9308,7 +9308,7 @@ this.Serulian = (function ($global) {
                                                               while (true) {
                                                                 switch ($current) {
                                                                   case 0:
-                                                                    $yield($g.codeeditor.CodeEditor.Declare(($temp0 = $g.codeeditor.codeEditorProps.new($t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)), $temp0.Mode = $g.serulianmode.buildSerulianAceMode(), $temp0.Theme = $t.fastbox("chrome", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.OnChanged = $t.dynamicaccess($this, 'codeChanged', false), $temp0), $this.state.initialCode));
+                                                                    $yield($g.codeeditor.CodeEditor.Declare(($temp0 = $g.codeeditor.codeEditorProps.new($t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)), $temp0.OnChanged = $t.dynamicaccess($this, 'codeChanged', false), $temp0.Mode = $g.serulianmode.buildSerulianAceMode(), $temp0.Theme = $t.fastbox("chrome", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0), $this.state.initialCode));
                                                                     $current = 1;
                                                                     return;
 
@@ -9436,19 +9436,111 @@ this.Serulian = (function ($global) {
                                             switch ($current) {
                                               case 0:
                                                 $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
-                                                  className: $t.fastbox("section-title", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                  className: $t.fastbox("iframe-row", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                                 }), (function () {
                                                   var $current = 0;
                                                   var $continue = function ($yield, $yieldin, $reject, $done) {
                                                     while (true) {
                                                       switch ($current) {
                                                         case 0:
-                                                          $yield($t.fastbox("Running Application", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("section-title", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($t.fastbox("Running Application", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()));
                                                           $current = 1;
                                                           return;
 
                                                         case 1:
-                                                          $done();
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("enter-code", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                                      className: $t.fastbox("glyphicon glyphicon-arrow-left", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                                    }), $generator.directempty()));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $yield($t.fastbox(" Enter code and hit \"Run\"\n\t\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 2;
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()), $t.fastbox($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false) == null, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)), $t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                                                          $current = 2;
+                                                          return;
+
+                                                        case 2:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            class: $t.fastbox("building", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                                      className: $t.fastbox("glyphicon glyphicon-refresh", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                                    }), $generator.directempty()));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $yield($t.fastbox("\n\t\t\t\t\t\t\t\tBuilding\n\t\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 2;
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
+                                                          $current = 3;
+                                                          return;
+
+                                                        case 3:
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.IFrame($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            frameborder: $t.fastbox("0", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                            ondomnodeinserted: $t.dynamicaccess($this, 'emitCode', false),
+                                                            sandbox: $t.fastbox("allow-forms allow-popups allow-scripts allow-same-origin allow-modals", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), $generator.directempty()), $t.fastbox(!$t.syncnullcompare($t.dynamicaccess($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false), 'IsEmpty', false), function () {
+                                                            return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
+                                                          }).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                                                          $current = 4;
                                                           return;
 
                                                         default:
@@ -9463,23 +9555,79 @@ this.Serulian = (function ($global) {
                                                 return;
 
                                               case 1:
-                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
-                                                  className: $t.fastbox("enter-code", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                  className: $t.fastbox("console-row", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
                                                 }), (function () {
+                                                  var $result;
                                                   var $current = 0;
                                                   var $continue = function ($yield, $yieldin, $reject, $done) {
                                                     while (true) {
                                                       switch ($current) {
                                                         case 0:
-                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
-                                                            className: $t.fastbox("glyphicon glyphicon-arrow-left", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
-                                                          }), $generator.directempty()));
+                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("section-title", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($t.fastbox("Console Output", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()));
                                                           $current = 1;
                                                           return;
 
                                                         case 1:
-                                                          $yield($t.fastbox(" Enter code and hit \"Run\"\n\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
-                                                          $current = 2;
+                                                          $promise.maybe($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.HideIf($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Pre($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
+                                                            className: $t.fastbox("console-output", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
+                                                          }), (function () {
+                                                            var $current = 0;
+                                                            var $continue = function ($yield, $yieldin, $reject, $done) {
+                                                              while (true) {
+                                                                switch ($current) {
+                                                                  case 0:
+                                                                    $yield($this.state.consoleOutput);
+                                                                    $current = 1;
+                                                                    return;
+
+                                                                  case 1:
+                                                                    $done();
+                                                                    return;
+
+                                                                  default:
+                                                                    $done();
+                                                                    return;
+                                                                }
+                                                              }
+                                                            };
+                                                            return $generator.new($continue, false);
+                                                          })()), $this.state.consoleOutput.IsEmpty())).then(function ($result0) {
+                                                            $result = $result0;
+                                                            $current = 2;
+                                                            $continue($yield, $yieldin, $reject, $done);
+                                                            return;
+                                                          }).catch(function (err) {
+                                                            throw err;
+                                                          });
+                                                          return;
+
+                                                        case 2:
+                                                          $yield($result);
+                                                          $current = 3;
                                                           return;
 
                                                         default:
@@ -9488,51 +9636,9 @@ this.Serulian = (function ($global) {
                                                       }
                                                     }
                                                   };
-                                                  return $generator.new($continue, false);
-                                                })()), $t.fastbox($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false) == null, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)), $t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
+                                                  return $generator.new($continue, true);
+                                                })()));
                                                 $current = 2;
-                                                return;
-
-                                              case 2:
-                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Div($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
-                                                  class: $t.fastbox("building", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
-                                                }), (function () {
-                                                  var $current = 0;
-                                                  var $continue = function ($yield, $yieldin, $reject, $done) {
-                                                    while (true) {
-                                                      switch ($current) {
-                                                        case 0:
-                                                          $yield($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.Span($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
-                                                            className: $t.fastbox("glyphicon glyphicon-refresh", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
-                                                          }), $generator.directempty()));
-                                                          $current = 1;
-                                                          return;
-
-                                                        case 1:
-                                                          $yield($t.fastbox("\n\t\t\t\t\t\t\tBuilding\n\t\t\t\t\t\t", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String));
-                                                          $current = 2;
-                                                          return;
-
-                                                        default:
-                                                          $done();
-                                                          return;
-                                                      }
-                                                    }
-                                                  };
-                                                  return $generator.new($continue, false);
-                                                })()), $g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String))));
-                                                $current = 3;
-                                                return;
-
-                                              case 3:
-                                                $yield($g.pkg.github.com.serulian.virtualdom.HEAD.decorators.If($g.pkg.github.com.serulian.virtualdom.HEAD.vdom.IFrame($g.pkg.github.com.serulian.corelib.HEAD.collections.Mapping($t.any).overObject({
-                                                  frameborder: $t.fastbox("0", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
-                                                  ondomnodeinserted: $t.dynamicaccess($this, 'emitCode', false),
-                                                  sandbox: $t.fastbox("allow-forms allow-popups allow-scripts allow-same-origin allow-modals", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String),
-                                                }), $generator.directempty()), $t.fastbox(!$t.syncnullcompare($t.dynamicaccess($t.dynamicaccess($this.state.buildResult, 'GeneratedSourceFile', false), 'IsEmpty', false), function () {
-                                                  return $t.fastbox(true, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean);
-                                                }).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)));
-                                                $current = 4;
                                                 return;
 
                                               default:
@@ -9649,7 +9755,7 @@ this.Serulian = (function ($global) {
       };
     });
 
-    this.$class('c49654b1', 'PlaygroundEditor', false, '', function () {
+    this.$class('2ce910e7', 'PlaygroundEditor', false, '', function () {
       var $static = this;
       var $instance = this.prototype;
       $static.new = function (playgroundBase) {
@@ -9818,7 +9924,7 @@ this.Serulian = (function ($global) {
                             while (true) {
                               switch ($current) {
                                 case 0:
-                                  $yield($g.codeeditor.CodeEditor.Declare(($temp0 = $g.codeeditor.codeEditorProps.new($t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)), $temp0.OnChanged = $t.dynamicaccess($this, 'codeChanged', false), $temp0.Theme = $t.fastbox("chrome", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.Mode = $g.serulianmode.buildSerulianAceMode(), $temp0), $this.state.currentCode.Trim()));
+                                  $yield($g.codeeditor.CodeEditor.Declare(($temp0 = $g.codeeditor.codeEditorProps.new($t.fastbox(!$g.pkg.github.com.serulian.corelib.HEAD.primitives.String.$equals($this.state.stateId, $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String)).$wrapped, $g.pkg.github.com.serulian.corelib.HEAD.primitives.Boolean)), $temp0.Mode = $g.serulianmode.buildSerulianAceMode(), $temp0.OnChanged = $t.dynamicaccess($this, 'codeChanged', false), $temp0.Theme = $t.fastbox("chrome", $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0), $this.state.currentCode.Trim()));
                                   $current = 1;
                                   return;
 
@@ -10260,7 +10366,7 @@ this.Serulian = (function ($global) {
           return this.$cachedtypesig;
         }
         var computed = {
-          "Declare|1|e429e0b7<c49654b1>": true,
+          "Declare|1|e429e0b7<2ce910e7>": true,
           "Render|2|e429e0b7<any>": true,
           "StateUpdated|2|e429e0b7<void>": true,
         };
@@ -10732,7 +10838,7 @@ this.Serulian = (function ($global) {
           localasyncloop: while (true) {
             switch ($current) {
               case 0:
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp0 = $this.state.Clone(), $temp0.stateId = $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.buildResult = null, $temp0.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.consoleOutput = $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp0 = $this.state.Clone(), $temp0.currentView = $t.fastbox('edit', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.consoleOutput = $t.fastbox('', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.stateId = $t.fastbox('building', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp0.buildResult = null, $temp0))).then(function ($result0) {
                   $result = $result0;
                   $current = 1;
                   $continue($resolve, $reject);
@@ -10807,7 +10913,7 @@ this.Serulian = (function ($global) {
 
               case 8:
                 result = $result;
-                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp2 = $this.state.Clone(), $temp2.currentView = result.Status.$wrapped == 0 ? $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String) : $t.fastbox('output', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp2.stateId = $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp2.buildResult = result, $temp2))).then(function ($result0) {
+                $promise.maybe($g.pkg.github.com.serulian.component.HEAD.component.UpdateComponentState($this.$principal, ($temp2 = $this.state.Clone(), $temp2.stateId = $t.fastbox('editing', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp2.buildResult = result, $temp2.currentView = result.Status.$wrapped == 0 ? $t.fastbox('frame', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String) : $t.fastbox('output', $g.pkg.github.com.serulian.corelib.HEAD.primitives.String), $temp2))).then(function ($result0) {
                   $result = $result0;
                   $current = 9;
                   $continue($resolve, $reject);

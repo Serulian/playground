@@ -9,12 +9,13 @@
 	<link rel="stylesheet" href="/playground.css">
 
 	<script src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/ace_grammar.min.js"></script>
 
 	<script>
 	if (document.location.toString().indexOf('develop=true') > 0) {
+		document.write('<script src="ace_grammar.min.js"></sc' + 'ript>');
 		document.write('<script src="http://localhost:8080/playground.seru.js"></sc' + 'ript>');
 	} else {
+		document.write('<script src="/ace_grammar.min.js"></sc' + 'ript>');
 		document.write('<script src="/playground.seru.js"></sc' + 'ript>');
 	}
 	</script>
@@ -88,12 +89,12 @@
 		height: 100%;
 	}
 
-	.code-editor-row, .output-row {
+	.code-editor-row, .output-row, .iframe-row, .console-row {
 		border: 1px solid #efefef;
 		border-top: 0px;
 	}
 
-	.code-editor-row {
+	.code-editor-row, .iframe-row {
 		position: absolute;
 		top: 0px;
 		bottom: 75%;
@@ -102,11 +103,11 @@
 		height: 75%;	
 	}
 
-	.code-editor-row .editor {
+	.code-editor-row .editor, .iframe-row iframe {
 		height: 100%;
 	}
 
-	.output-row {
+	.output-row, .console-row {
 		position: absolute;
 		top: 75%;
 		bottom: 0px;
@@ -116,7 +117,7 @@
 		padding: 10px;
 	}
 
-	.output-row pre {
+	.output-row pre, .console-row pre {
 		margin: 0px;
 		border: 0px;
 		font-size: 11px;
