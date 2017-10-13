@@ -2764,6 +2764,31 @@ AnotherDecorator(MyDecorator(SomeFunction(), 'hello'), true)
 </div>
 			</div>
 
+			<h3 id="sml-loops">Loops in SML tags</h3>
+			<h4>Using loops via a nested expression</h4>
+			<p>
+				While decorators provide a programmatic and extensible means of defining conditions and other applications, there are times when it is necessary to
+				generate SML tags over a <a href="#streams">stream</a> of values, rather than a single value.
+			</p>
+			<p>
+				SML supports the ability to use inline expressions, and with the inline loop expression <code>expression for value in stream</code>, we can loop when inside of SML:
+			</p>
+<div class="unreplaced-code">
+&lt;Ul&gt;<strong>{</strong>
+	&lt;Li&gt;{somevalue}&lt;/Li&gt; <strong>for somevalue in somestream</strong>
+<strong>}</strong>&lt;/Ul&gt;
+</div>
+			<p>As we can see, doing so, however, results in a bit of syntactic complexity, requiring braces to embed the looping expression.</p>
+
+			<h4>Inline loops in SML</h4>
+			<p>Recognizing that this is a constant pattern, SML supports <abbr title="all-natural syntax sugar that is much healthier!">syntax honey</abbr> for <strong>inline loops</strong>, which can be used on a tag without braces:</p>
+<div class="unreplaced-code">
+&lt;Ul&gt;
+	&lt;Li <strong>[for somevalue in somestream]</strong>&gt;{somevalue}&lt;/Li&gt;
+&lt;/Ul&gt;
+</div>
+			<p>The above example is semantically equivalent to the previous, but with added readability.</p>
+					
 			<h3>Working with SML</h3>
 <PlaygroundEditor class="not-replaced">
 from "github.com/serulian/debuglib" import Log
