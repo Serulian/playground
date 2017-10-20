@@ -1,13 +1,14 @@
 FROM phusion/baseimage:0.9.19
-RUN apt-get update && apt-get install -y nginx git wget gcc npm
-RUN wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
-RUN tar -zxvf  go1.7.1.linux-amd64.tar.gz -C /usr/local/
+RUN apt-get update && apt-get install -y nginx git wget gcc npm # 2017OCT19
+RUN apt-get install -y software-properties-common && add-apt-repository ppa:certbot/certbot && apt-get update && apt-get install -y python-certbot-nginx 
+RUN wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
+RUN tar -zxvf go1.9.1.linux-amd64.tar.gz -C /usr/local/
 ENV PATH $PATH:/usr/local/go/bin
 RUN mkdir -p playgroundgo/src/github.com/serulian/playground
 ADD *.go playgroundgo/src/github.com/serulian/playground/
 ENV GOPATH /playgroundgo
 WORKDIR playgroundgo/src/github.com/serulian/playground
-RUN go get ./...
+RUN go get -v ./...
 RUN go build .
 WORKDIR /
 RUN mkdir -p depcache/github.com/serulian/

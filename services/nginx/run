@@ -1,6 +1,7 @@
 #! /bin/bash
 echo 'Starting nginx'
-echo 'Serving playground frontend at port 80'
+SERVER_NAME="${CERTBOT_DOMAIN_NAME:-_}"
+echo "server_name $SERVER_NAME;" > /conf/server_name.conf
+echo "Serving playground frontend at port 80 with server_name $SERVER_NAME"
 /usr/sbin/nginx -c /conf/nginx.conf
 echo 'Nginx exited'
-
