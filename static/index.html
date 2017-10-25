@@ -325,16 +325,12 @@ serulian imports upgrade myfile.seru github.com/somenamespace/somerepo
 <h4>Working with native JavaScript is as simple as importing an interface</h4>
 <PlaygroundEditor class="not-replaced">
 // Import WebIDL like any other import.
-from webidl`github.com/serulian/debuglib:master` import console
-from webidl`github.com/serulian/corelib:master` import JSON
+from webidl`github.com/serulian/debuglib` import console
+from webidl`github.com/serulian/corelib` import JSON
 
 function&lt;void&gt; Run() {
-	// Call the native JS type with full type checking.
-	console.log(&amp;'hello world')
-
-	// Note the &amp; to send the native string (which String wraps) to
-	// the calls.
-	console.log(JSON.stringify(JSON.parse(&amp;'{"hello": "world"}')))
+	// Call the native JSON type with full type checking.
+	console.log(JSON.stringify(JSON.parse('{"hello": "world"}')))
 }
 </PlaygroundEditor>
 				 	 </div> <!-- /native -->

@@ -547,6 +547,18 @@ function&lt;void&gt; CreateWebSocket() {
   				<p><a href="https://github.com/typings/typings" target="_nlank">TypeScript typings</a> is a toolset for installing TypeScript definition files (basically: interfaces without implementations), which provides a similar "define the API" layer to WebIDL. Unlike WebIDL, however, this approach, while popular, is not standard, and so WebIDL was chosen instead. Support for typings in Serulian is certainly doable, however, and if we get enough interest we'll make it a priority!
    			</div>
 
+			<h3>Dynamic access of JavaScript objects</h3>
+			<p>If a WebIDL interface does not exist for working with a JavaScript object, or writing an interface is too heavy, the <a href="#dynamic">Dynamic access operator</a>
+			   can be used to access members under a native object:</p>
+
+ 		    <div class="unreplaced-code">			
+			function&lt;void&gt; SomeFunction(nativeObj any) {
+				someProperty := nativeObj-&gt;someProperty
+			}
+			</div>
+
+			<p>The name <code>someProperty</code> will be looked up and returned. If the name does not exist on the object, <code>null</code> is returned.</p>	
+
 			<!-- Types -->
 			<h2 id="type-system">Types</h2>
 
@@ -1456,7 +1468,7 @@ class MyCollection&lt;T&gt; {
 }</div>
 			<h4 class="working-example">Working with generics</h4>
 <PlaygroundEditor class="not-replaced">
-from "github.com/serulian/corelib:master" import List
+from "@core" import List
 from "github.com/serulian/debuglib" import Log
 
 function&lt;void&gt; Run() {
@@ -2302,7 +2314,7 @@ myFormatFunction`This is an ${adjective} template string that does ${anotherAdje
 			<h4>Working with template strings</h4>
 
 <PlaygroundEditor class="not-replaced">
-from "github.com/serulian/corelib:master" import Stringable
+from "@core" import Stringable
 from "github.com/serulian/debuglib" import Log
 
 function&lt;string&gt; myFormatter(pieces []string, values []Stringable) {
@@ -2325,7 +2337,7 @@ function&lt;void&gt; Run() {
 	Log(myFormatter`Is it ${secondValue} that I've said ${thirdValue} ${firstValue} times?`)
 }</PlaygroundEditor>
 
-			<h3>Dynamic access</h3>
+			<h3 id="dynamic">Dynamic access</h3>
 			<p>When working with <a href="#native">native code</a> such as JavaScript, it is quite useful to have access to the formalized types by making use of <a href="#webidl">WebIDL</a>.</p>
 			<p>There are times, however, when a full interface definition for the external dependency or for a value of type <a href="#any">any</a> is not available. In such cases the <strong>dynamic access operator</strong> <code>-&gt;</code> can be used to safely access and invoke members on the value.
 			</p>
