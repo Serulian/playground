@@ -1,0 +1,14 @@
+#! /bin/bash
+if [ -z "$CERTBOT_DOMAIN_NAME" ]; then
+	sleep 100000000
+else
+	while ! [ -n "$(pgrep nginx)" ]
+	do
+		echo "Checking for nginx"
+		sleep 2
+	done
+
+	echo 'Starting certbot'
+	certbot run --nginx -n -d $CERTBOT_DOMAIN_NAME --nginx-server-root=/conf/
+	sleep 100000000
+fi
