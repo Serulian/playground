@@ -551,11 +551,11 @@ function&lt;void&gt; CreateWebSocket() {
 			<p>If a WebIDL interface does not exist for working with a JavaScript object, or writing an interface is too heavy, the <a href="#dynamic">Dynamic access operator</a>
 			   can be used to access members under a native object:</p>
 
- 		    <div class="unreplaced-code">			
-			function&lt;void&gt; SomeFunction(nativeObj any) {
-				someProperty := nativeObj-&gt;someProperty
-			}
-			</div>
+ 		    <div class="unreplaced-code">
+function&lt;void&gt; SomeFunction(nativeObj any) {
+  someProperty := nativeObj-&gt;someProperty
+}
+</div>
 
 			<p>The name <code>someProperty</code> will be looked up and returned. If the name does not exist on the object, <code>null</code> is returned.</p>	
 
