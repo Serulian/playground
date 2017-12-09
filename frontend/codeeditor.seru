@@ -11,38 +11,38 @@ class codeEditorProps {
 	/**
 	 * IsReadOnly sets whether the code editor is currently in a read-only state.
 	 */
-	var<bool> IsReadOnly
+	var IsReadOnly bool
 
 	/**
 	 * OnChanged is the callback to invoke when the contents of the editor have changed.
 	 */
-	var<function<void>(string)?> OnChanged
+	var OnChanged function<void>(string)?
 
 	/**
 	 * The edit mode for the ACE editor.
 	 */
-	var<aceMode?> Mode
+	var Mode aceMode?
 
 	/**
 	 * Theme is the ACE theme to use. If none specified, the dark theme will be used.
 	 */
-	var<string?> Theme
+	var Theme string?
 }
 
 /**
  * CodeEditor wraps an ACE code editor into a Serulian component.
  */
 class CodeEditor {
-	var<codeEditorProps> props
-	var<Element?> element
-	var<aceEditor?> editor
-	var<string?> initialValue
+	var props codeEditorProps
+	var element Element?
+	var editor aceEditor?
+	var initialValue string?
 
 	constructor Declare(props codeEditorProps, initialValue string?) {
 		return CodeEditor{props: props, initialValue: initialValue}
 	}
 
-	function<void> Attached(node Node) {
+	function Attached(node Node) {
 		this.element = node.(Element)
 
 		var editor = ace.edit(this.element!)
@@ -57,7 +57,7 @@ class CodeEditor {
 
 		// Listen for any changes to the code in the editor, and raise the onChanged
 		// callback.
-		editor.getSession().on('change', function<void>(e any) {
+		editor.getSession().on('change', function(e any) {
 			onChanged := this.props.OnChanged
 			if onChanged is not null {
 				onChanged(string(editor.getSession().getValue()))
@@ -68,11 +68,11 @@ class CodeEditor {
 		this.editor?.setReadOnly(this.props.IsReadOnly)
 	}
 
-	property<any> Props {
+	property Props any {
 		get { return this.props }
 	}
 
-	function<void> PropsUpdated(props any) {
+	function PropsUpdated(props any) {
 		this.props = props.(codeEditorProps)
 		this.editor?.setReadOnly(this.props.IsReadOnly)
 		this.editor?.setTheme(`ace/theme/${this.props.Theme ?? "monokai"}`)
@@ -82,7 +82,7 @@ class CodeEditor {
 		}
 	}
 
-	function<any> Render(context Context) {
+	function Render(context Context) any {
 		return <Div className="editor" />
 	}
 }

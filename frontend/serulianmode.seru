@@ -1,11 +1,12 @@
+from @core import ESObjectLiteral
+
 from webidl`ace` import aceMode
 from webidl`acegrammar` import AceGrammar
-from @core import ESObjectLiteral
 
 /**
  * buildSerulianAceMode returns an ACE edit mode for syntax highlighting of Serulian source code.
  */
-function<aceMode> buildSerulianAceMode() {
+function buildSerulianAceMode() aceMode {
 	single_quote := "`"
 	definition := ESObjectLiteral{
 		RegExpID: "RE::",
@@ -24,14 +25,7 @@ function<aceMode> buildSerulianAceMode() {
 			"sml": "support.constant",
 		},
 		Lex: {
-			"comment": {
-				"type": "comment",
-				"tokens":[
-					[  "//",  null ],
-					[  "/*",   "*/" ],
-				],
-			},
-
+			"comment": {"type": "comment", "tokens": [["//", null], ["/*", "*/"]]},
 			"number": [
 				"RE::/\\d*\\.\\d+(e[\\+\\-]?\\d+)?/",
 				"RE::/\\d+\\.\\d*/",
@@ -42,74 +36,96 @@ function<aceMode> buildSerulianAceMode() {
 				"RE::/[1-9]\\d*(e[\\+\\-]?\\d+)?L?/",
 				"RE::/0(?![\\dx])/",
 			],
-
-			"string": {
-				"type": "escaped-block",
-				"escape": "\\",
-				"tokens": [ "RE::/(['\"])/", 1 ],
-			},
-
+			"string": {"type": "escaped-block", "escape": "\\", "tokens": ["RE::/(['\"])/", 1]},
 			"template_string": {
 				"type": "escaped-block",
 				"escape": "\\",
-				"tokens": [ "RE::/([`])/", 1 ],
+				"tokens": ["RE::/([`])/", 1],
 			},
-
 			"operator": {
 				"tokens": [
-					"+", "-", "%", "<<",
-					"*", "/", "^", "|", "&", "!", "~",
-					">", "<", "<=", ">=", "!=",
-					"=", "==", "->", ".", "?.", "??", ":=",
-					"?", "&",
+					"+",
+					"-",
+					"%",
+					"<<",
+					"*",
+					"/",
+					"^",
+					"|",
+					"&",
+					"!",
+					"~",
+					">",
+					"<",
+					"<=",
+					">=",
+					"!=",
+					"=",
+					"==",
+					"->",
+					".",
+					"?.",
+					"??",
+					":=",
+					"?",
+					"&",
 				],
 			},
-
-			"atom": {
-				"autocomplete": true,
-				"tokens": ["true", "false", "any", "null"],
-			},
-
+			"atom": {"autocomplete": true, "tokens": ["true", "false", "any", "null"]},
 			"keyword": {
 				"autocomplete": true,
 				"tokens": [
-					"import", "from", "as", "class", "interface", "agent",
-					"type", "struct", "default",
-					"function", "property", "var", "constructor", "operator",
-					"static", "void",
-					"get", "set", "val",
-					"this", "null", "principal",
-					"is", "not", "in",
-					"for", "if", "else", "return", "reject", "yield", "break", "continue", "with", "match", "case", "switch",
+					"import",
+					"from",
+					"as",
+					"class",
+					"interface",
+					"agent",
+					"type",
+					"struct",
+					"default",
+					"function",
+					"property",
+					"var",
+					"constructor",
+					"operator",
+					"static",
+					"void",
+					"get",
+					"set",
+					"val",
+					"this",
+					"null",
+					"principal",
+					"is",
+					"not",
+					"in",
+					"for",
+					"if",
+					"else",
+					"return",
+					"reject",
+					"yield",
+					"break",
+					"continue",
+					"with",
+					"match",
+					"case",
+					"switch",
 				],
 			},
-
 			"open_brace": "{",
 			"close_brace": "}",
-
-			"delimeter": {
-				"tokens": ["(", ")", "[", "]"],
-			},
-
+			"delimeter": {"tokens": ["(", ")", "[", "]"]},
 			"property": "RE::/[_A-Za-z$][_A-Za-z0-9$]*/",
-
-			"identifier": [
-				"RE::/[0-9a-zA-Z]+/",
-			],
-
-			"decorator": [
-				"RE::/@[0-9a-zA-Z]+/",
-			],
-
-			"sml_open_tag": [
-				"RE::/<[0-9a-zA-Z]+ /",
-			],
-
+			"identifier": ["RE::/[0-9a-zA-Z]+/"],
+			"decorator": ["RE::/@[0-9a-zA-Z]+/"],
+			"sml_open_tag": ["RE::/<[0-9a-zA-Z]+ /"],
 			"sml_close_tag": ["RE::/<\/[0-9a-zA-Z]+>/"],
 		},
 		Syntax: {
-			"dot_property": {"sequence":[".", "property"]},
-			"null_dot_property": {"sequence":["?.", "property"]},
+			"dot_property": {"sequence": [".", "property"]},
+			"null_dot_property": {"sequence": ["?.", "property"]},
 			"text": "identifier | '!' | '.' | ':'",
 			"sml_child": "sml | open_brace serulian+ close_brace | text+",
 			"sml_extended_tag": "'>'.sml sml_child*  sml_close_tag.sml",
@@ -117,7 +133,7 @@ function<aceMode> buildSerulianAceMode() {
 			"sml": "sml_open_tag.sml (sml_attribute)* ('/>'.sml | sml_extended_tag)",
 			"serulian": "comment | sml | number | atom | keyword | operator | identifier | template_string | string | dot_property | null_dot_property | delimeter",
 		},
-		Parser: [ ["serulian"] ],
+		Parser: [["serulian"]],
 	}
 	return AceGrammar.getMode(definition)
 }
