@@ -161,7 +161,7 @@ function&lt;void&gt; Run() {
 <div class="unreplaced-code">
 from "github.com/serulian/debuglib:ce6e94b" import Log
 
-function&lt;void&gt; Run() {
+function Run() {
 	Log('Hello World!')
 }</div>
 
@@ -175,7 +175,7 @@ function&lt;void&gt; Run() {
 <div class="unreplaced-code">
 from "github.com/serulian/debuglib@v0.0.1" import Log
 
-function&lt;void&gt; Run() {
+function Run() {
 	Log('Hello World!')
 }</div>
 </p>
@@ -185,7 +185,7 @@ function&lt;void&gt; Run() {
 			</p>
 			<p>Let's update our hello world example so it gets its value from our other module. First, let's define a new variable in <code>anothermodule.seru</code>:
 <div class="unreplaced-code">
-var&lt;string&gt; MyAwesomeMessage = 'hi universe!'
+var MyAwesomeMessage string = 'hi universe!'
 </div>
 			</p>
 			<p>Next, we need to import the variable from our new module in the <code>helloworld.seru</code> module:
@@ -193,7 +193,7 @@ var&lt;string&gt; MyAwesomeMessage = 'hi universe!'
 from "github.com/serulian/debuglib@v0.0.1" import Log
 <strong>from anothermodule import MyAwesomeMessage</strong>
 
-function&lt;void&gt; Run() {
+function Run() {
 	Log('Hello World!')
 }</div>
 			</p>
@@ -202,7 +202,7 @@ function&lt;void&gt; Run() {
 from "github.com/serulian/debuglib@v0.0.1" import Log
 from anothermodule import MyAwesomeMessage
 
-function&lt;void&gt; Run() {
+function Run() {
 	Log(<strong>MyAwesomeMessage</strong>)
 }</div>
 			</p>
@@ -217,7 +217,7 @@ from "github.com/serulian/debuglib" import Log
 from "github.com/serulian/component" import RenderComponent
 from "github.com/serulian/virtualdom" import Context
 
-function&lt;void&gt; Run() {
+function Run() {
 	Log('hello world!')
 }
 </PlaygroundEditor>
@@ -234,12 +234,12 @@ class MyComponent {
 		return MyComponent.new()
 	}
 
-	function&lt;any&gt; Render(context Context) {
+	function Render(context Context) any {
 		return 'hello from my component!'
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	Log('hello world!')
 }
 </PlaygroundEditor>
@@ -258,12 +258,12 @@ class MyComponent {
 		return MyComponent.new()
 	}
 
-	function&lt;any&gt; Render(context Context) {
+	function Render(context Context) any {
 		return 'hello from my component'
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	RenderComponent(MyComponent.Declare(), document.body)
 }
 </PlaygroundEditor>
@@ -285,14 +285,14 @@ class MyComponent {
 		return MyComponent.new()
 	}
 
-	function&lt;any&gt; Render(context Context) {
+	function Render(context Context) any {
 		return &lt;Div style="background-color: lightblue; padding: 6px;"&gt;
 			hello from my component
 		&lt;/Div&gt;
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	RenderComponent(MyComponent.Declare(), document.body)
 }
 </PlaygroundEditor>
@@ -312,7 +312,7 @@ struct myComponentProps {
 }
 
 class MyComponent {
-	var&lt;myComponentProps&gt; props
+	var props myComponentProps
 
 	constructor Declare(props myComponentProps) {
 		return MyComponent{
@@ -320,14 +320,14 @@ class MyComponent {
 		}
 	}
 
-	function&lt;any&gt; Render(context Context) {
+	function Render(context Context) any {
 		return &lt;Div style="background-color: lightblue; padding: 6px;"&gt;
 			the message: {this.props.message}
 		&lt;/Div&gt;
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	RenderComponent(&lt;MyComponent message="the message!" /&gt;, document.body)
 }
 </PlaygroundEditor>
@@ -352,7 +352,7 @@ struct myState {
 }
 
 class MyComponent {
-	var&lt;myState&gt; state
+	var state myState
 
 	constructor Declare(props myComponentProps) {
 		return MyComponent{
@@ -362,17 +362,17 @@ class MyComponent {
 		}
 	}
 
-	function&lt;void&gt; StateUpdated(state any) {
+	function StateUpdated(state any) {
 		this.state = state.(myState)
 	}
 
-	function&lt;void&gt; updateMesssage() {
+	function updateMesssage() {
 		UpdateComponentState(this, this.state{
 			message: 'This is the new message!',
 		})
 	}
 
-	function&lt;any&gt; Render(context Context) {
+	function Render(context Context) any {
 		return &lt;Div style="background-color: lightblue; padding: 6px;"&gt;
 			the message: {this.state.message}
 			&lt;Button onclick={this.updateMesssage}&gt;Click Me!&lt;/Button&gt;
@@ -380,7 +380,7 @@ class MyComponent {
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	RenderComponent(&lt;MyComponent message="the message!" /&gt;, document.body)
 }
 </PlaygroundEditor>

@@ -135,11 +135,11 @@
 			<h4>Strings</h4>
 			<p>A string is Serulian can be defined using single quotes, double quotes or backticks (for <a href="#template-strings">template strings</a>:</p>
 <div class="unreplaced-code">
-var&lt;string&gt; someString = 'hello world!'
+var someString string = 'hello world!'
 
-var&lt;string&gt; someOtherString = "hello world!"
+var someOtherString string = "hello world!"
 
-var&lt;string&gt; someTemplateString = `hello
+var someTemplateString string = `hello
 world!`
 </div>
 			<p>The preferred syntax is the single quoted form.</p>
@@ -147,10 +147,10 @@ world!`
 			<h4>Numbers</h4>
 			<p>A number is Serulian can be defined in a number of forms:</p>
 <div class="unreplaced-code">
-var&lt;int&gt; n1 = 42
-var&lt;float64&gt; n2 = 42f
-var&lt;float64&gt; n3 = 42.0
-var&lt;int&gt; n4 = 0x1F
+var n1 int = 42
+var n2 float64 = 42f
+var n3 float64 = 42.0
+var n4 int = 0x1F
 </div>
 			<p>Note the difference between <code>42</code>, an integer and <code>42f</code>, a float</p>
 
@@ -180,7 +180,7 @@ var&lt;int&gt; n4 = 0x1F
 			<h4 id="var">Variables</h4>
 			<p>A <strong>variable</strong> is a single, <u>mutable</u> value found at the module, type or statement level:
 <div class="unreplaced-code">
-var&lt;string&gt; firstVariable = 'hello world!'
+var firstVariable string = 'hello world!'
 </div>
 			</p>
 			<p>Variables defined in modules and types <strong>must</strong> have a defined type, while those at the statement level can infer their type from their value expression (if any).
@@ -188,27 +188,27 @@ var&lt;string&gt; firstVariable = 'hello world!'
 			<p>The value expression on a variable is <strong>optional</strong> iff the type of the variable allows null:
 			</p>
 <div class="unreplaced-code">
-var&lt;any&gt; anyValueVar
-var&lt;string?&gt; optionalVar
+var anyValueVar any
+var optionalVar string?
 </div>
 			<p>It is best practice to place variables at the top of modules before functions.</p>
 
 			<h4 id="function">Functions</h4>
 			<p>A <strong>function</strong> is a named block of code that can be executed, with optional parameters and an optional return type:
 <div class="unreplaced-code">
-function&lt;int&gt; otherFunction() {
+function otherFunction() int {
 	return 42
 }
 
-function&lt;void&gt; doNothingFunction() {}
+function doNothingFunction() {}
 
-function&lt;int&gt; Run() {
+function Run() int {
 	doNothingFunction()
 	return otherFunction()
 }
 </div>
 			</p>
-			<p>Functions defined in modules and types <strong>must</strong> have a defined return type (which can be <code>void</code>), while those at the statement level can infer their return type from their implementation.
+			<p>Functions defined in modules and types <strong>must</strong> have a defined return type (unless <code>void</code>), while those at the statement level can infer their return type from their implementation.
 			</p>
 			<p>It is best practice to place functions after variables in a module.</p>
 
@@ -242,7 +242,7 @@ import localpackage // All exported names accessible as localpackage.something
 			<div class="unreplaced-code">
 import localmodule
 
-function&lt;void&gt; DoSomething() {
+function DoSomething() {
 	localmodule.someMember
 }
 </div>
@@ -267,7 +267,7 @@ from localmodule import foo as bar // Available as `bar`
 import localmodule
 import somepackage
 
-function&lt;void&gt; DoSomething() {
+function DoSomething() {
 	localmodule.someMember // Allowed
 	somepackage.someMember // Will fail
 	somepackage.SomeMember // Allowed
@@ -529,7 +529,7 @@ from <strong>webidl</strong>`WebSocket` import WebSocket
 <div class="unreplaced-code">
 from webidl`WebSocket` import WebSocket
 
-function&lt;void&gt; CreateWebSocket() {
+function CreateWebSocket() {
 	myWebSocket := <strong>WebSocket.new('ws://some/websocket/url')</strong>
 	myWebSocket.send('hello websocket!')
 	myWebSocket.close()
@@ -552,7 +552,7 @@ function&lt;void&gt; CreateWebSocket() {
 			   can be used to access members under a native object:</p>
 
  		    <div class="unreplaced-code">
-function&lt;void&gt; SomeFunction(nativeObj any) {
+function SomeFunction(nativeObj any) {
   someProperty := nativeObj-&gt;someProperty
 }
 </div>
@@ -568,14 +568,14 @@ function&lt;void&gt; SomeFunction(nativeObj any) {
 			</div>
 
 			<h3>Basic Syntax</h3>
-			<p>Types in Serulian are denoted using the <code>&lt;angledBracket&gt;</code> syntax. For example, a variable with a defined type will have syntax:
+			<p>Types in Serulian are denoted by placing them after the member. For example, a variable with a defined type will have syntax:
 			</p>
 <div class="unreplaced-code">
-var<strong>&lt;string&gt;</strong> someVariable = 'hello world!'
+var someVariable <strong>string</strong> = 'hello world!'
 </div>
 			<p>where <code>string</code> is the type of the variable, while a function returning a value might be defined as:</p>
 <div class="unreplaced-code">
-function<strong>&lt;string&gt;</strong> someFunction() {
+function someFunction() <strong>string</strong> {
 	return 'hello world!'
 }
 </div>
@@ -584,9 +584,9 @@ function<strong>&lt;string&gt;</strong> someFunction() {
 			<h3>Any</h3>
 			<p>Serulian defines the special type/keyword <code>any</code> to refer to a value of, well, <strong>any</strong> type:
 <div class="unreplaced-code">
-var&lt;<strong>any</strong>&gt; someVariable = 'hello world!'
-var&lt;<strong>any</strong>&gt; someOtherVariable = 42
-var&lt;<strong>any</strong>&gt; someThirdVariable = null
+var someVariable <strong>any</strong> = 'hello world!'
+var someOtherVariable <strong>any</strong> = 42
+var someThirdVariable <strong>any</strong> = null
 </div>
 
 			<div class="bs-callout bs-callout-info">
@@ -602,27 +602,26 @@ var&lt;<strong>any</strong>&gt; someThirdVariable = null
 			<h4>Defining null types</h4>
 			<p>Types in Serulian are non-null by default:
 <div class="unreplaced-code">
-var&lt;<strong>string</strong>&gt; cannotBeNull = 'hello world'
+var cannotBeNull <strong>string</strong> = 'hello world'
 </div>
 			</p>
 			<p>To specify that a null value is allowed, the question mark <code>?</code> is used:
 <div class="unreplaced-code">
-var&lt;string<strong>?</strong>&gt; canBeNull = 'hello world'
-var&lt;string<strong>?</strong>&gt; alsoCanBeNull = null
+var canBeNull string<strong>?</strong> = 'hello world'
 </div>
 			</p>
 
 			<h4>Accessing under null types</h4>
 			<p>Serulian treats all accesses of nulls strongly, requiring that the case be explicitly handled. For example, given the code:
 <div class="unreplaced-code">
-var&lt;string?&gt; canBeNull = 'hello world'
+var canBeNull string<strong>?</strong> = 'hello world'
 </div>
 			</p>
 			<p>Trying to access the <code>Length</code> property on the string directly will fail to compile, as the value may be null. Instead, the specialized nullable access operator <code>?.</code> must be used, which ensures that if <code>canBeNull</code> is indeed null, null is returned instead of the property being accessed:</p>
 <div class="unreplaced-code">
-var&lt;string?&gt; canBeNull = 'hello world'
-
-function&lt;int?&gt; Run() { // Note the return type is int?, because ?. can return null
+var canBeNull string<strong>?</strong> = 'hello world'
+	
+function Run() int<strong>?</strong> { // Note the return type is int?, because ?. can return null
 	return canBeNull<strong>?.</strong>Length
 }
 </div>
@@ -630,13 +629,13 @@ function&lt;int?&gt; Run() { // Note the return type is int?, because ?. can ret
 			<h4>Default values for null types</h4>
 			<p>Sometimes the desired behavior for a nullable type is to simply replace the value if it is null. To make this easy, Serulian provides the nullable default operator <code>??</code>, which ensures that if the value is null, the right hand side default value is used in its place:
 <div class="unreplaced-code">
-var&lt;string?&gt; canBeNull = 'hello world'
-
-function&lt;int&gt; Run() { // Note the return value is now int, since the value cannot be null
+var canBeNull string<strong>?</strong> = 'hello world'
+	
+function Run() int { // Note the return value is now int, since the value cannot be null
 	return canBeNull?.Length <strong>??</strong> 0
 }
 
-function&lt;int&gt; AnotherRun() {
+function AnotherRun() int {
 	return (canBeNull <strong>??</strong> '').Length // Another approach
 }
 </div>
@@ -645,9 +644,9 @@ function&lt;int&gt; AnotherRun() {
 			<h4>Asserting not null</h4>
 			<p>There are cases where the developer of an application knows that the value received is never supposed to be null, but due to the strictness of the type system, the type is nullable anyway. To work within this situation, Serulian provides the non-null assertion operator <code>!</code>, which ensures that if the value is null, the program will panic and fail:
 <div class="unreplaced-code">
-var&lt;string?&gt; canBeNull = 'hello world'
-
-function&lt;int&gt; Run() {
+var canBeNull string<strong>?</strong> = 'hello world'
+	
+function Run() int {
 	return (canBeNull<strong>!</strong>).Length // We know it will never be null, so just assert it
 }
 </div>
@@ -683,7 +682,7 @@ class SomeClass {}
 <div class="unreplaced-code">
 class SomeClass {}
 
-function&lt;void&gt; Run() {
+function Run() {
 	<strong>SomeClass.new()</strong> // Create a new instance of the class.
 }
 </div>
@@ -705,7 +704,7 @@ creator() // Returns a new instance of SomeClass
 <div class="unreplaced-code">
 class SomeClass {}
 
-function&lt;void&gt; Run() {
+function Run() {
 	<strong>SomeClass{}</strong> // Also creates a new instance of the class.
 }
 </div>
@@ -714,11 +713,11 @@ function&lt;void&gt; Run() {
 
 <div class="unreplaced-code">
 class SomeClass {
-	var&lt;string&gt; requiredValue
-	var&lt;int&gt; anotherRequired
+	var requiredValue string
+	var anotherRequired int
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	<strong>SomeClass.new('requiredValueHere', 42)</strong>
 }
 </div>
@@ -727,12 +726,12 @@ function&lt;void&gt; Run() {
 
 <div class="unreplaced-code">
 class SomeClass {
-	var&lt;string&gt; requiredValue
-	var&lt;int&gt; anotherRequired
-	var&lt;bool&gt; hasDefault = false
+	var requiredValue string
+	var anotherRequired int
+	var hasDefault bool = false
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	<strong>SomeClass{
 		requiredValue: 'hello world',
 		anotherRequired: 42,
@@ -746,16 +745,16 @@ function&lt;void&gt; Run() {
 from "github.com/serulian/debuglib" import Log
 
 class SomeClass {
-	var&lt;string&gt; requiredValue
-	var&lt;int&gt; anotherRequired
-	var&lt;bool&gt; hasDefault = false		
+	var requiredValue string
+	var anotherRequired int
+	var hasDefault bool = false
 }
 
-function&lt;void&gt; Run() {
-	var&lt;SomeClass&gt; sc = SomeClass.new('hello world', 42)
+function Run() {
+	var sc = SomeClass.new('hello world', 42)
 	Log(sc)
 
-	var&lt;SomeClass&gt; sc2 = SomeClass{
+	var sc2 = SomeClass{
 		requiredValue: 'hello world',
 		anotherRequired: 42,
 	}
@@ -794,7 +793,7 @@ class SomeClass {
 	}
 }
 
-function&lt;void&gt; DoSomething() {
+function DoSomething() {
 	<strong>SomeClass.CreateMe()</strong> // Returns a new instance of SomeClass.
 }
 </div>
@@ -816,9 +815,9 @@ class MyCollection {
 			<p>A class can be accessed from within any of its instance members via the <code>this</code> keyword:</p>
 <div class="unreplaced-code">
 class SomeClass {
-	var&lt;string&gt; someString = 'hello world'
+	var someString string = 'hello world'
 
-	function&lt;string&gt; GetString() {
+	function GetString() string {
 		return <strong>this.someString</strong>
 	}
 }
@@ -848,25 +847,25 @@ class SomeClass {
 			<p>Interfaces are matched against other all types <strong>implicitly</strong>, which means no explicit notation is necessary to indicate that another type implements the interface. Instead, so long as the interface matches a portion of the members of the type <strong>exactly</strong>, that type is considered to implement the interface: </p>
 <div class="unreplaced-code">
 interface SomeInterface {
-	function&lt;int&gt; GetSomeInt()
-	property&lt;string&gt; SomeProp { get }
+	function GetSomeInt int ()
+	property SomeProp string { get }
 }
 
 class SomeClass {
-	function&lt;int&gt; GetSomeInt() {
+	function GetSomeInt() int {
 		return 2
 	}
 
-	function&lt;void&gt; AnotherFunction() { }
+	function AnotherFunction() { }
 
-	property&lt;string&gt; SomeProp {
+	property SomeProp string {
 		get { return 'hello world '}
 		set { }
 	}
 }
 
 class AnotherClass {
-	function&lt;int?&gt; GetSomeInt() {
+	function GetSomeInt() int? {
 		return 2
 	}
 }
@@ -875,10 +874,10 @@ class AnotherClass {
 Therefore:
 <div class="unreplaced-code">
 // Valid! SomeClass implements both members.
-<strong>var&lt;SomeInterface&gt; si = SomeClass.new()</strong>
+<strong>var si SomeInterface = SomeClass.new()</strong>
 
 // Fails to compile! AnotherClass's GetSomeInt has a different return type.
-<strong>var&lt;SomeInterface&gt; si = AnotherClass.new()</strong>	
+<strong>var si SomeInterface = AnotherClass.new()</strong>	
 </div>
 
 			<div class="bs-callout bs-callout-info">
@@ -890,8 +889,8 @@ Therefore:
 			<p><a href="#member-function">Functions</a> and <a href="#member-property">properties</a> defined in an interface will be <strong>instance</strong> members, matching the implemententations found in other types, and therefore not having their own implementation:</p>
 <div class="unreplaced-code">
 interface SomeInterface {
-	function&lt;int&gt; GetSomeInt()        // No implementation
-	property&lt;string&gt; SomeProp { get } // No implementation
+	function GetSomeInt() int        // No implementation
+	property SomeProp string { get } // No implementation
 }
 </div>
 			<p>The implementation used at runtime will be the implementation deriving from the concrete type that matches (typically a <a href="#type-class">class</a>)</p>
@@ -916,7 +915,7 @@ interface SomeCollection {
 	constructor Empty() // Let's say the implementation isn't required...
 }
 
-function&lt;T&gt; CreateCollection&lt;T : SomeCollection&gt;() {
+function CreateCollection&lt;T : SomeCollection&gt;() T {
 	return T.Empty()
 }
 </div>
@@ -949,28 +948,26 @@ interface SomeCollection {
 from "github.com/serulian/debuglib" import Log
 
 interface MyInterface {
-	property&lt;int&gt; SomeInt { get }
+	property SomeInt int { get }
 }
 
 class SomeClass {
-	property&lt;int&gt; SomeInt {
+	property SomeInt int {
 		get { return 42 }
 	}
 }
 
 class AnotherClass {
-	property&lt;int&gt; SomeInt {
+	property SomeInt int {
 		get { return 12 }
 	}
 }
 
-class 
+function Run() {
+	var sc = SomeClass.new()
+	var ac = AnotherClass.new()
 
-function&lt;void&gt; Run() {
-	var&lt;SomeClass&gt; sc = SomeClass.new()
-	var&lt;AnotherClass&gt; ac = AnotherClass.new()
-
-	var&lt;MyInterface&gt; inter = sc
+	var inter MyInterface = sc
 	Log(inter.SomeInt)
 
 	inter = ac
@@ -986,7 +983,7 @@ function&lt;void&gt; Run() {
 
 			<p>Agents are defined using the <code>agent</code> keyword on a type:</p>
 <div class="unreplaced-code">
-<strong>agent&lt;principalType&gt;</strong> SomeAgent {}
+<strong>agent SomeAgent for principalType</strong> {}
 </div>			
 
 			<p>
@@ -994,13 +991,13 @@ function&lt;void&gt; Run() {
 			</p>
 
 			<h4>Definining the type of the principal</h4>
-			<p>The <code>principal</code> of an agent is the instance of the class or parent agent in which this agent is being composed. In order to ensure type safety, the allowed type of the <code>principal</code> is declared on the agent immediately following the <code>agent</code> keyword.</p>
+			<p>The <code>principal</code> of an agent is the instance of the class or parent agent in which this agent is being composed. In order to ensure type safety, the allowed type of the <code>principal</code> is declared on the agent immediately following the <code>for</code> keyword after the agent's name.</p>
 
 			<h4>Accessing the principal</h4>
 			<p>Within the members of the agent, the <code>principal</code> keyword can be used to access the instance of the parent class or agent that composed the agent:</p>
 <div class="unreplaced-code">
-agent&lt;SomeInterface&gt; MyAgent {
-	function&lt;void&gt; DoSomething() {
+agent MyAgent for SomeInterface {
+	function DoSomething() {
 		this // The agent itself
 		<strong>principal</strong> // The principal composing this agent, with type `SomeInterface`
 	}
@@ -1010,8 +1007,8 @@ agent&lt;SomeInterface&gt; MyAgent {
 			<h4>Composing an agent</h4>
 			<p>An agent can be composed into a class (or another agent) via the <code>with</code> keyword:</p>
 <div class="unreplaced-code">
-agent&lt;SomeInterface&gt; MyAgent {
-	function&lt;void&gt; DoSomething() { ... }
+agent MyAgent for SomeInterface {
+	function DoSomething() { ... }
 }
 
 class SomeClass <strong>with MyAgent</strong> {}
@@ -1025,13 +1022,13 @@ class SomeClass <strong>with MyAgent</strong> {}
 
 			<p>For example, if we were to have:</p>
 <div class="unreplaced-code">
-agent&lt;SomeInterface&gt; MyAgent {
-	function&lt;void&gt; DoSomething() { ... }
-	function&lt;void&gt; AnotherFunction() { ... }
+agent MyAgent for SomeInterface {
+	function DoSomething() { ... }
+	function AnotherFunction() { ... }
 }
 
 class SomeClass <strong>with MyAgent</strong> {
-	function&lt;void&gt; DoSomething() { ... }
+	function DoSomething() { ... }
 }
 </div>
 
@@ -1061,11 +1058,11 @@ class SomeClass <strong>with MyAgent as myCustomFieldName</strong> {}
 from "github.com/serulian/debuglib" import Log
 
 interface MyInterface {
-	property&lt;int&gt; SomeInt { get }
+	property SomeInt int { get }
 }
 
-agent&lt;MyInterface&gt; Calculator {
-	function&lt;int&gt; Calculate() {
+agent Calculator for MyInterface {
+	function Calculate() int {
 		return principal.SomeInt + 20
 	}
 }
@@ -1077,12 +1074,12 @@ class SomeClass with Calculator {
 		}
 	}
 
-	property&lt;int&gt; SomeInt {
+	property SomeInt int {
 		get { return 22 }
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	var sc = SomeClass.Declare()
 	Log(sc.Calculate())
 }
@@ -1151,7 +1148,7 @@ struct MyData {
 	myPackagePrivateField int?
 }
 
-<strong>var&lt;MyData&gt; myData = MyData{
+<strong>var myData = MyData{
 	FirstField: 42,
 	SecondField: 'hello world!',
 }</strong>
@@ -1168,12 +1165,12 @@ struct MyData {
 	myPackagePrivateField int?
 }
 
-var&lt;MyData&gt; myOriginalData = MyData{
+var myOriginalData = MyData{
 	FirstField: 42,
 	SecondField: 'hello world!',
 }
 
-<strong>var&lt;MyData&gt; myChangedData = myOriginalData{
+<strong>var myChangedData = myOriginalData{
 	FirstField: 43, // Only change FirstField
 }</strong>
 </div>
@@ -1188,9 +1185,9 @@ struct MyData {
 	myPackagePrivateField int?
 }
 
-function&lt;void&gt; SerializeThing(myData MyData) {
-	<strong>var&lt;string&gt; jsonData = myData.Stringify&lt;json&gt;() // Serializes to JSON</strong>
-	<strong>var&lt;MyData&gt; myDataCopy = MyData.Parse&lt;json&gt;(jsonData) // Deserializes from JSON</strong>
+function SerializeThing(myData MyData) {
+	<strong>var jsonData = myData.Stringify&lt;json&gt;() // Serializes to JSON</strong>
+	<strong>var myDataCopy = MyData.Parse&lt;json&gt;(jsonData) // Deserializes from JSON</strong>
 }
 </div>
 			<p>The deserialization method <code>Parse</code> will verify that all required fields are present and that all fields have their matching type. If there is a mismatch, the method will <a href="#error-handling">reject</a> with an error, preventing the bad struct from being created.</p>
@@ -1234,7 +1231,7 @@ struct MyStruct {
 	NestedField Nested?
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	// Deserialize from JSON.
 	jsonData := `{
 		"FirstField": 42,
@@ -1304,9 +1301,9 @@ class AnotherType {}
 
 type MyType : AnotherType {}
 
-function&lt;void&gt; DoSomething(at AnotherType) {
-	var&lt;MyType&gt; myType = <strong>MyType(at)</strong>
-	var&lt;AnotherType&gt; anotherType = <strong>AnotherType(myType)</strong>
+function DoSomething(at AnotherType) {
+	var myType MyType = <strong>MyType(at)</strong>
+	var anotherType AnotherType = <strong>AnotherType(myType)</strong>
 }
 </div>
 			<p>If a type cannot be converted to/from the nominal type, it will result in a type error at compile time.</p>
@@ -1316,11 +1313,11 @@ function&lt;void&gt; DoSomething(at AnotherType) {
 			<p>For example, if we wanted to change the <code>GetSomeInt</code> function to a <code>SomeInt</code> property, we might implementing it this way:</p>
 <div class="unreplaced-code">
 class AnotherType {
-	function&lt;int&gt; GetSomeInt { return 42 }
+	function GetSomeInt int { return 42 }
 }
 
 type MyType : AnotherType {
-	property&lt;int&gt; SomeInt {
+	property SomeInt int {
 		get {
 			return <strong>AnotherType(this).GetSomeInt()</strong> // Note the conversion of `this` to AnotherType
 		}
@@ -1339,7 +1336,7 @@ type MiddleType : AnotherType { ... }
 
 type MyType : MiddleType { ... }
 
-function&lt;AnotherType&gt; DoSomething(myTypeInstance MyType) {
+function DoSomething(myTypeInstance MyType) AnotherType {
 	return <strong>&amp;myTypeInstance</strong> // Returns the instance of AnotherType that MyType is wrapping via MiddleType
 }
 </div>
@@ -1356,9 +1353,9 @@ type MiddleType : AnotherType { ... }
 
 type MyType : MiddleType { ... }
 
-function&lt;void&gt; otherFunction(anotherType AnotherType) {}
+function otherFunction(anotherType AnotherType) {}
 
-function&lt;void&gt; DoSomething(myTypeInstance MyType) {
+function DoSomething(myTypeInstance MyType) {
 	<strong>otherFunction(myTypeInstance)</strong> // Works and is auto-converted into AnotherType.
 }
 </div>
@@ -1375,7 +1372,7 @@ function&lt;void&gt; DoSomething(myTypeInstance MyType) {
 from "github.com/serulian/debuglib" import Log
 
 type MyInt : int {
-	property&lt;bool&gt; IsEven {
+	property IsEven bool {
 		get {
 			return int(this) % 2 == 0
 		}
@@ -1383,19 +1380,19 @@ type MyInt : int {
 }
 
 type MyBetterInt : MyInt {
-	property&lt;bool&gt; IsOdd {
+	property IsOdd bool {
 		get {
 			return !MyInt(this).IsEven
 		}
 	}
 }
 
-function&lt;void&gt; Run() {
-	var&lt;MyInt&gt; myInt = MyInt(42)
+function Run() {
+	var myInt = MyInt(42)
 	Log(myInt.IsEven)
 	Log(MyBetterInt(myInt).IsOdd)
 
-	var&lt;MyInt&gt; anotherInt = MyInt(17)
+	var anotherInt = MyInt(17)
 	Log(anotherInt.IsEven)
 	Log(MyBetterInt(anotherInt).IsOdd)
 
@@ -1416,7 +1413,7 @@ class MyCollection<strong>&lt;T, Q&gt;</strong> { ... }
 			<p>Once declared, the generic can be used within the parent type wherever another type is expected:</p>
 <div class="unreplaced-code">
 class MyCollection&lt;T, Q&gt; {
-	function&lt;<strong>Q</strong>&gt; Get(key <strong>T</strong>) {
+	function Get(key <strong>T</strong>) <strong>Q</strong> {
 		...
 	}
 }
@@ -1430,11 +1427,11 @@ class MyCollection&lt;T <strong>: MyInterface</strong>&gt; { ... }
 			<p>If specified as such, then any instance of the generic type can have the members of the interface called:</p>
 <div class="unreplaced-code">
 interface MyInterface {
-	property&lt;int&gt; IntValue { get }
+	property IntValue int { get }
 }
 
 class MyCollection&lt;T : MyInterface&gt; {
-	function&lt;int&gt; SomeFunction(value T) {
+	function SomeFunction(value T) int {
 		// Allowed because `T` is constrained to any type that implements interface `MyInterface`
 		return <strong>value.IntValue</strong>
 	}
@@ -1449,7 +1446,7 @@ interface MyInterface {
 }
 
 class MyCollection&lt;T : MyInterface&gt; {
-	function&lt;void&gt; SomeFunction() {
+	function SomeFunction() {
 		<strong>T.Build()</strong> // Allowed because `Build` is declared on `MyInterface`
 	}
 }</div>
@@ -1462,7 +1459,7 @@ class MyCollection&lt;T : MyInterface&gt; {
 			<p>Unlike some languages (like Java), generic type information is <strong>maintained at runtime</strong> by Serulian. This means that while the types are verified at compile time, the generic type var(s) of a type are available at runtime to be used for such operations as <a href="#casting">casting</a>:</p>
 <div class="unreplaced-code">
 class MyCollection&lt;T&gt; {
-	function&lt;void&gt; SomeFunction(value any) {
+	function SomeFunction(value any) {
 		<strong>value.(T)</strong> // Will fail at runtime if `value` does not have a type matching T
 	}
 }</div>
@@ -1471,8 +1468,8 @@ class MyCollection&lt;T&gt; {
 from "@core" import List
 from "github.com/serulian/debuglib" import Log
 
-function&lt;void&gt; Run() {
-	var&lt;List&lt;int&gt;&gt; myList = List&lt;int&gt;.Empty()
+function Run() {
+	var myList = List&lt;int&gt;.Empty()
 	myList.Add(123)
 	myList.Add(456)
 
@@ -1505,7 +1502,7 @@ class SomeClass {
 	constructor CreateMe(firstParam int, secondParam string) { ... }
 }
 
-var&lt;SomeClass&gt; sc = <strong>SomeClass.CreateMe(1, 'hello')</strong>
+var sc SomeClass = <strong>SomeClass.CreateMe(1, 'hello')</strong>
 </div>
 			<p>Being functions, constructors can also be <strong>aliased</strong>:</p>
 <div class="unreplaced-code">	
@@ -1513,8 +1510,8 @@ class SomeClass {
 	constructor CreateMe(firstParam int, secondParam string) { ... }
 }
 
-function&lt;SomeClass&gt; DoSomething() {
-	var&lt;function&lt;SomeClass&gt;(int, string)&gt; f = <strong>SomeClass.CreateMe</strong>
+function DoSomething() SomeClass {
+	var f function&lt;SomeClass&gt;(int, string) = <strong>SomeClass.CreateMe</strong>
 	return <strong>f(1, 'hello')</strong> // Returns the new instance
 }
 </div>
@@ -1527,20 +1524,20 @@ function&lt;SomeClass&gt; DoSomething() {
 			<p>A <strong>variable</strong> is a field on a <a href="#type-class">class</a> that holds a value.</p>
 
 			<h4>Defining variables</h4>
-			<p>A variable is declared using the <code>var</code> keyword, its type, its name and an optional default value:</p>
+			<p>A variable is declared using the <code>var</code> keyword, its name, its type and an optional default value:</p>
 <div class="unreplaced-code">	
 class SomeClass {
-	<strong>var&lt;string&gt; myVariable</strong>
-	<strong>var&lt;int&gt; myVarWithDefault = 42</strong>
+	<strong>var myVariable string</strong>
+	<strong>var myVarWithDefault int = 42</strong>
 }
 </div>
 			<h4>Accessing variables</h4>
 			<p>Variables are accessed under the <strong>instance</strong> of the class:</p>
 <div class="unreplaced-code">	
 class SomeClass {
-	var&lt;string&gt; myVariable
+	var myVariable string
 
-	function&lt;void&gt; DoSomething() {
+	function DoSomething() {
 		<strong>this.myVariable</strong>
 	}
 }
@@ -1549,9 +1546,9 @@ class SomeClass {
 			<p>The value of a variable can be changed using the assignment operator <code>=</code>:</p>
 <div class="unreplaced-code">	
 class SomeClass {
-	var&lt;string&gt; myVariable
-
-	function&lt;void&gt; DoSomething() {
+	var myVariable string
+	
+	function DoSomething() {
 		<strong>this.myVariable = 'hello world'</strong>
 	}
 }
@@ -1561,9 +1558,9 @@ class SomeClass {
 <PlaygroundEditor class="not-replaced">
 from "github.com/serulian/debuglib" import Log
 
-var&lt;string&gt; someVar = 'hello world!'
+var someVar string = 'hello world!'
 
-function&lt;void&gt; Run() {
+function Run() {
 	Log(someVar)
 
 	someVar = 'new value'
@@ -1576,23 +1573,24 @@ function&lt;void&gt; Run() {
 			<p>A <strong>function</strong> is an instance function found on a <a href="#type-class">class</a>, <a href="#type-interface">interface</a> or <a href="#type-nominal">nominal type</a>. Functions declared on interfaces do not have implementations.</p>
 
 			<h4>Defining functions</h4>
-			<p>Functions are defined using the <code>function</code> keyword, its return type, a name, and an optional list of arguments for the function:</p>
+			<p>Functions are defined using the <code>function</code> keyword, its name, its return type, and an optional list of arguments for the function:</p>
 <div class="unreplaced-code">	
 class SomeClass {
 	<strong>function DoSomething(firstParam int, secondParam string) { ... }</strong>
+	<strong>function ReturnsSomething(firstParam int, secondParam string) int { ... }</strong>
 }
 </div>
-			<p>If the function is not intended to return a value, the return type specified is <code>void</code></p>
+			<p>If the function is not intended to return a value, the return type specified is <code>void</code> or left off entirely.</p>
 
 			<h4>Calling functions</h4>
 			<p>A function can be called on an <strong>instance</strong> of the class, interface or nominal type:</p>
 <div class="unreplaced-code">	
 class SomeClass {
-	var&lt;string&gt; myVariable
+	var myVariable string
 
-	function&lt;void&gt; AnotherFunction() {}
+	function AnotherFunction() {}
 
-	function&lt;void&gt; DoSomething() {
+	function DoSomething() {
 		<strong>this.AnotherFunction()</strong>
 	}
 }
@@ -1600,11 +1598,11 @@ class SomeClass {
 					<p>Functions can also be <strong>aliased</strong>:</p>
 <div class="unreplaced-code">	
 class SomeClass {
-	function&lt;void&gt; AnotherFunction() {}
+	function AnotherFunction() {}
 }
 
-function&lt;void&gt; DoSomething(sc SomeClass) {
-	var&lt;function&lt;SomeClass&gt;()&gt; f = <strong>sc.AnotherFunction</strong>
+function DoSomething(sc SomeClass) {
+	var f = <strong>sc.AnotherFunction</strong>
 	<strong>f()</strong> // Calls the function.
 }
 </div>
@@ -1618,13 +1616,13 @@ function&lt;void&gt; DoSomething(sc SomeClass) {
 from "github.com/serulian/debuglib" import Log
 
 class SomeClass {
-	function&lt;void&gt; LogMessage() {
+	function LogMessage() {
 		Log(this)
 		Log('hi there!')
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	sc := SomeClass.new()
 	sc.LogMessage() // Call the function on the class.
 }
@@ -1635,10 +1633,10 @@ function&lt;void&gt; Run() {
 			</p>
 
 			<h4>Defining properties</h4>
-			<p>Properties are defined using the <code>property</code> keyword, its type, a name and then a getter and (optionally) a setter:</p>
+			<p>Properties are defined using the <code>property</code> keyword, its name, its type, and then a getter and (optionally) a setter:</p>
 <div class="unreplaced-code">	
 class SomeClass {
-	<strong>property&lt;int&gt; ReadWriteProperty {
+	<strong>property ReadOnlyProperty int {
 		get {
 			return 42
 		}
@@ -1649,13 +1647,13 @@ class SomeClass {
 			</p>
 <div class="unreplaced-code">	
 class SomeClass {
-	property&lt;int&gt; ReadWriteProperty {
+	property ReadWriteProperty int {
 		get {
 			return 42
 		}
 
 		<strong>set {
-			var&lt;int&gt; valueToBeSet = val // `val` holds the value being set.
+			var valueToBeSet = val // `val` holds the value being set.
 		}</strong>
 	}
 }
@@ -1664,11 +1662,11 @@ class SomeClass {
 			<p>Properties are accessed under the <strong>instance</strong> of the class:</p>
 <div class="unreplaced-code">	
 class SomeClass {
-	property&lt;int&gt; myProperty {
+	property myProperty int {
 		get { return 42 }
 	}
 
-	function&lt;void&gt; DoSomething() {
+	function DoSomething() {
 		<strong>this.myProperty</strong>
 	}
 }
@@ -1677,12 +1675,12 @@ class SomeClass {
 			<p>The value of a property can be changed using the assignment operator <code>=</code> <strong>if it has a set block declared</strong>:</p>
 <div class="unreplaced-code">	
 class SomeClass {
-	property&lt;int&gt; myProperty {
+	property myProperty int {
 		get { ... }
 		set { ... }
 	}
 
-	function&lt;void&gt; DoSomething() {
+	function DoSomething() {
 		<strong>this.myProperty = 42</strong>
 	}
 }
@@ -1693,14 +1691,14 @@ class SomeClass {
 from "github.com/serulian/debuglib" import Log
 
 class SomeClass {
-	property&lt;string&gt; SomeProperty {
+	property SomeProperty string {
 		get {
 			return 'hello world!'
 		}
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	sc := SomeClass.new()
 	Log(sc.SomeProperty)
 }
@@ -1717,6 +1715,9 @@ class SomeClass {
 	<strong>operator Plus(left SomeClass, right SomeClass) {
 		return left
 	}</strong>
+	<strong>operator Index(index int) bool {
+		return true
+	}</strong>
 }
 </div>
 
@@ -1732,7 +1733,7 @@ class SomeClass {
 	}
 }
 
-function&lt;void&gt; DoSomething(first SomeClass, second SomeClass) {
+function DoSomething(first SomeClass, second SomeClass) {
 	<strong>first + second</strong> // Invokes the `Plus` operator on `SomeClass`
 }
 </div>
@@ -1743,7 +1744,7 @@ function&lt;void&gt; DoSomething(first SomeClass, second SomeClass) {
 from "github.com/serulian/debuglib" import Log
 
 class SomeClass {
-	var&lt;string&gt; message
+	var message string
 
 	operator Plus(left SomeClass, right SomeClass) {
 		return SomeClass{
@@ -1752,7 +1753,7 @@ class SomeClass {
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	l := SomeClass.new('hello')
 	r := SomeClass.new('world!')
 	combined := l + r
@@ -1790,7 +1791,7 @@ function&lt;void&gt; Run() {
 			<h3>How do I use a stream?</h3>
 			<p>Streams can be used in Serulian via the <code>for</code> statement:</p>
 <div class="unreplaced-code">	
-function&lt;void&gt; DoSomething(someIntStream int*) {
+function DoSomething(someIntStream int*) {
 	for value <strong>in someIntStream</strong> {
 		// `value` holds the current value.
 	}
@@ -1806,7 +1807,7 @@ function&lt;void&gt; DoSomething(someIntStream int*) {
 			<h3>Declaring an iterator</h3>
 			<p>To declare an iterator, simply make the return or value type of a function or property into a stream, and then use <code>yield</code> keyword once (or more) to yield values:</p>
 <div class="unreplaced-code">	
-function&lt;<strong>int*</strong>&gt; MyCoolIterator() {
+function MyCoolIterator() <strong>int*</strong> {
 	<strong>yield 1
 	yield 2
 	yield 3</strong>
@@ -1818,7 +1819,7 @@ function&lt;<strong>int*</strong>&gt; MyCoolIterator() {
 			<h3>Yielding from another stream</h3>
 			<p>Sometimes it is useful to yield all the elements from another stream from within an iterator. Rather than having to write a for+yield, Serulian provides the <code>yield in</code> <abbr title="all-natural syntax sugar that is much healthier!">syntax honey</abbr>:</p>
 <div class="unreplaced-code">	
-function&lt;int*&gt; MyCoolIterator(anotherStream int*) {
+function MyCoolIterator(anotherStream int*) int* {
 	yield 1
 	<strong>yield in anotherStream</strong>
 	yield 3
@@ -1829,7 +1830,7 @@ function&lt;int*&gt; MyCoolIterator(anotherStream int*) {
 			<h3>Terminating an iterator</h3>
 			<p>To terminate an iterator's stream, the <code>yield break</code> call can be used:</p>
 <div class="unreplaced-code">	
-function&lt;int*&gt; MyCoolIterator() {
+function MyCoolIterator() int* {
 	yield 1
 	<strong>yield break</strong>
 	yield 3
@@ -1841,13 +1842,13 @@ function&lt;int*&gt; MyCoolIterator() {
 <PlaygroundEditor class="not-replaced">
 from "github.com/serulian/debuglib" import Log
 
-function&lt;string*&gt; myIterator() {
+function myIterator() string* {
 	yield 'I am the very model'
 	yield 'of a modern major general'
 	yield 'who loves to sing!'
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	for piece in myIterator() {
 		Log(piece)
 	}
@@ -1858,7 +1859,7 @@ function&lt;void&gt; Run() {
 			<h3 id="statement-return">Return</h3>
 			<p>A <code>return</code> statement terminates execution of a <a href="#member-function">function</a> or <a href="#member-property">property</a>, optionally returning a value.</p>
 <div class="unreplaced-code">	
-function&lt;int&gt; SomeFunction() {
+function SomeFunction() int {
 	<strong>return 42</strong>
 }
 </div>
@@ -1867,7 +1868,7 @@ function&lt;int&gt; SomeFunction() {
 			<p>A <code>reject</code> statement is used for <a href="#error-handling">error handling</a> and terminates execution of a <a href="#member-function">function</a> or <a href="#member-property">property</a>, indicating an error or exception has occurred. All values rejected <strong>must</strong> implement the <code>Error</code> interface.
 			</p>
 <div class="unreplaced-code">	
-function&lt;int&gt; SomeFunction() {
+function SomeFunction() int {
 	<strong>reject SimpleError.WithMessage('oh no! Something went wrong!')</strong>
 }
 </div>
@@ -1875,8 +1876,8 @@ function&lt;int&gt; SomeFunction() {
 			<p>A <code>var</code> statement defines a variable with a name in the context. Its value is optional if it has an initializing expression.</p>
 <div class="unreplaced-code">	
 <strong>var someVar = 42</strong>
-<strong>var&lt;int&gt; anotherVar = 42</strong>
-<strong>var&lt;int?&gt; nullableVar</strong>
+<strong>var anotherVar int = 42</strong>
+<strong>var nullableVar int?</strong>
 </div>
 
 			<h3 id="statement-assignment">Assignment</h3>
@@ -1926,7 +1927,7 @@ someValue, <strong>_</strong> := SomeOtherFunction()
 			<p>In the above example, we've asked the compiler to accept all errors that may occur, but we don't care about the <strong>contents</strong> of the error. It is typical to follow such a call with a conditional check to see if the left hand value (<code>someValue</code>) is <code>null</code></p>
 			<p>Alternatively, the value itself can be ignored:</p>
 <div class="unreplaced-code">	
-function&lt;int&gt; SomeFunction() {
+function SomeFunction() int {
 	<strong>_</strong>, err := SomeOtherFunction()
 }
 </div>
@@ -2127,16 +2128,16 @@ with createReleasableElement('canvas') as elm:
 from "github.com/serulian/debuglib" import Log
 
 class SomeResource {
-	function&lt;void&gt; Release() {
+	function Release() {
 		Log('Released')
 	}
 
-	property&lt;string&gt; SomeValue {
+	property SomeValue string {
 		get { return 'hello world!' }
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	with SomeResource.new() as sr {
 		Log(sr.SomeValue)
 	}
@@ -2150,10 +2151,10 @@ function&lt;void&gt; Run() {
 			<p>Functions in Serulian are <strong>first class</strong>, able to be aliased into a variable and therefore called at a later location:
 			</p>
 <div class="unreplaced-code">
-function&lt;void&gt; SomeFunction(foo int) {}
+function SomeFunction(foo int) {}
 
-function&lt;void&gt; DoSomething() {
-	var&lt;function&lt;void&gt;(int)&gt; someFunction = SomeFunction	
+function DoSomething() {
+	var someFunction = SomeFunction	
 	<strong>someFunction(123)</strong> // Invokes SomeFunction with 123 as a parameter.
 }
 </div>
@@ -2161,14 +2162,14 @@ function&lt;void&gt; DoSomething() {
 <div class="unreplaced-code">
 class SomeClass {
   constructor SomeConstructor() { ... }
-  function&lt;void&gt; SomeFunction(foo int) { ... }
+  function SomeFunction(foo int) { ... }
 }
 
-function&lt;void&gt; DoSomething(sc SomeClass) {
-	var&lt;function&lt;void&gt;(int)&gt; someFunction = sc.SomeFunction	
+function DoSomething(sc SomeClass) {
+	var someFunction = sc.SomeFunction	
 	<strong>someFunction(123)</strong> // Invokes SomeFunction on SomeClass with 123 as a parameter.
 
-	var&lt;function&lt;SomeClass&gt;()&gt; someConstructor = SomeClass.someConstructor	
+	var someConstructor = SomeClass.someConstructor	
 	<strong>someConstructor()</strong> // Invokes SomeConstructor on the SomeClass class.
 }
 </div>
@@ -2176,9 +2177,9 @@ function&lt;void&gt; DoSomething(sc SomeClass) {
 			<h4>Declaring function types</h4>
 			<p>Function values are defined using the specialized type syntax <code>function&lt;returnType&gt;(param1Type, param2Type, paramNType)</code>:
 <div class="unreplaced-code">
-	var&lt;<strong>function&lt;void&gt;(int)</strong>&gt; firstFunction
-	var&lt;<strong>function&lt;SomeClass&gt;()</strong>&gt; secondFunction
-	var&lt;<strong>function&lt;void&gt;(int, string, bool)</strong>&gt; thirdFunction
+	var firstFunction  <strong>function(int)</strong>
+	var secondFunction <strong>function&lt;SomeClass&gt;()</strong>
+	var thirdFunction  <strong>function(int, string, bool)</strong>&gt;
 </div>
 		
 			<h4>Creating anonymous functions</h4>
@@ -2188,7 +2189,7 @@ function&lt;void&gt; DoSomething(sc SomeClass) {
 			<p>The first form of anonymous function supported by Serulian is the <strong>full lambda function</strong>, which is declared with syntax similar to module level and type level <a href="#member-function">functions</a>, just without a name:
 			</p>
 <div class="unreplaced-code">
-someFunction := <strong>function&lt;int&gt; (firstParam string) {
+someFunction := <strong>function (firstParam string) int {
 	return firstParam.Length
 }</strong>
 </div>
@@ -2213,7 +2214,7 @@ someFunction := <strong>(firstParam, secondParam) => firstParam.Length + secondP
 			<h4 id="closures">Anonymous functions and binding (Closures)</h4>
 			<p>If a variable from the parent scope is used in an anonymous function, the name is automatically bound to the <strong>reference</strong> of the variable, <strong>not the <u>value</u></strong>:</p>
 <div class="unreplaced-code">
-var&lt;int&gt; someVar = 12
+var someVar int = 12
 
 someFunction := function () {
 	return <strong>someVar</strong>
@@ -2228,7 +2229,7 @@ someFunction() // Returns <strong>42</strong>, because the value of `someVar` ch
 				<h4>Closures and loops</h4>
 				<p>The behavior of function closures be an especially unexpected behavior when making use of function closures inside a loop:</p>
 <div class="unreplaced-code">
-var&lt;function&lt;int&gt;()?&gt; theFunction = null
+var theFunction function&lt;int&gt;()? = null
 
 for i in 0..5 {
 	// Only create the function on the first iteration.
@@ -2276,7 +2277,7 @@ adjective := 'best'
 			</p>
 
 <div class="unreplaced-code">
-<strong>function&lt;string&gt; myFormatFunction(pieces []string, values []Stringable) { ... }</strong>
+<strong>function myFormatFunction(pieces []string, values []Stringable) string { ... }</strong>
 
 adjective := 'best'
 myFormatFunction`This is the ${adjective} template string`
@@ -2317,8 +2318,8 @@ myFormatFunction`This is an ${adjective} template string that does ${anotherAdje
 from "@core" import Stringable
 from "github.com/serulian/debuglib" import Log
 
-function&lt;string&gt; myFormatter(pieces []string, values []Stringable) {
-	var&lt;string&gt; value = ''
+function myFormatter(pieces []string, values []Stringable) string {
+	var value = ''
 	for i in 0..pieces.Length - 1 {
 		value = value + '[' + pieces[i] + ']'
 		if i < values.Length {
@@ -2328,7 +2329,7 @@ function&lt;string&gt; myFormatter(pieces []string, values []Stringable) {
 	return value
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	firstValue := 2
 	secondValue := true
 	thirdValue := 'hello world!'
@@ -2346,7 +2347,7 @@ function&lt;void&gt; Run() {
 			<p>The dynamic access operator <code>-&gt;</code> performs the lookup of a member on a value at <strong>runtime</strong>, skipping the normal type checking associated with member access under a type. It can be used on <strong>any value</strong> and, being dynamic, itself returns a value of type <a href="#any">any</a>:
 			</p>
 <div class="unreplaced-code">
-function&lt;void&gt; SomeFunction(someValue any) {
+function SomeFunction(someValue any) {
 	// Get the length of the value (if it exists):
 	<strong>someValue-&gt;length</strong>
 }
@@ -2373,7 +2374,7 @@ function&lt;void&gt; SomeFunction(someValue any) {
 			<h3>Rejecting within a function</h3>
 			<p>Any code block can reject by using the <a href="#statement-reject">reject</a> statement at any point:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; SomeFunction() {
+function SomeFunction() int {
 	<strong>reject SimpleError.WithMessage('Not implemented!')</strong>
 }
 </div>
@@ -2385,11 +2386,11 @@ function&lt;int&gt; SomeFunction() {
 			</p>
 
 <div class="unreplaced-code">
-function&lt;int&gt; SomeFunction() {
+function SomeFunction() int {
 	reject SimpleError.WithMessage('Not implemented!')
 }
 
-function&lt;void&gt; CallingFunction() {
+function CallingFunction() {
 	result<strong>, err</strong> := SomeFunction()
 }
 </div>
@@ -2520,7 +2521,7 @@ doSomeThirdOperation()
 			<p>Let's say you have a promise, constructed in either Serulian or in JavaScript that you wish to <code>await</code> on. To do so, Serulian provides the arrow operator <code>&lt;-</code>, which, like Go, will "block" (really <code>await</code>) the execution of the current function until the Promise resolves or reject:</p>
 
 <div class="unreplaced-code">
-function&lt;int&gt; doSomething(p promise&lt;int&gt;) {
+function doSomething(p promise&lt;int&gt;) int {
 	// Wait for the promise to resolve.
 	result <strong>&lt;- p</strong>
 	return result * 2
@@ -2532,7 +2533,7 @@ function&lt;int&gt; doSomething(p promise&lt;int&gt;) {
 			<h4>Handling rejection</h4>
 			<p>If you desire to handle the potential rejection of a promise, another argument can be added before the arrow operator:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; doSomething(p promise&lt;int&gt;) {
+function doSomething(p promise&lt;int&gt;) int {
 	// Wait for the promise to resolve.
 	result<strong>, err</strong> &lt;- p
 	if result is not null {
@@ -2555,15 +2556,15 @@ function&lt;int&gt; doSomething(p promise&lt;int&gt;) {
 			<p>In Serulian, to define a <strong>module-level</strong> function as <strong>asynchronous</strong> and, therefore, executed inside of a Web Worker, we simply append the name <code>Async</code> to the function name:</p>
 
 <div class="unreplaced-code">
-function&lt;int&gt; doSomething<strong>Async</strong>() { ... }
+function doSomething<strong>Async</strong>() int { ... }
 </div>
 
 			<p>Once modified, the function can be called and we can await on its result with the arrow operator:</p>
 
 <div class="unreplaced-code">
-function&lt;int&gt; doSomethingAsync() { ... }
+function doSomethingAsync() int { ... }
 
-function&lt;int&gt; callSomeFunction() {
+function callSomeFunction() int {
 	return <strong>&lt;- doSomethingAsync()</strong> // Will start the web worker, run the function, and wait for its result.
 }
 </div>
@@ -2574,7 +2575,7 @@ function&lt;int&gt; callSomeFunction() {
 				<h4>Why is this feature enabled by name and not a keyword?</h4>
 				<p>Readability at the <strong>call site</strong>. By including the <code>Async</code> suffix in the function's <strong>name</strong>, it ensures that whenever the function is called it is <strong>super clear</strong> that it is an asynchronous function that should be awaited:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; callSomeFunction() {
+function callSomeFunction() int {
 	doSomething<strong>Async</strong>() // Clearly an async call.
 }
 </div>
@@ -2630,7 +2631,7 @@ const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;
 			<p>SML is, at its core, simply <strong>a different syntax for constructing and invoking function calls</strong>. Each <strong>tag</strong> in SML is a call to a function (or a <a href="#member-constructor">constructor</a> named <code>Declare</code> on the class), with attributes and contents being given to the function (or constructor) being called:
 			</p>
 <div class="unreplaced-code">
-function&lt;int&gt; SomeFunction() { ... }
+function SomeFunction() int { ... }
 class SomeClass {
 	constructor Declare() { ... }
 }
@@ -2644,7 +2645,7 @@ class SomeClass {
 			<h3>Attributes in SML</h3>
 			<p>If we wish the function to take arguments, they can be supplied as <strong>attributes</strong> on the tag:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; SomeFunction(<strong>props []{any}</strong>) { ... } // Declare that we accept props
+function SomeFunction(<strong>props []{any}</strong>) int { ... } // Declare that we accept props
 
 &lt;SomeFunction <strong>foo="bar" baz={1234}</strong> /&gt; // Call with a few props
 </div>
@@ -2652,7 +2653,7 @@ function&lt;int&gt; SomeFunction(<strong>props []{any}</strong>) { ... } // Decl
 
 			<p>Alternatively, if we only wanted to accept properties of a specific type, we could specify a different value type:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; SomeFunction(<strong>props []{string}</strong>) { ... } // Declare that we accept *string* props
+function SomeFunction(<strong>props []{string}</strong>) int { ... } // Declare that we accept *string* props
 
 &lt;SomeFunction <strong>foo="bar" baz="meh"</strong> /&gt; // Call with a few string props
 </div>
@@ -2668,7 +2669,7 @@ struct SomeStruct {
 	OptionalParam string?
 }
 
-function&lt;int&gt; SomeFunction(props <strong>SomeStruct</strong>) { ... } // Declare that we accept SomeStruct props
+function SomeFunction(props <strong>SomeStruct</strong>) int { ... } // Declare that we accept SomeStruct props
 
 &lt;SomeFunction RequiredParam={42} /&gt;
 </div>
@@ -2681,7 +2682,7 @@ struct SomeStruct {
 	IsCoolThing bool
 }
 
-function&lt;int&gt; SomeFunction(props SomeStruct) { ... } // Declare that we accept SomeStruct props
+function SomeFunction(props SomeStruct) int { ... } // Declare that we accept SomeStruct props
 
 &lt;SomeFunction <strong>IsCoolThing</strong> /&gt; // IsCoolThing has no value, so treated as IsCoolThing = true
 </div>			
@@ -2689,7 +2690,7 @@ function&lt;int&gt; SomeFunction(props SomeStruct) { ... } // Declare that we ac
 			<h3>Children under SML tags</h3>
 			<p>In addition to attributes, Serulian also supports adding children to an SML tag. Children are declared as being supported by adding a second parameter to the function being called:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; SomeFunction(props SomeStruct, <strong>children any*</strong>) { ... } // Declare that we accept children
+function SomeFunction(props SomeStruct, <strong>children any*</strong>) int { ... } // Declare that we accept children
 
 &lt;SomeFunction&gt;
    <strong>First child is text
@@ -2703,7 +2704,7 @@ function&lt;int&gt; SomeFunction(props SomeStruct, <strong>children any*</strong
 			<h3>Constraining children of SML tags</h3>
 			<p>If instead we wish to constraint the <strong>type</strong> of children, we can be more specific on the type allowed:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; SomeFunction(props SomeStruct, children <strong>int*</strong>) { ... } // Declare that we accept int children
+function SomeFunction(props SomeStruct, children <strong>int*</strong>) int { ... } // Declare that we accept int children
 
 &lt;SomeFunction&gt;<strong>{1}{2}{3}</strong>&lt;/SomeFunction&gt;
 </div>	
@@ -2712,14 +2713,14 @@ function&lt;int&gt; SomeFunction(props SomeStruct, children <strong>int*</strong
 			<h3>Single children of SML tags</h3>
 			<p>Constraining the <strong>type</strong> of children allowed is not the only kind of constraint we can place on the children; if we instead wish to only accept a <strong>single chilld</strong> of a specific type, we can change the parameter to no longer be a stream:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; SomeFunction(props SomeStruct, child <strong>int?</strong>) { ... } // Declare that we accept a single int child
+function SomeFunction(props SomeStruct, child <strong>int?</strong>) int { ... } // Declare that we accept a single int child
 
 &lt;SomeFunction /&gt;
 </div>	
 			<p>In the above example, by changing the <code>child</code> parameter into a nullable int <code>int?</code>, we've told Serulian that tags can have only zero or one children (of type <code>int</code>).</p>
 			<p>Similarly, if we wish to make the child <strong>required</strong>, we can simply make it non-nullable:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; SomeFunction(props SomeStruct, child <strong>int</strong>) { ... } // Declare that we require a single int child
+function SomeFunction(props SomeStruct, child <strong>int</strong>) int { ... } // Declare that we require a single int child
 
 &lt;SomeFunction&gt;<strong>{1}</strong>&lt;/SomeFunction&gt;
 </div>
@@ -2727,7 +2728,7 @@ function&lt;int&gt; SomeFunction(props SomeStruct, child <strong>int</strong>) {
 			<h3 id="decorators">Decorators</h3>
 			<p><strong>Decorators</strong> are one of the most powerful components found in SML. A <strong>decorator</strong> is, at its core, simply a function that maps from a value and an option to another value:</p>
 <div class="unreplaced-code">
-function&lt;int&gt; MyDecorator(<strong>value int, option bool</strong>) {
+function MyDecorator(<strong>value int, option bool</strong>) int {
 	if option {
 		return value
 	} else {
@@ -2738,7 +2739,7 @@ function&lt;int&gt; MyDecorator(<strong>value int, option bool</strong>) {
 			<p>Once declared, a decorator can then be <strong>applied</strong> to an SML tag using the decorator operator <code>@</code>:
 			</p>
 <div class="unreplaced-code">
-function&lt;int&gt; MyDecorator(value int, option bool) {
+function MyDecorator(value int, option bool) int {
 	if option {
 		return value
 	} else {
@@ -2805,15 +2806,15 @@ AnotherDecorator(MyDecorator(SomeFunction(), 'hello'), true)
 <PlaygroundEditor class="not-replaced">
 from "github.com/serulian/debuglib" import Log
 
-function&lt;int&gt; GetNumber(props []{int}, child int?) {
+function GetNumber(props []{int}, child int?) int {
 	return (props['value'] ?? 42) + (child ?? 0)
 }
 
-function&lt;int&gt; DoubleIf(value int, condition bool) {
+function DoubleIf(value int, condition bool) int {
 	return value * 2 if condition else value
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	Log(&lt;GetNumber @DoubleIf={true} /&gt;)
 	Log(&lt;GetNumber @DoubleIf={false} /&gt;)
 	Log(&lt;GetNumber value={10} @DoubleIf={true} /&gt;)
@@ -2838,14 +2839,14 @@ function&lt;void&gt; Run() {
 			<p>The <code>slice</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/serulian/corelib/blob/master/core.webidl#L70" target="_blank">Array</a> type and represents a <strong>read-only</strong> slice of a collection in Serulian. [<a href="https://github.com/serulian/corelib/blob/master/collections.seru#L129" target="_blank">Code Link</a>]</p>
 			<p>Slice types can be declared with specialized sytax:</p>
 <div class="unreplaced-code">
-var&lt;<strong>[]string</strong>&gt; someStringSlice = <strong>[]string{'first value', 'second value'}</strong>
+var someStringSlice <strong>[]string</strong> = <strong>[]string{'first value', 'second value'}</strong>
 </div>
 			<h3 id="corelib-mapping">Mapping&lt;T, Q&gt;</h3>
 			<p>The <code>mapping</code> type is a <a href="#type-nominal">nominal type</a> around the native <a href="https://github.com/serulian/corelib/blob/master/core.webidl#L5" target="_blank">Object</a> type and represents a <strong>read-only</strong> slice of a Map in Serulian. [<a href="https://github.com/serulian/corelib/blob/master/collections.seru#L59" target="_blank">Code Link</a>]</p>			
 
 			<p>Mapping types can be declared with specialized sytax:</p>
 <div class="unreplaced-code">
-var&lt;<strong>[]{int}</strong>&gt; someMappingOfInt = <strong>[]{int}{'foo': 1, 'bar': 2}</strong>
+var someMappingOfInt <strong>[]{int}</strong> = <strong>[]{int}{'foo': 1, 'bar': 2}</strong>
 </div>
 			<p>The keys in Mappings are <strong>always strings</strong>.</p>
 
@@ -2855,12 +2856,12 @@ var&lt;<strong>[]{int}</strong>&gt; someMappingOfInt = <strong>[]{int}{'foo': 1,
 			<h4>Creating an empty List</h4>
 			<p>An empty list can be created using the <code>Empty</code> constructor:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = <strong>List&lt;string&gt;.Empty()</strong>
+var aListOfStrings = <strong>List&lt;string&gt;.Empty()</strong>
 </div>
 			<h4>Adding values to the List</h4>
 			<p>Values can be added to the list using the <code>Add</code> method:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+var aListOfStrings = List&lt;string&gt;.Empty()
 <strong>aListOfStrings.Add('hello world')</strong>
 <strong>aListOfStrings.Add('hi universe')</strong>
 </div>
@@ -2868,18 +2869,18 @@ var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
 			<h4>Creating an inline list</h4>
 			<p>Specialized syntax can also be used to create an inline list literal:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = <strong>['hello world', 'hi universe']</strong>
+var aListOfStrings = <strong>['hello world', 'hi universe']</strong>
 </div>
 
 			<h4>Checking if a list is empty</h4>
 			<p>The <code>IsEmpty</code> property on a list can be used to check if it is empty:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+var aListOfStrings = List&lt;string&gt;.Empty()
 <strong>aListOfStrings.IsEmpty</strong> // Returns `true` because list is currently empty.
 </div>
 			<p>The implicit boolean operator can also be used:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+var aListOfStrings = List&lt;string&gt;.Empty()
 if <strong>not aListOfStrings</strong> {
 	// Only called if the list is empty.
 }
@@ -2888,7 +2889,7 @@ if <strong>not aListOfStrings</strong> {
 			<h4>Iterating the list</h4>
 			<p>Lists are Streamable, so a <a href="#statement-for">for</a> loop can be used to iterate them:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+var aListOfStrings = List&lt;string&gt;.Empty()
 for value <strong>in aListOfStrings</strong> {
 	// Called for each value.
 }
@@ -2897,7 +2898,7 @@ for value <strong>in aListOfStrings</strong> {
 			<h4>Checking for a value in a list</h4>
 			<p>To check if a value is in a List, the <code>IndexOf</code> method or the <code>contains</code> operator can be used:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+var aListOfStrings = List&lt;string&gt;.Empty()
 <strong>'some string' in aListOfStrings</strong> // Returns true if the list contains the value.
 <strong>aListOfStrings.IndexOf('some string')</strong> // Returns non-null index if the list contains the value.
 </div>
@@ -2906,7 +2907,7 @@ var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
 			<h4>Getting and setting a value</h4>
 			<p>To retrieve a value in the list at a specific index or set a value at a specific index, the indexer can be used:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+var aListOfStrings = List&lt;string&gt;.Empty()
 aListOfStrings.Add('hello world')
 aListOfStrings.Add('hi universe')
 <strong>aListOfStrings[0]</strong> // Returns 'hello world'
@@ -2921,7 +2922,7 @@ aListOfStrings.Add('hi universe')
 			<h4>Getting a slice of the List</h4>
 			<p>Slices of the list can be retrieved using the slice operator:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = ['one', 'two', 'three']
+var aListOfStrings = ['one', 'two', 'three']
 <strong>aListOfStrings[0:1]</strong> // Returns a slice with ['one']
 <strong>aListOfStrings[0:2]</strong> // Returns a slice with ['one', 'two']
 <strong>aListOfStrings[-1:1]</strong> // Returns a slice with ['three', one']
@@ -2930,7 +2931,7 @@ var&lt;List&lt;string&gt;&gt; aListOfStrings = ['one', 'two', 'three']
 			<h4>Removing values from the List</h4>
 			<p>Values can be removed from the list using the <code>Remove</code> method:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
+var aListOfStrings = List&lt;string&gt;.Empty()
 <strong>aListOfStrings.Remove('hello world')</strong>
 <strong>aListOfStrings.Remove('hi universe')</strong>
 // List is now empty.
@@ -2942,27 +2943,27 @@ var&lt;List&lt;string&gt;&gt; aListOfStrings = List&lt;string&gt;.Empty()
 			<h4>Creating an empty Set</h4>
 			<p>An empty Set can be created using the <code>Empty</code> constructor:</p>
 <div class="unreplaced-code">
-var&lt;Set&lt;string&gt;&gt; aSetOfStrings = <strong>Set&lt;string&gt;.Empty()</strong>
+var aSetOfStrings = <strong>Set&lt;string&gt;.Empty()</strong>
 </div>
 
 			<h4>Adding values to a Set</h4>
 			<p>A value can be added to a Set using the <code>Add</code> method:</p>
 <div class="unreplaced-code">
-var&lt;Set&lt;string&gt;&gt; aSetOfStrings = Set&lt;string&gt;.Empty()
+var aSetOfStrings = Set&lt;string&gt;.Empty()
 <strong>aSetOfStrings.Add('some string')</strong>
 </div>
 
 			<h4>Removing values from a Set</h4>
 			<p>A value can be removed from a Set using the <code>Remove</code> method:</p>
 <div class="unreplaced-code">
-var&lt;Set&lt;string&gt;&gt; aSetOfStrings = Set&lt;string&gt;.Empty()
+var aSetOfStrings = Set&lt;string&gt;.Empty()
 <strong>aSetOfStrings.Remove('some string')</strong>
 </div>
 
 			<h4>Checking if an element is in a Set</h4>
 			<p>To check if a value is in a Set, the <code>Contains</code> method or the <code>contains</code> operator can be used:</p>
 <div class="unreplaced-code">
-var&lt;List&lt;string&gt;&gt; aSetOfStrings = Set&lt;string&gt;.Empty()
+var aSetOfStrings = Set&lt;string&gt;.Empty()
 <strong>'some string' in aSetOfStrings</strong>        // Returns true if the set contains the value.
 <strong>aSetOfStrings.Contains('some string')</strong> // Returns true if the set contains the value.
 </div>
@@ -2970,7 +2971,7 @@ var&lt;List&lt;string&gt;&gt; aSetOfStrings = Set&lt;string&gt;.Empty()
 			<h4>Iterating the set</h4>
 			<p>Sets are Streamable, so a <a href="#statement-for">for</a> loop can be used to iterate them:</p>
 <div class="unreplaced-code">
-var&lt;Set&lt;string&gt;&gt; aSetOfStrings = Set&lt;string&gt;.Empty()
+var aSetOfStrings = Set&lt;string&gt;.Empty()
 for value <strong>in aSetOfStrings</strong> {
 	// Called for each value.
 }
@@ -2983,34 +2984,34 @@ for value <strong>in aSetOfStrings</strong> {
 			<h4>Creating an empty Map</h4>
 			<p>An empty Map can be created using the <code>Empty</code> constructor:</p>
 <div class="unreplaced-code">
-var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+var aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
 </div>
 
 			<h4>Adding keys to a Map</h4>
 			<p>A key-value pair can be added to a Map using the indexer:</p>
 <div class="unreplaced-code">
-var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+var aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
 <strong>aMapFromStringToInt['the answer'] = 42</strong>
 </div>
 
 			<h4>Removing keys from a Map</h4>
 			<p>A key (and its associated value) can be removed from a Map using the <code>RemoveKey</code> method:</p>
 <div class="unreplaced-code">
-var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+var aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
 <strong>aMapFromStringToInt.RemoveKey('the answer')</strong>
 </div>
 
 			<h4>Checking if a key is in a Map</h4>
 			<p>To check if a <strong>key</strong> is in a Map, the <code>contains</code> operator can be used:</p>
 <div class="unreplaced-code">
-var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+var aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
 <strong>'some string' in aMapFromStringToInt</strong> // Returns true if the map contains the key.
 </div>
 
 			<h4>Iterating the keys of the Map</h4>
 			<p>The <code>Keys</code> property can be used with a <a href="#statement-for">for</a> loop to iterate the keys in a Map:</p>
 <div class="unreplaced-code">
-var&lt;Map&lt;string, int&gt;&gt; aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
+var aMapFromStringToInt = <strong>Map&lt;string, int&gt;.Empty()</strong>
 for key <strong>in aMapFromStringToInt.Keys</strong> {
 	// Called for each key.
 }

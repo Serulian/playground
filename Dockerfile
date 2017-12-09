@@ -13,7 +13,7 @@ RUN go build .
 WORKDIR /
 RUN mkdir -p depcache/github.com/serulian/
 WORKDIR depcache/github.com/serulian/
-RUN git clone https://github.com/serulian/debuglib.git # 2017SEP08
+RUN git clone https://github.com/serulian/debuglib.git # 2017DEC09
 RUN git clone https://github.com/serulian/component.git
 RUN git clone https://github.com/serulian/virtualdom.git
 RUN git clone https://github.com/serulian/attachment.git
