@@ -252,7 +252,7 @@ class PlaygroundApp with playgroundBase {
 		// indented in the code editor.
 		initialCode := `from "github.com/serulian/debuglib" import Log
 
-function<any> Run() {
+function Run() any {
 	// Note: open the browser console to see Log outputs.
 	Log('hello world!')
 	return true

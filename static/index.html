@@ -249,21 +249,21 @@
 from "github.com/serulian/debuglib" import Log
 
 class MyClass {
-	function&lt;string&gt; GetValue() { return 'hello world!' }
+	function GetValue() string { return 'hello world!' }
 }
 
 class AnotherClass {
-	function&lt;int&gt; GetValue() { return 42 }	
+	function GetValue() int { return 42 }	
 }
 
 interface Logger&lt;T&gt; {
-	function&lt;T&gt; GetValue()
+	function GetValue() T
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	// Full generics
-	var&lt;Logger&lt;string&gt;&gt; l1 = MyClass.new()
-	var&lt;Logger&lt;int&gt;&gt; l2 = AnotherClass.new()
+	var l1 Logger&lt;string&gt; = MyClass.new()
+	var l2 Logger&lt;int&gt; = AnotherClass.new()
 
 	Log(l1.GetValue())
 	Log(l2.GetValue())
@@ -275,12 +275,12 @@ function&lt;void&gt; Run() {
 from "github.com/serulian/debuglib" import Log
 
 class MyClass {
-	function&lt;string&gt; GetValue() {
+	function GetValue() string {
 		return 'hello world!'
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	Log(MyClass.new().getValue()) // Will fail to compile with an error.
 }
 </PlaygroundEditor>
@@ -328,7 +328,7 @@ serulian imports upgrade myfile.seru github.com/somenamespace/somerepo
 from webidl`github.com/serulian/debuglib` import console
 from webidl`github.com/serulian/corelib` import JSON
 
-function&lt;void&gt; Run() {
+function Run() {
 	// Call the native JSON type with full type checking.
 	console.log(JSON.stringify(JSON.parse('{"hello": "world"}')))
 }
@@ -343,7 +343,7 @@ function&lt;void&gt; Run() {
 from "github.com/serulian/debuglib" import Log
 from "github.com/serulian/request" import Get
 
-function&lt;void&gt; Run() {
+function Run() {
 	// Get via XHR. This is an *async* call, but is written in sync style.
 	// Log will only be called once the call has succeeded.
 	result := Get('helloworld.txt')
@@ -367,7 +367,7 @@ struct myComponentProps {
 }
 
 class MyComponent {
-	var&lt;string&gt; message
+	var message string
 
 	constructor Declare(props myComponentProps) {
 		return MyComponent{
@@ -375,14 +375,14 @@ class MyComponent {
 		}
 	}
 
-	function&lt;any&gt; Render(context Context) {
+	function Render(context Context) any {
 		return &lt;Div style="background-color: lightblue; padding: 6px;"&gt;
 			the message: {this.message}
 		&lt;/Div&gt;
 	}
 }
 
-function&lt;void&gt; Run() {
+function Run() {
 	RenderComponent(&lt;MyComponent message="the message!" /&gt;, document.body)
 }
 </PlaygroundEditor>
